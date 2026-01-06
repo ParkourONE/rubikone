@@ -36,19 +36,24 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https: blob:",
       "media-src 'self' https://www.youtube.com https://youtube.com",
       "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com",
-      "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com",
+      "connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://vitals.vercel-insights.com https://va.vercel-scripts.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
       "frame-ancestors 'none'",
       "upgrade-insecure-requests",
     ].join("; "),
+  },
+  {
+    // Prevent DNS prefetching to external domains
+    key: "X-DNS-Prefetch-Control",
+    value: "on",
   },
 ];
 

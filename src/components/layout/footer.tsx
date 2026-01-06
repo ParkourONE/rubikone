@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
-import { SITE_CONFIG, FOOTER_LINKS, CONTACT_INFO } from "@/lib/constants";
+import { Settings } from "lucide-react";
+import { SITE_CONFIG, FOOTER_LINKS } from "@/lib/constants";
+import { useConsent } from "@/providers/consent-provider";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { openSettings } = useConsent();
 
   return (
     <footer className="bg-[var(--color-apple-gray-100)] border-t border-[var(--color-apple-gray-200)]">
@@ -86,6 +91,15 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={openSettings}
+                  className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <Settings className="h-3.5 w-3.5" />
+                  Cookie-Einstellungen
+                </button>
+              </li>
             </ul>
           </div>
         </div>
@@ -97,7 +111,13 @@ export function Footer() {
           <p className="text-caption text-[var(--color-apple-gray-500)]">
             © {currentYear} {SITE_CONFIG.company}. Alle Rechte vorbehalten.
           </p>
-          <div className="flex items-center gap-2 text-caption text-[var(--color-apple-gray-500)]">
+          <div className="flex items-center gap-4 text-caption text-[var(--color-apple-gray-500)]">
+            <button
+              onClick={openSettings}
+              className="hover:text-[var(--color-apple-gray-700)] transition-colors"
+            >
+              Cookie-Einstellungen
+            </button>
             <span className="inline-flex items-center gap-1">
               Made in Switzerland
             </span>

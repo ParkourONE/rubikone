@@ -107,7 +107,33 @@ export default function DatenschutzPage() {
                 Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-apple-blue)] hover:underline">Google Datenschutzerklärung</a>
               </p>
 
-              <h3 className="text-headline text-[var(--color-apple-dark)]">4.2 YouTube-Videos</h3>
+              <h3 className="text-headline text-[var(--color-apple-dark)]">4.2 Vercel Analytics</h3>
+              <p>
+                Wir verwenden Vercel Analytics, um anonymisierte Nutzungsstatistiken zu erheben.
+                Vercel Analytics ist ein datenschutzfreundliches Analyse-Tool, das keine Cookies
+                verwendet und keine personenbezogenen Daten speichert.
+              </p>
+              <p>
+                Folgende Daten werden erfasst:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Seitenaufrufe (ohne persönliche Identifikation)</li>
+                <li>Verweildauer auf der Seite</li>
+                <li>Geografische Region (Land/Stadt, keine genaue Position)</li>
+                <li>Gerätetyp und Browser</li>
+                <li>Referrer (woher Besucher kommen)</li>
+              </ul>
+              <p>
+                <strong>Wichtig:</strong> Diese Analyse erfolgt nur mit Ihrer Einwilligung.
+                Sie können Ihre Einstellungen jederzeit über den Link «Cookie-Einstellungen»
+                im Footer ändern.
+              </p>
+              <p>
+                Anbieter: Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA.<br />
+                Weitere Informationen: <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-apple-blue)] hover:underline">Vercel Analytics Privacy Policy</a>
+              </p>
+
+              <h3 className="text-headline text-[var(--color-apple-dark)]">4.3 YouTube-Videos</h3>
               <p>
                 Auf einigen Seiten binden wir YouTube-Videos ein. Anbieter ist die Google Ireland
                 Limited. Wenn Sie eine Seite mit einem eingebetteten Video besuchen, wird eine
@@ -122,19 +148,56 @@ export default function DatenschutzPage() {
                 Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[var(--color-apple-blue)] hover:underline">Google Datenschutzerklärung</a>
               </p>
 
-              <h2 className="text-title-2 text-[var(--color-apple-dark)]">5. Cookies</h2>
+              <h2 className="text-title-2 text-[var(--color-apple-dark)]">5. Cookies und Einwilligung</h2>
+
+              <h3 className="text-headline text-[var(--color-apple-dark)]">5.1 Cookie-Kategorien</h3>
               <p>
-                Diese Website verwendet <strong>keine Tracking-Cookies</strong> und
-                <strong> keine Analyse-Tools</strong> wie Google Analytics.
+                Wir unterscheiden zwischen folgenden Cookie-Kategorien:
+              </p>
+              <ul className="list-disc pl-6 space-y-2">
+                <li>
+                  <strong>Notwendige Cookies:</strong> Diese Cookies sind für den Betrieb der Website
+                  unbedingt erforderlich. Sie ermöglichen Grundfunktionen und können nicht deaktiviert werden.
+                </li>
+                <li>
+                  <strong>Analyse-Cookies:</strong> Diese Cookies helfen uns zu verstehen, wie Besucher
+                  mit unserer Website interagieren. Die Daten werden anonymisiert erhoben (Vercel Analytics).
+                </li>
+                <li>
+                  <strong>Marketing-Cookies:</strong> Diese Cookies werden verwendet, um Werbung relevanter
+                  zu gestalten. Derzeit verwenden wir keine Marketing-Cookies.
+                </li>
+              </ul>
+
+              <h3 className="text-headline text-[var(--color-apple-dark)]">5.2 Einwilligungsmanagement</h3>
+              <p>
+                Beim ersten Besuch unserer Website werden Sie gefragt, welche Cookies Sie akzeptieren möchten.
+                Ihre Entscheidung wird lokal in Ihrem Browser gespeichert (localStorage).
               </p>
               <p>
-                Es werden lediglich technisch notwendige Cookies verwendet, die für den
-                Betrieb der Website erforderlich sind (z.B. Session-Cookies). Diese Cookies
-                werden automatisch gelöscht, wenn Sie Ihren Browser schliessen.
+                Sie können Ihre Einstellungen jederzeit ändern, indem Sie auf «Cookie-Einstellungen»
+                im Footer der Website klicken. Ihre Einwilligung können Sie dort auch widerrufen.
               </p>
-              <p>
-                Da wir keine Tracking-Cookies einsetzen, ist kein Cookie-Banner erforderlich.
-              </p>
+
+              <h3 className="text-headline text-[var(--color-apple-dark)]">5.3 Verwendete Cookies</h3>
+              <table className="w-full text-body-sm border-collapse mt-4">
+                <thead>
+                  <tr className="border-b border-[var(--color-apple-gray-200)]">
+                    <th className="text-left py-2 pr-4">Name</th>
+                    <th className="text-left py-2 pr-4">Zweck</th>
+                    <th className="text-left py-2 pr-4">Speicherdauer</th>
+                    <th className="text-left py-2">Kategorie</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-[var(--color-apple-gray-100)]">
+                    <td className="py-2 pr-4">rubikone-cookie-consent</td>
+                    <td className="py-2 pr-4">Speichert Ihre Cookie-Präferenzen</td>
+                    <td className="py-2 pr-4">1 Jahr</td>
+                    <td className="py-2">Notwendig</td>
+                  </tr>
+                </tbody>
+              </table>
 
               <h2 className="text-title-2 text-[var(--color-apple-dark)]">6. Hosting</h2>
               <p>

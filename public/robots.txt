@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow admin or sensitive paths (if any exist in the future)
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://rubikone.ch/sitemap.xml

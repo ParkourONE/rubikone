@@ -4,6 +4,9 @@ import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
 import { LenisProvider } from "@/providers/lenis-provider";
+import { ConsentProvider } from "@/providers/consent-provider";
+import { CookieBanner } from "@/components/cookie-banner";
+import { ConditionalAnalytics } from "@/components/analytics";
 import { SITE_CONFIG } from "@/lib/constants";
 
 const inter = Inter({
@@ -51,11 +54,15 @@ export default function RootLayout({
   return (
     <html lang="de-CH">
       <body className={`${inter.variable} font-sans antialiased`}>
-        <LenisProvider>
-          <Navigation />
-          <main>{children}</main>
-          <Footer />
-        </LenisProvider>
+        <ConsentProvider>
+          <LenisProvider>
+            <Navigation />
+            <main>{children}</main>
+            <Footer />
+            <CookieBanner />
+          </LenisProvider>
+          <ConditionalAnalytics />
+        </ConsentProvider>
       </body>
     </html>
   );

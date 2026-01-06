@@ -1,0 +1,6 @@
+# Security Contact Information
+# https://securitytxt.org/
+
+Contact: mailto:info@rubikone.ch
+Preferred-Languages: de, en
+Canonical: https://rubikone.ch/.well-known/security.txt
