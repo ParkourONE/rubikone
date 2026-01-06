@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     // Send email
     const { data, error } = await resend.emails.send({
-      from: 'RubikONE Kontaktformular <noreply@rubikone.ch>',
+      from: 'RubikONE Kontaktformular <info@rubikone.ch>',
       to: 'info@rubikone.ch',
       replyTo: email,
       subject: `Neue Anfrage von ${name} (${gemeinde})`,
