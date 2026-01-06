@@ -437,8 +437,8 @@ export const CONTACT_PERSON = {
 // Contact Info
 export const CONTACT_INFO = {
   company: "ParkourONE GmbH",
-  street: "Könizstrasse 161",
-  city: "3097 Liebefeld",
+  street: "Südstrasse 16, SPOT 101",
+  city: "3110 Münsingen",
   email: "info@rubikone.ch",
   phone: "+41 31 971 28 27",
 } as const;

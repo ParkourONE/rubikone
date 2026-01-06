@@ -39,8 +39,8 @@ export default function DatenschutzPage() {
               </p>
               <p>
                 ParkourONE GmbH<br />
-                Könizstrasse 161<br />
-                3097 Liebefeld<br />
+                Südstrasse 16, SPOT 101<br />
+                3110 Münsingen<br />
                 Schweiz
               </p>
               <p>

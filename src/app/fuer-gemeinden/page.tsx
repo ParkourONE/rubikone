@@ -1,36 +1,48 @@
+"use client";
+
+import { useState } from "react";
 import { Metadata } from "next";
-import { Building2, GraduationCap, Users, CheckCircle, Download } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, Play, Quote, ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { PageHero } from "@/components/sections/hero-section";
-import { TrustStats } from "@/components/sections/trust-signals";
-import { FAQSection } from "@/components/sections/faq-section";
-import { CTASection } from "@/components/sections/cta-section";
-import { STAKEHOLDER_BENEFITS } from "@/lib/constants";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
+import { appleTransition } from "@/lib/animations";
 
-export const metadata: Metadata = {
-  title: "Für Gemeinden | RubikONE",
-  description: "RubikONE für Gemeinden: Bewegungsförderung ohne Bauaufwand. Erfahren Sie, wie Ihre Gemeinde vom Konzept profitiert.",
-};
+// SEO metadata handled in layout or via generateMetadata
 
-const iconMap = {
-  Building2,
-  GraduationCap,
-  Users,
-};
-
-const stakeholderSections = [
+const stakeholderBenefits = [
   {
-    id: "gemeinden",
-    data: STAKEHOLDER_BENEFITS.gemeinden,
+    icon: Building2,
+    title: "Städte & Gemeinden",
+    benefits: [
+      "Nachhaltige Stadtentwicklung ohne Platzanspruch",
+      "Innovative Gesundheitsförderung vor der Haustür",
+      "Stärkung der lokalen Gemeinschaft",
+      "Minimaler Ressourceneinsatz",
+    ],
   },
   {
-    id: "bildung",
-    data: STAKEHOLDER_BENEFITS.bildung,
+    icon: GraduationCap,
+    title: "Bildung & Kultur",
+    benefits: [
+      "Erweitertes Klassenzimmer & Bildungserlebnis",
+      "Förderung von Teamwork & Konzentrationsfähigkeit",
+      "Bewegungspausen leicht gemacht",
+      "Kreative Lernmöglichkeiten",
+    ],
   },
   {
-    id: "bevoelkerung",
-    data: STAKEHOLDER_BENEFITS.bevoelkerung,
+    icon: Users,
+    title: "Bevölkerung",
+    benefits: [
+      "Kostenfrei & flexibel erreichbar",
+      "Für alle Altersgruppen & Fitnesslevel",
+      "Ausgleich im Alltag",
+      "Fördert einen aktiven Lebensstil",
+    ],
   },
 ];
 
@@ -41,56 +53,239 @@ const prozessSchritte = [
   { nummer: "4", titel: "Eröffnen", beschreibung: "Einweihungsevent mit der Bevölkerung" },
 ];
 
-const downloads = [
-  { name: "Verkaufsbroschüre RubikONE", typ: "PDF", href: "/downloads/rubikone-verkaufsbroschuere.pdf" },
+const faqItems = [
+  {
+    question: "Wie trägt RubikONE zur Gesundheitsförderung bei?",
+    answer: "RubikONE lädt zu täglicher Bewegung ein und motiviert Menschen, sich physisch und mental aus der Komfortzone zu locken. Sportmotorische wie auch sensorische und emotionale Challenges haben das Potenzial, die Gesundheit auf allen Ebenen zu steigern.",
+  },
+  {
+    question: "Warum ist RubikONE eine nachhaltige Lösung?",
+    answer: "Das verwendete Material ist langlebig und wartungsarm. Es werden keine neuen Geräte oder Anlagen gebaut – nur bestehende Elemente werden sichtbar gemacht. In 8 Monaten Testbetrieb in Köniz sind keine Wartungskosten angefallen.",
+  },
+  {
+    question: "Wie schnell kann RubikONE umgesetzt werden?",
+    answer: "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate). Die physische Installation dauert nur wenige Tage.",
+  },
+  {
+    question: "Braucht es ein Baugesuch?",
+    answer: "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen.",
+  },
+  {
+    question: "Was ist mit Haftung und Sicherheit?",
+    answer: "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards. Die Haftungsfrage ist klar geregelt.",
+  },
+  {
+    question: "Gibt es spezielle Angebote für Schulen?",
+    answer: "Ja! RubikONE eignet sich ideal für Schulareale. Wir bieten spezielle Pakete für Schulen an, inklusive pädagogischem Begleitmaterial und Einführungsworkshops für Lehrpersonen.",
+  },
 ];
 
+function FAQItem({ question, answer, isOpen, onToggle }: {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div className="border-b border-[var(--color-apple-gray-200)]">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between py-5 text-left"
+      >
+        <span className="text-body font-semibold text-[var(--color-apple-dark)] pr-4">
+          {question}
+        </span>
+        {isOpen ? (
+          <ChevronUp className="h-5 w-5 text-[var(--color-apple-gray-500)] flex-shrink-0" />
+        ) : (
+          <ChevronDown className="h-5 w-5 text-[var(--color-apple-gray-500)] flex-shrink-0" />
+        )}
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden"
+          >
+            <p className="text-body text-[var(--color-apple-gray-600)] pb-5">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function FuerGemeindenPage() {
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+
   return (
     <>
+      {/* Hero */}
       <PageHero
-        title="RubikONE für Ihre Gemeinde"
-        description="Verwandeln Sie bestehende Orte in Bewegungsräume – ohne neue Geräte, ohne Tiefbau. Bewiesen in Köniz, bereit für Ihre Gemeinde."
+        title="Bewegungsförderung ohne Bauaufwand."
+        description="RubikONE verwandelt bestehende Umgebungselemente in vielseitige Bewegungsräume. Nachhaltige Gesundheitsförderung – permanent sichtbar und zugänglich."
         breadcrumb="Für Gemeinden"
+        image="/images/koeniz/overview.jpg"
+        imageAlt="RubikONE in Köniz"
       />
 
-      <TrustStats />
-
-      {/* Stakeholder Sections */}
-      {stakeholderSections.map((section, sectionIndex) => {
-        const Icon = iconMap[section.data.icon as keyof typeof iconMap];
-        return (
-          <section
-            key={section.id}
-            id={section.id}
-            className={`section-spacing ${sectionIndex % 2 === 1 ? "bg-[var(--color-apple-gray-100)]" : ""}`}
-          >
-            <div className="container-content">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <FadeUp>
-                  <div>
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[var(--color-apple-blue)] text-white mb-6">
-                      <Icon className="h-8 w-8" strokeWidth={1.5} />
-                    </div>
-                    <h2 className="text-title-1">{section.data.title}</h2>
+      {/* SRF Einstein Video Section */}
+      <section className="section-spacing bg-[var(--color-apple-gray-100)]">
+        <div className="container-content">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeUp>
+              <div>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+                  SRF Einstein
+                </p>
+                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+                  «Darum sollten alle mal Parkour ausprobieren.»
+                </h2>
+                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
+                  RubikONE ist mehr als Bewegung. Denn RubikONE ist Parkour. Ein Freizeitangebot zur Förderung der physischen, psychischen und sozialen Gesundheit.
+                </p>
+                <div className="mt-8">
+                  <a
+                    href="https://www.srf.ch/play/tv/einstein/video/darum-sollten-alle-mal-parkour-ausprobieren?urn=urn:srf:video:d1be2ecf-295a-4f0a-881e-f532bc747ab3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary inline-flex"
+                  >
+                    <Play className="h-5 w-5" />
+                    Zur SRF Reportage
+                  </a>
+                </div>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <a
+                href="https://www.srf.ch/play/tv/einstein/video/darum-sollten-alle-mal-parkour-ausprobieren?urn=urn:srf:video:d1be2ecf-295a-4f0a-881e-f532bc747ab3"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block relative aspect-video rounded-2xl overflow-hidden group"
+              >
+                <Image
+                  src="/images/parkour/training.jpg"
+                  alt="SRF Einstein Reportage über Parkour"
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="h-8 w-8 text-[var(--color-apple-blue)] ml-1" />
                   </div>
-                </FadeUp>
+                </div>
+              </a>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
 
-                <FadeUp delay={0.1}>
-                  <ul className="space-y-4">
-                    {section.data.benefits.map((benefit, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
-                        <span className="text-body">{benefit}</span>
+      {/* Mehrwert für alle - 3 Columns */}
+      <section className="section-spacing">
+        <div className="container-content">
+          <SectionHeader
+            title="Mehrwert für alle"
+            subtitle="Stakeholder Benefits"
+            description="Mit RubikONE wird die Stadt, der Schulhausplatz oder die neu geplante Ecke zum interaktiven Bewegungsraum."
+            className="mb-12"
+          />
+
+          <StaggerContainer className="grid md:grid-cols-3 gap-8">
+            {stakeholderBenefits.map((stakeholder, index) => (
+              <StaggerItem key={index}>
+                <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full">
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[var(--color-apple-blue)] text-white mb-6">
+                    <stakeholder.icon className="h-7 w-7" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-headline text-[var(--color-apple-dark)] mb-4">
+                    {stakeholder.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {stakeholder.benefits.map((benefit, benefitIndex) => (
+                      <li key={benefitIndex} className="flex items-start gap-2">
+                        <CheckCircle className="h-5 w-5 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
+                        <span className="text-body-sm text-[var(--color-apple-gray-700)]">
+                          {benefit}
+                        </span>
                       </li>
                     ))}
                   </ul>
-                </FadeUp>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Das macht RubikONE einzigartig */}
+      <section className="section-spacing bg-[var(--color-apple-gray-100)]">
+        <div className="container-content">
+          <SectionHeader
+            title="Das macht RubikONE einzigartig"
+            subtitle="USP"
+            className="mb-12"
+          />
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <FadeUp>
+              <div className="text-center">
+                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
+                  Einfache Integration
+                </h3>
+                <p className="text-body text-[var(--color-apple-gray-600)]">
+                  Keine neuen Anlagen nötig. Wegweiser und Postenschilder werden an vorhandene Elemente wie Säulen oder Mauern montiert.
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <div className="text-center">
+                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
+                  Nachhaltigkeit
+                </h3>
+                <p className="text-body text-[var(--color-apple-gray-600)]">
+                  Das verwendete Material ist langlebig und wartungsarm. Einmaliger Aufwand – nachhaltiger Nutzen.
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <div className="text-center">
+                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
+                  Lebensqualität
+                </h3>
+                <p className="text-body text-[var(--color-apple-gray-600)]">
+                  Bewegung ist Leben – mit RubikONE fördern Sie physische, psychische und soziale Gesundheit.
+                </p>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial Bernadette */}
+      <section className="section-spacing">
+        <div className="container-content">
+          <FadeUp>
+            <div className="max-w-3xl mx-auto text-center">
+              <Quote className="h-12 w-12 text-[var(--color-apple-gray-300)] mx-auto mb-6" strokeWidth={1} />
+              <blockquote>
+                <p className="text-title-2 text-[var(--color-apple-dark)] leading-relaxed">
+                  «Als Seniorin und Grossmutter war ich anfangs skeptisch, ob RubikONE auch für mich geeignet ist. Die klaren Anleitungen und die Möglichkeit, alles mit der Familie zu machen, haben mich überzeugt.»
+                </p>
+              </blockquote>
+              <div className="mt-8">
+                <p className="text-body font-semibold text-[var(--color-apple-dark)]">Bernadette</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">66 Jahre, Köniz</p>
               </div>
             </div>
-          </section>
-        );
-      })}
+          </FadeUp>
+        </div>
+      </section>
 
       {/* Prozess */}
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
@@ -120,43 +315,104 @@ export default function FuerGemeindenPage() {
         </div>
       </section>
 
-      {/* Downloads */}
+      {/* Referenz Köniz */}
       <section className="section-spacing">
         <div className="container-content">
-          <SectionHeader
-            title="Downloads"
-            subtitle="Ressourcen"
-            description="Unterlagen für Ihre Entscheidungsträger."
-            className="mb-12"
-          />
-
-          <StaggerContainer className="max-w-md mx-auto">
-            {downloads.map((download, index) => (
-              <StaggerItem key={index}>
-                <a
-                  href={download.href}
-                  download
-                  className="w-full card-apple text-left group flex items-center gap-4"
-                >
-                  <Download className="h-8 w-8 text-[var(--color-apple-blue)]" />
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeUp>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/koeniz/overview.jpg"
+                  alt="RubikONE Köniz"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <div>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+                  Referenz
+                </p>
+                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+                  Köniz war die erste Gemeinde.
+                </h2>
+                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
+                  Im August 2024 eröffnete der erste RubikONE im Schlossareal Köniz. 11 Posten auf 1.2 km – bewilligt im Denkmalschutz.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-8">
                   <div>
-                    <h3 className="text-headline group-hover:text-[var(--color-apple-blue)] transition-colors">
-                      {download.name}
-                    </h3>
-                    <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                      {download.typ}
-                    </p>
+                    <p className="text-display text-[var(--color-apple-blue)]">11</p>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Posten</p>
                   </div>
-                </a>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                  <div>
+                    <p className="text-display text-[var(--color-apple-blue)]">1.2 km</p>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Strecke</p>
+                  </div>
+                  <div>
+                    <p className="text-display text-[var(--color-apple-blue)]">0 CHF</p>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Wartungskosten</p>
+                  </div>
+                </div>
+                <div className="mt-8">
+                  <Link href="/koeniz" className="btn-secondary inline-flex">
+                    Fallstudie ansehen
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
-      <FAQSection />
+      {/* FAQ */}
+      <section className="section-spacing bg-[var(--color-apple-gray-100)]">
+        <div className="container-content">
+          <SectionHeader
+            title="Häufige Fragen von Gemeinden"
+            subtitle="FAQ"
+            className="mb-12"
+          />
 
-      <CTASection variant="dark" />
+          <FadeUp>
+            <div className="max-w-3xl mx-auto">
+              {faqItems.map((item, index) => (
+                <FAQItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                  isOpen={openFAQ === index}
+                  onToggle={() => setOpenFAQ(openFAQ === index ? null : index)}
+                />
+              ))}
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-spacing bg-[var(--color-apple-blue)]">
+        <div className="container-content text-center">
+          <FadeUp>
+            <h2 className="text-title-1 text-white">
+              Bereit für den nächsten Schritt?
+            </h2>
+            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
+              Erleben Sie, wie RubikONE auch in Ihrer Gemeinde Bewegung neu definiert. Nutzen Sie den öffentlichen Raum clever, nachhaltig und innovativ.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href="/impulsworkshop" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                Impulsworkshop buchen
+              </Link>
+              <Link href="/kontakt" className="btn-secondary text-white hover:text-white/80">
+                Beratungsgespräch vereinbaren
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
     </>
   );
 }

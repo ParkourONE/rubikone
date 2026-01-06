@@ -24,8 +24,8 @@ export default function ImpressumPage() {
               <h2 className="text-title-2 text-[var(--color-apple-dark)] mt-0">Kontaktadresse</h2>
               <p>
                 ParkourONE GmbH<br />
-                Könizstrasse 161<br />
-                3097 Liebefeld<br />
+                Südstrasse 16, SPOT 101<br />
+                3110 Münsingen<br />
                 Schweiz
               </p>
               <p>
