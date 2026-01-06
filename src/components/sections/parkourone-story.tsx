@@ -18,14 +18,23 @@ const TIMELINE_IMAGES: Record<string, string> = {
   "2024": "/images/parkour/parkour-pro-bild.jpg",
 };
 
-// Gallery images
-const GALLERY_IMAGES = [
-  { src: "/images/parkour/training.jpg", alt: "Parkour Training" },
-  { src: "/images/parkour/frau-parkour.jpg", alt: "Frau macht Parkour" },
-  { src: "/images/parkour/mann-parkour.jpg", alt: "Parkour Athlet" },
-  { src: "/images/parkour/parkourhelfen.jpg", alt: "Gegenseitige Hilfe beim Parkour" },
-  { src: "/images/parkour/sprung-hoch.jpg", alt: "Hoher Sprung" },
-  { src: "/images/parkour/geschichte/schueler-bewegen.jpg", alt: "Schüler in Bewegung" },
+// Three themes with images
+const THREE_THEMES = [
+  {
+    title: "Stark",
+    description: "Körperliche und mentale Stärke durch Bewegung entwickeln.",
+    image: "/images/parkour/sprung-hoch.jpg",
+  },
+  {
+    title: "Sinnvoll",
+    description: "Bewegung in den Alltag integrieren, nicht davon trennen.",
+    image: "/images/parkour/parkourhelfen.jpg",
+  },
+  {
+    title: "Nachhaltig",
+    description: "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen.",
+    image: "/images/parkour/geschichte/schueler-bewegen.jpg",
+  },
 ];
 
 // Full ParkourONE Story Section for dedicated page
@@ -66,24 +75,6 @@ export function ParkourONEStoryFull() {
         </div>
       </section>
 
-      {/* Image Gallery Strip */}
-      <section className="py-8 bg-[var(--color-apple-gray-100)] overflow-hidden">
-        <div className="flex gap-4 animate-scroll">
-          {[...GALLERY_IMAGES, ...GALLERY_IMAGES].map((image, index) => (
-            <div
-              key={index}
-              className="relative w-64 h-48 flex-shrink-0 rounded-xl overflow-hidden"
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* Timeline with Images */}
       <section className="section-spacing bg-white">
@@ -190,20 +181,30 @@ export function ParkourONEStoryFull() {
         </div>
       </section>
 
-      {/* Values */}
+      {/* Three Themes */}
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
-            title="Unsere Werte"
-            subtitle="Wofür wir stehen"
+            title="Wofür wir stehen"
+            subtitle="Drei Grundsätze"
           />
 
-          <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-8">
-            {PARKOURONE_STORY.values.map((value, index) => (
+          <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-6">
+            {THREE_THEMES.map((theme, index) => (
               <StaggerItem key={index}>
-                <div className="bg-white rounded-2xl p-8 shadow-apple text-center h-full">
-                  <h3 className="text-title-2 text-[var(--color-apple-blue)]">{value.title}</h3>
-                  <p className="mt-4 text-body text-[var(--color-apple-gray-700)]">{value.description}</p>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={theme.image}
+                      alt={theme.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-title-3 text-[var(--color-apple-dark)]">{theme.title}</h3>
+                    <p className="mt-2 text-body text-[var(--color-apple-gray-600)]">{theme.description}</p>
+                  </div>
                 </div>
               </StaggerItem>
             ))}
