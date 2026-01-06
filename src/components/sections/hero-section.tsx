@@ -54,7 +54,7 @@ export function HeroSection() {
             {/* CTAs */}
             <motion.div
               variants={staggerItem}
-              className="mt-10 flex flex-col sm:flex-row gap-4"
+              className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
             >
               <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
                 {HERO_CONTENT.ctaPrimary.label}
