@@ -70,7 +70,7 @@ export function HeroSection() {
               </motion.div>
             </div>
 
-            {/* Right: Image - With rounded corners and padding */}
+            {/* Right: Video - With rounded corners and padding */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
@@ -78,12 +78,13 @@ export function HeroSection() {
               className="relative h-[40vh] lg:h-[500px] px-6 lg:px-0 lg:pr-8"
             >
               <div className="relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-apple-xl">
-                <Image
-                  src="/images/hero/oma-enkelin.jpg"
-                  alt="Generationen bewegen sich gemeinsam"
-                  fill
-                  className="object-cover"
-                  priority
+                <video
+                  src="/videos/hero.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
                 />
               </div>
             </motion.div>
