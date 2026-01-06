@@ -4,15 +4,18 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Calculator } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { NAVIGATION_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { menuAnimation } from "@/lib/animations";
+import { ConfiguratorOverlay } from "@/components/sections/configurator-overlay";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isConfiguratorOpen, setIsConfiguratorOpen] = useState(false);
   const pathname = usePathname();
+
 
   // Handle scroll
   useEffect(() => {
@@ -41,6 +44,11 @@ export function Navigation() {
     };
   }, [isMobileMenuOpen]);
 
+  const openConfigurator = () => {
+    setIsMobileMenuOpen(false);
+    setIsConfiguratorOpen(true);
+  };
+
   return (
     <>
       <header
@@ -66,8 +74,7 @@ export function Navigation() {
                 href={item.href}
                 className={cn(
                   "nav-link",
-                  pathname === item.href && "opacity-100 font-semibold",
-                  "highlight" in item && item.highlight && "text-[var(--color-apple-blue)] opacity-100"
+                  pathname === item.href && "opacity-100 font-semibold"
                 )}
               >
                 {item.label}
@@ -75,8 +82,15 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* Desktop CTAs */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={openConfigurator}
+              className="flex items-center gap-2 text-sm font-medium text-[var(--color-apple-blue)] hover:opacity-70 transition-opacity"
+            >
+              <Calculator className="h-4 w-4" />
+              Preis berechnen
+            </button>
             <Link href="/kontakt" className="btn-primary text-sm py-2 px-5">
               Beratung anfragen
             </Link>
@@ -138,8 +152,17 @@ export function Navigation() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.div variants={menuAnimation} className="mt-8">
-                <Link href="/kontakt" className="btn-primary w-full text-center">
+
+              {/* Mobile CTAs */}
+              <motion.div variants={menuAnimation} className="mt-8 space-y-3">
+                <button
+                  onClick={openConfigurator}
+                  className="w-full flex items-center justify-center gap-2 py-4 bg-[var(--color-apple-gray-100)] rounded-xl text-lg font-medium text-[var(--color-apple-blue)]"
+                >
+                  <Calculator className="h-5 w-5" />
+                  Preis berechnen
+                </button>
+                <Link href="/kontakt" className="btn-primary w-full text-center block">
                   Beratung anfragen
                 </Link>
               </motion.div>
@@ -147,6 +170,12 @@ export function Navigation() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Configurator Overlay */}
+      <ConfiguratorOverlay
+        isOpen={isConfiguratorOpen}
+        onClose={() => setIsConfiguratorOpen(false)}
+      />
     </>
   );
 }

@@ -13,14 +13,12 @@ export const SITE_CONFIG = {
   companyUrl: "https://parkourone.ch",
 } as const;
 
-// Navigation
+// Navigation (Konfigurator is handled separately as overlay button)
 export const NAVIGATION_ITEMS = [
   { label: "Konzept", href: "/konzept" },
   { label: "Für Gemeinden", href: "/fuer-gemeinden" },
   { label: "Fallstudie Köniz", href: "/koeniz" },
-  { label: "Konfigurator", href: "/konfigurator", highlight: true },
   { label: "Über uns", href: "/ueber-uns" },
-  { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
 // Hero Content

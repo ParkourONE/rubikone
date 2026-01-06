@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
+import { FloatingConfigurator } from "@/components/layout/floating-configurator";
 import { LenisProvider } from "@/providers/lenis-provider";
 import { ConsentProvider } from "@/providers/consent-provider";
 import { CookieBanner } from "@/components/cookie-banner";
@@ -94,6 +95,7 @@ export default function RootLayout({
             <main>{children}</main>
             <Footer />
             <CookieBanner />
+            <FloatingConfigurator />
           </LenisProvider>
           <ConditionalAnalytics />
         </ConsentProvider>
