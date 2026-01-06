@@ -620,20 +620,20 @@ export const PARKOURONE_STORY = {
     headline: "Unsere Expertise",
     points: [
       {
-        title: "20+ Jahre Erfahrung",
-        description: "Als Traceure der ersten Stunde kennen wir Parkour von der Pike auf.",
+        title: "Pioniere seit 2000",
+        description: "Roger Widmer trainierte als einer der ersten Traceure ausserhalb Frankreichs direkt mit David Belle und den Yamakasi in Lisses und Evry.",
       },
       {
-        title: "1'500+ Schüler",
-        description: "Die grösste deutschsprachige Parkourschule – mit wissenschaftlich fundierter Methodik.",
+        title: "1'500+ Schüler:innen",
+        description: "Die grösste Parkourschule der Deutschschweiz – seit 2006 mit dem weltweit ersten organisierten Parkour-Training.",
       },
       {
-        title: "TRuST Methode",
-        description: "Unsere eigene Lehrmethode: Training, Understanding, Safety, Transfer. Wissenschaftlich evaluiert.",
+        title: "Wissenschaftlich evaluiert",
+        description: "RubikONE wurde im Rahmen eines BASPO lab7x1-Projekts wissenschaftlich begleitet und evaluiert durch Affective Advisory.",
       },
       {
-        title: "Nicht kompetitiv",
-        description: "Parkour nach TRuST ist bewusst nicht wettkampforientiert. Verletzungsrisiko wie Snowboarden.",
+        title: "Ganzheitlicher Ansatz",
+        description: "Parkour ist mehr als Bewegung – es verbindet Motorik, Emotion, Sensorik, Kognition und Soziales.",
       },
     ],
   },
