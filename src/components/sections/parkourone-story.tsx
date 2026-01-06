@@ -9,60 +9,126 @@ import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
 
+// Timeline images mapped to milestones
+const TIMELINE_IMAGES: Record<string, string> = {
+  "2000": "/images/parkour/geschichte/muensingen-roger-widmer-altes-bild.jpg",
+  "2006": "/images/parkour/geschichte/erste-pk-klasse.jpg",
+  "2007": "/images/parkour/geschichte/firmengruendung.jpg",
+  "2012": "/images/parkour/geschichte/tracespace_ruhleben2.jpg",
+  "2024": "/images/parkour/parkour-pro-bild.jpg",
+};
+
+// Gallery images
+const GALLERY_IMAGES = [
+  { src: "/images/parkour/training.jpg", alt: "Parkour Training" },
+  { src: "/images/parkour/frau-parkour.jpg", alt: "Frau macht Parkour" },
+  { src: "/images/parkour/mann-parkour.jpg", alt: "Parkour Athlet" },
+  { src: "/images/parkour/parkourhelfen.jpg", alt: "Gegenseitige Hilfe beim Parkour" },
+  { src: "/images/parkour/sprung-hoch.jpg", alt: "Hoher Sprung" },
+  { src: "/images/parkour/geschichte/schueler-bewegen.jpg", alt: "Schüler in Bewegung" },
+];
+
 // Full ParkourONE Story Section for dedicated page
 export function ParkourONEStoryFull() {
   return (
     <>
-      {/* Intro */}
+      {/* Intro with Image */}
       <section className="section-spacing bg-white">
         <div className="container-content">
-          <FadeUp>
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-                Die Pioniere
-              </p>
-              <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                Entwickelt von Pionieren.
-              </h2>
-              <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist unsere logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.
-              </p>
-            </div>
-          </FadeUp>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeUp>
+              <div>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
+                  Die Pioniere
+                </p>
+                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+                  Entwickelt von Pionieren.
+                </h2>
+                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
+                  Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist die logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.
+                </p>
+                <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">
+                  Was 2000 mit einer Handvoll Traceure begann, ist heute die grösste Parkourschule der Deutschschweiz. Über 20 Jahre Erfahrung, tausende Schüler:innen und ein klares Ziel: Menschen in Bewegung bringen.
+                </p>
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/parkour/training.jpg"
+                  alt="Parkour Training"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="section-spacing bg-[var(--color-apple-gray-100)]">
+      {/* Image Gallery Strip */}
+      <section className="py-8 bg-[var(--color-apple-gray-100)] overflow-hidden">
+        <div className="flex gap-4 animate-scroll">
+          {[...GALLERY_IMAGES, ...GALLERY_IMAGES].map((image, index) => (
+            <div
+              key={index}
+              className="relative w-64 h-48 flex-shrink-0 rounded-xl overflow-hidden"
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Timeline with Images */}
+      <section className="section-spacing bg-white">
         <div className="container-content">
           <SectionHeader
             title={PARKOURONE_STORY.history.headline}
             subtitle="Von den Anfängen bis heute"
           />
 
-          <StaggerContainer className="mt-12 lg:mt-16 max-w-4xl mx-auto">
+          <div className="mt-12 lg:mt-16 max-w-5xl mx-auto space-y-16">
             {PARKOURONE_STORY.history.milestones.map((milestone, index) => (
-              <StaggerItem key={index}>
-                <div className="flex gap-6 lg:gap-8 items-start pb-12 relative">
-                  <div className="flex-shrink-0 w-20 lg:w-24 text-right">
-                    <span className="text-title-3 font-bold text-[var(--color-apple-blue)]">
-                      {milestone.year}
-                    </span>
-                  </div>
-                  <div className="relative">
-                    <div className="w-4 h-4 rounded-full bg-[var(--color-apple-blue)] relative z-10" />
-                    {index < PARKOURONE_STORY.history.milestones.length - 1 && (
-                      <div className="absolute top-4 left-1.5 w-0.5 h-full bg-[var(--color-apple-gray-300)]" />
-                    )}
-                  </div>
-                  <div className="flex-grow pb-4">
-                    <h3 className="text-headline text-[var(--color-apple-dark)]">{milestone.title}</h3>
-                    <p className="mt-2 text-body text-[var(--color-apple-gray-700)]">{milestone.description}</p>
-                  </div>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ ...appleTransition, delay: index * 0.1 }}
+                className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <span className="text-display text-[var(--color-apple-blue)] font-bold">
+                    {milestone.year}
+                  </span>
+                  <h3 className="text-title-2 text-[var(--color-apple-dark)] mt-2">
+                    {milestone.title}
+                  </h3>
+                  <p className="mt-4 text-body-lg text-[var(--color-apple-gray-700)]">
+                    {milestone.description}
+                  </p>
                 </div>
-              </StaggerItem>
+                {TIMELINE_IMAGES[milestone.year] && (
+                  <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                    <Image
+                      src={TIMELINE_IMAGES[milestone.year]}
+                      alt={milestone.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+              </motion.div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
@@ -86,24 +152,41 @@ export function ParkourONEStoryFull() {
         </div>
       </section>
 
-      {/* Expertise */}
+      {/* Expertise with Image */}
       <section className="section-spacing bg-white">
         <div className="container-content">
-          <SectionHeader
-            title={PARKOURONE_STORY.expertise.headline}
-            subtitle="Was uns auszeichnet"
-          />
-
-          <StaggerContainer className="mt-12 grid md:grid-cols-2 gap-8">
-            {PARKOURONE_STORY.expertise.points.map((point, index) => (
-              <StaggerItem key={index}>
-                <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full">
-                  <h3 className="text-headline text-[var(--color-apple-dark)]">{point.title}</h3>
-                  <p className="mt-3 text-body text-[var(--color-apple-gray-700)]">{point.description}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeUp>
+              <div className="relative aspect-square rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/parkour/parkourhelfen.jpg"
+                  alt="Gegenseitige Hilfe beim Parkour"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </FadeUp>
+            <div>
+              <FadeUp delay={0.1}>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+                  Was uns auszeichnet
+                </p>
+                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+                  {PARKOURONE_STORY.expertise.headline}
+                </h2>
+              </FadeUp>
+              <StaggerContainer className="mt-8 space-y-6">
+                {PARKOURONE_STORY.expertise.points.map((point, index) => (
+                  <StaggerItem key={index}>
+                    <div className="border-l-2 border-[var(--color-apple-blue)] pl-6">
+                      <h3 className="text-headline text-[var(--color-apple-dark)]">{point.title}</h3>
+                      <p className="mt-2 text-body text-[var(--color-apple-gray-700)]">{point.description}</p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -128,28 +211,21 @@ export function ParkourONEStoryFull() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="section-spacing bg-white">
-        <div className="container-content">
-          <SectionHeader
-            title="Das Team"
-            subtitle="Die Menschen hinter RubikONE"
-          />
-
-          <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-8">
-            {PARKOURONE_STORY.team.map((member, index) => (
-              <StaggerItem key={index}>
-                <div className="text-center">
-                  <div className="w-32 h-32 mx-auto rounded-full bg-[var(--color-apple-gray-200)] flex items-center justify-center mb-6">
-                    <Users className="h-12 w-12 text-[var(--color-apple-gray-400)]" />
-                  </div>
-                  <h3 className="text-headline text-[var(--color-apple-dark)]">{member.name}</h3>
-                  <p className="text-body-sm text-[var(--color-apple-blue)] mt-1">{member.role}</p>
-                  <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">{member.description}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+      {/* Full Width Image */}
+      <section className="relative h-[50vh] min-h-[400px]">
+        <Image
+          src="/images/parkour/sprung-hoch.jpg"
+          alt="Parkour Sprung"
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
+          <div className="container-content">
+            <p className="text-title-2 text-white max-w-2xl">
+              Bewegung ist mehr als Sport. Es ist eine Art, die Welt zu sehen.
+            </p>
+          </div>
         </div>
       </section>
     </>

@@ -17,8 +17,8 @@ export default function UeberUnsPage() {
         title="Die Pioniere hinter RubikONE."
         description="ParkourONE. Seit 2007 bringen wir Menschen in Bewegung. Jetzt bringen wir Bewegung zu den Menschen."
         breadcrumb="Über uns"
-        image="/images/hero/parkour-action.jpg"
-        imageAlt="Parkour Training im öffentlichen Raum"
+        image="/images/parkour/mann-parkour.jpg"
+        imageAlt="Parkour Athlet in Aktion"
       />
 
       <ParkourONEStoryFull />
