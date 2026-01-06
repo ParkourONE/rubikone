@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, Check, X } from "lucide-react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { appleTransition } from "@/lib/animations";
 
 // Alle Posten-Schilder aus Köniz
@@ -146,6 +146,18 @@ export default function KonzeptPage() {
   };
 
   const activeDimension = LERNDIMENSIONEN.find((d) => d.id === activeModal);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (activeModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeModal]);
 
   return (
     <>

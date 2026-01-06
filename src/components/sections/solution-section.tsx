@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ArrowLeft, Plus, X } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { appleTransition } from "@/lib/animations";
 
 // Solution Cards Data
@@ -78,6 +78,18 @@ export function SolutionSection() {
   };
 
   const activeCard = SOLUTION_CARDS.find((card) => card.id === activeModal);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (activeModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeModal]);
 
   return (
     <>

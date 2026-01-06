@@ -4,11 +4,12 @@ import { useState } from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, Play, Quote, ChevronDown, ChevronUp, Sparkles } from "lucide-react";
+import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, Play, Quote, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageHero } from "@/components/sections/hero-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
+import { ConfiguratorTrigger } from "@/components/sections/configurator-overlay";
 import { appleTransition } from "@/lib/animations";
 
 // SEO metadata handled in layout or via generateMetadata
@@ -425,27 +426,9 @@ export default function FuerGemeindenPage() {
 
       {/* Konfigurator CTA */}
       <section className="py-16 lg:py-20 bg-[var(--color-apple-gray-100)]">
-        <div className="container-content">
+        <div className="container-content max-w-2xl">
           <FadeUp>
-            <div className="bg-gradient-to-br from-[var(--color-apple-blue)] to-[var(--color-apple-blue)]/80 rounded-3xl p-8 lg:p-12 text-center">
-              <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-white/20 backdrop-blur mb-6">
-                <Sparkles className="h-7 w-7 text-white" />
-              </div>
-              <h2 className="text-title-2 text-white max-w-xl mx-auto">
-                Was kostet ein RubikONE für Ihre Gemeinde?
-              </h2>
-              <p className="mt-4 text-body-lg text-white/80 max-w-xl mx-auto">
-                Konfigurieren Sie Ihr Projekt und sehen Sie sofort den Preis.
-              </p>
-              <Link
-                href="/konfigurator"
-                className="mt-8 btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90 inline-flex"
-              >
-                <Sparkles className="h-4 w-4" />
-                Projekt konfigurieren
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <ConfiguratorTrigger variant="card" />
           </FadeUp>
         </div>
       </section>

@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, Calculator } from "lucide-react";
+import { Calculator } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
+import { ConfiguratorTrigger } from "./configurator-overlay";
 
 export function ConfiguratorCTASection() {
   return (
@@ -29,14 +29,10 @@ export function ConfiguratorCTASection() {
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/konfigurator"
-              className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90 group"
-            >
-              <Sparkles className="h-4 w-4" />
-              Jetzt konfigurieren
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <ConfiguratorTrigger
+              variant="button"
+              className="bg-white text-[var(--color-apple-blue)] hover:bg-white/90"
+            />
           </div>
 
           <p className="mt-6 text-body-sm text-white/60">
