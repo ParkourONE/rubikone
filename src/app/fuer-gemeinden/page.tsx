@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, Play, Quote, ChevronDown, ChevronUp } from "lucide-react";
+import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, ArrowLeft, Play, Quote, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageHero } from "@/components/sections/hero-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
@@ -141,6 +141,17 @@ function FAQItem({ question, answer, isOpen, onToggle }: {
 
 export default function FuerGemeindenPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
+  const uspScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollUSP = (direction: "left" | "right") => {
+    if (uspScrollRef.current) {
+      const scrollAmount = 360;
+      uspScrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <>
@@ -242,39 +253,84 @@ export default function FuerGemeindenPage() {
         </div>
       </section>
 
-      {/* Das macht RubikONE einzigartig */}
-      <section className="section-spacing bg-[var(--color-apple-gray-100)]">
-        <div className="container-content">
-          <SectionHeader
-            title="Das macht RubikONE einzigartig"
-            subtitle="USP"
-            className="mb-12"
-          />
+      {/* Das macht RubikONE einzigartig - Slider */}
+      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
+        {/* Header - in container */}
+        <div className="container-content mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={appleTransition}
+          >
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+              USP
+            </p>
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+              Das macht RubikONE einzigartig.
+            </h2>
+          </motion.div>
+        </div>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-8">
-            {uspItems.map((item, index) => (
-              <StaggerItem key={index}>
-                <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-6 text-center">
-                    <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
-                      {item.title}
-                    </h3>
-                    <p className="text-body text-[var(--color-apple-gray-600)]">
-                      {item.description}
-                    </p>
-                  </div>
+        {/* Slider - outside container, full width with spacers */}
+        <div
+          ref={uspScrollRef}
+          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {/* Left spacer */}
+          <div className="slider-spacer" />
+
+          {uspItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...appleTransition, delay: index * 0.1 }}
+              className="flex-shrink-0 w-[320px]"
+            >
+              <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
+                <div className="relative aspect-[4/3]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+                <div className="p-6">
+                  <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Right spacer */}
+          <div className="slider-spacer" />
+        </div>
+
+        {/* Navigation Arrows - in container, right aligned */}
+        <div className="container-content mt-6">
+          <div className="flex justify-end gap-4">
+            <button
+              onClick={() => scrollUSP("left")}
+              className="hover:text-[var(--color-apple-blue)] transition-colors"
+            >
+              <ArrowLeft className="h-6 w-6 text-[var(--color-apple-gray-500)]" />
+            </button>
+            <button
+              onClick={() => scrollUSP("right")}
+              className="hover:text-[var(--color-apple-blue)] transition-colors"
+            >
+              <ArrowRight className="h-6 w-6 text-[var(--color-apple-gray-500)]" />
+            </button>
+          </div>
         </div>
       </section>
 

@@ -30,7 +30,7 @@ export const HERO_CONTENT = {
   videoUrl: "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
   ctaPrimary: {
     label: "Potenzial Ihrer Gemeinde entdecken",
-    href: "/impulsworkshop",
+    href: "/fuer-gemeinden",
   },
   ctaSecondary: {
     label: "Fallstudie Köniz ansehen",

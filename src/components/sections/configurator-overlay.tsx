@@ -18,7 +18,10 @@ import {
   Palette,
   Shield,
   Box,
-  AlertCircle
+  AlertCircle,
+  Mail,
+  Phone,
+  CheckCircle
 } from "lucide-react";
 import { CONFIGURATOR } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -45,6 +48,7 @@ const stepImages = [
   "/images/hero/oma-enkelin.jpg",
   "/images/workshop/frauen-balancieren.jpg",
   "/images/koeniz/schulklasse.jpg",
+  "/images/hero/generationen-kraft.jpg",
 ];
 
 function formatPrice(price: number): string {
@@ -67,6 +71,9 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
   const [selectedServices, setSelectedServices] = useState<Set<ServiceId>>(
     new Set(["standortanalyse", "baugesuch", "eigentuemer", "produktion", "montage"])
   );
+  const [email, setEmail] = useState("");
+  const [gemeinde, setGemeinde] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const currentPackage = CONFIGURATOR.packages.find((p) => p.id === selectedPackage)!;
 
@@ -103,9 +110,62 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
   useEffect(() => {
     if (!isOpen) {
-      setTimeout(() => setStep(1), 300);
+      setTimeout(() => {
+        setStep(1);
+        setIsSubmitted(false);
+        setEmail("");
+        setGemeinde("");
+        setSubmitError(null);
+      }, 300);
     }
   }, [isOpen]);
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const handleSubmit = async () => {
+    if (!email) return;
+
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      // Build services list with prices
+      const selectedServicesList = CONFIGURATOR.additionalServices
+        .filter((s) => selectedServices.has(s.id as ServiceId))
+        .map((s) => ({
+          name: s.name,
+          price: s.prices[selectedPackage as keyof typeof s.prices],
+        }));
+
+      const response = await fetch('/api/configurator', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          gemeinde,
+          paket: {
+            name: currentPackage.name,
+            posts: currentPackage.posts,
+            basePrice: currentPackage.basePrice,
+          },
+          services: selectedServicesList,
+          totalPrice,
+        }),
+      });
+
+      if (!response.ok) {
+        const result = await response.json();
+        throw new Error(result.error || 'Fehler beim Senden');
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const toggleService = (serviceId: ServiceId) => {
     const newServices = new Set(selectedServices);
@@ -384,50 +444,195 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     )}
                   </motion.div>
                 )}
+
+                {/* Step 4: Email Capture */}
+                {step === 4 && !isSubmitted && (
+                  <motion.div
+                    key="step4"
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
+                      Zusammenfassung erhalten
+                    </h2>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
+                      Wir senden Ihnen eine Übersicht mit allen Details.
+                    </p>
+
+                    {submitError && (
+                      <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2 text-red-700">
+                        <AlertCircle className="h-4 w-4 flex-shrink-0" />
+                        <p className="text-body-sm">{submitError}</p>
+                      </div>
+                    )}
+
+                    <div className="space-y-4">
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          E-Mail-Adresse *
+                        </label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="ihre.email@gemeinde.ch"
+                          className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          Gemeinde / Organisation
+                        </label>
+                        <input
+                          type="text"
+                          value={gemeinde}
+                          onChange={(e) => setGemeinde(e.target.value)}
+                          placeholder="z.B. Gemeinde Musterlingen"
+                          className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
+                      <p className="text-caption text-[var(--color-apple-gray-600)]">
+                        Sie erhalten:
+                      </p>
+                      <ul className="mt-2 space-y-2">
+                        <li className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                          <Check className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
+                          Zusammenfassung Ihrer Konfiguration
+                        </li>
+                        <li className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                          <Check className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
+                          Link zum Impulsworkshop
+                        </li>
+                        <li className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                          <Check className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
+                          Unsere Kontaktdaten für Rückfragen
+                        </li>
+                      </ul>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Step 4: Success State */}
+                {step === 4 && isSubmitted && (
+                  <motion.div
+                    key="step4-success"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-center"
+                  >
+                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="h-8 w-8 text-green-600" />
+                    </div>
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] mb-2">
+                      Vielen Dank!
+                    </h2>
+                    <p className="text-body text-[var(--color-apple-gray-600)] mb-6">
+                      Wir haben Ihnen eine E-Mail mit der Zusammenfassung Ihrer Konfiguration gesendet.
+                    </p>
+
+                    <div className="space-y-3">
+                      <Link
+                        href="/impulsworkshop"
+                        onClick={onClose}
+                        className="flex items-center gap-3 p-4 bg-[var(--color-apple-dark)] text-white rounded-xl hover:bg-black transition-colors"
+                      >
+                        <ArrowRight className="h-5 w-5" />
+                        <div className="text-left">
+                          <p className="text-body-sm font-medium">Nächster Schritt</p>
+                          <p className="text-caption opacity-70">Impulsworkshop buchen</p>
+                        </div>
+                      </Link>
+
+                      <div className="p-4 bg-[var(--color-apple-gray-100)] rounded-xl text-left">
+                        <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">Kontakt</p>
+                        <div className="space-y-1">
+                          <p className="text-body-sm text-[var(--color-apple-dark)] flex items-center gap-2">
+                            <Mail className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
+                            info@rubikone.ch
+                          </p>
+                          <p className="text-body-sm text-[var(--color-apple-dark)] flex items-center gap-2">
+                            <Phone className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
+                            +41 31 971 28 27
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
               </AnimatePresence>
               </div>
 
               {/* Footer */}
               <div className="px-6 pt-6 pb-8 border-t border-[var(--color-apple-gray-200)] rounded-b-3xl">
-                <div className="flex items-center justify-between gap-4">
-                  <div>
-                    <p className="text-caption text-[var(--color-apple-gray-600)]">Geschätzter Preis</p>
-                    <p className="text-title-3 text-[var(--color-apple-dark)] font-bold">
-                      {formatPrice(totalPrice)}
-                    </p>
-                  </div>
+                {step === 4 && isSubmitted ? (
+                  <button
+                    onClick={onClose}
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                  >
+                    Schliessen
+                  </button>
+                ) : (
+                  <div className="flex items-center justify-between gap-4">
+                    <div>
+                      <p className="text-caption text-[var(--color-apple-gray-600)]">Geschätzter Preis</p>
+                      <p className="text-title-3 text-[var(--color-apple-dark)] font-bold">
+                        {formatPrice(totalPrice)}
+                      </p>
+                    </div>
 
-                  <div className="flex items-center gap-3">
-                    {step > 1 && (
-                      <button
-                        onClick={() => setStep(step - 1)}
-                        className="flex items-center gap-1 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
-                      >
-                        <ArrowLeft className="h-4 w-4" />
-                        Zurück
-                      </button>
-                    )}
+                    <div className="flex items-center gap-3">
+                      {step > 1 && (
+                        <button
+                          onClick={() => setStep(step - 1)}
+                          className="flex items-center gap-1 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
+                        >
+                          <ArrowLeft className="h-4 w-4" />
+                          Zurück
+                        </button>
+                      )}
 
-                    {step < 3 ? (
-                      <button
-                        onClick={() => setStep(step + 1)}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
-                      >
-                        Weiter
-                        <ArrowRight className="h-4 w-4" />
-                      </button>
-                    ) : (
-                      <Link
-                        href="/kontakt"
-                        onClick={onClose}
-                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
-                      >
-                        Angebot anfragen
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    )}
+                      {step < 3 ? (
+                        <button
+                          onClick={() => setStep(step + 1)}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                        >
+                          Weiter
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : step === 3 ? (
+                        <button
+                          onClick={() => setStep(4)}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                        >
+                          Zusammenfassung erhalten
+                          <ArrowRight className="h-4 w-4" />
+                        </button>
+                      ) : (
+                        <button
+                          onClick={handleSubmit}
+                          disabled={!email || isSubmitting}
+                          className={cn(
+                            "inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-colors",
+                            email && !isSubmitting
+                              ? "bg-[var(--color-apple-dark)] text-white hover:bg-black"
+                              : "bg-[var(--color-apple-gray-200)] text-[var(--color-apple-gray-500)] cursor-not-allowed"
+                          )}
+                        >
+                          {isSubmitting ? "Wird gesendet..." : "Absenden"}
+                          {!isSubmitting && <ArrowRight className="h-4 w-4" />}
+                        </button>
+                      )}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               </motion.div>
 
