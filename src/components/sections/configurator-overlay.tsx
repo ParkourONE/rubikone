@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
@@ -21,7 +22,7 @@ import {
 } from "lucide-react";
 import { CONFIGURATOR } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { appleTransition } from "@/lib/animations";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 type PackageId = "kompakt" | "standard" | "premium";
 type ServiceId = "standortanalyse" | "baugesuch" | "eigentuemer" | "produktion" | "montage";
@@ -34,11 +35,16 @@ const serviceIcons: Record<ServiceId, React.ReactNode> = {
   montage: <Wrench className="h-4 w-4" />,
 };
 
-// Icons for core services
 const coreServiceIcons = [
   <Palette key="design" className="h-4 w-4" />,
   <Shield key="safety" className="h-4 w-4" />,
   <Box key="material" className="h-4 w-4" />,
+];
+
+const stepImages = [
+  "/images/hero/oma-enkelin.jpg",
+  "/images/workshop/frauen-balancieren.jpg",
+  "/images/koeniz/schulklasse.jpg",
 ];
 
 function formatPrice(price: number): string {
@@ -64,7 +70,6 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
   const currentPackage = CONFIGURATOR.packages.find((p) => p.id === selectedPackage)!;
 
-  // Calculate prices
   const calculatePrices = useCallback(() => {
     const basePrice = currentPackage.basePrice;
     let servicesTotal = 0;
@@ -84,19 +89,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
   const { totalPrice } = calculatePrices();
 
-  // Lock body scroll
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
+  useScrollLock(isOpen);
 
-  // Handle ESC key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -107,12 +101,9 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
     }
   }, [isOpen, onClose]);
 
-  // Reset on close
   useEffect(() => {
     if (!isOpen) {
-      setTimeout(() => {
-        setStep(1);
-      }, 300);
+      setTimeout(() => setStep(1), 300);
     }
   }, [isOpen]);
 
@@ -129,65 +120,55 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 pb-4 overflow-y-auto"
-          onClick={onClose}
-        >
+        <>
           {/* Backdrop */}
-          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
-
-          {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={appleTransition}
-            className="relative bg-white rounded-3xl w-full max-w-2xl shadow-2xl my-auto"
-            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+            onClick={onClose}
+          />
+
+          {/* Full Screen Scroll Container */}
+          <div
+            className="fixed inset-0 z-50 overflow-y-auto"
+            onWheel={(e) => e.stopPropagation()}
+            onTouchMove={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-[var(--color-apple-gray-100)] rounded-full flex items-center justify-center hover:bg-[var(--color-apple-gray-200)] transition-colors"
-            >
-              <X className="h-5 w-5 text-[var(--color-apple-gray-600)]" />
-            </button>
+            <div className="min-h-full flex flex-col items-center py-[30px] px-[10px]">
+              {/* Top spacer - grows to center card, shrinks when card is too big */}
+              <div className="flex-1" />
 
-            {/* Progress Steps */}
-            <div className="px-8 pt-6 pb-4 border-b border-[var(--color-apple-gray-200)]">
-              <div className="flex items-center justify-center gap-4">
-                {[1, 2, 3].map((num) => (
-                  <div key={num} className="flex items-center gap-4">
-                    <button
-                      onClick={() => num < step && setStep(num)}
-                      disabled={num > step}
-                      className={cn(
-                        "w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all",
-                        step === num
-                          ? "bg-[var(--color-apple-blue)] text-white"
-                          : num < step
-                          ? "bg-[var(--color-apple-blue)]/20 text-[var(--color-apple-blue)]"
-                          : "bg-[var(--color-apple-gray-200)] text-[var(--color-apple-gray-500)]"
-                      )}
-                    >
-                      {num < step ? <Check className="h-4 w-4" /> : num}
-                    </button>
-                    {num < 3 && (
-                      <div className={cn(
-                        "w-12 h-0.5",
-                        num < step ? "bg-[var(--color-apple-blue)]" : "bg-[var(--color-apple-gray-200)]"
-                      )} />
-                    )}
-                  </div>
-                ))}
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: 100, opacity: 0 }}
+                transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                className="bg-white rounded-3xl shadow-2xl w-full max-w-[630px]"
+              >
+              {/* Image Header - Full Width */}
+              <div className="relative h-56 rounded-t-3xl overflow-hidden">
+                <Image
+                  src={stepImages[step - 1]}
+                  alt={`Schritt ${step}`}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent" />
+
+                {/* Close Button */}
+                <button
+                  onClick={onClose}
+                  className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/30 transition-colors"
+                >
+                  <X className="h-4 w-4 text-white" />
+                </button>
               </div>
-            </div>
 
-            {/* Content */}
-            <div className="p-8">
+              {/* Content */}
+              <div className="px-6 py-6">
               <AnimatePresence mode="wait">
                 {/* Step 1: Package Selection */}
                 {step === 1 && (
@@ -198,10 +179,10 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-2 text-[var(--color-apple-dark)] text-center mb-2">
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
                       Paket wählen
                     </h2>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4">
                       Wie viele Posten soll Ihre Route umfassen?
                     </p>
 
@@ -211,20 +192,20 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           key={pkg.id}
                           onClick={() => setSelectedPackage(pkg.id as PackageId)}
                           className={cn(
-                            "relative p-4 rounded-2xl text-center transition-all",
+                            "relative p-3 rounded-xl text-center transition-all",
                             selectedPackage === pkg.id
-                              ? "bg-[var(--color-apple-blue)] text-white ring-2 ring-[var(--color-apple-blue)] ring-offset-2"
+                              ? "bg-[var(--color-apple-dark)] text-white"
                               : "bg-[var(--color-apple-gray-100)] hover:bg-[var(--color-apple-gray-200)]"
                           )}
                         >
                           {"recommended" in pkg && pkg.recommended && selectedPackage !== pkg.id && (
-                            <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[var(--color-apple-blue)] text-white text-[10px] font-medium rounded-full">
+                            <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[var(--color-apple-dark)] text-white text-[10px] font-medium rounded-full">
                               Empfohlen
                             </span>
                           )}
                           <div className={cn(
-                            "text-3xl font-bold mb-1",
-                            selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-blue)]"
+                            "text-2xl font-bold mb-0.5",
+                            selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-dark)]"
                           )}>
                             {pkg.posts}
                           </div>
@@ -234,28 +215,21 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           )}>
                             Posten
                           </p>
-                          <p className={cn(
-                            "text-body-sm font-semibold mt-2",
-                            selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-dark)]"
-                          )}>
-                            {pkg.name}
-                          </p>
                         </button>
                       ))}
                     </div>
 
-                    {/* Core services included */}
-                    <div className="mt-6 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
-                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-3">
+                    <div className="mt-4 p-3 bg-[var(--color-apple-gray-100)] rounded-xl">
+                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
                         Immer inklusive:
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {CONFIGURATOR.coreServices.map((service, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center gap-1.5 px-3 py-1 bg-white rounded-full text-caption text-[var(--color-apple-dark)]"
+                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-white rounded-full text-caption text-[var(--color-apple-dark)]"
                           >
-                            <span className="text-[var(--color-apple-blue)]">
+                            <span className="text-[var(--color-apple-gray-500)]">
                               {coreServiceIcons[index]}
                             </span>
                             {service}
@@ -275,10 +249,10 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-2 text-[var(--color-apple-dark)] text-center mb-2">
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
                       Leistungen wählen
                     </h2>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4">
                       Was soll ParkourONE übernehmen?
                     </p>
 
@@ -292,41 +266,35 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             key={service.id}
                             onClick={() => toggleService(service.id as ServiceId)}
                             className={cn(
-                              "w-full p-4 rounded-xl text-left transition-all flex items-center gap-4",
+                              "w-full p-3 rounded-xl text-left transition-all flex items-center gap-3",
                               isSelected
-                                ? "bg-[var(--color-apple-blue)]/10 border border-[var(--color-apple-blue)]"
+                                ? "bg-[var(--color-apple-gray-100)] border border-[var(--color-apple-dark)]"
                                 : "bg-[var(--color-apple-gray-100)] border border-transparent hover:bg-[var(--color-apple-gray-200)]"
                             )}
                           >
                             <div
                               className={cn(
-                                "flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center",
+                                "flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center",
                                 isSelected
-                                  ? "bg-[var(--color-apple-blue)] text-white"
+                                  ? "bg-[var(--color-apple-dark)] text-white"
                                   : "bg-white text-[var(--color-apple-gray-500)]"
                               )}
                             >
                               {serviceIcons[service.id as ServiceId]}
                             </div>
                             <div className="flex-grow min-w-0">
-                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)] truncate">
+                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
                                 {service.name}
                               </p>
-                              <p className="text-caption text-[var(--color-apple-gray-600)] truncate">
-                                {isSelected ? service.description : service.selfDescription}
-                              </p>
                             </div>
-                            <div className="flex items-center gap-3 flex-shrink-0">
-                              <span className={cn(
-                                "text-body-sm font-semibold",
-                                isSelected ? "text-[var(--color-apple-blue)]" : "text-[var(--color-apple-gray-500)]"
-                              )}>
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <span className="text-body-sm font-semibold text-[var(--color-apple-gray-500)]">
                                 +{formatPrice(price)}
                               </span>
                               <div className={cn(
                                 "w-5 h-5 rounded flex items-center justify-center",
                                 isSelected
-                                  ? "bg-[var(--color-apple-blue)]"
+                                  ? "bg-[var(--color-apple-dark)]"
                                   : "border-2 border-[var(--color-apple-gray-300)]"
                               )}>
                                 {isSelected && <Check className="h-3 w-3 text-white" />}
@@ -348,14 +316,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-2 text-[var(--color-apple-dark)] text-center mb-6">
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-4">
                       Ihre Konfiguration
                     </h2>
 
-                    {/* Package */}
-                    <div className="flex items-center justify-between p-4 bg-[var(--color-apple-gray-100)] rounded-xl mb-4">
+                    <div className="flex items-center justify-between p-3 bg-[var(--color-apple-gray-100)] rounded-xl mb-3">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 bg-[var(--color-apple-blue)] rounded-xl flex items-center justify-center text-white font-bold text-lg">
+                        <div className="w-10 h-10 bg-[var(--color-apple-dark)] rounded-lg flex items-center justify-center text-white font-bold">
                           {currentPackage.posts}
                         </div>
                         <div>
@@ -367,20 +334,19 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           </p>
                         </div>
                       </div>
-                      <p className="text-body font-semibold text-[var(--color-apple-dark)]">
+                      <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
                         {formatPrice(currentPackage.basePrice)}
                       </p>
                     </div>
 
-                    {/* Included services */}
-                    <div className="mb-4">
+                    <div className="mb-3">
                       <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
                         ParkourONE übernimmt:
                       </p>
                       <div className="space-y-1">
                         {CONFIGURATOR.coreServices.map((service, index) => (
                           <div key={index} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
-                            <span className="text-[var(--color-apple-blue)]">{coreServiceIcons[index]}</span>
+                            <span className="text-[var(--color-apple-gray-500)]">{coreServiceIcons[index]}</span>
                             {service}
                           </div>
                         ))}
@@ -388,7 +354,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           .filter((s) => selectedServices.has(s.id as ServiceId))
                           .map((service) => (
                             <div key={service.id} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
-                              <span className="text-[var(--color-apple-blue)]">{serviceIcons[service.id as ServiceId]}</span>
+                              <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
                               {service.name}
                               <span className="text-[var(--color-apple-gray-500)] ml-auto">
                                 +{formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}
@@ -398,10 +364,9 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       </div>
                     </div>
 
-                    {/* Self-service */}
                     {selectedServices.size < 5 && (
-                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl mb-4">
-                        <p className="text-caption font-medium text-amber-800 mb-2 flex items-center gap-2">
+                      <div className="p-3 bg-[var(--color-apple-gray-100)] border border-[var(--color-apple-gray-300)] rounded-xl">
+                        <p className="text-caption font-medium text-[var(--color-apple-gray-700)] mb-2 flex items-center gap-2">
                           <AlertCircle className="h-4 w-4" />
                           Sie übernehmen selbst:
                         </p>
@@ -409,62 +374,68 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           {CONFIGURATOR.additionalServices
                             .filter((s) => !selectedServices.has(s.id as ServiceId))
                             .map((service) => (
-                              <div key={service.id} className="flex items-center gap-2 text-caption text-amber-700">
-                                <span className="text-amber-500">{serviceIcons[service.id as ServiceId]}</span>
+                              <div key={service.id} className="flex items-center gap-2 text-caption text-[var(--color-apple-gray-600)]">
+                                <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
                                 {service.selfDescription}
                               </div>
                             ))}
                         </div>
                       </div>
                     )}
-
-                    {/* Total */}
-                    <div className="flex items-center justify-between p-4 bg-[var(--color-apple-blue)] rounded-xl text-white">
-                      <p className="text-body font-medium">Geschätzter Gesamtpreis</p>
-                      <p className="text-title-2 font-bold">{formatPrice(totalPrice)}</p>
-                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
-
-            {/* Footer */}
-            <div className="px-8 pb-8 pt-4 border-t border-[var(--color-apple-gray-200)]">
-              <div className="flex items-center justify-between gap-4">
-                {step > 1 ? (
-                  <button
-                    onClick={() => setStep(step - 1)}
-                    className="flex items-center gap-2 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                    Zurück
-                  </button>
-                ) : (
-                  <div />
-                )}
-
-                {step < 3 ? (
-                  <button
-                    onClick={() => setStep(step + 1)}
-                    className="btn-primary"
-                  >
-                    Weiter
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                ) : (
-                  <Link
-                    href="/kontakt"
-                    onClick={onClose}
-                    className="btn-primary"
-                  >
-                    Angebot anfragen
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                )}
               </div>
+
+              {/* Footer */}
+              <div className="px-6 pt-6 pb-8 border-t border-[var(--color-apple-gray-200)] rounded-b-3xl">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-caption text-[var(--color-apple-gray-600)]">Geschätzter Preis</p>
+                    <p className="text-title-3 text-[var(--color-apple-dark)] font-bold">
+                      {formatPrice(totalPrice)}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    {step > 1 && (
+                      <button
+                        onClick={() => setStep(step - 1)}
+                        className="flex items-center gap-1 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
+                      >
+                        <ArrowLeft className="h-4 w-4" />
+                        Zurück
+                      </button>
+                    )}
+
+                    {step < 3 ? (
+                      <button
+                        onClick={() => setStep(step + 1)}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                      >
+                        Weiter
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    ) : (
+                      <Link
+                        href="/kontakt"
+                        onClick={onClose}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                      >
+                        Angebot anfragen
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </div>
+              </motion.div>
+
+              {/* Bottom spacer - grows to center card, shrinks when card is too big */}
+              <div className="flex-1" />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </>
       )}
     </AnimatePresence>
   );

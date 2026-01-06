@@ -3,9 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Check, X } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { ArrowRight, ArrowLeft, Check, X, ChevronDown } from "lucide-react";
+import { useRef, useState } from "react";
 import { appleTransition } from "@/lib/animations";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 // Alle Posten-Schilder aus Köniz
 const POSTEN_SCHILDER = [
@@ -148,57 +149,116 @@ export default function KonzeptPage() {
   const activeDimension = LERNDIMENSIONEN.find((d) => d.id === activeModal);
 
   // Lock body scroll when modal is open
-  useEffect(() => {
-    if (activeModal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [activeModal]);
+  useScrollLock(activeModal !== null);
 
   return (
     <>
-      {/* Hero - Was wäre wenn */}
-      <section className="relative min-h-[70vh] lg:min-h-[80vh] flex items-center">
-        {/* Full-width Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/hero/generationen-kraft.jpg"
-            alt="Generationen trainieren gemeinsam im urbanen Raum"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
-        </div>
-
-        {/* Content */}
-        <div className="container-content relative z-10 py-32 lg:py-40">
+      {/* Hero - Was wäre wenn - Split Layout */}
+      {/* Mobile */}
+      <section className="lg:hidden relative pt-24 pb-12 bg-white">
+        <div className="px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={appleTransition}
-            className="max-w-2xl"
+            className="max-w-xl"
           >
-            <p className="text-body-sm text-white/70 mb-4">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
               Das Konzept
             </p>
-            <h1 className="text-display text-white leading-tight">
+            <h1 className="text-hero text-[var(--color-apple-dark)] leading-tight">
               Was wäre wenn...
             </h1>
-            <p className="mt-6 text-title-3 text-white/90 font-normal leading-relaxed">
-              ...jede Treppe zum Trainingsgerät wird?<br />
-              ...jede Mauer zum Balancierbalken?<br />
-              ...jeder Weg zur Bewegungsroute?
+            <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
+              ...eine Treppe zum Fitnessplatz wird?<br />
+              ...die Mauer zur Balancechallenge?<br />
+              ...Möglichkeiten zu Hindernissen werden?
             </p>
-            <p className="mt-8 text-body-lg text-white/70 max-w-xl">
+            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
               RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.
             </p>
           </motion.div>
+
+          {/* Image below text on mobile */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...appleTransition, delay: 0.3 }}
+            className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
+          >
+            <Image
+              src="/images/hero/generationen-kraft.jpg"
+              alt="Generationen trainieren gemeinsam im urbanen Raum"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
         </div>
+      </section>
+
+      {/* Desktop: Split Layout */}
+      <section className="hidden lg:block relative min-h-[calc(100vh-80px)] bg-white">
+        <div className="grid grid-cols-2 min-h-[calc(100vh-80px)]">
+          {/* Left: Content */}
+          <div className="flex items-center px-12 xl:px-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={appleTransition}
+              className="max-w-xl"
+            >
+              <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
+                Das Konzept
+              </p>
+              <h1 className="text-display text-[var(--color-apple-dark)] leading-tight">
+                Was wäre wenn...
+              </h1>
+              <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
+                ...eine Treppe zum Fitnessplatz wird?<br />
+                ...die Mauer zur Balancechallenge?<br />
+                ...Möglichkeiten zu Hindernissen werden?
+              </p>
+              <p className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
+                RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.
+              </p>
+
+              {/* Scroll Indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="mt-12"
+              >
+                <motion.div
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ChevronDown className="h-6 w-6 text-[var(--color-apple-gray-400)]" />
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Right: Image - With padding and rounded corners */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...appleTransition, delay: 0.3 }}
+            className="flex items-center pt-24 px-8 pb-8"
+          >
+            <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              <Image
+                src="/images/hero/generationen-kraft.jpg"
+                alt="Generationen trainieren gemeinsam im urbanen Raum"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+          </motion.div>
+        </div>
+
       </section>
 
       {/* Das Prinzip mit Vorher/Nachher Slider */}
@@ -527,60 +587,72 @@ export default function KonzeptPage() {
       {/* Modal für Lerndimensionen */}
       <AnimatePresence>
         {activeModal && activeDimension && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 pb-4 overflow-y-auto"
-            onClick={() => setActiveModal(null)}
-          >
+          <>
             {/* Backdrop */}
-            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
-
-            {/* Modal Content */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={appleTransition}
-              className="relative bg-white rounded-3xl max-w-lg w-full shadow-2xl my-auto"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+              onClick={() => setActiveModal(null)}
+            />
+
+            {/* Full Screen Scroll Container */}
+            <div
+              className="fixed inset-0 z-50 overflow-y-auto"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveModal(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-[var(--color-apple-gray-100)] rounded-full flex items-center justify-center hover:bg-[var(--color-apple-gray-200)] transition-colors"
-              >
-                <X className="h-5 w-5 text-[var(--color-apple-gray-600)]" />
-              </button>
+              <div className="min-h-full flex flex-col items-center py-[30px] px-[10px]">
+                <div className="flex-1" />
 
-              {/* Content */}
-              <div className="p-8">
-                {/* Icon & Title */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 relative">
-                    <Image
-                      src={activeDimension.icon}
-                      alt={activeDimension.title}
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Lerndimension</p>
-                    <h3 className="text-title-2 text-[var(--color-apple-dark)]">
-                      {activeDimension.modalTitle}
-                    </h3>
-                  </div>
-                </div>
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 100, opacity: 0 }}
+                  transition={appleTransition}
+                  className="relative bg-white rounded-3xl shadow-2xl w-full max-w-[630px]"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setActiveModal(null)}
+                    className="absolute top-4 right-4 z-10 w-8 h-8 bg-[var(--color-apple-gray-100)] rounded-full flex items-center justify-center hover:bg-[var(--color-apple-gray-200)] transition-colors"
+                  >
+                    <X className="h-4 w-4 text-[var(--color-apple-gray-600)]" />
+                  </button>
 
-                {/* Text */}
-                <div className="text-body text-[var(--color-apple-gray-700)] whitespace-pre-line leading-relaxed">
-                  {activeDimension.modalContent}
-                </div>
+                  {/* Content */}
+                  <div className="p-8">
+                    {/* Icon & Title */}
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-16 h-16 relative">
+                        <Image
+                          src={activeDimension.icon}
+                          alt={activeDimension.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <div>
+                        <p className="text-body-sm text-[var(--color-apple-gray-600)]">Lerndimension</p>
+                        <h3 className="text-title-2 text-[var(--color-apple-dark)]">
+                          {activeDimension.modalTitle}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Text */}
+                    <div className="text-body text-[var(--color-apple-gray-700)] whitespace-pre-line leading-relaxed">
+                      {activeDimension.modalContent}
+                    </div>
+                  </div>
+                </motion.div>
+
+                <div className="flex-1" />
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </>
         )}
       </AnimatePresence>
     </>

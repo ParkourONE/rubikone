@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { HERO_CONTENT } from "@/lib/constants";
 import { staggerContainer, staggerItem, appleTransition } from "@/lib/animations";
@@ -14,83 +14,164 @@ export function HeroSection() {
 
   return (
     <>
-      {/* Hero with Split Layout - Not full height */}
-      <section className="relative pt-24 lg:pt-32 pb-12 lg:pb-24 bg-white overflow-hidden">
-        <div className="w-full">
-          <div className="grid lg:grid-cols-2 items-center gap-8 lg:gap-0">
-            {/* Left: Content */}
-            <div className="px-6 lg:px-12 xl:px-20">
-              <motion.div
-                initial="initial"
-                animate="animate"
-                variants={staggerContainer}
-                className="max-w-xl"
+      {/* Mobile: Classic Layout */}
+      <section className="lg:hidden relative pt-24 pb-12 bg-white">
+        <div className="px-6">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={staggerContainer}
+            className="max-w-xl"
+          >
+            {/* Brand Tag */}
+            <motion.div variants={staggerItem}>
+              <span className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6">
+                RubikONE – Der Fitnessparkour
+              </span>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              variants={staggerItem}
+              className="text-hero text-[var(--color-apple-dark)]"
+            >
+              Bewegung beginnt
+              <br />
+              <span className="text-[var(--color-apple-blue)]">
+                vor der Haustür.
+              </span>
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.p
+              variants={staggerItem}
+              className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
+            >
+              RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum.
+              Für alle Generationen. Bewegung, die verbindet.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              variants={staggerItem}
+              className="mt-10 flex flex-col sm:flex-row gap-4"
+            >
+              <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
+                {HERO_CONTENT.ctaPrimary.label}
+              </Link>
+              <Link href={HERO_CONTENT.ctaSecondary.href} className="btn-secondary">
+                {HERO_CONTENT.ctaSecondary.label}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </motion.div>
+          </motion.div>
+
+          {/* Video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ...appleTransition, delay: 0.3 }}
+            className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
+          >
+            <video
+              src="/videos/hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Desktop: Clean Split Layout (Apple-Style) */}
+      <section className="hidden lg:block relative min-h-[calc(100vh-80px)] bg-white">
+        <div className="grid grid-cols-2 min-h-[calc(100vh-80px)]">
+          {/* Left: Content */}
+          <div className="flex items-center px-12 xl:px-20">
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
+              className="max-w-xl"
+            >
+              {/* Brand Tag */}
+              <motion.div variants={staggerItem}>
+                <span className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6">
+                  RubikONE – Der Fitnessparkour
+                </span>
+              </motion.div>
+
+              {/* Headline */}
+              <motion.h1
+                variants={staggerItem}
+                className="text-display text-[var(--color-apple-dark)]"
               >
-                {/* Brand Tag */}
-                <motion.div variants={staggerItem}>
-                  <span className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6">
-                    RubikONE – Der Fitnessparkour
-                  </span>
-                </motion.div>
+                Bewegung beginnt
+                <br />
+                <span className="text-[var(--color-apple-blue)]">
+                  vor der Haustür.
+                </span>
+              </motion.h1>
 
-                {/* Headline */}
-                <motion.h1
-                  variants={staggerItem}
-                  className="text-hero text-[var(--color-apple-dark)]"
-                >
-                  Bewegung beginnt
-                  <br />
-                  <span className="text-[var(--color-apple-blue)]">
-                    vor der Haustür.
-                  </span>
-                </motion.h1>
+              {/* Subheadline */}
+              <motion.p
+                variants={staggerItem}
+                className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
+              >
+                RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum.
+                Für alle Generationen. Bewegung, die verbindet.
+              </motion.p>
 
-                {/* Subheadline */}
-                <motion.p
-                  variants={staggerItem}
-                  className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
-                >
-                  RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum.
-                  Ohne neue Geräte. Ohne Tiefbau. Mit wissenschaftlich bewiesener Wirkung.
-                </motion.p>
+              {/* CTAs */}
+              <motion.div
+                variants={staggerItem}
+                className="mt-10 flex flex-row gap-4"
+              >
+                <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
+                  {HERO_CONTENT.ctaPrimary.label}
+                </Link>
+                <Link href={HERO_CONTENT.ctaSecondary.href} className="btn-secondary">
+                  {HERO_CONTENT.ctaSecondary.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </motion.div>
 
-                {/* CTAs */}
+              {/* Scroll Indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 0.5 }}
+                className="mt-12"
+              >
                 <motion.div
-                  variants={staggerItem}
-                  className="mt-10 flex flex-col sm:flex-row gap-4"
+                  animate={{ y: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
-                    {HERO_CONTENT.ctaPrimary.label}
-                  </Link>
-                  <Link href={HERO_CONTENT.ctaSecondary.href} className="btn-secondary">
-                    {HERO_CONTENT.ctaSecondary.label}
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  <ChevronDown className="h-6 w-6 text-[var(--color-apple-gray-400)]" />
                 </motion.div>
               </motion.div>
-            </div>
-
-            {/* Right: Video - With rounded corners and padding */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ ...appleTransition, delay: 0.3 }}
-              className="relative h-[40vh] lg:h-[500px] px-6 lg:px-0 lg:pr-8"
-            >
-              <div className="relative w-full h-full rounded-2xl lg:rounded-3xl overflow-hidden shadow-apple-xl">
-                <video
-                  src="/videos/hero.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </motion.div>
           </div>
-        </div>
 
+          {/* Right: Video - With padding and rounded corners */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ ...appleTransition, delay: 0.3 }}
+            className="flex items-center pt-24 px-8 pb-8"
+          >
+            <video
+              src="/videos/hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover rounded-2xl"
+            />
+          </motion.div>
+        </div>
       </section>
 
       {/* Video Section - Separate */}
@@ -157,7 +238,7 @@ export function HeroSection() {
   );
 }
 
-// Page Hero for inner pages - with optional background image
+// Page Hero for inner pages - Split Layout (Apple-Style)
 interface PageHeroProps {
   title: string;
   description?: string;
@@ -167,49 +248,127 @@ interface PageHeroProps {
 }
 
 export function PageHero({ title, description, breadcrumb, image, imageAlt }: PageHeroProps) {
-  // Hero with background image
+  // Hero with image - Split Layout
   if (image) {
     return (
-      <section className="relative min-h-[50vh] lg:min-h-[60vh] flex items-center">
-        <div className="absolute inset-0">
-          <Image
-            src={image}
-            alt={imageAlt || title}
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
-        </div>
-        <div className="container-content relative z-10 py-24 lg:py-32">
-          <motion.div
-            initial="initial"
-            animate="animate"
-            variants={staggerContainer}
-            className="max-w-2xl"
-          >
-            {breadcrumb && (
-              <motion.p
-                variants={staggerItem}
-                className="text-body-sm text-white/70 mb-3"
+      <>
+        {/* Mobile: Classic stacked layout */}
+        <section className="lg:hidden relative pt-24 pb-12 bg-white">
+          <div className="px-6">
+            <motion.div
+              initial="initial"
+              animate="animate"
+              variants={staggerContainer}
+              className="max-w-xl"
+            >
+              {breadcrumb && (
+                <motion.p
+                  variants={staggerItem}
+                  className="text-body-sm text-[var(--color-apple-gray-600)] mb-3"
+                >
+                  {breadcrumb}
+                </motion.p>
+              )}
+              <motion.h1 variants={staggerItem} className="text-hero text-[var(--color-apple-dark)]">
+                {title}
+              </motion.h1>
+              {description && (
+                <motion.p
+                  variants={staggerItem}
+                  className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]"
+                >
+                  {description}
+                </motion.p>
+              )}
+            </motion.div>
+
+            {/* Image below text on mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ ...appleTransition, delay: 0.3 }}
+              className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
+            >
+              <Image
+                src={image}
+                alt={imageAlt || title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Desktop: Clean Split Layout (Apple-Style) */}
+        <section className="hidden lg:block relative min-h-[calc(100vh-80px)] bg-white">
+          <div className="grid grid-cols-2 min-h-[calc(100vh-80px)]">
+            {/* Left: Content */}
+            <div className="flex items-center px-12 xl:px-20">
+              <motion.div
+                initial="initial"
+                animate="animate"
+                variants={staggerContainer}
+                className="max-w-xl"
               >
-                {breadcrumb}
-              </motion.p>
-            )}
-            <motion.h1 variants={staggerItem} className="text-display text-white">
-              {title}
-            </motion.h1>
-            {description && (
-              <motion.p
-                variants={staggerItem}
-                className="mt-4 text-body-lg text-white/80"
-              >
-                {description}
-              </motion.p>
-            )}
-          </motion.div>
-        </div>
-      </section>
+                {breadcrumb && (
+                  <motion.p
+                    variants={staggerItem}
+                    className="text-body-sm text-[var(--color-apple-gray-600)] mb-3"
+                  >
+                    {breadcrumb}
+                  </motion.p>
+                )}
+                <motion.h1 variants={staggerItem} className="text-display text-[var(--color-apple-dark)]">
+                  {title}
+                </motion.h1>
+                {description && (
+                  <motion.p
+                    variants={staggerItem}
+                    className="mt-6 text-body-lg text-[var(--color-apple-gray-600)]"
+                  >
+                    {description}
+                  </motion.p>
+                )}
+
+                {/* Scroll Indicator */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1, duration: 0.5 }}
+                  className="mt-12"
+                >
+                  <motion.div
+                    animate={{ y: [0, 8, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <ChevronDown className="h-6 w-6 text-[var(--color-apple-gray-400)]" />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Right: Image - With padding and rounded corners */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ ...appleTransition, delay: 0.3 }}
+              className="flex items-center pt-24 px-8 pb-8"
+            >
+              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                <Image
+                  src={image}
+                  alt={imageAlt || title}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </motion.div>
+          </div>
+
+        </section>
+      </>
     );
   }
 

@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { appleTransition } from "@/lib/animations";
+import { useScrollLock } from "@/hooks/useScrollLock";
 
 // Process steps with images
 const PROCESS_STEPS = [
@@ -103,16 +104,7 @@ export function ProcessSection() {
   const activeStep = activeModal !== null ? PROCESS_STEPS[activeModal] : null;
 
   // Lock body scroll when modal is open
-  useEffect(() => {
-    if (activeModal !== null) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [activeModal]);
+  useScrollLock(activeModal !== null);
 
   return (
     <>
@@ -213,75 +205,88 @@ export function ProcessSection() {
         </div>
       </section>
 
-      {/* Modal - Scrollable */}
+      {/* Modal */}
       <AnimatePresence>
         {activeModal !== null && activeStep && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 pb-4 overflow-y-auto"
-            onClick={() => setActiveModal(null)}
-          >
+          <>
             {/* Backdrop */}
-            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
-
-            {/* Modal Content - Scrollable container */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={appleTransition}
-              className="relative bg-white rounded-3xl max-w-2xl w-full shadow-2xl my-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={() => setActiveModal(null)}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/30 transition-colors"
-              >
-                <X className="h-5 w-5 text-white" />
-              </button>
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
+              onClick={() => setActiveModal(null)}
+            />
 
-              {/* Image */}
-              <div className="relative aspect-video">
-                <Image
-                  src={activeStep.image}
-                  alt={activeStep.title}
-                  fill
-                  className="object-cover rounded-t-3xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-t-3xl" />
-                <div className="absolute bottom-6 left-6">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                      <span className="text-headline font-bold text-[var(--color-apple-dark)]">
-                        {activeStep.number}
-                      </span>
-                    </div>
-                    <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
-                      <span className="text-caption font-medium text-white">
-                        {activeStep.duration}
-                      </span>
+            {/* Full Screen Scroll Container */}
+            <div
+              className="fixed inset-0 z-50 overflow-y-auto"
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+            >
+              <div className="min-h-full flex flex-col items-center py-[30px] px-[10px]">
+                <div className="flex-1" />
+
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: 100, opacity: 0 }}
+                  transition={appleTransition}
+                  className="bg-white rounded-3xl shadow-2xl w-full max-w-[630px]"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Image Header */}
+                  <div className="relative h-56 rounded-t-3xl overflow-hidden">
+                    <Image
+                      src={activeStep.image}
+                      alt={activeStep.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+                    {/* Close Button */}
+                    <button
+                      onClick={() => setActiveModal(null)}
+                      className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-black/30 transition-colors"
+                    >
+                      <X className="h-4 w-4 text-white" />
+                    </button>
+
+                    <div className="absolute bottom-6 left-6">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
+                          <span className="text-headline font-bold text-[var(--color-apple-dark)]">
+                            {activeStep.number}
+                          </span>
+                        </div>
+                        <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
+                          <span className="text-caption font-medium text-white">
+                            {activeStep.duration}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="text-body-sm text-white/70 mb-1">
+                        {activeStep.subtitle}
+                      </p>
+                      <h3 className="text-title-1 text-white font-semibold">
+                        {activeStep.title}
+                      </h3>
                     </div>
                   </div>
-                  <p className="text-body-sm text-white/70 mb-1">
-                    {activeStep.subtitle}
-                  </p>
-                  <h3 className="text-title-1 text-white font-semibold">
-                    {activeStep.title}
-                  </h3>
-                </div>
-              </div>
 
-              {/* Content */}
-              <div className="p-8">
-                <div className="text-body text-[var(--color-apple-gray-700)] whitespace-pre-line leading-relaxed">
-                  {activeStep.modalContent}
-                </div>
+                  {/* Content */}
+                  <div className="p-8 rounded-b-3xl">
+                    <div className="text-body text-[var(--color-apple-gray-700)] whitespace-pre-line leading-relaxed">
+                      {activeStep.modalContent}
+                    </div>
+                  </div>
+                </motion.div>
+
+                <div className="flex-1" />
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </>
         )}
       </AnimatePresence>
     </>

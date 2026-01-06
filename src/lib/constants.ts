@@ -18,6 +18,7 @@ export const NAVIGATION_ITEMS = [
   { label: "Konzept", href: "/konzept" },
   { label: "Für Gemeinden", href: "/fuer-gemeinden" },
   { label: "Fallstudie Köniz", href: "/koeniz" },
+  { label: "Impulsworkshop", href: "/impulsworkshop" },
   { label: "Über uns", href: "/ueber-uns" },
 ] as const;
 
