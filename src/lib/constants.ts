@@ -18,8 +18,8 @@ export const NAVIGATION_ITEMS = [
   { label: "Konzept", href: "/konzept" },
   { label: "Für Gemeinden", href: "/fuer-gemeinden" },
   { label: "Fallstudie Köniz", href: "/koeniz" },
+  { label: "Konfigurator", href: "/konfigurator", highlight: true },
   { label: "Über uns", href: "/ueber-uns" },
-  { label: "Impulsworkshop", href: "/impulsworkshop" },
   { label: "Kontakt", href: "/kontakt" },
 ] as const;
 
@@ -777,6 +777,98 @@ export const WORKSHOP_DETAILS = {
     {
       question: "Wie viele Personen können teilnehmen?",
       answer: "Idealerweise 6-12 Personen. Bei mehr Teilnehmenden empfehlen wir zwei Workshops.",
+    },
+  ],
+} as const;
+
+// Konfigurator
+export const CONFIGURATOR = {
+  headline: "Ihr RubikONE – Ihr Preis",
+  subheadline: "Konfigurieren Sie Ihr Projekt und sehen Sie direkt, was es kostet.",
+
+  packages: [
+    {
+      id: "kompakt",
+      name: "Kompakt",
+      posts: 6,
+      basePrice: 35000,
+      description: "Ideal für Schulareale und kleine Gemeinden",
+    },
+    {
+      id: "standard",
+      name: "Standard",
+      posts: 9,
+      basePrice: 60000,
+      description: "Für Gemeinden bis 20'000 Einwohner",
+      recommended: true,
+    },
+    {
+      id: "premium",
+      name: "Premium",
+      posts: 15,
+      basePrice: 95000,
+      description: "Für Städte und grosse Areale",
+    },
+  ],
+
+  coreServices: [
+    "Konzeption & Design",
+    "Safety Check",
+    "Material (Schilder, Stelen, Wegweiser, Markierungen)",
+  ],
+
+  additionalServices: [
+    {
+      id: "standortanalyse",
+      name: "Standortanalyse",
+      description: "Parzellen prüfen, Eigentümer identifizieren, Vor-Ort-Besichtigung mit Checkliste",
+      selfDescription: "Sie nutzen map.geo.admin.ch und unsere Checkliste für die Vor-Ort-Besichtigung.",
+      prices: { kompakt: 3000, standard: 5000, premium: 7000 },
+    },
+    {
+      id: "baugesuch",
+      name: "Baugesuch",
+      description: "Vorbereitung aller Unterlagen, Einreichung bei der Leitbehörde, Begleitung bis zur Bewilligung",
+      selfDescription: "Sie reichen das von uns vorbereitete Dossier ein und kommunizieren mit der Behörde.",
+      prices: { kompakt: 8000, standard: 12000, premium: 15000 },
+    },
+    {
+      id: "eigentuemer",
+      name: "Eigentümer-Koordination",
+      description: "Kontaktaufnahme mit Grundeigentümern, Vereinbarungen einholen, Einsprachen vorbeugen",
+      selfDescription: "Sie kontaktieren betroffene Eigentümer. Wir liefern Mustervereinbarungen.",
+      prices: { kompakt: 4000, standard: 6000, premium: 8000 },
+    },
+    {
+      id: "produktion",
+      name: "Produktion",
+      description: "Koordination mit Kursiv AG, Malerfirma, Materialbestellung und Qualitätskontrolle",
+      selfDescription: "Sie beauftragen die Partner direkt. Wir liefern alle Druckvorlagen und Spezifikationen.",
+      prices: { kompakt: 4000, standard: 7000, premium: 10000 },
+    },
+    {
+      id: "montage",
+      name: "Montage & Bauherrschaft",
+      description: "Terminkoordination, Wegsperrungen organisieren, Vor-Ort-Begleitung, Abnahme",
+      selfDescription: "Sie organisieren Handwerkertermine und sind während der Montage vor Ort.",
+      prices: { kompakt: 6000, standard: 10000, premium: 15000 },
+    },
+  ],
+
+  optionalServices: [
+    {
+      id: "impulsworkshop",
+      name: "Impulsworkshop",
+      description: "2-stündiger Workshop vor Projektstart – ideal zum Kennenlernen des Konzepts",
+      price: 690,
+      note: "zzgl. Spesen",
+    },
+    {
+      id: "eroeffnung",
+      name: "Eröffnungsworkshop",
+      description: "Geführte Eröffnungsveranstaltung mit Coach für die Bevölkerung",
+      price: 1500,
+      note: "Preis auf Anfrage",
     },
   ],
 } as const;

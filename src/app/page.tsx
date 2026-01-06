@@ -8,6 +8,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials";
 import { ImageGallery } from "@/components/sections/image-gallery";
 import { ProcessSection } from "@/components/sections/process-section";
 import { PricingSection } from "@/components/sections/pricing-section";
+import { ConfiguratorCTASection } from "@/components/sections/configurator-cta-section";
 import { CTASection } from "@/components/sections/cta-section";
 import { ParkourONEStoryCompact } from "@/components/sections/parkourone-story";
 
@@ -46,6 +47,9 @@ export default function HomePage() {
 
       {/* Pricing: Transparente Preise */}
       <PricingSection />
+
+      {/* Konfigurator CTA */}
+      <ConfiguratorCTASection />
 
       {/* CTA: Nächster Schritt */}
       <CTASection variant="dark" />

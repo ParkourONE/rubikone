@@ -66,7 +66,8 @@ export function Navigation() {
                 href={item.href}
                 className={cn(
                   "nav-link",
-                  pathname === item.href && "opacity-100 font-semibold"
+                  pathname === item.href && "opacity-100 font-semibold",
+                  "highlight" in item && item.highlight && "text-[var(--color-apple-blue)] opacity-100"
                 )}
               >
                 {item.label}
