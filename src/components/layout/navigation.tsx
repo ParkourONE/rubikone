@@ -45,10 +45,8 @@ export function Navigation() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 h-12 transition-all duration-300",
-          isScrolled
-            ? "bg-white/80 nav-blur border-b border-[var(--color-apple-gray-200)]"
-            : "bg-transparent"
+          "fixed top-0 left-0 right-0 z-50 h-12 transition-all duration-300 bg-white",
+          isScrolled && "border-b border-[var(--color-apple-gray-200)] shadow-sm"
         )}
       >
         <nav className="container-wide h-full flex items-center justify-between">

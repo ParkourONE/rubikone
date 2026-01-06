@@ -337,37 +337,76 @@ export const KOENIZ_CASE_STUDY = {
   intro: "9 Posten. 2.5 km Route. Mitten im denkmalgeschützten Schlossareal.",
   challenge: {
     title: "Die Herausforderung",
+    image: "/images/konzept/vorher.jpg",
     points: [
-      "Denkmalgeschütztes Schlossareal",
-      "Verschiedene Grundeigentümer",
-      "Wissenschaftliche Evaluation gefordert",
+      "Denkmalgeschütztes Schlossareal mit nationaler Bedeutung",
+      "Verschiedene Grundeigentümer und politische Hürden",
+      "Wissenschaftliche Evaluation durch Affective Advisory gefordert",
     ],
   },
   solution: {
     title: "Die Lösung",
+    image: "/images/konzept/nachher.jpg",
     points: [
-      "Minimale bauliche Eingriffe (Schilder + Farbe)",
-      "Vereinbarungen mit allen Eigentümern",
-      "BASPO lab7x1 Laborversuch",
+      "Reversible Installation: nur Schilder und Farbmarkierungen",
+      "Vereinbarungen mit allen Eigentümerschaften",
+      "Finanzierung durch BASPO lab7x1 Innovationslabor",
     ],
   },
-  stats: [
-    { value: "531", label: "Teilnehmende am Pilotprojekt" },
-    { value: "94%", label: "verstehen das Konzept sofort" },
-    { value: "84%", label: "schätzen den kostenfreien Zugang" },
-    { value: "75%", label: "werden durch Freude motiviert" },
-    { value: "59%", label: "nutzen es spontan im Vorbeigehen" },
-    { value: "0", label: "Vandalismus-Vorfälle" },
-    { value: "0 CHF", label: "Wartungskosten in 8 Monaten" },
-    { value: "140", label: "Besucher bei der Eröffnung" },
+  // Erkenntnisse statt Zahlen - aus dem Abschlussbericht
+  insights: [
+    {
+      title: "Sofort verstanden",
+      shortDesc: "Die Postenschilder und Markierungen sind selbsterklärend",
+      fullDesc: "94% der Teilnehmenden verstehen das Konzept auf Anhieb. Die visuellen Signale und Anleitungen machen den Einstieg einfach – ohne Erklärung durch Dritte.",
+    },
+    {
+      title: "Freude als Motor",
+      shortDesc: "Bewegung wird zum positiven Erlebnis",
+      fullDesc: "75% der Nutzenden werden primär durch Freude und Spass motiviert. RubikONE holt das Spielerische zurück – für Menschen jeden Alters.",
+    },
+    {
+      title: "Spontan genutzt",
+      shortDesc: "Menschen integrieren RubikONE in ihren Alltag",
+      fullDesc: "59% nutzen RubikONE spontan im Vorbeigehen. Die zentrale Lage und der niedrigschwellige Zugang machen Bewegung zur Selbstverständlichkeit.",
+    },
+    {
+      title: "Kostenlos geschätzt",
+      shortDesc: "Bewegung ohne Hürden, frei zugänglich",
+      fullDesc: "84% schätzen besonders den kostenfreien Zugang. Keine Mitgliedschaft, keine Öffnungszeiten, keine Anfahrt – Bewegung direkt vor der Haustür.",
+    },
+    {
+      title: "Gemeinsam bewegen",
+      shortDesc: "RubikONE fördert soziale Interaktion",
+      fullDesc: "Das Gruppentraining wurde besonders geschätzt. Gegenseitige Unterstützung, gemeinsame Herausforderungen und der Austausch machen Bewegung zum sozialen Erlebnis.",
+    },
+    {
+      title: "Null Vandalismus",
+      shortDesc: "Die Installation bleibt unangetastet",
+      fullDesc: "In 8 Monaten Testbetrieb gab es keinen einzigen Vandalismus-Vorfall. Null Wartungskosten für Reparaturen. Die Bevölkerung respektiert und schätzt das Angebot.",
+    },
   ],
   timeline: [
-    { date: "November 2024", event: "Projektstart" },
-    { date: "Februar 2025", event: "Baugesuch eingereicht" },
-    { date: "April 2025", event: "Bewilligung erteilt" },
-    { date: "10. Mai 2025", event: "Eröffnung" },
+    { date: "März 2023", event: "Standortanalyse und erste Gespräche mit Köniz" },
+    { date: "Januar 2024", event: "Testtrainings mit der Bevölkerung" },
+    { date: "Oktober 2024", event: "Installation der Posten und Markierungen" },
+    { date: "9. November 2024", event: "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO" },
+    { date: "Juli 2025", event: "Abschluss der wissenschaftlichen Evaluation" },
   ],
-  denkmalpflege: "Das Schlossareal Köniz steht unter Denkmalschutz. Trotzdem erhielt RubikONE die Bewilligung – weil die Installation reversibel ist und das Ortsbild nicht beeinträchtigt.",
+  denkmalpflege: "Das Schlossareal Köniz ist als Kulturgut von nationaler Bedeutung eingestuft. Zum Erstaunen aller Beteiligten wurde die Farbmarkierung von der Denkmalpflege auf Anhieb als bewilligungsfähig beurteilt – weil die Installation vollständig reversibel ist.",
+  // Workshop-Feedback aus den Public Meetings
+  workshopFeedback: [
+    "Draussen sein, die Kombination aus Laufen und Übung – nicht nur an einem Fleck.",
+    "Abwechslungsreiche Route, Interaktion miteinander, Kombi aus Kraft-Koordination-Ausdauer.",
+    "Das Zusammentrainieren. Unter Leuten sein, Austausch.",
+    "Gemeinsam, gegenseitig Aufgaben geben, herausfordern.",
+    "Dauer sehr passend, abseits von Verkehr, cool.",
+    "Die Vielseitigkeit, Animation, Sonne – und dass alles draussen stattfindet.",
+    "Mal was anderes als die Sporthalle – mit dem arbeiten, was schon da ist.",
+    "Abwechslungsreich, coole Umgebung, aus wenig viel herausholen – nur mit ein bisschen Farbe.",
+    "Spass in der Gruppe die man schon kennt, Bewegung tut gut.",
+    "Köniz als Sportplatz nutzen. Neue Übungen kennengelernt.",
+  ],
 } as const;
 
 // Partner Logos
