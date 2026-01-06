@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCircle, X } from "lucide-react";
+import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCircle, X, Download } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { KOENIZ_CASE_STUDY, KOENIZ_DETAILS } from "@/lib/constants";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
@@ -99,6 +99,22 @@ export default function KoenizPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Download Evaluation Report */}
+          <FadeUp className="mt-12">
+            <a
+              href="/downloads/RubikONE-Evaluation-Koeniz.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-6 py-4 bg-[var(--color-apple-gray-100)] rounded-xl hover:bg-[var(--color-apple-gray-200)] transition-colors group"
+            >
+              <Download className="h-5 w-5 text-[var(--color-apple-blue)]" />
+              <div>
+                <p className="text-body font-medium text-[var(--color-apple-dark)]">Evaluationsbericht herunterladen</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">Vollständiger wissenschaftlicher Abschlussbericht (PDF)</p>
+              </div>
+            </a>
+          </FadeUp>
         </div>
       </section>
 

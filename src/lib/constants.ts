@@ -30,11 +30,11 @@ export const HERO_CONTENT = {
   subheadline: "RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum. Ohne neue Geräte. Ohne Tiefbau. Mit wissenschaftlicher Wirkung.",
   videoUrl: "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
   ctaPrimary: {
-    label: "Impulsworkshop anfragen",
+    label: "Potenzial Ihrer Gemeinde entdecken",
     href: "/impulsworkshop",
   },
   ctaSecondary: {
-    label: "Fallstudie Köniz",
+    label: "Fallstudie Köniz ansehen",
     href: "/koeniz",
   },
 } as const;
@@ -255,7 +255,7 @@ export const PRICING_PACKAGES = [
     name: "Kompakt",
     posts: "6 Posten",
     idealFor: "Schulareale, kleine Gemeinden",
-    price: "ab CHF 45'000",
+    price: "ab CHF 60'000",
     features: [
       { name: "Standortanalyse", included: true },
       { name: "Konzeption & Design", included: true },
@@ -272,7 +272,7 @@ export const PRICING_PACKAGES = [
     name: "Standard",
     posts: "9 Posten",
     idealFor: "Gemeinden bis 20'000 EW",
-    price: "ab CHF 75'000",
+    price: "ab CHF 100'000",
     features: [
       { name: "Standortanalyse", included: true },
       { name: "Konzeption & Design", included: true },
@@ -288,9 +288,9 @@ export const PRICING_PACKAGES = [
   },
   {
     name: "Premium",
-    posts: "16 Posten",
+    posts: "15 Posten",
     idealFor: "Städte, grosse Areale",
-    price: "ab CHF 120'000",
+    price: "ab CHF 150'000",
     features: [
       { name: "Standortanalyse", included: true },
       { name: "Konzeption & Design", included: true },
@@ -508,7 +508,7 @@ export const CTA_CONTENT = {
     href: "/impulsworkshop",
   },
   ctaSecondary: {
-    label: "Beratungsgespräch vereinbaren",
+    label: "Kostenlose Standort-Analyse anfragen",
     href: "/kontakt",
   },
   downloads: [
