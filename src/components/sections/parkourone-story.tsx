@@ -1,9 +1,10 @@
 "use client";
 
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Quote, Users } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, ArrowLeft, Quote, Users, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { PARKOURONE_STORY } from "@/lib/constants";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
@@ -39,6 +40,19 @@ const THREE_THEMES = [
 
 // Full ParkourONE Story Section for dedicated page
 export function ParkourONEStoryFull() {
+  const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
+  const timelineScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollTimeline = (direction: "left" | "right") => {
+    if (timelineScrollRef.current) {
+      const scrollAmount = 340;
+      timelineScrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <>
       {/* Intro with Image */}
@@ -75,53 +89,154 @@ export function ParkourONEStoryFull() {
         </div>
       </section>
 
+      {/* Timeline Slider with Modal */}
+      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
+        <div className="container-content mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={appleTransition}
+          >
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+              Von den Anfängen bis heute
+            </p>
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+              {PARKOURONE_STORY.history.headline}
+            </h2>
+          </motion.div>
+        </div>
 
-      {/* Timeline with Images */}
-      <section className="section-spacing bg-white">
-        <div className="container-content">
-          <SectionHeader
-            title={PARKOURONE_STORY.history.headline}
-            subtitle="Von den Anfängen bis heute"
-          />
+        {/* Slider */}
+        <div
+          ref={timelineScrollRef}
+          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          <div className="slider-spacer" />
 
-          <div className="mt-12 lg:mt-16 max-w-5xl mx-auto space-y-16">
-            {PARKOURONE_STORY.history.milestones.map((milestone, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ ...appleTransition, delay: index * 0.1 }}
-                className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                }`}
+          {PARKOURONE_STORY.history.milestones.map((milestone, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ ...appleTransition, delay: index * 0.05 }}
+              className="flex-shrink-0 w-[320px]"
+            >
+              <div
+                onClick={() => setActiveMilestone(index)}
+                className="bg-white rounded-2xl overflow-hidden shadow-apple h-full cursor-pointer hover:shadow-apple-lg transition-shadow"
               >
-                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                  <span className="text-display text-[var(--color-apple-blue)] font-bold">
-                    {milestone.year}
-                  </span>
-                  <h3 className="text-title-2 text-[var(--color-apple-dark)] mt-2">
-                    {milestone.title}
-                  </h3>
-                  <p className="mt-4 text-body-lg text-[var(--color-apple-gray-700)]">
-                    {milestone.description}
-                  </p>
-                </div>
                 {TIMELINE_IMAGES[milestone.year] && (
-                  <div className={`relative aspect-[4/3] rounded-2xl overflow-hidden ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                  <div className="relative aspect-[4/3]">
                     <Image
                       src={TIMELINE_IMAGES[milestone.year]}
                       alt={milestone.title}
                       fill
                       className="object-cover"
                     />
+                    <div className="absolute top-4 left-4 bg-[var(--color-apple-blue)] text-white px-3 py-1 rounded-full text-body-sm font-semibold">
+                      {milestone.year}
+                    </div>
                   </div>
                 )}
-              </motion.div>
-            ))}
+                <div className="p-6">
+                  <h3 className="text-headline font-semibold text-[var(--color-apple-dark)] mb-2">
+                    {milestone.title}
+                  </h3>
+                  <p className="text-body-sm text-[var(--color-apple-gray-600)] line-clamp-2">
+                    {milestone.description}
+                  </p>
+                  <span className="inline-flex items-center gap-1 text-body-sm text-[var(--color-apple-blue)] font-medium mt-4">
+                    Mehr erfahren
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          <div className="slider-spacer" />
+        </div>
+
+        {/* Navigation */}
+        <div className="container-content mt-6">
+          <div className="flex justify-end gap-4">
+            <button
+              onClick={() => scrollTimeline("left")}
+              className="p-2 rounded-full hover:bg-[var(--color-apple-gray-200)] transition-colors"
+            >
+              <ArrowLeft className="h-6 w-6 text-[var(--color-apple-gray-500)]" />
+            </button>
+            <button
+              onClick={() => scrollTimeline("right")}
+              className="p-2 rounded-full hover:bg-[var(--color-apple-gray-200)] transition-colors"
+            >
+              <ArrowRight className="h-6 w-6 text-[var(--color-apple-gray-500)]" />
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Timeline Modal */}
+      <AnimatePresence>
+        {activeMilestone !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={() => setActiveMilestone(null)}
+          >
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={appleTransition}
+              className="relative bg-white rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Image */}
+              {TIMELINE_IMAGES[PARKOURONE_STORY.history.milestones[activeMilestone].year] && (
+                <div className="relative aspect-[16/9]">
+                  <Image
+                    src={TIMELINE_IMAGES[PARKOURONE_STORY.history.milestones[activeMilestone].year]}
+                    alt={PARKOURONE_STORY.history.milestones[activeMilestone].title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-6">
+                    <span className="text-display text-white font-bold">
+                      {PARKOURONE_STORY.history.milestones[activeMilestone].year}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Close Button */}
+              <button
+                onClick={() => setActiveMilestone(null)}
+                className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center hover:bg-white transition-colors"
+              >
+                <X className="h-5 w-5 text-[var(--color-apple-gray-600)]" />
+              </button>
+
+              {/* Modal Content */}
+              <div className="p-8">
+                <h3 className="text-title-2 text-[var(--color-apple-dark)] mb-4">
+                  {PARKOURONE_STORY.history.milestones[activeMilestone].title}
+                </h3>
+                <p className="text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed">
+                  {PARKOURONE_STORY.history.milestones[activeMilestone].description}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Quote */}
       <section className="section-spacing bg-[var(--color-apple-dark)]">
