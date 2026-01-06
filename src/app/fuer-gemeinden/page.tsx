@@ -47,10 +47,28 @@ const stakeholderBenefits = [
 ];
 
 const prozessSchritte = [
-  { nummer: "1", titel: "Kennenlernen", beschreibung: "Impulsworkshop vor Ort oder Beratungsgespräch" },
-  { nummer: "2", titel: "Planen", beschreibung: "Standortanalyse und Baugesuchsunterstützung" },
-  { nummer: "3", titel: "Umsetzen", beschreibung: "Produktion und Installation der Schilder" },
-  { nummer: "4", titel: "Eröffnen", beschreibung: "Einweihungsevent mit der Bevölkerung" },
+  { nummer: "1", titel: "Kennenlernen", beschreibung: "Impulsworkshop vor Ort oder Beratungsgespräch", image: "/images/gemeinden/prozess-1.jpg" },
+  { nummer: "2", titel: "Planen", beschreibung: "Standortanalyse und Baugesuchsunterstützung", image: "/images/gemeinden/prozess-2.jpg" },
+  { nummer: "3", titel: "Umsetzen", beschreibung: "Produktion und Installation der Schilder", image: "/images/gemeinden/prozess-3.jpg" },
+  { nummer: "4", titel: "Eröffnen", beschreibung: "Einweihungsevent mit der Bevölkerung", image: "/images/gemeinden/prozess-4.jpg" },
+];
+
+const uspItems = [
+  {
+    title: "Einfache Integration",
+    description: "Keine neuen Anlagen nötig. Wegweiser und Postenschilder werden an vorhandene Elemente wie Säulen oder Mauern montiert.",
+    image: "/images/gemeinden/integration.jpg",
+  },
+  {
+    title: "Nachhaltigkeit",
+    description: "Das verwendete Material ist langlebig und wartungsarm. Einmaliger Aufwand – nachhaltiger Nutzen.",
+    image: "/images/gemeinden/nachhaltigkeit.jpg",
+  },
+  {
+    title: "Lebensqualität",
+    description: "Bewegung ist Leben – mit RubikONE fördern Sie physische, psychische und soziale Gesundheit.",
+    image: "/images/gemeinden/lebensqualitaet.jpg",
+  },
 ];
 
 const faqItems = [
@@ -232,58 +250,62 @@ export default function FuerGemeindenPage() {
             className="mb-12"
           />
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <FadeUp>
-              <div className="text-center">
-                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
-                  Einfache Integration
-                </h3>
-                <p className="text-body text-[var(--color-apple-gray-600)]">
-                  Keine neuen Anlagen nötig. Wegweiser und Postenschilder werden an vorhandene Elemente wie Säulen oder Mauern montiert.
-                </p>
-              </div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <div className="text-center">
-                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
-                  Nachhaltigkeit
-                </h3>
-                <p className="text-body text-[var(--color-apple-gray-600)]">
-                  Das verwendete Material ist langlebig und wartungsarm. Einmaliger Aufwand – nachhaltiger Nutzen.
-                </p>
-              </div>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <div className="text-center">
-                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
-                  Lebensqualität
-                </h3>
-                <p className="text-body text-[var(--color-apple-gray-600)]">
-                  Bewegung ist Leben – mit RubikONE fördern Sie physische, psychische und soziale Gesundheit.
-                </p>
-              </div>
-            </FadeUp>
-          </div>
+          <StaggerContainer className="grid md:grid-cols-3 gap-8">
+            {uspItems.map((item, index) => (
+              <StaggerItem key={index}>
+                <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-body text-[var(--color-apple-gray-600)]">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 
       {/* Testimonial Bernadette */}
       <section className="section-spacing">
         <div className="container-content">
-          <FadeUp>
-            <div className="max-w-3xl mx-auto text-center">
-              <Quote className="h-12 w-12 text-[var(--color-apple-gray-300)] mx-auto mb-6" strokeWidth={1} />
-              <blockquote>
-                <p className="text-title-2 text-[var(--color-apple-dark)] leading-relaxed">
-                  «Als Seniorin und Grossmutter war ich anfangs skeptisch, ob RubikONE auch für mich geeignet ist. Die klaren Anleitungen und die Möglichkeit, alles mit der Familie zu machen, haben mich überzeugt.»
-                </p>
-              </blockquote>
-              <div className="mt-8">
-                <p className="text-body font-semibold text-[var(--color-apple-dark)]">Bernadette</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">66 Jahre, Köniz</p>
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <FadeUp>
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <Image
+                  src="/images/gemeinden/bernadette.jpg"
+                  alt="Bernadette bei RubikONE"
+                  fill
+                  className="object-cover"
+                />
               </div>
-            </div>
-          </FadeUp>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <div>
+                <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
+                <blockquote>
+                  <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
+                    «Als Seniorin und Grossmutter war ich anfangs skeptisch, ob RubikONE auch für mich geeignet ist. Die klaren Anleitungen und die Möglichkeit, alles mit der Familie zu machen, haben mich überzeugt.»
+                  </p>
+                </blockquote>
+                <div className="mt-6">
+                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">Bernadette</p>
+                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">66 Jahre, Köniz</p>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
         </div>
       </section>
 
@@ -300,14 +322,24 @@ export default function FuerGemeindenPage() {
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {prozessSchritte.map((schritt, index) => (
               <StaggerItem key={index}>
-                <div className="bg-white/5 rounded-[var(--radius-apple-lg)] p-6">
-                  <div className="text-display text-[var(--color-apple-blue)]">
-                    {schritt.nummer}
+                <div className="bg-white/5 rounded-[var(--radius-apple-lg)] overflow-hidden">
+                  <div className="relative aspect-[4/3]">
+                    <Image
+                      src={schritt.image}
+                      alt={schritt.titel}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-[var(--color-apple-blue)] flex items-center justify-center text-white font-bold">
+                      {schritt.nummer}
+                    </div>
                   </div>
-                  <h3 className="mt-2 text-headline">{schritt.titel}</h3>
-                  <p className="mt-2 text-body-sm text-white/70">
-                    {schritt.beschreibung}
-                  </p>
+                  <div className="p-5">
+                    <h3 className="text-headline">{schritt.titel}</h3>
+                    <p className="mt-2 text-body-sm text-white/70">
+                      {schritt.beschreibung}
+                    </p>
+                  </div>
                 </div>
               </StaggerItem>
             ))}
@@ -322,7 +354,7 @@ export default function FuerGemeindenPage() {
             <FadeUp>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/koeniz/overview.jpg"
+                  src="/images/gemeinden/koeniz-ref.jpg"
                   alt="RubikONE Köniz"
                   fill
                   className="object-cover"
