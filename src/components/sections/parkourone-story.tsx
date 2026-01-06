@@ -14,7 +14,7 @@ import { appleTransition } from "@/lib/animations";
 const TIMELINE_IMAGES: Record<string, string> = {
   "2000": "/images/parkour/geschichte/muensingen-roger-widmer-altes-bild.jpg",
   "2006": "/images/parkour/geschichte/erste-pk-klasse.jpg",
-  "2007": "/images/parkour/geschichte/firmengruendung.jpg",
+  "2008": "/images/parkour/geschichte/firmengruendung.jpg",
   "2012": "/images/parkour/geschichte/tracespace_ruhleben2.jpg",
   "2024": "/images/parkour/parkour-pro-bild.jpg",
 };

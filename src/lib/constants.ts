@@ -597,7 +597,7 @@ export const PARKOURONE_STORY = {
         description: "In Münsingen starten wir das weltweit erste organisierte Parkour-Training. Gleichzeitig bauen wir den ersten mobilen Parkour-Park.",
       },
       {
-        year: "2007",
+        year: "2008",
         title: "ParkourONE gegründet",
         description: "Roger Widmer, Felix Stöckli und Steven Käser gründen ParkourONE – im Einvernehmen mit David Belle.",
       },
