@@ -16,6 +16,7 @@ export const SITE_CONFIG = {
 // Navigation
 export const NAVIGATION_ITEMS = [
   { label: "Konzept", href: "/konzept" },
+  { label: "Für Gemeinden", href: "/fuer-gemeinden" },
   { label: "Fallstudie Köniz", href: "/koeniz" },
   { label: "Über uns", href: "/ueber-uns" },
   { label: "Impulsworkshop", href: "/impulsworkshop" },
@@ -447,6 +448,7 @@ export const CONTACT_INFO = {
 export const FOOTER_LINKS = {
   hauptseiten: [
     { label: "Konzept", href: "/konzept" },
+    { label: "Für Gemeinden", href: "/fuer-gemeinden" },
     { label: "Fallstudie Köniz", href: "/koeniz" },
     { label: "Über uns", href: "/ueber-uns" },
     { label: "Impulsworkshop", href: "/impulsworkshop" },
