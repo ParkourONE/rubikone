@@ -13,21 +13,33 @@ import {
   Users,
   Package,
   Wrench,
-  Sparkles
+  Sparkles,
+  Palette,
+  Shield,
+  Box,
+  AlertCircle
 } from "lucide-react";
 import { CONFIGURATOR } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { appleTransition } from "@/lib/animations";
 
 type PackageId = "kompakt" | "standard" | "premium";
 type ServiceId = "standortanalyse" | "baugesuch" | "eigentuemer" | "produktion" | "montage";
 
 const serviceIcons: Record<ServiceId, React.ReactNode> = {
-  standortanalyse: <MapPin className="h-5 w-5" />,
-  baugesuch: <FileText className="h-5 w-5" />,
-  eigentuemer: <Users className="h-5 w-5" />,
-  produktion: <Package className="h-5 w-5" />,
-  montage: <Wrench className="h-5 w-5" />,
+  standortanalyse: <MapPin className="h-4 w-4" />,
+  baugesuch: <FileText className="h-4 w-4" />,
+  eigentuemer: <Users className="h-4 w-4" />,
+  produktion: <Package className="h-4 w-4" />,
+  montage: <Wrench className="h-4 w-4" />,
 };
+
+// Icons for core services
+const coreServiceIcons = [
+  <Palette key="design" className="h-4 w-4" />,
+  <Shield key="safety" className="h-4 w-4" />,
+  <Box key="material" className="h-4 w-4" />,
+];
 
 function formatPrice(price: number): string {
   return new Intl.NumberFormat("de-CH", {
@@ -114,18 +126,6 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
     setSelectedServices(newServices);
   };
 
-  const handlePackageSelect = (packageId: PackageId) => {
-    setSelectedPackage(packageId);
-    // Auto-advance after brief delay
-    setTimeout(() => setStep(2), 400);
-  };
-
-  const steps = [
-    { number: 1, label: "Paket" },
-    { number: 2, label: "Leistungen" },
-    { number: 3, label: "Zusammenfassung" },
-  ];
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -133,169 +133,135 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 bg-white"
+          className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-16 pb-4 overflow-y-auto"
+          onClick={onClose}
         >
-          {/* Header */}
-          <div className="fixed top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-xl border-b border-[var(--color-apple-gray-200)] z-10">
-            <div className="h-full max-w-5xl mx-auto px-6 flex items-center justify-between">
-              {/* Back / Close */}
-              <button
-                onClick={step > 1 ? () => setStep(step - 1) : onClose}
-                className="flex items-center gap-2 text-[var(--color-apple-blue)] hover:opacity-70 transition-opacity"
-              >
-                {step > 1 ? (
-                  <>
-                    <ArrowLeft className="h-4 w-4" />
-                    <span className="text-body-sm font-medium">Zurück</span>
-                  </>
-                ) : (
-                  <>
-                    <X className="h-5 w-5" />
-                    <span className="text-body-sm font-medium">Schliessen</span>
-                  </>
-                )}
-              </button>
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
 
-              {/* Progress Steps */}
-              <div className="flex items-center gap-2">
-                {steps.map((s, index) => (
-                  <div key={s.number} className="flex items-center">
+          {/* Modal */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={appleTransition}
+            className="relative bg-white rounded-3xl w-full max-w-2xl shadow-2xl my-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-[var(--color-apple-gray-100)] rounded-full flex items-center justify-center hover:bg-[var(--color-apple-gray-200)] transition-colors"
+            >
+              <X className="h-5 w-5 text-[var(--color-apple-gray-600)]" />
+            </button>
+
+            {/* Progress Steps */}
+            <div className="px-8 pt-6 pb-4 border-b border-[var(--color-apple-gray-200)]">
+              <div className="flex items-center justify-center gap-4">
+                {[1, 2, 3].map((num) => (
+                  <div key={num} className="flex items-center gap-4">
                     <button
-                      onClick={() => s.number < step && setStep(s.number)}
-                      disabled={s.number > step}
+                      onClick={() => num < step && setStep(num)}
+                      disabled={num > step}
                       className={cn(
-                        "flex items-center gap-2 px-3 py-1.5 rounded-full transition-all",
-                        step === s.number
+                        "w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all",
+                        step === num
                           ? "bg-[var(--color-apple-blue)] text-white"
-                          : s.number < step
-                          ? "bg-[var(--color-apple-gray-100)] text-[var(--color-apple-gray-600)] hover:bg-[var(--color-apple-gray-200)]"
-                          : "bg-transparent text-[var(--color-apple-gray-400)]"
+                          : num < step
+                          ? "bg-[var(--color-apple-blue)]/20 text-[var(--color-apple-blue)]"
+                          : "bg-[var(--color-apple-gray-200)] text-[var(--color-apple-gray-500)]"
                       )}
                     >
-                      <span className={cn(
-                        "w-5 h-5 rounded-full flex items-center justify-center text-caption font-semibold",
-                        step === s.number
-                          ? "bg-white/20"
-                          : s.number < step
-                          ? "bg-[var(--color-apple-blue)] text-white"
-                          : "bg-[var(--color-apple-gray-200)]"
-                      )}>
-                        {s.number < step ? <Check className="h-3 w-3" /> : s.number}
-                      </span>
-                      <span className="text-caption font-medium hidden sm:inline">{s.label}</span>
+                      {num < step ? <Check className="h-4 w-4" /> : num}
                     </button>
-                    {index < steps.length - 1 && (
+                    {num < 3 && (
                       <div className={cn(
-                        "w-8 h-0.5 mx-1",
-                        s.number < step ? "bg-[var(--color-apple-blue)]" : "bg-[var(--color-apple-gray-200)]"
+                        "w-12 h-0.5",
+                        num < step ? "bg-[var(--color-apple-blue)]" : "bg-[var(--color-apple-gray-200)]"
                       )} />
                     )}
                   </div>
                 ))}
               </div>
-
-              {/* Spacer for balance */}
-              <div className="w-24" />
             </div>
-          </div>
 
-          {/* Content */}
-          <div className="h-full overflow-y-auto pt-16 pb-32">
-            <div className="max-w-5xl mx-auto px-6 py-12">
+            {/* Content */}
+            <div className="p-8">
               <AnimatePresence mode="wait">
                 {/* Step 1: Package Selection */}
                 {step === 1 && (
                   <motion.div
                     key="step1"
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <div className="text-center mb-12">
-                      <h1 className="text-display text-[var(--color-apple-dark)]">
-                        Wählen Sie Ihr Paket
-                      </h1>
-                      <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
-                        Wie viele Bewegungsposten soll Ihre Route umfassen?
-                      </p>
-                    </div>
+                    <h2 className="text-title-2 text-[var(--color-apple-dark)] text-center mb-2">
+                      Paket wählen
+                    </h2>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
+                      Wie viele Posten soll Ihre Route umfassen?
+                    </p>
 
-                    <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-3 gap-3">
                       {CONFIGURATOR.packages.map((pkg) => (
-                        <motion.button
+                        <button
                           key={pkg.id}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                          onClick={() => handlePackageSelect(pkg.id as PackageId)}
+                          onClick={() => setSelectedPackage(pkg.id as PackageId)}
                           className={cn(
-                            "relative p-8 rounded-3xl text-left transition-all",
+                            "relative p-4 rounded-2xl text-center transition-all",
                             selectedPackage === pkg.id
-                              ? "bg-[var(--color-apple-blue)] text-white shadow-apple-xl"
+                              ? "bg-[var(--color-apple-blue)] text-white ring-2 ring-[var(--color-apple-blue)] ring-offset-2"
                               : "bg-[var(--color-apple-gray-100)] hover:bg-[var(--color-apple-gray-200)]"
                           )}
                         >
                           {"recommended" in pkg && pkg.recommended && selectedPackage !== pkg.id && (
-                            <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--color-apple-blue)] text-white text-caption font-medium rounded-full">
+                            <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[var(--color-apple-blue)] text-white text-[10px] font-medium rounded-full">
                               Empfohlen
                             </span>
                           )}
-
-                          <div className="text-center">
-                            <div className={cn(
-                              "text-6xl font-bold mb-2",
-                              selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-blue)]"
-                            )}>
-                              {pkg.posts}
-                            </div>
-                            <p className={cn(
-                              "text-body-sm mb-4",
-                              selectedPackage === pkg.id ? "text-white/70" : "text-[var(--color-apple-gray-600)]"
-                            )}>
-                              Posten
-                            </p>
-                            <h3 className={cn(
-                              "text-title-2 font-semibold mb-2",
-                              selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-dark)]"
-                            )}>
-                              {pkg.name}
-                            </h3>
-                            <p className={cn(
-                              "text-body-sm mb-6",
-                              selectedPackage === pkg.id ? "text-white/70" : "text-[var(--color-apple-gray-600)]"
-                            )}>
-                              {pkg.description}
-                            </p>
-                            <p className={cn(
-                              "text-title-3 font-semibold",
-                              selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-dark)]"
-                            )}>
-                              ab {formatPrice(pkg.basePrice)}
-                            </p>
+                          <div className={cn(
+                            "text-3xl font-bold mb-1",
+                            selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-blue)]"
+                          )}>
+                            {pkg.posts}
                           </div>
-
-                          {selectedPackage === pkg.id && (
-                            <motion.div
-                              initial={{ scale: 0 }}
-                              animate={{ scale: 1 }}
-                              className="absolute top-4 right-4 w-8 h-8 bg-white rounded-full flex items-center justify-center"
-                            >
-                              <Check className="h-5 w-5 text-[var(--color-apple-blue)]" />
-                            </motion.div>
-                          )}
-                        </motion.button>
+                          <p className={cn(
+                            "text-caption",
+                            selectedPackage === pkg.id ? "text-white/70" : "text-[var(--color-apple-gray-600)]"
+                          )}>
+                            Posten
+                          </p>
+                          <p className={cn(
+                            "text-body-sm font-semibold mt-2",
+                            selectedPackage === pkg.id ? "text-white" : "text-[var(--color-apple-dark)]"
+                          )}>
+                            {pkg.name}
+                          </p>
+                        </button>
                       ))}
                     </div>
 
-                    <div className="text-center mt-12">
-                      <button
-                        onClick={() => setStep(2)}
-                        className="btn-primary"
-                      >
-                        Weiter zu Leistungen
-                        <ArrowRight className="h-4 w-4" />
-                      </button>
+                    {/* Core services included */}
+                    <div className="mt-6 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
+                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-3">
+                        Immer inklusive:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {CONFIGURATOR.coreServices.map((service, index) => (
+                          <span
+                            key={index}
+                            className="inline-flex items-center gap-1.5 px-3 py-1 bg-white rounded-full text-caption text-[var(--color-apple-dark)]"
+                          >
+                            <span className="text-[var(--color-apple-blue)]">
+                              {coreServiceIcons[index]}
+                            </span>
+                            {service}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -304,61 +270,37 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                 {step === 2 && (
                   <motion.div
                     key="step2"
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <div className="text-center mb-12">
-                      <h1 className="text-display text-[var(--color-apple-dark)]">
-                        Was sollen wir übernehmen?
-                      </h1>
-                      <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
-                        Wählen Sie die Leistungen, die ParkourONE für Sie erledigen soll.
-                      </p>
-                    </div>
+                    <h2 className="text-title-2 text-[var(--color-apple-dark)] text-center mb-2">
+                      Leistungen wählen
+                    </h2>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
+                      Was soll ParkourONE übernehmen?
+                    </p>
 
-                    {/* Always included */}
-                    <div className="mb-8 p-6 bg-[var(--color-apple-gray-100)] rounded-2xl max-w-3xl mx-auto">
-                      <p className="text-body-sm font-semibold text-[var(--color-apple-gray-600)] mb-4">
-                        Immer inklusive im {currentPackage.name}:
-                      </p>
-                      <div className="flex flex-wrap gap-3">
-                        {CONFIGURATOR.coreServices.map((service, index) => (
-                          <span
-                            key={index}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full text-body-sm text-[var(--color-apple-dark)]"
-                          >
-                            <Check className="h-4 w-4 text-[var(--color-apple-blue)]" />
-                            {service}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Toggleable services */}
-                    <div className="space-y-4 max-w-3xl mx-auto">
+                    <div className="space-y-2">
                       {CONFIGURATOR.additionalServices.map((service) => {
                         const isSelected = selectedServices.has(service.id as ServiceId);
                         const price = service.prices[selectedPackage as keyof typeof service.prices];
 
                         return (
-                          <motion.button
+                          <button
                             key={service.id}
-                            whileHover={{ scale: 1.01 }}
-                            whileTap={{ scale: 0.99 }}
                             onClick={() => toggleService(service.id as ServiceId)}
                             className={cn(
-                              "w-full p-6 rounded-2xl text-left transition-all flex items-center gap-6",
+                              "w-full p-4 rounded-xl text-left transition-all flex items-center gap-4",
                               isSelected
-                                ? "bg-[var(--color-apple-blue)]/5 border-2 border-[var(--color-apple-blue)]"
-                                : "bg-[var(--color-apple-gray-100)] border-2 border-transparent hover:bg-[var(--color-apple-gray-200)]"
+                                ? "bg-[var(--color-apple-blue)]/10 border border-[var(--color-apple-blue)]"
+                                : "bg-[var(--color-apple-gray-100)] border border-transparent hover:bg-[var(--color-apple-gray-200)]"
                             )}
                           >
-                            {/* Icon */}
                             <div
                               className={cn(
-                                "flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center transition-colors",
+                                "flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center",
                                 isSelected
                                   ? "bg-[var(--color-apple-blue)] text-white"
                                   : "bg-white text-[var(--color-apple-gray-500)]"
@@ -366,51 +308,33 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             >
                               {serviceIcons[service.id as ServiceId]}
                             </div>
-
-                            {/* Content */}
-                            <div className="flex-grow">
-                              <div className="flex items-center justify-between mb-1">
-                                <h3 className="text-body font-semibold text-[var(--color-apple-dark)]">
-                                  {service.name}
-                                </h3>
-                                <span
-                                  className={cn(
-                                    "text-body font-semibold",
-                                    isSelected ? "text-[var(--color-apple-blue)]" : "text-[var(--color-apple-gray-500)]"
-                                  )}
-                                >
-                                  +{formatPrice(price)}
-                                </span>
-                              </div>
-                              <p className="text-body-sm text-[var(--color-apple-gray-600)]">
+                            <div className="flex-grow min-w-0">
+                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)] truncate">
+                                {service.name}
+                              </p>
+                              <p className="text-caption text-[var(--color-apple-gray-600)] truncate">
                                 {isSelected ? service.description : service.selfDescription}
                               </p>
                             </div>
-
-                            {/* Checkbox */}
-                            <div
-                              className={cn(
-                                "flex-shrink-0 w-7 h-7 rounded-lg border-2 flex items-center justify-center transition-all",
+                            <div className="flex items-center gap-3 flex-shrink-0">
+                              <span className={cn(
+                                "text-body-sm font-semibold",
+                                isSelected ? "text-[var(--color-apple-blue)]" : "text-[var(--color-apple-gray-500)]"
+                              )}>
+                                +{formatPrice(price)}
+                              </span>
+                              <div className={cn(
+                                "w-5 h-5 rounded flex items-center justify-center",
                                 isSelected
-                                  ? "border-[var(--color-apple-blue)] bg-[var(--color-apple-blue)]"
-                                  : "border-[var(--color-apple-gray-300)] bg-white"
-                              )}
-                            >
-                              {isSelected && <Check className="h-4 w-4 text-white" />}
+                                  ? "bg-[var(--color-apple-blue)]"
+                                  : "border-2 border-[var(--color-apple-gray-300)]"
+                              )}>
+                                {isSelected && <Check className="h-3 w-3 text-white" />}
+                              </div>
                             </div>
-                          </motion.button>
+                          </button>
                         );
                       })}
-                    </div>
-
-                    <div className="text-center mt-12">
-                      <button
-                        onClick={() => setStep(3)}
-                        className="btn-primary"
-                      >
-                        Zusammenfassung anzeigen
-                        <ArrowRight className="h-4 w-4" />
-                      </button>
                     </div>
                   </motion.div>
                 )}
@@ -419,145 +343,107 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                 {step === 3 && (
                   <motion.div
                     key="step3"
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
+                    exit={{ opacity: 0, x: -10 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <div className="text-center mb-12">
-                      <h1 className="text-display text-[var(--color-apple-dark)]">
-                        Ihre Konfiguration
-                      </h1>
-                      <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
-                        Überprüfen Sie Ihre Auswahl und fordern Sie ein Angebot an.
+                    <h2 className="text-title-2 text-[var(--color-apple-dark)] text-center mb-6">
+                      Ihre Konfiguration
+                    </h2>
+
+                    {/* Package */}
+                    <div className="flex items-center justify-between p-4 bg-[var(--color-apple-gray-100)] rounded-xl mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 bg-[var(--color-apple-blue)] rounded-xl flex items-center justify-center text-white font-bold text-lg">
+                          {currentPackage.posts}
+                        </div>
+                        <div>
+                          <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
+                            {currentPackage.name}
+                          </p>
+                          <p className="text-caption text-[var(--color-apple-gray-600)]">
+                            {currentPackage.posts} Posten
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-body font-semibold text-[var(--color-apple-dark)]">
+                        {formatPrice(currentPackage.basePrice)}
                       </p>
                     </div>
 
-                    <div className="max-w-3xl mx-auto">
-                      {/* Package Summary */}
-                      <div className="bg-[var(--color-apple-gray-100)] rounded-3xl p-8 mb-8">
-                        <div className="flex items-center justify-between mb-6">
-                          <div>
-                            <p className="text-body-sm text-[var(--color-apple-gray-600)]">Gewähltes Paket</p>
-                            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                              {currentPackage.name}
-                            </h2>
-                            <p className="text-body text-[var(--color-apple-gray-600)]">
-                              {currentPackage.posts} Bewegungsposten
-                            </p>
+                    {/* Included services */}
+                    <div className="mb-4">
+                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
+                        ParkourONE übernimmt:
+                      </p>
+                      <div className="space-y-1">
+                        {CONFIGURATOR.coreServices.map((service, index) => (
+                          <div key={index} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                            <span className="text-[var(--color-apple-blue)]">{coreServiceIcons[index]}</span>
+                            {service}
                           </div>
-                          <div className="text-right">
-                            <p className="text-body-sm text-[var(--color-apple-gray-600)]">Basispreis</p>
-                            <p className="text-title-2 text-[var(--color-apple-dark)]">
-                              {formatPrice(currentPackage.basePrice)}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="border-t border-[var(--color-apple-gray-300)] pt-6">
-                          <p className="text-body-sm font-semibold text-[var(--color-apple-gray-600)] mb-4">
-                            Inklusive:
-                          </p>
-                          <ul className="space-y-2">
-                            {CONFIGURATOR.coreServices.map((service, index) => (
-                              <li key={index} className="flex items-center gap-3 text-body text-[var(--color-apple-dark)]">
-                                <Check className="h-4 w-4 text-[var(--color-apple-blue)]" />
-                                {service}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
+                        ))}
+                        {CONFIGURATOR.additionalServices
+                          .filter((s) => selectedServices.has(s.id as ServiceId))
+                          .map((service) => (
+                            <div key={service.id} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                              <span className="text-[var(--color-apple-blue)]">{serviceIcons[service.id as ServiceId]}</span>
+                              {service.name}
+                              <span className="text-[var(--color-apple-gray-500)] ml-auto">
+                                +{formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}
+                              </span>
+                            </div>
+                          ))}
                       </div>
+                    </div>
 
-                      {/* Services Summary */}
-                      {selectedServices.size > 0 && (
-                        <div className="bg-white border border-[var(--color-apple-gray-200)] rounded-3xl p-8 mb-8">
-                          <p className="text-body-sm font-semibold text-[var(--color-apple-gray-600)] mb-4">
-                            Zusätzlich gewählte Leistungen:
-                          </p>
-                          <ul className="space-y-4">
-                            {CONFIGURATOR.additionalServices
-                              .filter((s) => selectedServices.has(s.id as ServiceId))
-                              .map((service) => {
-                                const price = service.prices[selectedPackage as keyof typeof service.prices];
-                                return (
-                                  <li key={service.id} className="flex items-center justify-between">
-                                    <div className="flex items-center gap-3">
-                                      <div className="w-10 h-10 rounded-xl bg-[var(--color-apple-blue)]/10 flex items-center justify-center text-[var(--color-apple-blue)]">
-                                        {serviceIcons[service.id as ServiceId]}
-                                      </div>
-                                      <span className="text-body text-[var(--color-apple-dark)]">{service.name}</span>
-                                    </div>
-                                    <span className="text-body font-semibold text-[var(--color-apple-dark)]">
-                                      +{formatPrice(price)}
-                                    </span>
-                                  </li>
-                                );
-                              })}
-                          </ul>
-                        </div>
-                      )}
-
-                      {/* Self-service info */}
-                      {selectedServices.size < 5 && (
-                        <div className="bg-amber-50 border border-amber-200 rounded-3xl p-8 mb-8">
-                          <p className="text-body-sm font-semibold text-amber-800 mb-4">
-                            Diese Aufgaben übernehmen Sie selbst:
-                          </p>
-                          <ul className="space-y-2">
-                            {CONFIGURATOR.additionalServices
-                              .filter((s) => !selectedServices.has(s.id as ServiceId))
-                              .map((service) => (
-                                <li key={service.id} className="text-body text-amber-700">
-                                  • {service.selfDescription}
-                                </li>
-                              ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {/* CTA */}
-                      <div className="text-center">
-                        <Link
-                          href="/kontakt"
-                          onClick={onClose}
-                          className="btn-primary text-lg px-10 py-4"
-                        >
-                          Unverbindliches Angebot anfragen
-                          <ArrowRight className="h-5 w-5" />
-                        </Link>
-                        <p className="mt-4 text-body-sm text-[var(--color-apple-gray-600)]">
-                          Wir melden uns innerhalb von 24 Stunden bei Ihnen.
+                    {/* Self-service */}
+                    {selectedServices.size < 5 && (
+                      <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl mb-4">
+                        <p className="text-caption font-medium text-amber-800 mb-2 flex items-center gap-2">
+                          <AlertCircle className="h-4 w-4" />
+                          Sie übernehmen selbst:
                         </p>
+                        <div className="space-y-1">
+                          {CONFIGURATOR.additionalServices
+                            .filter((s) => !selectedServices.has(s.id as ServiceId))
+                            .map((service) => (
+                              <div key={service.id} className="flex items-center gap-2 text-caption text-amber-700">
+                                <span className="text-amber-500">{serviceIcons[service.id as ServiceId]}</span>
+                                {service.selfDescription}
+                              </div>
+                            ))}
+                        </div>
                       </div>
+                    )}
+
+                    {/* Total */}
+                    <div className="flex items-center justify-between p-4 bg-[var(--color-apple-blue)] rounded-xl text-white">
+                      <p className="text-body font-medium">Geschätzter Gesamtpreis</p>
+                      <p className="text-title-2 font-bold">{formatPrice(totalPrice)}</p>
                     </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-          </div>
 
-          {/* Sticky Price Footer */}
-          <motion.div
-            initial={{ y: 100 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.2, duration: 0.4 }}
-            className="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur-xl border-t border-[var(--color-apple-gray-200)]"
-          >
-            <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-              <div>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">
-                  {currentPackage.name} • {currentPackage.posts} Posten • {selectedServices.size} Zusatzleistungen
-                </p>
-              </div>
-              <div className="flex items-center gap-6">
-                <div className="text-right">
-                  <p className="text-caption text-[var(--color-apple-gray-600)]">Geschätzter Preis</p>
-                  <p className="text-title-2 text-[var(--color-apple-dark)] font-semibold">
-                    {formatPrice(totalPrice)}
-                  </p>
-                </div>
-                {step < 3 && (
+            {/* Footer */}
+            <div className="px-8 pb-8 pt-4 border-t border-[var(--color-apple-gray-200)]">
+              <div className="flex items-center justify-between gap-4">
+                {step > 1 ? (
+                  <button
+                    onClick={() => setStep(step - 1)}
+                    className="flex items-center gap-2 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    Zurück
+                  </button>
+                ) : (
+                  <div />
+                )}
+
+                {step < 3 ? (
                   <button
                     onClick={() => setStep(step + 1)}
                     className="btn-primary"
@@ -565,8 +451,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     Weiter
                     <ArrowRight className="h-4 w-4" />
                   </button>
-                )}
-                {step === 3 && (
+                ) : (
                   <Link
                     href="/kontakt"
                     onClick={onClose}
@@ -601,18 +486,18 @@ export function ConfiguratorTrigger({
         <button
           onClick={() => setIsOpen(true)}
           className={cn(
-            "block w-full p-8 bg-gradient-to-br from-[var(--color-apple-blue)] to-[var(--color-apple-blue)]/80 rounded-3xl text-white text-left hover:shadow-apple-xl transition-shadow group",
+            "block w-full p-6 bg-gradient-to-br from-[var(--color-apple-blue)] to-[var(--color-apple-blue)]/80 rounded-2xl text-white text-left hover:shadow-apple-xl transition-shadow group",
             className
           )}
         >
-          <Sparkles className="h-10 w-10 mb-6 opacity-80" />
-          <h3 className="text-title-2 mb-2">Projekt konfigurieren</h3>
-          <p className="text-body opacity-80 mb-6">
-            Stellen Sie Ihr RubikONE zusammen und sehen Sie direkt den Preis.
+          <Sparkles className="h-8 w-8 mb-4 opacity-80" />
+          <h3 className="text-headline font-semibold mb-1">Preis berechnen</h3>
+          <p className="text-body-sm opacity-80 mb-4">
+            In 3 Schritten zu Ihrem individuellen Angebot.
           </p>
-          <span className="inline-flex items-center gap-2 text-body font-semibold">
+          <span className="inline-flex items-center gap-2 text-body-sm font-semibold">
             Konfigurator starten
-            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </button>
         <ConfiguratorOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
@@ -631,7 +516,7 @@ export function ConfiguratorTrigger({
           )}
         >
           <Sparkles className="h-4 w-4" />
-          Projekt konfigurieren
+          Preis berechnen
           <ArrowRight className="h-4 w-4" />
         </button>
         <ConfiguratorOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
@@ -646,7 +531,7 @@ export function ConfiguratorTrigger({
         className={cn("btn-primary", className)}
       >
         <Sparkles className="h-4 w-4" />
-        Jetzt konfigurieren
+        Preis berechnen
       </button>
       <ConfiguratorOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>
