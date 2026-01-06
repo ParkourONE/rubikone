@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Send, Lock, CheckCircle } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -108,6 +109,23 @@ export function ContactForm({
                   rows={4}
                   className="resize-none"
                 />
+              </div>
+
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="datenschutz"
+                  name="datenschutz"
+                  required
+                  className="mt-1 h-4 w-4 rounded border-[var(--color-apple-gray-300)] text-[var(--color-apple-blue)] focus:ring-[var(--color-apple-blue)]"
+                />
+                <Label htmlFor="datenschutz" className="text-body-sm text-[var(--color-apple-gray-600)] font-normal cursor-pointer">
+                  Ich habe die{" "}
+                  <Link href="/datenschutz" className="text-[var(--color-apple-blue)] hover:underline" target="_blank">
+                    Datenschutzerklärung
+                  </Link>{" "}
+                  gelesen und bin mit der Verarbeitung meiner Daten einverstanden. *
+                </Label>
               </div>
 
               <button

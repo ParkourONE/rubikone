@@ -430,17 +430,17 @@ export const CONTACT_PERSON = {
   name: "Michèle Lütolf",
   role: "Ansprechpartnerin RubikONE",
   email: "michele@parkourone.ch",
-  phone: "+41 XX XXX XX XX",
+  phone: "+41 31 971 28 27",
   image: "/images/team/michele.jpg",
 } as const;
 
 // Contact Info
 export const CONTACT_INFO = {
   company: "ParkourONE GmbH",
-  street: "Adresse folgt",
-  city: "Bern",
+  street: "Könizstrasse 161",
+  city: "3097 Liebefeld",
   email: "info@rubikone.ch",
-  phone: "+41 XX XXX XX XX",
+  phone: "+41 31 971 28 27",
 } as const;
 
 // Footer Links
