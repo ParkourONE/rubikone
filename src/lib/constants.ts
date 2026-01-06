@@ -153,46 +153,40 @@ export const DIFFICULTY_LEVELS = {
   red: { label: "Schwer", color: "#EF4444" },
 } as const;
 
-// Vergleichstabelle
+// RubikONE Vorteile
 export const COMPARISON_TABLE = {
-  headline: "Warum RubikONE?",
-  subheadline: "60–70% günstiger. Überall integrierbar. Für alle.",
-  columns: ["", "Pumptrack", "Outdoor-Gym", "RubikONE"],
-  rows: [
+  headline: "Was RubikONE auszeichnet",
+  subheadline: "Eine neue Art, Bewegung in den öffentlichen Raum zu bringen.",
+  features: [
     {
-      label: "Investition",
-      values: ["CHF 200–500k", "CHF 80–150k", "CHF 45–120k"],
-      highlight: 2,
+      label: "Keine neue Fläche nötig",
+      description: "RubikONE nutzt bestehende Infrastruktur – Treppen, Mauern, Geländer werden zu Bewegungsposten.",
+      icon: "map",
     },
     {
-      label: "Flächenbedarf",
-      values: ["500–2000m²", "100–300m²", "0m² (bestehend)"],
-      highlight: 2,
+      label: "Minimaler baulicher Eingriff",
+      description: "Kein Tiefbau, keine Fundamente. Nur Schilder und Bodenmarkierungen. Denkmalschutz-kompatibel bewiesen in Köniz.",
+      icon: "construction",
     },
     {
-      label: "Baugenehmigung",
-      values: ["Tiefbau nötig", "Fundamente nötig", "Minimal"],
-      highlight: 2,
-    },
-    {
-      label: "Denkmalschutz",
-      values: ["Unmöglich", "Schwierig", "Bewiesen (Köniz)"],
-      highlight: 2,
-    },
-    {
-      label: "Wartung/Jahr",
-      values: ["CHF 5–10k", "CHF 3–5k", "CHF 0"],
-      highlight: 2,
-    },
-    {
-      label: "Zielgruppe",
-      values: ["Kinder/Jugend", "Erwachsene", "Alle Generationen"],
-      highlight: 2,
+      label: "Für alle Generationen",
+      description: "Von 6 bis 96 – RubikONE spricht alle an. Drei Schwierigkeitsstufen pro Posten machen es inklusiv.",
+      icon: "users",
     },
     {
       label: "Wissenschaftlich evaluiert",
-      values: ["Nein", "Nein", "BASPO lab7x1"],
-      highlight: 2,
+      description: "Im Rahmen des BASPO lab7x1 über zwei Jahre begleitet und durch Affective Advisory evaluiert.",
+      icon: "science",
+    },
+    {
+      label: "Wartungsarm",
+      description: "8 Monate Betrieb in Köniz: CHF 0 Wartungskosten, 0 Vandalismusfälle.",
+      icon: "tools",
+    },
+    {
+      label: "Modulare Umsetzung",
+      description: "Sie entscheiden, welche Leistungen Sie selbst übernehmen und wo Sie unsere Expertise nutzen.",
+      icon: "puzzle",
     },
   ],
 } as const;

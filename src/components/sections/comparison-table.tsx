@@ -1,10 +1,18 @@
 "use client";
 
-import { Check, X, Minus } from "lucide-react";
+import { Map, Construction, Users, FlaskConical, Wrench, Puzzle } from "lucide-react";
 import { COMPARISON_TABLE } from "@/lib/constants";
-import { FadeUp } from "@/components/shared/fade-up";
+import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
-import { cn } from "@/lib/utils";
+
+const iconMap: Record<string, React.ReactNode> = {
+  map: <Map className="h-6 w-6" />,
+  construction: <Construction className="h-6 w-6" />,
+  users: <Users className="h-6 w-6" />,
+  science: <FlaskConical className="h-6 w-6" />,
+  tools: <Wrench className="h-6 w-6" />,
+  puzzle: <Puzzle className="h-6 w-6" />,
+};
 
 export function ComparisonSection() {
   return (
@@ -16,54 +24,23 @@ export function ComparisonSection() {
           align="center"
         />
 
-        <FadeUp delay={0.2}>
-          <div className="mt-12 lg:mt-16 overflow-x-auto">
-            <table className="w-full max-w-4xl mx-auto">
-              {/* Header */}
-              <thead>
-                <tr>
-                  {COMPARISON_TABLE.columns.map((col, index) => (
-                    <th
-                      key={index}
-                      className={cn(
-                        "text-left p-4 text-body font-semibold",
-                        index === 0 && "w-1/4",
-                        index === 3 && "bg-[var(--color-apple-blue)]/10 rounded-t-xl text-[var(--color-apple-blue)]"
-                      )}
-                    >
-                      {col}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-
-              {/* Body */}
-              <tbody>
-                {COMPARISON_TABLE.rows.map((row, rowIndex) => (
-                  <tr key={rowIndex} className="border-b border-[var(--color-apple-gray-200)]">
-                    <td className="p-4 text-body text-[var(--color-apple-dark)] font-medium">
-                      {row.label}
-                    </td>
-                    {row.values.map((value, colIndex) => (
-                      <td
-                        key={colIndex}
-                        className={cn(
-                          "p-4 text-body",
-                          colIndex === row.highlight
-                            ? "bg-[var(--color-apple-blue)]/10 font-semibold text-[var(--color-apple-dark)]"
-                            : "text-[var(--color-apple-gray-600)]",
-                          rowIndex === COMPARISON_TABLE.rows.length - 1 && colIndex === row.highlight && "rounded-b-xl"
-                        )}
-                      >
-                        {value}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </FadeUp>
+        <StaggerContainer className="mt-12 lg:mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {COMPARISON_TABLE.features.map((feature, index) => (
+            <StaggerItem key={index}>
+              <div className="bg-white rounded-2xl p-6 shadow-apple h-full">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-apple-blue)]/10 text-[var(--color-apple-blue)] mb-4">
+                  {iconMap[feature.icon]}
+                </div>
+                <h3 className="text-headline text-[var(--color-apple-dark)] mb-2">
+                  {feature.label}
+                </h3>
+                <p className="text-body text-[var(--color-apple-gray-600)]">
+                  {feature.description}
+                </p>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
     </section>
   );
