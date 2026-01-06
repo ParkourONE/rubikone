@@ -148,8 +148,8 @@ export default function FuerGemeindenPage() {
         title="Bewegungsförderung ohne Bauaufwand."
         description="RubikONE verwandelt bestehende Umgebungselemente in vielseitige Bewegungsräume. Nachhaltige Gesundheitsförderung – permanent sichtbar und zugänglich."
         breadcrumb="Für Gemeinden"
-        image="/images/koeniz/overview.jpg"
-        imageAlt="RubikONE in Köniz"
+        image="/images/koeniz/kind-springt.jpg"
+        imageAlt="Kind springt bei RubikONE"
       />
 
       {/* SRF Einstein Video Section */}
