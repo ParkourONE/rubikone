@@ -164,12 +164,12 @@ export const COMPARISON_TABLE = {
     },
     {
       label: "Minimaler baulicher Eingriff",
-      description: "Kein Tiefbau, keine Fundamente. Nur Schilder und Bodenmarkierungen. Denkmalschutz-kompatibel bewiesen in Köniz.",
+      description: "Kein Tiefbau, nur kleine Fundamente für die Schilder. Denkmalschutz-kompatibel bewiesen in Köniz.",
       icon: "construction",
     },
     {
       label: "Für alle Generationen",
-      description: "Von 6 bis 96 – RubikONE spricht alle an. Drei Schwierigkeitsstufen pro Posten machen es inklusiv.",
+      description: "Von 6 bis 96 – RubikONE spricht alle an. Neun Lerndimensionen machen Bewegung für alle zugänglich.",
       icon: "users",
     },
     {

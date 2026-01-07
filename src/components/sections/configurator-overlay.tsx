@@ -582,7 +582,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                 ) : (
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-caption text-[var(--color-apple-gray-600)]">Geschätzter Preis</p>
+                      <p className="text-caption text-[var(--color-apple-gray-600)]">{currentPackage.name} ({currentPackage.posts} Posten)</p>
                       <p className="text-title-3 text-[var(--color-apple-dark)] font-bold">
                         {formatPrice(totalPrice)}
                       </p>
