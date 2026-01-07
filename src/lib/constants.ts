@@ -169,7 +169,7 @@ export const COMPARISON_TABLE = {
     },
     {
       label: "Für alle Generationen",
-      description: "Von 6 bis 96 – RubikONE spricht alle an. Neun Lerndimensionen machen Bewegung für alle zugänglich.",
+      description: "Von 6 bis 96 – RubikONE spricht alle an. Fünf Lerndimensionen machen Bewegung für alle zugänglich.",
       icon: "users",
     },
     {
