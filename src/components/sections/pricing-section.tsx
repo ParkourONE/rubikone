@@ -78,7 +78,7 @@ export function PricingSection() {
 
                 {/* CTA */}
                 <Link
-                  href="/kontakt"
+                  href="/konfigurator"
                   className={cn(
                     "w-full text-center py-3 rounded-full font-medium transition-all",
                     pkg.highlighted
