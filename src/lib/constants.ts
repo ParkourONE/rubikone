@@ -387,7 +387,7 @@ export const KOENIZ_CASE_STUDY = {
     { date: "9. November 2024", event: "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO" },
     { date: "Juli 2025", event: "Abschluss der wissenschaftlichen Evaluation" },
   ],
-  denkmalpflege: "Das Schlossareal Köniz ist als Kulturgut von nationaler Bedeutung eingestuft. Zum Erstaunen aller Beteiligten wurde die Farbmarkierung von der Denkmalpflege auf Anhieb als bewilligungsfähig beurteilt – weil die Installation vollständig reversibel ist.",
+  denkmalpflege: "Das Schlossareal Köniz ist als Kulturgut von nationaler Bedeutung eingestuft. Zum Erstaunen aller Beteiligten wurde die Farbmarkierung von der Denkmalpflege auf Anhieb als bewilligungsfähig beurteilt – weil die Installation reversibel ist.",
   // Workshop-Feedback aus den Public Meetings
   workshopFeedback: [
     "Draussen sein, die Kombination aus Laufen und Übung – nicht nur an einem Fleck.",

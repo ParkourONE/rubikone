@@ -31,7 +31,7 @@ export function VorherNachherTeaser() {
               Keine neuen Geräte. Nur ein neuer Blick.
             </h2>
             <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-              RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar – normenkonform und vollständig reversibel.
+              RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar – normenkonform und reversibel.
             </p>
             <div className="mt-8">
               <Link href="/konzept" className="btn-secondary inline-flex">
