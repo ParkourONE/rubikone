@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/sections/hero-section";
-import { ProblemSection } from "@/components/sections/problem-section";
 import { WasWaereWennHook } from "@/components/sections/was-waere-wenn-hook";
+import { VideoSection } from "@/components/sections/video-section";
+import { ProblemSection } from "@/components/sections/problem-section";
 import { VorherNachherTeaser } from "@/components/sections/vorher-nachher-teaser";
 import { ComparisonSection } from "@/components/sections/comparison-table";
 import { TestimonialsSection } from "@/components/sections/testimonials";
@@ -21,6 +22,9 @@ export default function HomePage() {
 
       {/* Emotionaler Hook: Was wäre wenn... */}
       <WasWaereWennHook />
+
+      {/* Video: RubikONE in Aktion */}
+      <VideoSection />
 
       {/* Problem: 40% bewegen sich zu wenig */}
       <ProblemSection />
