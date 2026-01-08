@@ -19,11 +19,11 @@ export default function HomePage() {
       {/* Hero: Split-Layout mit Video */}
       <HeroSection />
 
-      {/* Problem: 40% bewegen sich zu wenig */}
-      <ProblemSection />
-
       {/* Emotionaler Hook: Was wäre wenn... */}
       <WasWaereWennHook />
+
+      {/* Problem: 40% bewegen sich zu wenig */}
+      <ProblemSection />
 
       {/* Vorher/Nachher: Das Prinzip visualisiert */}
       <VorherNachherTeaser />
