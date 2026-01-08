@@ -573,7 +573,7 @@ export default function KonzeptPage() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/koeniz" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                Fallstudie Köniz
+                Referenz Köniz
               </Link>
               <Link href="/impulsworkshop" className="btn-secondary text-white hover:text-white/80">
                 Impulsworkshop anfragen

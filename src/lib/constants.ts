@@ -17,7 +17,7 @@ export const SITE_CONFIG = {
 export const NAVIGATION_ITEMS = [
   { label: "Konzept", href: "/konzept" },
   { label: "Für Gemeinden", href: "/fuer-gemeinden" },
-  { label: "Fallstudie Köniz", href: "/koeniz" },
+  { label: "Referenz Köniz", href: "/koeniz" },
   { label: "Impulsworkshop", href: "/impulsworkshop" },
   { label: "Über uns", href: "/ueber-uns" },
 ] as const;
@@ -33,7 +33,7 @@ export const HERO_CONTENT = {
     href: "/fuer-gemeinden",
   },
   ctaSecondary: {
-    label: "Fallstudie Köniz ansehen",
+    label: "Referenz Köniz ansehen",
     href: "/koeniz",
   },
 } as const;
@@ -326,7 +326,7 @@ export const IMPULSWORKSHOP = {
 
 // Köniz Case Study
 export const KOENIZ_CASE_STUDY = {
-  headline: "Fallstudie: Gemeinde Köniz",
+  headline: "Referenz: Gemeinde Köniz",
   subheadline: "Die erste RubikONE-Installation der Schweiz",
   intro: "9 Posten. 2.5 km Route. Mitten im denkmalgeschützten Schlossareal.",
   challenge: {
@@ -442,7 +442,7 @@ export const FOOTER_LINKS = {
   hauptseiten: [
     { label: "Konzept", href: "/konzept" },
     { label: "Für Gemeinden", href: "/fuer-gemeinden" },
-    { label: "Fallstudie Köniz", href: "/koeniz" },
+    { label: "Referenz Köniz", href: "/koeniz" },
     { label: "Über uns", href: "/ueber-uns" },
     { label: "Impulsworkshop", href: "/impulsworkshop" },
   ],

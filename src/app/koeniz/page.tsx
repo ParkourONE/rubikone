@@ -47,9 +47,9 @@ export default function KoenizPage() {
   return (
     <>
       <PageHero
-        title="Köniz hat es vorgemacht."
+        title="Köniz macht es vor."
         description="Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation."
-        breadcrumb="Fallstudie Köniz"
+        breadcrumb="Referenz Köniz"
         image="/images/koeniz/luftbild.jpg"
         imageAlt="Luftaufnahme RubikONE Köniz im Schlossareal"
       />
@@ -187,7 +187,7 @@ export default function KoenizPage() {
           <FadeUp>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full mb-6">
-                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">Denkmalschutz? Kein Problem.</span>
+                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">Denkmalschutz? Wir haben Erfahrung.</span>
               </div>
               <p className="text-title-2 text-[var(--color-apple-dark)]">
                 {KOENIZ_CASE_STUDY.denkmalpflege}

@@ -285,7 +285,7 @@ export default function ImpulsworkshopPage() {
                 Workshop anfragen
               </Link>
               <Link href="/koeniz" className="btn-secondary text-white hover:text-white/80">
-                Fallstudie ansehen
+                Referenz ansehen
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

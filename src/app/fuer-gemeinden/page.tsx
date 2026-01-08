@@ -445,7 +445,7 @@ export default function FuerGemeindenPage() {
                 </div>
                 <div className="mt-8">
                   <Link href="/koeniz" className="btn-secondary inline-flex">
-                    Fallstudie ansehen
+                    Referenz ansehen
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
