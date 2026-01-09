@@ -106,7 +106,7 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="text-display text-[var(--color-apple-dark)]"
               >
-                Bewegung beginnt
+                Parkour beginnt
                 <br />
                 <span className="text-[var(--color-apple-blue)]">
                   vor der Haustür.
