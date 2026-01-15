@@ -21,11 +21,49 @@ import {
   AlertCircle,
   Mail,
   Phone,
-  CheckCircle
+  CheckCircle,
+  Info
 } from "lucide-react";
 import { CONFIGURATOR } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { useScrollLock } from "@/hooks/useScrollLock";
+
+// Info Tooltip Component
+function InfoTooltip({ text }: { text: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="relative inline-flex">
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        onMouseEnter={() => setIsOpen(true)}
+        onMouseLeave={() => setIsOpen(false)}
+        className="w-4 h-4 rounded-full bg-[var(--color-apple-gray-300)] hover:bg-[var(--color-apple-gray-400)] flex items-center justify-center transition-colors"
+      >
+        <Info className="h-2.5 w-2.5 text-[var(--color-apple-gray-600)]" />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 4 }}
+            transition={{ duration: 0.15 }}
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-[var(--color-apple-dark)] text-white text-caption rounded-lg shadow-lg whitespace-nowrap max-w-[200px] text-center z-50"
+            style={{ whiteSpace: 'normal' }}
+          >
+            {text}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[var(--color-apple-dark)]" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 type PackageId = "kompakt" | "standard" | "premium";
 type ServiceId = "impulsworkshop" | "vorprojekt" | "baugesuch" | "eroeffnungsevent";
@@ -291,7 +329,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             <span className="text-[var(--color-apple-gray-500)]">
                               {coreServiceIcons[index]}
                             </span>
-                            {service}
+                            {service.name}
+                            <InfoTooltip text={service.info} />
                           </span>
                         ))}
                       </div>
@@ -342,8 +381,11 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                               {serviceIcons[service.id as ServiceId]}
                             </div>
                             <div className="flex-grow min-w-0">
-                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
+                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)] flex items-center gap-2">
                                 {service.name}
+                                {'info' in service && service.info && (
+                                  <InfoTooltip text={service.info as string} />
+                                )}
                               </p>
                             </div>
                             <div className="flex items-center gap-2 flex-shrink-0">
@@ -406,7 +448,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                         {CONFIGURATOR.coreServices.map((service, index) => (
                           <div key={index} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
                             <span className="text-[var(--color-apple-gray-500)]">{coreServiceIcons[index]}</span>
-                            {service}
+                            {service.name}
+                            <InfoTooltip text={service.info} />
                           </div>
                         ))}
                         {CONFIGURATOR.additionalServices
@@ -415,6 +458,9 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             <div key={service.id} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
                               <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
                               {service.name}
+                              {'info' in service && service.info && (
+                                <InfoTooltip text={service.info as string} />
+                              )}
                               <span className="text-[var(--color-apple-gray-500)] ml-auto">
                                 +{formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}
                               </span>
@@ -572,7 +618,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     <div className="flex items-center gap-3">
                       {step > 1 && (
                         <button
-                          onClick={() => setStep(step - 1)}
+                          onClick={() => {
+                            // Reset services when going back to step 1
+                            if (step === 2) {
+                              setSelectedServices(new Set([]));
+                            }
+                            setStep(step - 1);
+                          }}
                           className="flex items-center gap-1 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
                         >
                           <ArrowLeft className="h-4 w-4" />

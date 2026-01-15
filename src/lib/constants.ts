@@ -811,38 +811,38 @@ export const CONFIGURATOR = {
   ],
 
   coreServices: [
-    "Konzeption & Design",
-    "Standortanalyse (inkl. Route, Safety Check)",
-    "Material (Schild, Wegweiser, Markierung)",
+    { name: "Konzeption & Design", info: "Entwicklung des individuellen Postenkonzepts und visuelles Design aller Elemente" },
+    { name: "Standortanalyse", info: "Inkl. Route und Safety Check" },
+    { name: "Material", info: "Schild, Wegweiser, Markierung" },
   ],
 
   additionalServices: [
     {
       id: "impulsworkshop",
       name: "Impulsworkshop",
-      description: "2-stündiger Workshop vor Ort zum Kennenlernen des Konzepts",
+      info: "2-stündiger Workshop vor Ort zum Kennenlernen des Konzepts",
       selfDescription: "Sie organisieren den Workshop selbst.",
       prices: { kompakt: 690, standard: 690, premium: 690 },
       note: "zzgl. Spesen",
     },
     {
       id: "vorprojekt",
-      name: "Vorprojekt (personalisierte Visualisierung der einzelnen Posten)",
-      description: "Visualisierung und Konzeption der einzelnen Posten für Ihre Gemeinde",
+      name: "Vorprojekt",
+      info: "Personalisierte Visualisierung der einzelnen Posten für Ihre Gemeinde",
       selfDescription: "Sie erstellen die Visualisierungen selbst.",
       prices: { kompakt: 1800, standard: 1800, premium: 1800 },
     },
     {
       id: "baugesuch",
-      name: "Baugesuch (Koordination, Abklärung Nutzungsrecht mit Eigentümerschaften)",
-      description: "Vorbereitung aller Unterlagen, Koordination mit Eigentümern, Begleitung bis zur Bewilligung",
+      name: "Baugesuch",
+      info: "Koordination, Abklärung Nutzungsrecht mit Eigentümerschaften, Begleitung bis zur Bewilligung",
       selfDescription: "Sie reichen das Dossier ein und kommunizieren mit der Behörde.",
       prices: { kompakt: 27000, standard: 27000, premium: 27000 },
     },
     {
       id: "eroeffnungsevent",
-      name: "Eröffnungsevent (Workshop, Public Meeting)",
-      description: "Geführte Eröffnungsveranstaltung mit Workshops für die Bevölkerung",
+      name: "Eröffnungsevent",
+      info: "Workshop und Public Meeting – geführte Eröffnungsveranstaltung für die Bevölkerung",
       selfDescription: "Sie organisieren die Eröffnung selbst.",
       prices: { kompakt: 0, standard: 0, premium: 0 },
       priceLabel: "auf Anfrage",
