@@ -27,9 +27,8 @@ export function Footer() {
               RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel.
             </p>
 
-            {/* Ein Produkt von ParkourONE */}
+            {/* ParkourONE Logo */}
             <div className="mt-6">
-              <p className="text-caption text-[var(--color-apple-gray-500)] mb-2">Ein Produkt von</p>
               <a
                 href="https://parkourone.ch"
                 target="_blank"
@@ -39,9 +38,9 @@ export function Footer() {
                 <Image
                   src="/images/logos/parkourone-logo.png"
                   alt="ParkourONE"
-                  width={120}
-                  height={40}
-                  className="h-8 w-auto"
+                  width={180}
+                  height={60}
+                  className="h-12 w-auto"
                 />
               </a>
             </div>
@@ -97,9 +96,9 @@ export function Footer() {
                       <Image
                         src={link.logo}
                         alt={link.label}
-                        width={80}
-                        height={60}
-                        className="h-12 w-auto"
+                        width={60}
+                        height={40}
+                        className="h-8 w-auto object-contain"
                       />
                     )}
                     <span className="text-body-sm text-[var(--color-apple-gray-700)]">
