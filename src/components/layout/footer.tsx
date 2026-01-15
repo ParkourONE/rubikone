@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Settings } from "lucide-react";
 import { SITE_CONFIG, FOOTER_LINKS } from "@/lib/constants";
 import { useConsent } from "@/providers/consent-provider";
@@ -25,6 +26,26 @@ export function Footer() {
             <p className="mt-3 text-body-sm text-[var(--color-apple-gray-600)] max-w-xs">
               RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel.
             </p>
+
+            {/* Ein Produkt von ParkourONE */}
+            <div className="mt-6">
+              <p className="text-caption text-[var(--color-apple-gray-500)] mb-2">Ein Produkt von</p>
+              <a
+                href="https://parkourone.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block hover:opacity-80 transition-opacity"
+              >
+                <Image
+                  src="/images/logos/parkourone-logo.png"
+                  alt="ParkourONE"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto"
+                />
+              </a>
+            </div>
+
             <div className="mt-4 text-body-sm text-[var(--color-apple-gray-600)] space-y-0.5">
               <p className="font-medium">ParkourONE GmbH</p>
               <p>Südstrasse 16</p>
@@ -70,9 +91,20 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors"
+                    className="inline-flex flex-col gap-2 hover:opacity-80 transition-opacity"
                   >
-                    {link.label}
+                    {'logo' in link && link.logo && (
+                      <Image
+                        src={link.logo}
+                        alt={link.label}
+                        width={80}
+                        height={60}
+                        className="h-12 w-auto"
+                      />
+                    )}
+                    <span className="text-body-sm text-[var(--color-apple-gray-700)]">
+                      {link.label}
+                    </span>
                   </a>
                 </li>
               ))}

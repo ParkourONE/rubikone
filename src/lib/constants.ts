@@ -451,8 +451,7 @@ export const FOOTER_LINKS = {
     { label: "Datenschutz", href: "/datenschutz" },
   ],
   partner: [
-    { label: "ParkourONE", href: "https://parkourone.ch" },
-    { label: "BASPO", href: "https://www.baspo.admin.ch" },
+    { label: "BASPO (Innovationslabor lab7x1)", href: "https://www.baspo.admin.ch/de/das-innovationslabor-lab7x1", logo: "/images/logos/baspo-logo.gif" },
   ],
 } as const;
 
