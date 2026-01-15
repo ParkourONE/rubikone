@@ -282,19 +282,18 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
                         Immer inklusive:
                       </p>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="space-y-2">
                         {CONFIGURATOR.coreServices.map((service, index) => (
-                          <span
-                            key={index}
-                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-white rounded-full text-caption"
-                          >
-                            <span className="text-[var(--color-apple-gray-500)]">
+                          <div key={index} className="flex items-start gap-2">
+                            <span className="text-[var(--color-apple-gray-500)] mt-0.5">
                               {coreServiceIcons[index]}
                             </span>
-                            <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
-                            <span className="text-[var(--color-apple-gray-500)]">·</span>
-                            <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
-                          </span>
+                            <div className="text-caption">
+                              <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
+                              <br />
+                              <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
+                            </div>
+                          </div>
                         ))}
                       </div>
                     </div>
@@ -344,15 +343,14 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                               {serviceIcons[service.id as ServiceId]}
                             </div>
                             <div className="flex-grow min-w-0">
-                              <p className="text-body-sm text-[var(--color-apple-dark)]">
-                                <span className="font-semibold">{service.name}</span>
-                                {'info' in service && service.info && (
-                                  <>
-                                    <span className="text-[var(--color-apple-gray-400)] mx-1">·</span>
-                                    <span className="text-[var(--color-apple-gray-500)] font-normal">{service.info as string}</span>
-                                  </>
-                                )}
+                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
+                                {service.name}
                               </p>
+                              {'info' in service && service.info && (
+                                <p className="text-caption text-[var(--color-apple-gray-500)]">
+                                  {service.info as string}
+                                </p>
+                              )}
                             </div>
                             <div className="flex items-center gap-2 flex-shrink-0">
                               <span className="text-body-sm font-semibold text-[var(--color-apple-gray-500)]">
@@ -410,30 +408,32 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
                         Ihr RubikONE umfasst:
                       </p>
-                      <div className="space-y-1">
+                      <div className="space-y-2">
                         {CONFIGURATOR.coreServices.map((service, index) => (
-                          <div key={index} className="flex items-center gap-2 text-body-sm">
-                            <span className="text-[var(--color-apple-gray-500)]">{coreServiceIcons[index]}</span>
-                            <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
-                            <span className="text-[var(--color-apple-gray-400)]">·</span>
-                            <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
+                          <div key={index} className="flex items-start gap-2">
+                            <span className="text-[var(--color-apple-gray-500)] mt-0.5">{coreServiceIcons[index]}</span>
+                            <div>
+                              <p className="text-body-sm font-medium text-[var(--color-apple-dark)]">{service.name}</p>
+                              <p className="text-caption text-[var(--color-apple-gray-500)]">{service.info}</p>
+                            </div>
                           </div>
                         ))}
                         {CONFIGURATOR.additionalServices
                           .filter((s) => selectedServices.has(s.id as ServiceId))
                           .map((service) => (
-                            <div key={service.id} className="flex items-center gap-2 text-body-sm">
-                              <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
-                              <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
-                              {'info' in service && service.info && (
-                                <>
-                                  <span className="text-[var(--color-apple-gray-400)]">·</span>
-                                  <span className="text-[var(--color-apple-gray-500)]">{service.info as string}</span>
-                                </>
-                              )}
-                              <span className="text-[var(--color-apple-gray-500)] ml-auto">
-                                +{formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}
-                              </span>
+                            <div key={service.id} className="flex items-start gap-2">
+                              <span className="text-[var(--color-apple-gray-500)] mt-0.5">{serviceIcons[service.id as ServiceId]}</span>
+                              <div className="flex-grow">
+                                <div className="flex items-center justify-between">
+                                  <p className="text-body-sm font-medium text-[var(--color-apple-dark)]">{service.name}</p>
+                                  <span className="text-body-sm text-[var(--color-apple-gray-500)]">
+                                    +{formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}
+                                  </span>
+                                </div>
+                                {'info' in service && service.info && (
+                                  <p className="text-caption text-[var(--color-apple-gray-500)]">{service.info as string}</p>
+                                )}
+                              </div>
                             </div>
                           ))}
                       </div>
