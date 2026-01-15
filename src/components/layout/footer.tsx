@@ -33,14 +33,14 @@ export function Footer() {
                 href="https://parkourone.ch"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block hover:opacity-80 transition-opacity"
+                className="inline-block p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
               >
                 <Image
                   src="/images/logos/parkourone-logo.png"
                   alt="ParkourONE"
                   width={180}
                   height={60}
-                  className="h-12 w-auto"
+                  className="h-10 w-auto"
                 />
               </a>
             </div>
@@ -93,13 +93,15 @@ export function Footer() {
                     className="inline-flex flex-col gap-2 hover:opacity-80 transition-opacity"
                   >
                     {'logo' in link && link.logo && (
-                      <Image
-                        src={link.logo}
-                        alt={link.label}
-                        width={60}
-                        height={40}
-                        className="h-8 w-auto object-contain"
-                      />
+                      <div className="p-2 bg-white rounded-lg shadow-md">
+                        <Image
+                          src={link.logo}
+                          alt={link.label}
+                          width={60}
+                          height={40}
+                          className="h-8 w-auto object-contain"
+                        />
+                      </div>
                     )}
                     <span className="text-body-sm text-[var(--color-apple-gray-700)]">
                       {link.label}
