@@ -19,7 +19,7 @@ const stakeholderBenefits = [
     icon: Building2,
     title: "Städte & Gemeinden",
     benefits: [
-      "Nachhaltige Stadtentwicklung ohne Platzanspruch",
+      "Nachhaltige Raumentwicklung ohne zusätzlichen Platzanspruch",
       "Innovative Gesundheitsförderung vor der Haustür",
       "Stärkung der lokalen Gemeinschaft",
       "Minimaler Ressourceneinsatz",
@@ -29,19 +29,19 @@ const stakeholderBenefits = [
     icon: GraduationCap,
     title: "Bildung & Kultur",
     benefits: [
-      "Erweitertes Klassenzimmer & Bildungserlebnis",
-      "Förderung von Teamwork & Konzentrationsfähigkeit",
-      "Bewegungspausen leicht gemacht",
-      "Kreative Lernmöglichkeiten",
+      "Erweitertes Klassenzimmer & Alternative zur Sporthalle",
+      "Kreative Bewegungspausen & Lernmöglichkeiten",
+      "Förderung von Teamwork",
+      "Vielfältige Bewegungspausen",
     ],
   },
   {
     icon: Users,
     title: "Bevölkerung",
     benefits: [
-      "Kostenfrei & flexibel erreichbar",
+      "Jederzeit & kostenfrei zugänglich",
       "Für alle Altersgruppen & Fitnesslevel",
-      "Ausgleich im Alltag",
+      "Leicht verständlich dank Bilder & Symbolen",
       "Fördert einen aktiven Lebensstil",
     ],
   },
@@ -57,12 +57,12 @@ const prozessSchritte = [
 const uspItems = [
   {
     title: "Einfache Integration",
-    description: "Keine neuen Anlagen nötig. Wegweiser und Postenschilder werden an vorhandene Elemente wie Säulen oder Mauern montiert.",
+    description: "RubikONE nutzt, was schon da ist: Wegweiser und Postenschilder werden wo immer möglich an vorhandene Strukturen montiert.",
     image: "/images/gemeinden/integration.jpg",
   },
   {
     title: "Nachhaltigkeit",
-    description: "Das verwendete Material ist langlebig und wartungsarm. Einmaliger Aufwand – nachhaltiger Nutzen.",
+    description: "Das verwendete Material ist langlebig und bei Bedarf leicht zu ersetzen.",
     image: "/images/gemeinden/nachhaltigkeit.jpg",
   },
   {
@@ -157,7 +157,7 @@ export default function FuerGemeindenPage() {
     <>
       {/* Hero */}
       <PageHero
-        title="Bewegungsförderung ohne Bauaufwand."
+        title="Bewegungsförderung leicht gemacht."
         description="RubikONE verwandelt bestehende Umgebungselemente in vielseitige Bewegungsräume. Nachhaltige Gesundheitsförderung – permanent sichtbar und zugänglich."
         breadcrumb="Für Gemeinden"
         image="/images/koeniz/kind-springt.jpg"
@@ -221,8 +221,8 @@ export default function FuerGemeindenPage() {
         <div className="container-content">
           <SectionHeader
             title="Mehrwert für alle"
-            subtitle="Stakeholder Benefits"
-            description="Mit RubikONE wird die Stadt, der Schulhausplatz oder die neu geplante Ecke zum interaktiven Bewegungsraum."
+            subtitle="Aufenthaltsqualität steigern"
+            description="Mit RubikONE wird die Gemeinde, das Quartier oder das Schulareal zum vielseitigen Bewegungsraum."
             className="mb-12"
           />
 
@@ -264,10 +264,10 @@ export default function FuerGemeindenPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              USP
+              Clever & diskret
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Das macht RubikONE einzigartig.
+              Einmaliger Aufwand – nachhaltiger Nutzen.
             </h2>
           </motion.div>
         </div>
@@ -459,7 +459,7 @@ export default function FuerGemeindenPage() {
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
-            title="Häufige Fragen von Gemeinden"
+            title="Häufig gestellte Fragen"
             subtitle="FAQ"
             className="mb-12"
           />

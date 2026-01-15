@@ -28,19 +28,18 @@ import { cn } from "@/lib/utils";
 import { useScrollLock } from "@/hooks/useScrollLock";
 
 type PackageId = "kompakt" | "standard" | "premium";
-type ServiceId = "standortanalyse" | "baugesuch" | "eigentuemer" | "produktion" | "montage";
+type ServiceId = "impulsworkshop" | "vorprojekt" | "baugesuch" | "eroeffnungsevent";
 
 const serviceIcons: Record<ServiceId, React.ReactNode> = {
-  standortanalyse: <MapPin className="h-4 w-4" />,
+  impulsworkshop: <Users className="h-4 w-4" />,
+  vorprojekt: <Palette className="h-4 w-4" />,
   baugesuch: <FileText className="h-4 w-4" />,
-  eigentuemer: <Users className="h-4 w-4" />,
-  produktion: <Package className="h-4 w-4" />,
-  montage: <Wrench className="h-4 w-4" />,
+  eroeffnungsevent: <Sparkles className="h-4 w-4" />,
 };
 
 const coreServiceIcons = [
   <Palette key="design" className="h-4 w-4" />,
-  <Shield key="safety" className="h-4 w-4" />,
+  <MapPin key="standort" className="h-4 w-4" />,
   <Box key="material" className="h-4 w-4" />,
 ];
 
@@ -69,7 +68,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
   const [step, setStep] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState<PackageId>("standard");
   const [selectedServices, setSelectedServices] = useState<Set<ServiceId>>(
-    new Set(["standortanalyse", "baugesuch", "eigentuemer", "produktion", "montage"])
+    new Set([])
   );
   const [email, setEmail] = useState("");
   const [gemeinde, setGemeinde] = useState("");
@@ -240,10 +239,10 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     transition={{ duration: 0.2 }}
                   >
                     <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
-                      Paket wählen
+                      Umfang wählen
                     </h2>
                     <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4">
-                      Wie viele Posten soll Ihre Route umfassen?
+                      Wie viele Posten soll Ihr RubikONE umfassen?
                     </p>
 
                     <div className="grid grid-cols-3 gap-3">
@@ -313,7 +312,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       Leistungen wählen
                     </h2>
                     <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4">
-                      Was soll ParkourONE übernehmen?
+                      Welche Leistungen sollen im Umfang enthalten sein?
                     </p>
 
                     <div className="space-y-2">
@@ -349,7 +348,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             </div>
                             <div className="flex items-center gap-2 flex-shrink-0">
                               <span className="text-body-sm font-semibold text-[var(--color-apple-gray-500)]">
-                                +{formatPrice(price)}
+                                {('priceLabel' in service && service.priceLabel) ? service.priceLabel : `+${formatPrice(price)}`}
                               </span>
                               <div className={cn(
                                 "w-5 h-5 rounded flex items-center justify-center",
@@ -377,7 +376,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     transition={{ duration: 0.2 }}
                   >
                     <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-4">
-                      Ihre Konfiguration
+                      Übersicht Leistungsumfang
                     </h2>
 
                     <div className="flex items-center justify-between p-3 bg-[var(--color-apple-gray-100)] rounded-xl mb-3">
@@ -401,7 +400,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                     <div className="mb-3">
                       <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
-                        ParkourONE übernimmt:
+                        Ihr RubikONE umfasst:
                       </p>
                       <div className="space-y-1">
                         {CONFIGURATOR.coreServices.map((service, index) => (
@@ -424,24 +423,6 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       </div>
                     </div>
 
-                    {selectedServices.size < 5 && (
-                      <div className="p-3 bg-[var(--color-apple-gray-100)] border border-[var(--color-apple-gray-300)] rounded-xl">
-                        <p className="text-caption font-medium text-[var(--color-apple-gray-700)] mb-2 flex items-center gap-2">
-                          <AlertCircle className="h-4 w-4" />
-                          Sie übernehmen selbst:
-                        </p>
-                        <div className="space-y-1">
-                          {CONFIGURATOR.additionalServices
-                            .filter((s) => !selectedServices.has(s.id as ServiceId))
-                            .map((service) => (
-                              <div key={service.id} className="flex items-center gap-2 text-caption text-[var(--color-apple-gray-600)]">
-                                <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
-                                {service.selfDescription}
-                              </div>
-                            ))}
-                        </div>
-                      </div>
-                    )}
                   </motion.div>
                 )}
 
@@ -458,7 +439,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       Zusammenfassung erhalten
                     </h2>
                     <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
-                      Wir senden Ihnen eine Übersicht mit allen Details.
+                      Wir senden Ihnen die persönliche Übersicht
                     </p>
 
                     {submitError && (
@@ -477,7 +458,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="ihre.email@gemeinde.ch"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
                           required
                         />
@@ -491,7 +472,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           type="text"
                           value={gemeinde}
                           onChange={(e) => setGemeinde(e.target.value)}
-                          placeholder="z.B. Gemeinde Musterlingen"
+                          placeholder=""
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
                         />
                       </div>

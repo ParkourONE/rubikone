@@ -23,17 +23,18 @@ export function Footer() {
               {SITE_CONFIG.name}
             </Link>
             <p className="mt-3 text-body-sm text-[var(--color-apple-gray-600)] max-w-xs">
-              {SITE_CONFIG.description}
+              RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel.
             </p>
-            <div className="mt-4 text-body-sm text-[var(--color-apple-gray-600)]">
-              <p>Ein Projekt von</p>
+            <div className="mt-4 text-body-sm text-[var(--color-apple-gray-600)] space-y-0.5">
+              <p className="font-medium">ParkourONE GmbH</p>
+              <p>Südstrasse 16</p>
+              <p>SPOT 101</p>
+              <p>3110 Münsingen</p>
               <a
-                href={SITE_CONFIG.companyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="mailto:info@rubikone.ch"
                 className="text-[var(--color-apple-blue)] hover:underline"
               >
-                {SITE_CONFIG.company}
+                info@rubikone.ch
               </a>
             </div>
           </div>
