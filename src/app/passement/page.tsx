@@ -27,9 +27,18 @@ export default function PassementPage() {
         },
       ]}
       furtherExercises={[
-        "Oberkörper",
-        "Challenge: Rolle vorwärts",
-        "Team: Der Boden ist Lava",
+        {
+          title: "Oberkörper",
+          description: "3x 15 Wiederholungen | Wie kannst du deine Arme und Brustmuskulatur kräftigen? Finde eine passende Übung und falls nötig ein geeignetes Hilfsmittel (z.B. Parkbank) dazu.",
+        },
+        {
+          title: "Challenge: Rolle vorwärts",
+          description: "5x | Rolle aus dem Stand vorwärts ab, sodass du ohne Hände aufstehen und direkt weiterlaufen kannst. Wiederhole das mehrmals.",
+        },
+        {
+          title: "Team: Der Boden ist Lava",
+          description: "Wie schafft ihr es gemeinsam von Parkbank zu Parkbank, sodass möglichst wenig Körperteile den Boden berühren?",
+        },
       ]}
       tagescheck="Schliesse deine Augen. Was hörst du alles?"
       potenzial={{

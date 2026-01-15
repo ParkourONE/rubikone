@@ -14,12 +14,17 @@ interface Exercise {
   image?: string;
 }
 
+interface FurtherExercise {
+  title: string;
+  description: string;
+}
+
 interface PostenPageProps {
   number: string;
   title: string;
   intro: string;
   exercises: Exercise[];
-  furtherExercises: string[];
+  furtherExercises: FurtherExercise[];
   tagescheck: string;
   potenzial: {
     title: string;
@@ -149,17 +154,19 @@ export function PostenPage({
                       className="overflow-hidden"
                     >
                       <div className="p-4 bg-white rounded-b-xl border-t border-[var(--color-apple-gray-200)]">
-                        <ul className="space-y-2">
+                        <div className="space-y-4">
                           {furtherExercises.map((exercise, index) => (
-                            <li
-                              key={index}
-                              className="text-body text-[var(--color-apple-gray-700)] flex items-center gap-2"
-                            >
-                              <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-apple-blue)]" />
-                              {exercise}
-                            </li>
+                            <div key={index} className="border-b border-[var(--color-apple-gray-200)] pb-4 last:border-0 last:pb-0">
+                              <h4 className="text-body font-semibold text-[var(--color-apple-dark)] mb-1 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-apple-blue)] flex-shrink-0" />
+                                {exercise.title}
+                              </h4>
+                              <p className="text-body-sm text-[var(--color-apple-gray-600)] ml-4">
+                                {exercise.description}
+                              </p>
+                            </div>
                           ))}
-                        </ul>
+                        </div>
                       </div>
                     </motion.div>
                   )}

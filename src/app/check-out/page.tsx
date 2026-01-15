@@ -34,8 +34,14 @@ export default function CheckOutPage() {
         },
       ]}
       furtherExercises={[
-        "Die letzten 10",
-        "Feedback",
+        {
+          title: "Die letzten 10",
+          description: "1x mind. 10 Wiederholungen | Absolviere nochmals die Übung, die dich auf dem RubikONE heute am meisten herausgefordert hat.",
+        },
+        {
+          title: "Feedback",
+          description: "Scanne den QR-Code und gib uns ein kurzes Feedback zu deinem Training heute. Was hat dir gefallen? Was können wir verbessern?",
+        },
       ]}
       tagescheck="Wie gönnst du dir heute Erholung?"
       potenzial={{

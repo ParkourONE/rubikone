@@ -28,9 +28,18 @@ export default function ABCPage() {
         },
       ]}
       furtherExercises={[
-        "Buchstabendschungel",
-        "SMS",
-        "Challenge",
+        {
+          title: "Buchstabendschungel",
+          description: "Mindestens 2 Personen: Eine Person springt auf einen Buchstaben und bleibt stehen. Die zweite Person springt auf den gleichen Buchstaben. Danach springt die erste Person woanders hin. Die zweite Person folgt usw. Vereinfachung: Fühlt sich der Abstand zwischen den Personen zu nah an? Dann nur einen Fuss auf den Buchstabe stellen.",
+        },
+        {
+          title: "SMS",
+          description: "1x Text | Schreibe einen Text an eine Person, die du kennst. Bedanke dich im Text bei dieser Person für etwas. Bewege dich dabei mit den Händen und Füssen am Boden von Buchstabe zu Buchstabe.",
+        },
+        {
+          title: "Challenge",
+          description: "Für 1 Person: Versuche mit so wenig Bewegungen wie möglich, jeden Buchstaben ein Mal zu berühren. Du darfst Hände, Füsse und den ganzen Körper einsetzen. Für 2 oder mehr Personen: Ergänzt euch gegenseitig.",
+        },
       ]}
       tagescheck="Nenne zwei Stärken von dir. Wo im Alltag zeigst du sie?"
       potenzial={{

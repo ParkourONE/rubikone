@@ -28,9 +28,18 @@ export default function SprungkraftPage() {
         },
       ]}
       furtherExercises={[
-        "Vierfüsser",
-        "Team-Challenge: Springen",
-        "Kompakt",
+        {
+          title: "Vierfüsser",
+          description: "1x bis zum Wendepfeil | Vierfüsser (= Quadrupedie) rückwärts: Absolviere die Strecke rückwärts auf allen Vieren. Variante: Betritt nur die Farbmarkierungen. ACHTUNG: Benutze nur die Treppe. Verhalte dich rücksichtsvoll den Passanten und der Landwirtschaft gegenüber.",
+        },
+        {
+          title: "Team-Challenge: Springen",
+          description: "2x bis zum Wendepfeil | Springt und landet gleichzeitig, sodass nur ein Geräusch hörbar ist. Organisiert euch so, dass ihr vom Anfang der Strecke bis zum Wendepfeil den gleichen Rhythmus durchzieht. Tipp: Stellt euch nahe und doch mit genug Bewegungsradius auf. So nehmt ihr einander besser wahr und könnt einfacher aufeinander reagieren.",
+        },
+        {
+          title: "Kompakt",
+          description: "2x bis zum Wendepfeil | Stellt euch vor, ihr als Gruppe seid ein einziger Körper. Das heisst, jede Person ist ein Körperteil. Alle Teile stehen in beliebiger Verbindung miteinander. Entwickelt gemeinsam eine Strategie, wie ihr als ein Körper die Strecke absolviert. Erster Durchgang: Versucht so viele Körperteile weg vom Boden zu halten wie möglich. Zweiter Durchgang: Wiederholt die Aufgabe und reduziert die Körperteile, die den Boden berühren.",
+        },
       ]}
       tagescheck="Wie geht es dir jetzt gerade?"
       potenzial={{

@@ -28,9 +28,18 @@ export default function FokusPage() {
         },
       ]}
       furtherExercises={[
-        "Slalom",
-        "Punkt",
-        "Challenge",
+        {
+          title: "Slalom",
+          description: "Als 2er Team: 2x pro Person | Eine Person kurvt mit geschlossenen Augen um die Kugeln. Die andere Person sorgt für die Sicherheit und hält die Augen offen. Für 1 Person: 2x | Mit offenen Augen vorsichtig rückwärts um die Kugeln gehen.",
+        },
+        {
+          title: "Punkt",
+          description: "Als 2er Team (1 Minute pro Person): Person A steht auf einer Kugel und schaut immer dorthin, wo die andere Person klatscht. Person B steht davor oder geht rundherum. Von Zeit zu Zeit klatscht sie in die Hände. Für 1 Person: Stehe auf eine Kugel und balanciere auf einem Bein. 30 Sekunden | Schaue abwechselnd hoch hinauf und runter. Beinwechsel. 30 Sekunden | Drehe den Kopf kontinuierlich hin und her.",
+        },
+        {
+          title: "Challenge",
+          description: "Setze dich auf eine Kugel und hebe beide Füsse vom Boden ab. Vereinfachung: Füsse am Boden lassen. 5x pro Seite | Berühre aus dieser Position heraus die Kugel abwechslungsweise mit der rechten, dann mit der linken Hand möglichst nahe am Boden.",
+        },
       ]}
       tagescheck="Wofür bist du heute dankbar?"
       potenzial={{

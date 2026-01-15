@@ -34,9 +34,18 @@ export default function BalancePage() {
         },
       ]}
       furtherExercises={[
-        "Transport",
-        "Pirouette",
-        "Team-Challenge",
+        {
+          title: "Transport",
+          description: "1x entlang der ganzen Farbmarkierung | Nimm einen Gegenstand den du dabei hast. Lege ihn auf den Kopf und transportiere ihn während dem Balancieren. Schaffst du es ohne den Gegenstand festzuhalten?",
+        },
+        {
+          title: "Pirouette",
+          description: "3x pro Seite | Stelle dich auf eine Linie und balanciere während der ganzen Übung auf einem Bein. Führe eine 360° Drehung aus, sodass ein Fuss immer in der Luft bleibt.",
+        },
+        {
+          title: "Team-Challenge",
+          description: "Für 2 oder mehr Personen: Alle stehen während der ganzen Übung auf einer Linie und berühren den Boden nebenan nicht. Die erste Person gibt ein akustisches Signal, woraufhin alle eine Drehung ausführen. Danach gibt die zweite, dritte, vierte, …usw. Person das Signal. Wer bleibt am längsten in Balance?",
+        },
       ]}
       tagescheck="Nenne zwei Stärken von dir und begründe sie."
       potenzial={{

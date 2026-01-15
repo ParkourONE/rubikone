@@ -34,9 +34,18 @@ export default function StabilitaetPage() {
         },
       ]}
       furtherExercises={[
-        "Rumpfrotation",
-        "Von A nach B",
-        "Team-Challenge: Wadenbeisser",
+        {
+          title: "Rumpfrotation",
+          description: "2x mind. 10x pro Seite | Setze dich hin und hebe die Füsse vom Boden ab. Spanne den Bauch an und rotiere jetzt den Oberkörper so weit es geht nach links und nach rechts. Halte dabei die Hände hinter dem Kopf oder vor der Brust verschränkt. Lust auf Rekordjagd? Rotiere so oft du kannst und merke dir die Anzahl. Schaffst du im nächsten Training mehr? Vereinfachung: Stelle die Fersen auf dem Boden ab.",
+        },
+        {
+          title: "Von A nach B",
+          description: "Laufe zum anderen Ende der grossen Wiese und zurück. Überwinde unterwegs so viele Hindernisse wie möglich (max. 1m Höhe). HINWEIS: Du bist für dein Handeln selbst verantwortlich. Sei dir bewusst, dass die Natur kein Sportgerät und entsprechend nicht auf Sicherheit geprüft ist. Oberflächen können rutschig, wackelig oder instabil sein. Schätze deine Fähigkeiten richtig ein.",
+        },
+        {
+          title: "Team-Challenge: Wadenbeisser",
+          description: "Ab 2 Personen: Sitzt einander gegenüber und hebt die Füsse vom Boden ab. Ihr dürft euch mit den Händen auf dem Boden abstützen. Versucht mit den Füssen die Wade der anderen Person zu berühren. Wer erzielt am meisten Treffer? Wer hält am längsten durch? Wer gewinnt 3x?",
+        },
       ]}
       tagescheck="Was isst du heute Gesundes?"
       potenzial={{

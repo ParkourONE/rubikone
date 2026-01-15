@@ -28,9 +28,18 @@ export default function QuadrupediePage() {
         },
       ]}
       furtherExercises={[
-        "Schrittprognose",
-        "Zick Zack",
-        "Freie Wahl",
+        {
+          title: "Schrittprognose",
+          description: "2x | Nenne eine Anzahl Schritte, die du vom Anfang bis zum Ende der Farbmarkierung machen willst. Bewege dich so, dass du genau diese Anzahl erreichst. ACHTUNG: Teile die Distanz clever ein. Schritte an Ort und Stelle zählen nicht! Challenge: Was ist heute die kleinste Anzahl die du schaffst? Absolviere die Strecke mit maximal vielen Schritten.",
+        },
+        {
+          title: "Zick Zack",
+          description: "1x | Kreativität ist gefragt. Interpretiere die folgende Übung ganz wie du willst. Absolviere die Strecke bis zum nächsten Posten im Zick Zack und bleibe dabei auf dem Asphaltweg.",
+        },
+        {
+          title: "Freie Wahl",
+          description: "1x pro Person | Team: Jede Person gibt einer anderen Person eine Übung vor, die sie vom Anfang bis zum Ende der Farbmarkierung ausführt. Einzelperson: Worauf hast du Lust? Gib dir selbst eine Aufgabe die dir Spass macht. Los geht's!",
+        },
       ]}
       tagescheck="Wo fühlst du Erschöpfung in deinem Körper? Wo hast du Energiereserven?"
       potenzial={{
@@ -42,7 +51,7 @@ export default function QuadrupediePage() {
           <p class="mt-4 font-semibold">Allgemein gilt: Übe das, was du verbessern willst.</p>
           <p class="mt-4"><strong>Bewegung & Sport als Übungsfeld – Zum Beispiel:</strong></p>
           <ul class="mt-2 space-y-1">
-            <li>• <em>Fitness verbessern:</em> Bewege dich (egal wie) und sorge für Erfolgserlebnisse.</li>
+            <li>• <em>Fitness verbessern:</em> Bewege dich (egal wie) und sorge für Erfolgserlebnisse. Bereits 1x ist mehr als 0x!</li>
             <li>• <em>Durchhaltewille verbessern:</em> Führe immer 1 Wiederholung mehr aus.</li>
             <li>• <em>Gelassenheit:</em> Achte auf deine Atmung.</li>
           </ul>

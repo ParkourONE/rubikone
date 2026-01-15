@@ -33,9 +33,18 @@ export default function CheckInPage() {
         },
       ]}
       furtherExercises={[
-        "Linien berühren",
-        "Rucksack packen",
-        "Ein-Mal-alles",
+        {
+          title: "Linien berühren",
+          description: "1x | Mit der Hand möglichst schnell alle Linien berühren. Achtung: Merke dir den Laufweg. Absolviere den Laufweg in umgekehrter Reihenfolge und berühre wieder alle Linien.",
+        },
+        {
+          title: "Rucksack packen",
+          description: "Alle Mitspieler stehen innerhalb des Feldes. Die erste Person rennt an einen Ort auf dem Platz, berührt ein Material und stellt sich zurück an den Ausgangsort. Jetzt rennen alle anderen und wiederholen, was die erste Person gerade gemacht hat. Die nächste Person rennt alleine los und berührt das erste und zusätzlich ein neu gewähltes Material. Sobald sie zurück ist, rennen die anderen los und wiederholen den Ablauf. ...solange bis jede Person mind. 3x gerannt ist.",
+        },
+        {
+          title: "Ein-Mal-alles",
+          description: "Mind. 2x pro Seite die ganze Abfolge wiederholen: 1. Auf dem linken Bein stehen und das rechte Knie umarmen. 2. Rechter Fuss weit vorne auf den Boden absetzen und die linke Hand neben dem Fuss abstützen. 3. Den Oberkörper rotieren und den rechten Arm senkrecht in Richtung Himmel strecken. 4. Position halten. Tief ein und aus atmen. 5. Zurückdrehen und die rechte Hand neben dem rechten Fuss abstützen. 6. Rechtes Bein strecken (so weit es geht) und den Fussballen weit Richtung Schienbein ziehen. 7. Fuss wieder flach hinstellen und Hände vom Boden lösen. 8. Im Ausfallschritt bleiben und Oberkörper stolz aufrichten. 9. In einem Schwung mit dem rechten Fuss abstossen und zurück in den Einbeinstand kommen. 10. Den linken Fuss erst abstellen, wenn die Balance stabil erreicht ist. Tipp: Die Übung ist auch unter «World's greatest stretch» bekannt.",
+        },
       ]}
       tagescheck="Worauf freust du dich heute?"
       potenzial={{
