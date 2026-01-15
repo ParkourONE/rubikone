@@ -810,8 +810,8 @@ export const CONFIGURATOR = {
   ],
 
   coreServices: [
-    { name: "Konzeption & Design", info: "Entwicklung des individuellen Postenkonzepts und visuelles Design aller Elemente" },
-    { name: "Standortanalyse", info: "Inkl. Route und Safety Check" },
+    { name: "Konzeption & Design", info: "Entwicklung des Postenkonzepts und Design" },
+    { name: "Standortanalyse", info: "inkl. Route und Safety Check" },
     { name: "Material", info: "Schild, Wegweiser, Markierung" },
   ],
 
@@ -819,7 +819,7 @@ export const CONFIGURATOR = {
     {
       id: "impulsworkshop",
       name: "Impulsworkshop",
-      info: "2-stündiger Workshop vor Ort zum Kennenlernen des Konzepts",
+      info: null,
       selfDescription: "Sie organisieren den Workshop selbst.",
       prices: { kompakt: 690, standard: 690, premium: 690 },
       note: "zzgl. Spesen",
@@ -827,21 +827,21 @@ export const CONFIGURATOR = {
     {
       id: "vorprojekt",
       name: "Vorprojekt",
-      info: "Personalisierte Visualisierung der einzelnen Posten für Ihre Gemeinde",
+      info: "personalisierte Visualisierung der einzelnen Posten",
       selfDescription: "Sie erstellen die Visualisierungen selbst.",
       prices: { kompakt: 1800, standard: 1800, premium: 1800 },
     },
     {
       id: "baugesuch",
       name: "Baugesuch",
-      info: "Koordination, Abklärung Nutzungsrecht mit Eigentümerschaften, Begleitung bis zur Bewilligung",
+      info: "Koordination, Abklärung Nutzungsrecht mit Eigentümerschaften",
       selfDescription: "Sie reichen das Dossier ein und kommunizieren mit der Behörde.",
       prices: { kompakt: 27000, standard: 27000, premium: 27000 },
     },
     {
       id: "eroeffnungsevent",
       name: "Eröffnungsevent",
-      info: "Workshop und Public Meeting – geführte Eröffnungsveranstaltung für die Bevölkerung",
+      info: "Workshop, Public Meeting",
       selfDescription: "Sie organisieren die Eröffnung selbst.",
       prices: { kompakt: 0, standard: 0, premium: 0 },
       priceLabel: "auf Anfrage",
