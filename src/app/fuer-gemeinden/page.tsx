@@ -1,16 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Metadata } from "next";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, ArrowLeft, Play, Quote, ChevronDown, ChevronUp } from "lucide-react";
+import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, Play, Quote, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageHero } from "@/components/sections/hero-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { ConfiguratorTrigger } from "@/components/sections/configurator-overlay";
-import { appleTransition } from "@/lib/animations";
 
 // SEO metadata handled in layout or via generateMetadata
 
@@ -48,27 +46,24 @@ const stakeholderBenefits = [
 ];
 
 const prozessSchritte = [
-  { nummer: "1", titel: "Kennenlernen", beschreibung: "Impulsworkshop vor Ort oder Beratungsgespräch", image: "/images/gemeinden/prozess-1.jpg" },
-  { nummer: "2", titel: "Planen", beschreibung: "Standortanalyse und Baugesuchsunterstützung", image: "/images/gemeinden/prozess-2.jpg" },
-  { nummer: "3", titel: "Umsetzen", beschreibung: "Produktion und Installation der Schilder", image: "/images/gemeinden/prozess-3.jpg" },
-  { nummer: "4", titel: "Eröffnen", beschreibung: "Einweihungsevent mit der Bevölkerung", image: "/images/gemeinden/prozess-4.jpg" },
+  { nummer: "1", titel: "Analyse", beschreibung: "Impulsworkshop und Ausgangslage klären", image: "/images/gemeinden/prozess-1.jpg" },
+  { nummer: "2", titel: "Planung", beschreibung: "RubikONE auf Ihre Gemeinde anpassen", image: "/images/gemeinden/prozess-2.jpg" },
+  { nummer: "3", titel: "Umsetzung", beschreibung: "Produktion und Installation von RubikONE", image: "/images/gemeinden/prozess-3.jpg" },
+  { nummer: "4", titel: "Nutzung", beschreibung: "Eröffnung und Workshops", image: "/images/gemeinden/prozess-4.jpg" },
 ];
 
-const uspItems = [
+const uspItemsCompact = [
   {
     title: "Einfache Integration",
-    description: "RubikONE nutzt, was schon da ist: Wegweiser und Postenschilder werden wo immer möglich an vorhandene Strukturen montiert.",
-    image: "/images/gemeinden/integration.jpg",
+    description: "Nutzt vorhandene Strukturen",
   },
   {
     title: "Nachhaltigkeit",
-    description: "Das verwendete Material ist langlebig und bei Bedarf leicht zu ersetzen.",
-    image: "/images/gemeinden/nachhaltigkeit.jpg",
+    description: "Langlebiges Material",
   },
   {
     title: "Lebensqualität",
-    description: "Bewegung ist Leben – mit RubikONE fördern Sie physische, psychische und soziale Gesundheit.",
-    image: "/images/gemeinden/lebensqualitaet.jpg",
+    description: "Fördert ganzheitliche Gesundheit",
   },
 ];
 
@@ -141,17 +136,6 @@ function FAQItem({ question, answer, isOpen, onToggle }: {
 
 export default function FuerGemeindenPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  const uspScrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollUSP = (direction: "left" | "right") => {
-    if (uspScrollRef.current) {
-      const scrollAmount = 360;
-      uspScrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <>
@@ -164,55 +148,21 @@ export default function FuerGemeindenPage() {
         imageAlt="Kind springt bei RubikONE"
       />
 
-      {/* SRF Einstein Video Section */}
-      <section className="section-spacing bg-[var(--color-apple-gray-100)]">
+      {/* SRF Einstein Badge */}
+      <section className="py-8 bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <FadeUp>
-              <div>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                  SRF Einstein
-                </p>
-                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                  «Darum sollten alle mal Parkour ausprobieren.»
-                </h2>
-                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                  RubikONE ist mehr als Bewegung. Denn RubikONE ist Parkour. Ein Freizeitangebot zur Förderung der physischen, psychischen und sozialen Gesundheit.
-                </p>
-                <div className="mt-8">
-                  <a
-                    href="https://www.srf.ch/play/tv/einstein/video/darum-sollten-alle-mal-parkour-ausprobieren?urn=urn:srf:video:d1be2ecf-295a-4f0a-881e-f532bc747ab3"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-primary inline-flex"
-                  >
-                    <Play className="h-5 w-5" />
-                    Zur SRF Reportage
-                  </a>
-                </div>
-              </div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <a
-                href="https://www.srf.ch/play/tv/einstein/video/darum-sollten-alle-mal-parkour-ausprobieren?urn=urn:srf:video:d1be2ecf-295a-4f0a-881e-f532bc747ab3"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block relative aspect-video rounded-2xl overflow-hidden group"
-              >
-                <Image
-                  src="/images/parkour/training.jpg"
-                  alt="SRF Einstein Reportage über Parkour"
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Play className="h-8 w-8 text-[var(--color-apple-blue)] ml-1" />
-                  </div>
-                </div>
-              </a>
-            </FadeUp>
-          </div>
+          <FadeUp>
+            <Link
+              href="/ueber-uns#srf-einstein"
+              className="inline-flex items-center gap-3 px-5 py-3 bg-white rounded-full shadow-md hover:shadow-lg transition-shadow"
+            >
+              <Play className="h-5 w-5 text-[var(--color-apple-blue)]" />
+              <span className="text-body-sm font-medium text-[var(--color-apple-dark)]">
+                Bekannt aus SRF Einstein
+              </span>
+              <ArrowRight className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
+            </Link>
+          </FadeUp>
         </div>
       </section>
 
@@ -253,84 +203,26 @@ export default function FuerGemeindenPage() {
         </div>
       </section>
 
-      {/* Das macht RubikONE einzigartig - Slider */}
-      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
-        {/* Header - in container */}
-        <div className="container-content mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={appleTransition}
-          >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Clever & diskret
-            </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Einmaliger Aufwand – nachhaltiger Nutzen.
-            </h2>
-          </motion.div>
-        </div>
-
-        {/* Slider - outside container, full width with spacers */}
-        <div
-          ref={uspScrollRef}
-          className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {/* Left spacer */}
-          <div className="slider-spacer" />
-
-          {uspItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: index * 0.1 }}
-              className="flex-shrink-0 w-[320px]"
-            >
-              <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
+      {/* Das macht RubikONE einzigartig - Kompakt */}
+      <section className="py-12 bg-[var(--color-apple-gray-100)]">
+        <div className="container-content">
+          <FadeUp>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
+              {uspItemsCompact.map((item, index) => (
+                <div key={index} className="flex items-center gap-3">
+                  <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" />
+                  <div>
+                    <p className="text-body font-semibold text-[var(--color-apple-dark)]">
+                      {item.title}
+                    </p>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-
-          {/* Right spacer */}
-          <div className="slider-spacer" />
-        </div>
-
-        {/* Navigation Arrows - in container, right aligned */}
-        <div className="container-content mt-6">
-          <div className="flex justify-end gap-4">
-            <button
-              onClick={() => scrollUSP("left")}
-              className="hover:text-[var(--color-apple-blue)] transition-colors"
-            >
-              <ArrowLeft className="h-6 w-6 text-[var(--color-apple-gray-500)]" />
-            </button>
-            <button
-              onClick={() => scrollUSP("right")}
-              className="hover:text-[var(--color-apple-blue)] transition-colors"
-            >
-              <ArrowRight className="h-6 w-6 text-[var(--color-apple-gray-500)]" />
-            </button>
-          </div>
+              ))}
+            </div>
+          </FadeUp>
         </div>
       </section>
 
@@ -370,9 +262,9 @@ export default function FuerGemeindenPage() {
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
         <div className="container-content">
           <SectionHeader
-            title="Von der Idee zur Eröffnung"
-            subtitle="Unser Prozess"
-            description="In vier Schritten zu Ihrem RubikONE – wir übernehmen alles oder nur das, was Sie brauchen."
+            title="In vier Schritten zu Ihrem RubikONE"
+            subtitle="Das Vorgehen"
+            description="Wir begleiten Sie von A bis Z und übernehmen die fachliche Leitung im gesamten Prozess."
             className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
           />
 
@@ -404,12 +296,12 @@ export default function FuerGemeindenPage() {
         </div>
       </section>
 
-      {/* Referenz Köniz */}
-      <section className="section-spacing">
+      {/* Referenz Köniz - kompakt */}
+      <section className="py-12 lg:py-16">
         <div className="container-content">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <FadeUp>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+          <FadeUp>
+            <div className="flex flex-col md:flex-row items-center gap-8 p-8 bg-[var(--color-apple-gray-100)] rounded-2xl">
+              <div className="relative w-full md:w-48 aspect-[4/3] md:aspect-square rounded-xl overflow-hidden flex-shrink-0">
                 <Image
                   src="/images/gemeinden/koeniz-ref.jpg"
                   alt="RubikONE Köniz"
@@ -417,41 +309,21 @@ export default function FuerGemeindenPage() {
                   className="object-cover"
                 />
               </div>
-            </FadeUp>
-            <FadeUp delay={0.1}>
-              <div>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                  Referenz
-                </p>
-                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+              <div className="flex-grow text-center md:text-left">
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1">Referenz</p>
+                <h3 className="text-headline text-[var(--color-apple-dark)]">
                   Köniz war die erste Gemeinde.
-                </h2>
-                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                  Im August 2024 eröffnete der erste RubikONE im Schlossareal Köniz. 11 Posten auf 1.2 km – bewilligt im Denkmalschutz.
+                </h3>
+                <p className="mt-2 text-body text-[var(--color-apple-gray-600)]">
+                  Im August 2024 eröffnete der erste RubikONE mit 9 Posten im Schlossareal Köniz – bewilligt im Denkmalschutz.
                 </p>
-                <div className="mt-8 flex flex-wrap gap-8">
-                  <div>
-                    <p className="text-display text-[var(--color-apple-blue)]">11</p>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Posten</p>
-                  </div>
-                  <div>
-                    <p className="text-display text-[var(--color-apple-blue)]">1.2 km</p>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Strecke</p>
-                  </div>
-                  <div>
-                    <p className="text-display text-[var(--color-apple-blue)]">0 CHF</p>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">Wartungskosten</p>
-                  </div>
-                </div>
-                <div className="mt-8">
-                  <Link href="/koeniz" className="btn-secondary inline-flex">
-                    Referenz ansehen
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
               </div>
-            </FadeUp>
-          </div>
+              <Link href="/koeniz" className="btn-secondary flex-shrink-0">
+                Mehr erfahren
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </FadeUp>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import { WasWaereWennHook } from "@/components/sections/was-waere-wenn-hook";
 import { VideoSection } from "@/components/sections/video-section";
 import { ProblemSection } from "@/components/sections/problem-section";
 import { VorherNachherTeaser } from "@/components/sections/vorher-nachher-teaser";
+import { USPSection } from "@/components/sections/usp-section";
 import { ComparisonSection } from "@/components/sections/comparison-table";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { StatsSection } from "@/components/sections/stats-section";
@@ -32,7 +33,10 @@ export default function HomePage() {
       {/* Vorher/Nachher: Das Prinzip visualisiert */}
       <VorherNachherTeaser />
 
-      {/* USP: Was RubikONE auszeichnet */}
+      {/* USP: Integration, Nachhaltigkeit, Lebensqualität */}
+      <USPSection />
+
+      {/* Vergleich: RubikONE vs. traditionelle Anlagen */}
       <ComparisonSection />
 
       {/* Social Proof: Testimonials */}
