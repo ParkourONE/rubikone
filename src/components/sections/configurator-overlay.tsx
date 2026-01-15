@@ -21,49 +21,11 @@ import {
   AlertCircle,
   Mail,
   Phone,
-  CheckCircle,
-  Info
+  CheckCircle
 } from "lucide-react";
 import { CONFIGURATOR } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { useScrollLock } from "@/hooks/useScrollLock";
-
-// Info Tooltip Component
-function InfoTooltip({ text }: { text: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="relative inline-flex">
-      <button
-        type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsOpen(!isOpen);
-        }}
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-        className="w-4 h-4 rounded-full bg-[var(--color-apple-gray-300)] hover:bg-[var(--color-apple-gray-400)] flex items-center justify-center transition-colors"
-      >
-        <Info className="h-2.5 w-2.5 text-[var(--color-apple-gray-600)]" />
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            transition={{ duration: 0.15 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-[var(--color-apple-dark)] text-white text-caption rounded-lg shadow-lg whitespace-nowrap max-w-[200px] text-center z-50"
-            style={{ whiteSpace: 'normal' }}
-          >
-            {text}
-            <div className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-[var(--color-apple-dark)]" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-}
 
 type PackageId = "kompakt" | "standard" | "premium";
 type ServiceId = "impulsworkshop" | "vorprojekt" | "baugesuch" | "eroeffnungsevent";
@@ -324,13 +286,14 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                         {CONFIGURATOR.coreServices.map((service, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-white rounded-full text-caption text-[var(--color-apple-dark)]"
+                            className="inline-flex items-center gap-1.5 px-2 py-1 bg-white rounded-full text-caption"
                           >
                             <span className="text-[var(--color-apple-gray-500)]">
                               {coreServiceIcons[index]}
                             </span>
-                            {service.name}
-                            <InfoTooltip text={service.info} />
+                            <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
+                            <span className="text-[var(--color-apple-gray-500)]">·</span>
+                            <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
                           </span>
                         ))}
                       </div>
@@ -381,10 +344,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                               {serviceIcons[service.id as ServiceId]}
                             </div>
                             <div className="flex-grow min-w-0">
-                              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)] flex items-center gap-2">
-                                {service.name}
+                              <p className="text-body-sm text-[var(--color-apple-dark)]">
+                                <span className="font-semibold">{service.name}</span>
                                 {'info' in service && service.info && (
-                                  <InfoTooltip text={service.info as string} />
+                                  <>
+                                    <span className="text-[var(--color-apple-gray-400)] mx-1">·</span>
+                                    <span className="text-[var(--color-apple-gray-500)] font-normal">{service.info as string}</span>
+                                  </>
                                 )}
                               </p>
                             </div>
@@ -446,20 +412,24 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       </p>
                       <div className="space-y-1">
                         {CONFIGURATOR.coreServices.map((service, index) => (
-                          <div key={index} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                          <div key={index} className="flex items-center gap-2 text-body-sm">
                             <span className="text-[var(--color-apple-gray-500)]">{coreServiceIcons[index]}</span>
-                            {service.name}
-                            <InfoTooltip text={service.info} />
+                            <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
+                            <span className="text-[var(--color-apple-gray-400)]">·</span>
+                            <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
                           </div>
                         ))}
                         {CONFIGURATOR.additionalServices
                           .filter((s) => selectedServices.has(s.id as ServiceId))
                           .map((service) => (
-                            <div key={service.id} className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
+                            <div key={service.id} className="flex items-center gap-2 text-body-sm">
                               <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
-                              {service.name}
+                              <span className="text-[var(--color-apple-dark)] font-medium">{service.name}</span>
                               {'info' in service && service.info && (
-                                <InfoTooltip text={service.info as string} />
+                                <>
+                                  <span className="text-[var(--color-apple-gray-400)]">·</span>
+                                  <span className="text-[var(--color-apple-gray-500)]">{service.info as string}</span>
+                                </>
                               )}
                               <span className="text-[var(--color-apple-gray-500)] ml-auto">
                                 +{formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}
