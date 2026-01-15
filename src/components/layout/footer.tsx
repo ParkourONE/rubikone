@@ -30,7 +30,7 @@ export function Footer() {
             {/* ParkourONE Logo */}
             <div className="mt-6">
               <a
-                href="https://parkourone.ch"
+                href="https://schweiz.parkourone.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
