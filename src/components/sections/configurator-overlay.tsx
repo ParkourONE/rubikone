@@ -407,32 +407,36 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
                         Ihr RubikONE umfasst:
                       </p>
-                      <div className="space-y-1.5">
+                      <div className="space-y-2">
                         {CONFIGURATOR.coreServices.map((service, index) => (
-                          <div key={index} className="flex items-center gap-2 text-body-sm">
-                            <span className="text-[var(--color-apple-gray-500)]">{coreServiceIcons[index]}</span>
-                            <span className="font-medium text-[var(--color-apple-dark)]">{service.name}</span>
-                            <span className="text-[var(--color-apple-gray-400)]">–</span>
-                            <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
+                          <div key={index} className="flex items-start gap-2 text-body-sm">
+                            <span className="text-[var(--color-apple-gray-500)] mt-0.5">{coreServiceIcons[index]}</span>
+                            <div className="flex-grow">
+                              <span className="font-medium text-[var(--color-apple-dark)]">{service.name}</span>
+                              <span className="text-[var(--color-apple-gray-400)]"> – </span>
+                              <span className="text-[var(--color-apple-gray-500)]">{service.info}</span>
+                            </div>
                           </div>
                         ))}
                         {CONFIGURATOR.additionalServices
                           .filter((s) => selectedServices.has(s.id as ServiceId))
                           .map((service) => (
-                            <div key={service.id} className="flex items-center gap-2 text-body-sm">
-                              <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
-                              <span className="font-medium text-[var(--color-apple-dark)]">{service.name}</span>
-                              {'info' in service && service.info && (
-                                <>
-                                  <span className="text-[var(--color-apple-gray-400)]">–</span>
-                                  <span className="text-[var(--color-apple-gray-500)]">{service.info as string}</span>
-                                </>
-                              )}
-                              <span className="text-[var(--color-apple-gray-500)] ml-auto">
-                                {('priceLabel' in service && service.priceLabel)
-                                  ? service.priceLabel
-                                  : `+${formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}`}
-                              </span>
+                            <div key={service.id} className="flex items-start gap-2 text-body-sm">
+                              <span className="text-[var(--color-apple-gray-500)] mt-0.5">{serviceIcons[service.id as ServiceId]}</span>
+                              <div className="flex-grow">
+                                <span className="font-medium text-[var(--color-apple-dark)]">{service.name}</span>
+                                {'info' in service && service.info && (
+                                  <>
+                                    <span className="text-[var(--color-apple-gray-400)]"> – </span>
+                                    <span className="text-[var(--color-apple-gray-500)]">{service.info as string}</span>
+                                  </>
+                                )}
+                                <span className="text-[var(--color-apple-gray-500)] float-right">
+                                  {('priceLabel' in service && service.priceLabel)
+                                    ? service.priceLabel
+                                    : `+${formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}`}
+                                </span>
+                              </div>
                             </div>
                           ))}
                       </div>
