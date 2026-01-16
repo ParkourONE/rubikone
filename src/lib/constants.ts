@@ -700,8 +700,8 @@ export const KOENIZ_DETAILS = {
   location: {
     name: "Schlossareal Köniz",
     address: "Muhlernstrasse 7, 3098 Köniz",
-    coordinates: { lat: 46.9247, lng: 7.4147 },
-    mapUrl: "https://maps.app.goo.gl/...",
+    coordinates: { lat: 46.9214587, lng: 7.4141155 },
+    mapUrl: "https://www.google.com/maps/place/RubikONE/@46.9213899,7.4126901,718m/data=!3m1!1e3!4m6!3m5!1s0x478e3900134580bb:0x14c092f51700878b!8m2!3d46.9214587!4d7.4141155!16s%2Fg%2F11wmd6132x",
   },
   route: {
     length: "2.5 km",

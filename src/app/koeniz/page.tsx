@@ -471,12 +471,22 @@ export default function KoenizPage() {
             <FadeUp delay={0.1}>
               <div className="space-y-4">
                 <div className="bg-white rounded-xl p-6 shadow-apple">
-                  <div className="flex items-center gap-4">
-                    <MapPin className="h-6 w-6 text-[var(--color-apple-blue)]" />
-                    <div>
-                      <p className="text-body font-semibold text-[var(--color-apple-dark)]">Standort</p>
-                      <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_DETAILS.location.address}</p>
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-4">
+                      <MapPin className="h-6 w-6 text-[var(--color-apple-blue)]" />
+                      <div>
+                        <p className="text-body font-semibold text-[var(--color-apple-dark)]">Standort</p>
+                        <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_DETAILS.location.address}</p>
+                      </div>
                     </div>
+                    <a
+                      href={KOENIZ_DETAILS.location.mapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-body-sm font-medium text-[var(--color-apple-blue)] hover:underline whitespace-nowrap"
+                    >
+                      In Google Maps öffnen
+                    </a>
                   </div>
                 </div>
 
