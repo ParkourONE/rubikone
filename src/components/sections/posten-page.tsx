@@ -66,13 +66,6 @@ export function PostenPage({
         )}
         <div className="container-content relative z-10 py-20">
           <FadeUp>
-            <Link
-              href="/koeniz"
-              className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Zurück zur Übersicht
-            </Link>
             <p className="text-body-lg text-[var(--color-apple-blue)] font-semibold mb-2">
               {number}
             </p>
@@ -241,13 +234,6 @@ export function PostenPage({
             ) : (
               <div />
             )}
-
-            <Link
-              href="/koeniz"
-              className="text-body font-medium text-[var(--color-apple-blue)] hover:underline"
-            >
-              Alle Posten
-            </Link>
 
             {nextPosten ? (
               <Link
