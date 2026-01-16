@@ -462,8 +462,7 @@ export default function KoenizPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <p className="text-headline font-semibold">{KOENIZ_DETAILS.location.name}</p>
-                  <p className="text-body-sm mt-1 opacity-80">{KOENIZ_DETAILS.location.address}</p>
+                  <p className="text-headline font-semibold">Start & Ziel</p>
                 </div>
               </div>
             </FadeUp>
@@ -502,11 +501,12 @@ export default function KoenizPage() {
                 </div>
 
                 <div className="bg-white rounded-xl p-6 shadow-apple">
-                  <div className="flex items-center gap-4">
-                    <Calendar className="h-6 w-6 text-[var(--color-apple-blue)]" />
+                  <div className="flex items-start gap-4">
+                    <Calendar className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body font-semibold text-[var(--color-apple-dark)]">Anreise</p>
                       <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_DETAILS.accessibility.publicTransport}</p>
+                      <p className="text-body-sm text-[var(--color-apple-gray-600)] mt-1">{KOENIZ_DETAILS.accessibility.parking}</p>
                     </div>
                   </div>
                 </div>

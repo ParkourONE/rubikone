@@ -699,7 +699,7 @@ export const IMAGE_CONCEPTS = {
 export const KOENIZ_DETAILS = {
   location: {
     name: "Schlossareal Köniz",
-    address: "Schloss Köniz, 3098 Köniz",
+    address: "Muhlernstrasse 7, 3098 Köniz",
     coordinates: { lat: 46.9247, lng: 7.4147 },
     mapUrl: "https://maps.app.goo.gl/...",
   },
@@ -711,7 +711,7 @@ export const KOENIZ_DETAILS = {
   },
   accessibility: {
     publicTransport: "Bus 10 bis Köniz Schloss",
-    parking: "Parkplätze beim Schloss",
+    parking: "Parkplätze beim Schloss und gegenüber beim Schulhaus (Oberstufenzentrum Köniz)",
     hours: "24/7 frei zugänglich",
     cost: "Kostenlos",
   },
