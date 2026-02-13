@@ -70,8 +70,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
   const [selectedServices, setSelectedServices] = useState<Set<ServiceId>>(
     new Set([])
   );
+  const [contactName, setContactName] = useState("");
   const [email, setEmail] = useState("");
-  const [gemeinde, setGemeinde] = useState("");
+  const [orgType, setOrgType] = useState("");
+  const [orgName, setOrgName] = useState("");
+  const [orgSize, setOrgSize] = useState("");
+  const [wantsConsultation, setWantsConsultation] = useState("");
+  const [message, setMessage] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const currentPackage = CONFIGURATOR.packages.find((p) => p.id === selectedPackage)!;
@@ -112,8 +117,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
       setTimeout(() => {
         setStep(1);
         setIsSubmitted(false);
+        setContactName("");
         setEmail("");
-        setGemeinde("");
+        setOrgType("");
+        setOrgName("");
+        setOrgSize("");
+        setWantsConsultation("");
+        setMessage("");
         setSubmitError(null);
       }, 300);
     }
@@ -122,8 +132,10 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
+  const canSubmit = contactName && email && orgType && orgName && orgSize;
+
   const handleSubmit = async () => {
-    if (!email) return;
+    if (!canSubmit) return;
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -141,8 +153,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          contactName,
           email,
-          gemeinde,
+          orgType,
+          orgName,
+          orgSize,
+          wantsConsultation,
+          message,
           paket: {
             name: currentPackage.name,
             posts: currentPackage.posts,
@@ -422,7 +439,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                   </motion.div>
                 )}
 
-                {/* Step 4: Email Capture */}
+                {/* Step 4: Contact Form */}
                 {step === 4 && !isSubmitted && (
                   <motion.div
                     key="step4"
@@ -446,6 +463,22 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     )}
 
                     <div className="space-y-4">
+                      {/* Name */}
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          Vor- / Nachname *
+                        </label>
+                        <input
+                          type="text"
+                          value={contactName}
+                          onChange={(e) => setContactName(e.target.value)}
+                          placeholder="Ihr Vor- und Nachname"
+                          className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
+                          required
+                        />
+                      </div>
+
+                      {/* Email */}
                       <div>
                         <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
                           E-Mail-Adresse *
@@ -454,44 +487,111 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder=""
+                          placeholder="mail@beispiel.ch"
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
                           required
                         />
                       </div>
 
+                      {/* Organisationseinheit */}
                       <div>
                         <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Gemeinde / Organisation
+                          Organisationseinheit *
+                        </label>
+                        <div className="grid grid-cols-2 gap-2">
+                          {["Gemeinde", "Stadt", "Non-Profit Organisation", "Privates Unternehmen", "Bildungseinrichtung", "anderes"].map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => setOrgType(option)}
+                              className={cn(
+                                "px-3 py-2.5 rounded-xl text-body-sm text-left transition-all",
+                                orgType === option
+                                  ? "bg-[var(--color-apple-dark)] text-white"
+                                  : "bg-[var(--color-apple-gray-100)] text-[var(--color-apple-dark)] hover:bg-[var(--color-apple-gray-200)]"
+                              )}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Bezeichnung */}
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          Bezeichnung *
                         </label>
                         <input
                           type="text"
-                          value={gemeinde}
-                          onChange={(e) => setGemeinde(e.target.value)}
-                          placeholder=""
+                          value={orgName}
+                          onChange={(e) => setOrgName(e.target.value)}
+                          placeholder="Name der Ortschaft oder Organisation"
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
+                          required
                         />
                       </div>
-                    </div>
 
-                    <div className="mt-6 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
-                      <p className="text-caption text-[var(--color-apple-gray-600)]">
-                        Sie erhalten:
-                      </p>
-                      <ul className="mt-2 space-y-2">
-                        <li className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
-                          <Check className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
-                          Zusammenfassung Ihrer Konfiguration
-                        </li>
-                        <li className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
-                          <Check className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
-                          Link zum Impulsworkshop
-                        </li>
-                        <li className="flex items-center gap-2 text-body-sm text-[var(--color-apple-dark)]">
-                          <Check className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
-                          Unsere Kontaktdaten für Rückfragen
-                        </li>
-                      </ul>
+                      {/* Grösse */}
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          Grösse *
+                        </label>
+                        <div className="grid grid-cols-3 gap-2">
+                          {["klein", "mittel", "gross"].map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => setOrgSize(option)}
+                              className={cn(
+                                "px-3 py-2.5 rounded-xl text-body-sm text-center transition-all capitalize",
+                                orgSize === option
+                                  ? "bg-[var(--color-apple-dark)] text-white"
+                                  : "bg-[var(--color-apple-gray-100)] text-[var(--color-apple-dark)] hover:bg-[var(--color-apple-gray-200)]"
+                              )}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Beratungsgespräch */}
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          Ich wünsche ein Beratungsgespräch
+                        </label>
+                        <div className="grid grid-cols-3 gap-2">
+                          {["ja", "nein", "weiss noch nicht"].map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => setWantsConsultation(option)}
+                              className={cn(
+                                "px-3 py-2.5 rounded-xl text-body-sm text-center transition-all",
+                                wantsConsultation === option
+                                  ? "bg-[var(--color-apple-dark)] text-white"
+                                  : "bg-[var(--color-apple-gray-100)] text-[var(--color-apple-dark)] hover:bg-[var(--color-apple-gray-200)]"
+                              )}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Anliegen / Fragen */}
+                      <div>
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
+                          Ich habe ein Anliegen und/oder konkrete Fragen
+                        </label>
+                        <textarea
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
+                          rows={3}
+                          className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)] resize-none"
+                        />
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -598,10 +698,10 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       ) : (
                         <button
                           onClick={handleSubmit}
-                          disabled={!email || isSubmitting}
+                          disabled={!canSubmit || isSubmitting}
                           className={cn(
                             "inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-colors",
-                            email && !isSubmitting
+                            canSubmit && !isSubmitting
                               ? "bg-[var(--color-apple-dark)] text-white hover:bg-black"
                               : "bg-[var(--color-apple-gray-200)] text-[var(--color-apple-gray-500)] cursor-not-allowed"
                           )}

@@ -4,8 +4,13 @@ import { NextResponse } from 'next/server';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface ConfiguratorData {
+  contactName: string;
   email: string;
-  gemeinde: string;
+  orgType: string;
+  orgName: string;
+  orgSize: string;
+  wantsConsultation: string;
+  message: string;
   paket: {
     name: string;
     posts: number;
@@ -54,19 +59,41 @@ export async function POST(request: Request) {
       from: 'RubikONE Konfigurator <info@rubikone.ch>',
       to: 'info@rubikone.ch',
       replyTo: data.email,
-      subject: `Neue Preisberechnung${data.gemeinde ? ` von ${data.gemeinde}` : ''}`,
+      subject: `Neues Leistungspaket${data.orgName ? ` von ${data.orgName}` : ''}`,
       html: `
-        <h2>Neue Preisberechnung über rubikone.ch</h2>
+        <h2>Neues Leistungspaket über rubikone.ch</h2>
 
         <table style="border-collapse: collapse; width: 100%; max-width: 600px; margin-bottom: 20px;">
           <tr>
-            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; width: 150px;">E-Mail</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold; width: 180px;">Name</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.contactName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">E-Mail</td>
             <td style="padding: 10px; border-bottom: 1px solid #eee;"><a href="mailto:${data.email}">${data.email}</a></td>
           </tr>
-          ${data.gemeinde ? `
           <tr>
-            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Gemeinde</td>
-            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.gemeinde}</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Organisationseinheit</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.orgType}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Bezeichnung</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.orgName}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Grösse</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.orgSize}</td>
+          </tr>
+          ${data.wantsConsultation ? `
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Beratungsgespräch</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.wantsConsultation}</td>
+          </tr>
+          ` : ''}
+          ${data.message ? `
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #eee; font-weight: bold;">Anliegen / Fragen</td>
+            <td style="padding: 10px; border-bottom: 1px solid #eee;">${data.message}</td>
           </tr>
           ` : ''}
         </table>
@@ -105,17 +132,17 @@ export async function POST(request: Request) {
     const { error: customerError } = await resend.emails.send({
       from: 'RubikONE <info@rubikone.ch>',
       to: data.email,
-      subject: 'Ihre RubikONE Preisberechnung',
+      subject: 'Ihr RubikONE Leistungspaket',
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2f 100%);">
             <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 600;">RubikONE</h1>
-            <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0;">Ihre Preisberechnung</p>
+            <p style="color: rgba(255,255,255,0.7); margin: 10px 0 0 0;">Ihr Leistungspaket</p>
           </div>
 
           <div style="padding: 40px 20px;">
             <p style="font-size: 16px; color: #1d1d1f; line-height: 1.6;">
-              Vielen Dank für Ihr Interesse an RubikONE!
+              ${data.contactName ? `Guten Tag ${data.contactName},` : 'Vielen Dank für Ihr Interesse an RubikONE!'}
             </p>
             <p style="font-size: 16px; color: #666; line-height: 1.6;">
               Hier ist die Zusammenfassung Ihrer Konfiguration:
