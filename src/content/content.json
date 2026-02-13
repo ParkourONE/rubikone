@@ -6,14 +6,29 @@
     "company": "ParkourONE"
   },
   "NAVIGATION_ITEMS": [
-    { "label": "Konzept", "href": "/konzept" },
-    { "label": "Raumgestaltung", "href": "/raumgestaltung" },
-    { "label": "Referenz Köniz", "href": "/koeniz" },
-    { "label": "Impulsworkshop", "href": "/impulsworkshop" },
-    { "label": "Über uns", "href": "/ueber-uns" }
+    {
+      "label": "Konzept",
+      "href": "/konzept"
+    },
+    {
+      "label": "Raumgestaltung",
+      "href": "/raumgestaltung"
+    },
+    {
+      "label": "Referenz Köniz",
+      "href": "/koeniz"
+    },
+    {
+      "label": "Impulsworkshop",
+      "href": "/impulsworkshop"
+    },
+    {
+      "label": "Über uns",
+      "href": "/ueber-uns"
+    }
   ],
   "HERO_CONTENT": {
-    "headline": "Hier darfst du.",
+    "headline": "Hier darfst du nicht.",
     "headlineAccent": "",
     "subheadline": "RubikONE macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. Dauerhaft & wetterfest.",
     "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
@@ -27,11 +42,31 @@
     }
   },
   "TRUST_STATS": [
-    { "value": "531", "label": "Teilnehmende", "sublabel": "in Köniz" },
-    { "value": "94%", "label": "verstehen's", "sublabel": "sofort" },
-    { "value": "84%", "label": "schätzen den", "sublabel": "Gratiszugang" },
-    { "value": "0 CHF", "label": "Wartung", "sublabel": "in 8 Monaten" },
-    { "value": "BASPO", "label": "lab7x1", "sublabel": "evaluiert" }
+    {
+      "value": "531",
+      "label": "Teilnehmende",
+      "sublabel": "in Köniz"
+    },
+    {
+      "value": "94%",
+      "label": "verstehen's",
+      "sublabel": "sofort"
+    },
+    {
+      "value": "84%",
+      "label": "schätzen den",
+      "sublabel": "Gratiszugang"
+    },
+    {
+      "value": "0 CHF",
+      "label": "Wartung",
+      "sublabel": "in 8 Monaten"
+    },
+    {
+      "value": "BASPO",
+      "label": "lab7x1",
+      "sublabel": "evaluiert"
+    }
   ],
   "PROBLEM_CONTENT": {
     "statistic": "40%",
@@ -50,15 +85,51 @@
     "description": "Wir machen sichtbar, was schon da ist: Treppen werden zu Trainingsgeräten. Mauern zu Balancierbalken. Geländer zu Kletterstangen."
   },
   "NINE_MOVEMENTS": [
-    { "id": "greifen", "name": "Greifen", "description": "Hände aktivieren, Griffkraft stärken" },
-    { "id": "hangeln", "name": "Hangeln", "description": "Am Geländer entlanghangeln" },
-    { "id": "stuetzen", "name": "Stützen", "description": "Körpergewicht auf den Händen tragen" },
-    { "id": "springen", "name": "Springen", "description": "Von Punkt zu Punkt springen" },
-    { "id": "balancieren", "name": "Balancieren", "description": "Auf Mauern und Linien balancieren" },
-    { "id": "landen", "name": "Landen", "description": "Sicher und kontrolliert landen" },
-    { "id": "klettern", "name": "Klettern", "description": "Hindernisse überwinden" },
-    { "id": "rollen", "name": "Rollen", "description": "Abrollen und Aufstehen" },
-    { "id": "laufen", "name": "Laufen", "description": "Die Route verbindet alle Posten" }
+    {
+      "id": "greifen",
+      "name": "Greifen",
+      "description": "Hände aktivieren, Griffkraft stärken"
+    },
+    {
+      "id": "hangeln",
+      "name": "Hangeln",
+      "description": "Am Geländer entlanghangeln"
+    },
+    {
+      "id": "stuetzen",
+      "name": "Stützen",
+      "description": "Körpergewicht auf den Händen tragen"
+    },
+    {
+      "id": "springen",
+      "name": "Springen",
+      "description": "Von Punkt zu Punkt springen"
+    },
+    {
+      "id": "balancieren",
+      "name": "Balancieren",
+      "description": "Auf Mauern und Linien balancieren"
+    },
+    {
+      "id": "landen",
+      "name": "Landen",
+      "description": "Sicher und kontrolliert landen"
+    },
+    {
+      "id": "klettern",
+      "name": "Klettern",
+      "description": "Hindernisse überwinden"
+    },
+    {
+      "id": "rollen",
+      "name": "Rollen",
+      "description": "Abrollen und Aufstehen"
+    },
+    {
+      "id": "laufen",
+      "name": "Laufen",
+      "description": "Die Route verbindet alle Posten"
+    }
   ],
   "COMPARISON_TABLE": {
     "headline": "Was RubikONE auszeichnet",
@@ -108,7 +179,11 @@
       "title": "Kennenlernen",
       "subtitle": "Impulsworkshop",
       "description": "Wir kommen zu Ihnen und zeigen, was in Ihrer Gemeinde möglich ist.",
-      "details": ["120 Minuten", "CHF 1'990.–", "Bis 12 Personen"],
+      "details": [
+        "120 Minuten",
+        "CHF 1'990.–",
+        "Bis 12 Personen"
+      ],
       "duration": "1 Tag"
     },
     {
@@ -116,7 +191,11 @@
       "title": "Planen",
       "subtitle": "Konzeption",
       "description": "Standortanalyse, Route definieren, Sicherheitsprüfung nach Schweizer Normen.",
-      "details": ["Route & Posten", "Eigentümer klären", "Sicherheitsprüfung"],
+      "details": [
+        "Route & Posten",
+        "Eigentümer klären",
+        "Sicherheitsprüfung"
+      ],
       "duration": "4–6 Wochen"
     },
     {
@@ -124,7 +203,11 @@
       "title": "Umsetzen",
       "subtitle": "Realisierung",
       "description": "Baugesuch einreichen, Produktion, Montage.",
-      "details": ["Baugesuch", "Produktion", "Installation"],
+      "details": [
+        "Baugesuch",
+        "Produktion",
+        "Installation"
+      ],
       "duration": "3–4 Monate"
     },
     {
@@ -132,7 +215,11 @@
       "title": "Eröffnen",
       "subtitle": "Aktivierung",
       "description": "Eröffnungsevent mit Workshops. Ihre Gemeinde bewegt sich.",
-      "details": ["Eröffnungsfeier", "Workshops", "Übergabe"],
+      "details": [
+        "Eröffnungsfeier",
+        "Workshops",
+        "Übergabe"
+      ],
       "duration": "1 Tag"
     }
   ],
@@ -143,14 +230,38 @@
       "idealFor": "Schulareale, kleine Gemeinden",
       "price": "Auf Anfrage",
       "features": [
-        { "name": "Standortanalyse", "included": true },
-        { "name": "Konzeption & Design", "included": true },
-        { "name": "Safety Check", "included": true },
-        { "name": "Beschilderung", "included": true },
-        { "name": "Farbmarkierungen", "included": true },
-        { "name": "QR-Code System", "included": true },
-        { "name": "Eröffnungsevent", "included": false },
-        { "name": "Impulsworkshops", "included": false }
+        {
+          "name": "Standortanalyse",
+          "included": true
+        },
+        {
+          "name": "Konzeption & Design",
+          "included": true
+        },
+        {
+          "name": "Safety Check",
+          "included": true
+        },
+        {
+          "name": "Beschilderung",
+          "included": true
+        },
+        {
+          "name": "Farbmarkierungen",
+          "included": true
+        },
+        {
+          "name": "QR-Code System",
+          "included": true
+        },
+        {
+          "name": "Eröffnungsevent",
+          "included": false
+        },
+        {
+          "name": "Impulsworkshops",
+          "included": false
+        }
       ],
       "highlighted": false
     },
@@ -160,14 +271,38 @@
       "idealFor": "Gemeinden bis 20'000 EW",
       "price": "Auf Anfrage",
       "features": [
-        { "name": "Standortanalyse", "included": true },
-        { "name": "Konzeption & Design", "included": true },
-        { "name": "Safety Check", "included": true },
-        { "name": "Beschilderung", "included": true },
-        { "name": "Farbmarkierungen", "included": true },
-        { "name": "QR-Code System", "included": true },
-        { "name": "Eröffnungsevent", "included": true },
-        { "name": "1× Impulsworkshop", "included": true }
+        {
+          "name": "Standortanalyse",
+          "included": true
+        },
+        {
+          "name": "Konzeption & Design",
+          "included": true
+        },
+        {
+          "name": "Safety Check",
+          "included": true
+        },
+        {
+          "name": "Beschilderung",
+          "included": true
+        },
+        {
+          "name": "Farbmarkierungen",
+          "included": true
+        },
+        {
+          "name": "QR-Code System",
+          "included": true
+        },
+        {
+          "name": "Eröffnungsevent",
+          "included": true
+        },
+        {
+          "name": "1× Impulsworkshop",
+          "included": true
+        }
       ],
       "highlighted": true,
       "badge": "Beliebt"
@@ -178,14 +313,38 @@
       "idealFor": "Städte, grosse Areale",
       "price": "Auf Anfrage",
       "features": [
-        { "name": "Standortanalyse", "included": true },
-        { "name": "Konzeption & Design", "included": true },
-        { "name": "Safety Check", "included": true },
-        { "name": "Beschilderung", "included": true },
-        { "name": "Farbmarkierungen", "included": true },
-        { "name": "QR-Code System", "included": true },
-        { "name": "Eröffnungsevent", "included": true },
-        { "name": "3× Impulsworkshops", "included": true }
+        {
+          "name": "Standortanalyse",
+          "included": true
+        },
+        {
+          "name": "Konzeption & Design",
+          "included": true
+        },
+        {
+          "name": "Safety Check",
+          "included": true
+        },
+        {
+          "name": "Beschilderung",
+          "included": true
+        },
+        {
+          "name": "Farbmarkierungen",
+          "included": true
+        },
+        {
+          "name": "QR-Code System",
+          "included": true
+        },
+        {
+          "name": "Eröffnungsevent",
+          "included": true
+        },
+        {
+          "name": "3× Impulsworkshops",
+          "included": true
+        }
       ],
       "highlighted": false
     }
@@ -202,10 +361,22 @@
     "weather": "Findet bei jedem Wetter draussen statt",
     "targetAudience": "Akteure aus Bewegung, Bildung, Raumplanung, Bau, Mobilität",
     "program": [
-      { "title": "Begrüssung", "description": "Ziel und Absicht des Workshops" },
-      { "title": "Einführung", "description": "Was ist Parkour und weshalb braucht es das?" },
-      { "title": "Hauptteil", "description": "Umgebung neu interpretieren, Beispiele testen" },
-      { "title": "Abschluss", "description": "Potenzial erkennen, nächste Schritte" }
+      {
+        "title": "Begrüssung",
+        "description": "Ziel und Absicht des Workshops"
+      },
+      {
+        "title": "Einführung",
+        "description": "Was ist Parkour und weshalb braucht es das?"
+      },
+      {
+        "title": "Hauptteil",
+        "description": "Umgebung neu interpretieren, Beispiele testen"
+      },
+      {
+        "title": "Abschluss",
+        "description": "Potenzial erkennen, nächste Schritte"
+      }
     ],
     "outcomes": [
       "Sie betrachten Ihre Umgebung aus der Multiperspektive",
@@ -267,11 +438,26 @@
       }
     ],
     "timeline": [
-      { "date": "März 2023", "event": "Standortanalyse und erste Gespräche mit Köniz" },
-      { "date": "Januar 2024", "event": "Testtrainings mit der Bevölkerung" },
-      { "date": "Oktober 2024", "event": "Installation der Posten und Markierungen" },
-      { "date": "9. November 2024", "event": "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO" },
-      { "date": "Juli 2025", "event": "Abschluss der wissenschaftlichen Evaluation" }
+      {
+        "date": "März 2023",
+        "event": "Standortanalyse und erste Gespräche mit Köniz"
+      },
+      {
+        "date": "Januar 2024",
+        "event": "Testtrainings mit der Bevölkerung"
+      },
+      {
+        "date": "Oktober 2024",
+        "event": "Installation der Posten und Markierungen"
+      },
+      {
+        "date": "9. November 2024",
+        "event": "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO"
+      },
+      {
+        "date": "Juli 2025",
+        "event": "Abschluss der wissenschaftlichen Evaluation"
+      }
     ],
     "denkmalpflege": "Das Schlossareal Köniz ist als Kulturgut von nationaler Bedeutung eingestuft. Zum Erstaunen aller Beteiligten wurde die Farbmarkierung von der Denkmalpflege auf Anhieb als bewilligungsfähig beurteilt – weil die Installation reversibel ist.",
     "workshopFeedback": [
@@ -314,18 +500,43 @@
   },
   "FOOTER_LINKS": {
     "hauptseiten": [
-      { "label": "Konzept", "href": "/konzept" },
-      { "label": "Raumgestaltung", "href": "/raumgestaltung" },
-      { "label": "Referenz Köniz", "href": "/koeniz" },
-      { "label": "Über uns", "href": "/ueber-uns" },
-      { "label": "Impulsworkshop", "href": "/impulsworkshop" }
+      {
+        "label": "Konzept",
+        "href": "/konzept"
+      },
+      {
+        "label": "Raumgestaltung",
+        "href": "/raumgestaltung"
+      },
+      {
+        "label": "Referenz Köniz",
+        "href": "/koeniz"
+      },
+      {
+        "label": "Über uns",
+        "href": "/ueber-uns"
+      },
+      {
+        "label": "Impulsworkshop",
+        "href": "/impulsworkshop"
+      }
     ],
     "rechtliches": [
-      { "label": "Impressum", "href": "/impressum" },
-      { "label": "Datenschutz", "href": "/datenschutz" }
+      {
+        "label": "Impressum",
+        "href": "/impressum"
+      },
+      {
+        "label": "Datenschutz",
+        "href": "/datenschutz"
+      }
     ],
     "partner": [
-      { "label": "BASPO (Innovationslabor lab7x1)", "href": "https://www.baspo.admin.ch/de/das-innovationslabor-lab7x1", "logo": "/images/logos/baspo-logo.gif" }
+      {
+        "label": "BASPO (Innovationslabor lab7x1)",
+        "href": "https://www.baspo.admin.ch/de/das-innovationslabor-lab7x1",
+        "logo": "/images/logos/baspo-logo.gif"
+      }
     ]
   },
   "FAQ_ITEMS": [
@@ -413,10 +624,22 @@
     "headline": "Sicherheit nach Schweizer Standards",
     "description": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen für Fitnessgeräte im Aussenbereich.",
     "norms": [
-      { "code": "SN EN 16630:2015", "name": "Fitnessgeräte im Aussenbereich" },
-      { "code": "SN EN 1177:2020", "name": "Stossdämpfende Spielplatzböden" },
-      { "code": "SIA 358", "name": "Geländer und Brüstungen" },
-      { "code": "bfu-Richtlinien", "name": "Beratungsstelle für Unfallverhütung" }
+      {
+        "code": "SN EN 16630:2015",
+        "name": "Fitnessgeräte im Aussenbereich"
+      },
+      {
+        "code": "SN EN 1177:2020",
+        "name": "Stossdämpfende Spielplatzböden"
+      },
+      {
+        "code": "SIA 358",
+        "name": "Geländer und Brüstungen"
+      },
+      {
+        "code": "bfu-Richtlinien",
+        "name": "Beratungsstelle für Unfallverhütung"
+      }
     ]
   },
   "FLEXIBILITY_INFO": {
@@ -551,15 +774,28 @@
       "groups": [
         {
           "title": "Gemeindeverantwortliche",
-          "roles": ["Sportamt", "Raumplanung", "Tiefbau", "Gesundheitsförderung"]
+          "roles": [
+            "Sportamt",
+            "Raumplanung",
+            "Tiefbau",
+            "Gesundheitsförderung"
+          ]
         },
         {
           "title": "Bildungsverantwortliche",
-          "roles": ["Schulleitung", "Sportlehrpersonen", "Jugendarbeit"]
+          "roles": [
+            "Schulleitung",
+            "Sportlehrpersonen",
+            "Jugendarbeit"
+          ]
         },
         {
           "title": "Weitere Stakeholder",
-          "roles": ["Quartiervereine", "Seniorenvertretung", "Gesundheitsligen"]
+          "roles": [
+            "Quartiervereine",
+            "Seniorenvertretung",
+            "Gesundheitsligen"
+          ]
         }
       ]
     },
@@ -613,9 +849,18 @@
       }
     ],
     "coreServices": [
-      { "name": "Konzeption & Design", "info": "Entwicklung des Postenkonzepts und Design" },
-      { "name": "Standortanalyse", "info": "inkl. Route und Safety Check" },
-      { "name": "Material", "info": "Schild, Wegweiser, Markierung" }
+      {
+        "name": "Konzeption & Design",
+        "info": "Entwicklung des Postenkonzepts und Design"
+      },
+      {
+        "name": "Standortanalyse",
+        "info": "inkl. Route und Safety Check"
+      },
+      {
+        "name": "Material",
+        "info": "Schild, Wegweiser, Markierung"
+      }
     ],
     "additionalServices": [
       {
@@ -623,7 +868,11 @@
         "name": "Impulsworkshop",
         "info": null,
         "selfDescription": "Sie organisieren den Workshop selbst.",
-        "prices": { "kompakt": 1990, "standard": 1990, "premium": 1990 },
+        "prices": {
+          "kompakt": 1990,
+          "standard": 1990,
+          "premium": 1990
+        },
         "note": "zzgl. Spesen"
       },
       {
@@ -631,21 +880,33 @@
         "name": "Vorprojekt",
         "info": "personalisierte Visualisierung der einzelnen Posten",
         "selfDescription": "Sie erstellen die Visualisierungen selbst.",
-        "prices": { "kompakt": 1800, "standard": 1800, "premium": 1800 }
+        "prices": {
+          "kompakt": 1800,
+          "standard": 1800,
+          "premium": 1800
+        }
       },
       {
         "id": "baugesuch",
         "name": "Baugesuch",
         "info": "Koordination, Abklärung Nutzungsrecht mit Eigentümerschaften",
         "selfDescription": "Sie reichen das Dossier ein und kommunizieren mit der Behörde.",
-        "prices": { "kompakt": 27000, "standard": 27000, "premium": 27000 }
+        "prices": {
+          "kompakt": 27000,
+          "standard": 27000,
+          "premium": 27000
+        }
       },
       {
         "id": "eroeffnungsevent",
         "name": "Eröffnungsevent",
         "info": "Workshop, Public Meeting",
         "selfDescription": "Sie organisieren die Eröffnung selbst.",
-        "prices": { "kompakt": 0, "standard": 0, "premium": 0 },
+        "prices": {
+          "kompakt": 0,
+          "standard": 0,
+          "premium": 0
+        },
         "priceLabel": "auf Anfrage"
       }
     ],
