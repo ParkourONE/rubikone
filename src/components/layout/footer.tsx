@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { Settings } from "lucide-react";
 import { SITE_CONFIG, FOOTER_LINKS } from "@/lib/constants";
 import { useConsent } from "@/providers/consent-provider";
@@ -27,25 +26,7 @@ export function Footer() {
               RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel.
             </p>
 
-            {/* ParkourONE Logo */}
-            <div className="mt-6">
-              <a
-                href="https://schweiz.parkourone.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block p-3 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
-              >
-                <Image
-                  src="/images/logos/parkourone-logo.png"
-                  alt="ParkourONE"
-                  width={180}
-                  height={60}
-                  className="h-10 w-auto"
-                />
-              </a>
-            </div>
-
-            <div className="mt-4 text-body-sm text-[var(--color-apple-gray-600)] space-y-0.5">
+            <div className="mt-6 text-body-sm text-[var(--color-apple-gray-600)] space-y-0.5">
               <p className="font-medium">ParkourONE GmbH</p>
               <p>Südstrasse 16</p>
               <p>SPOT 101</p>
@@ -56,6 +37,11 @@ export function Footer() {
               >
                 info@rubikone.ch
               </a>
+              <div className="mt-3 pt-3 border-t border-[var(--color-apple-gray-200)]">
+                <p className="font-medium">Öffnungszeiten</p>
+                <p>Mo, Di & Do</p>
+                <p>09:00–12:00 & 13:30–16:00 Uhr</p>
+              </div>
             </div>
           </div>
 
@@ -78,40 +64,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Partner & Rechtliches */}
+          {/* Rechtliches */}
           <div>
             <h3 className="text-caption font-semibold uppercase tracking-wider text-[var(--color-apple-gray-600)] mb-4">
-              Partner
-            </h3>
-            <ul className="space-y-3">
-              {FOOTER_LINKS.partner.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex flex-col gap-2 hover:opacity-80 transition-opacity"
-                  >
-                    {'logo' in link && link.logo && (
-                      <div className="p-2 bg-white rounded-lg shadow-md">
-                        <Image
-                          src={link.logo}
-                          alt={link.label}
-                          width={60}
-                          height={40}
-                          className="h-8 w-auto object-contain"
-                        />
-                      </div>
-                    )}
-                    <span className="text-body-sm text-[var(--color-apple-gray-700)]">
-                      {link.label}
-                    </span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <h3 className="text-caption font-semibold uppercase tracking-wider text-[var(--color-apple-gray-600)] mb-4 mt-8">
               Rechtliches
             </h3>
             <ul className="space-y-3">

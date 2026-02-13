@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Für Gemeinden | RubikONE",
-  description: "RubikONE für Gemeinden: Bewegungsförderung ohne Bauaufwand. Verwandeln Sie bestehende Orte in Bewegungsräume – nachhaltig und kosteneffizient.",
+  title: "Raumgestaltung | RubikONE",
+  description: "RubikONE verwandelt bestehende Orte in Parkour- & Bewegungsräume – für Gemeinden, Städte, Schulen und Organisationen.",
 };
 
 export default function FuerGemeindenLayout({

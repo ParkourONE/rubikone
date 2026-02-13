@@ -7,6 +7,8 @@ import { ArrowRight, ArrowLeft, Check, X, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
 import { appleTransition } from "@/lib/animations";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { ComparisonSection } from "@/components/sections/comparison-table";
+import { StatsSection } from "@/components/sections/stats-section";
 
 // Alle Posten-Schilder aus Köniz
 const POSTEN_SCHILDER = [
@@ -374,6 +376,9 @@ export default function KonzeptPage() {
         </div>
       </section>
 
+      {/* Was RubikONE auszeichnet */}
+      <ComparisonSection />
+
       {/* Beispiel-Posten - Slider */}
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
         {/* Header */}
@@ -503,6 +508,9 @@ export default function KonzeptPage() {
           </div>
         </div>
       </section>
+
+      {/* RubikONE funktioniert - Zahlen */}
+      <StatsSection />
 
       {/* Sicherheit */}
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">

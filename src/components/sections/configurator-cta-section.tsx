@@ -21,11 +21,11 @@ export function ConfiguratorCTASection() {
           </div>
 
           <h2 className="text-title-1 text-white max-w-2xl mx-auto">
-            Was kostet Ihr RubikONE?
+            Ihr individuelles Leistungspaket
           </h2>
 
           <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-            Konfigurieren Sie Ihr Projekt in 2 Minuten. Wählen Sie Paket und Leistungen – und sehen Sie sofort den Preis.
+            Konfigurieren Sie Ihr Projekt und erhalten Sie eine persönliche Übersicht per E-Mail.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -36,7 +36,7 @@ export function ConfiguratorCTASection() {
           </div>
 
           <p className="mt-6 text-body-sm text-white/60">
-            Keine Registrierung nötig • Unverbindlich • Sofort Ergebnis
+            Keine Registrierung nötig • Unverbindlich • Persönliche Übersicht per E-Mail
           </p>
         </motion.div>
       </div>

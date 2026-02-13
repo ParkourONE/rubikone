@@ -9,33 +9,21 @@ import { appleTransition } from "@/lib/animations";
 // Stats Slide Cards Data
 const STATS_SLIDES = [
   {
-    value: "531",
-    title: "Teilnehmende in Köniz",
-    description: "Über 531 Personen haben bei unserem Pilotversuch in Köniz aktiv mitgemacht. Von Kindern bis zu Senioren – alle Generationen bewegten sich gemeinsam.",
-    image: "/images/koeniz/schulklasse.jpg",
-  },
-  {
-    value: "94%",
-    title: "Verstehen sofort",
-    description: "Fast alle Teilnehmenden verstanden das Konzept auf Anhieb. Die intuitive Beschilderung macht den Einstieg kinderleicht.",
+    value: "Akzeptanz",
+    title: "Die Nachbarschaft an Bord",
+    description: "Mitten im Quartier und Ortszentrum wird RubikONE toleriert und findet bei Jung bis Alt Anklang. Referenz Köniz.",
     image: "/images/hero/oma-enkelin.jpg",
   },
   {
-    value: "84%",
-    title: "Schätzen den Gratiszugang",
-    description: "Bewegung soll für alle zugänglich sein. RubikONE ist kostenlos nutzbar, rund um die Uhr, 365 Tage im Jahr.",
-    image: "/images/koeniz/kinder-springen.jpg",
+    value: "Infrastruktur",
+    title: "Erweitertes Schulareal",
+    description: "Lehrpersonen nutzen RubikONE als Erweiterung der Sporthalle. Ohne Belegungsplan. Jederzeit zugänglich.",
+    image: "/images/koeniz/schulklasse.jpg",
   },
   {
-    value: "0 CHF",
-    title: "Wartungskosten",
-    description: "Keine kaputten Geräte, kein Vandalismus, keine Reparaturen. RubikONE nutzt bestehende Infrastruktur.",
-    image: "/images/konzept/wegweiser.jpg",
-  },
-  {
-    value: "BASPO",
-    title: "Wissenschaftlich evaluiert",
-    description: "Das Bundesamt für Sport hat RubikONE im Rahmen des lab7x1 Programms evaluiert. Die Ergebnisse bestätigen: Es funktioniert.",
+    value: "Nutzung",
+    title: "Alltagstauglich",
+    description: "Die Niederschwelligkeit erlaubt Aktivitäten in Alltags- oder Sportkleidung. Familien finden spielerische Challenges auf dem Sonntagsspaziergang. Firmen gönnen sich am Mittag eine bewegte Pause.",
     image: "/images/hero/generationen-kraft.jpg",
   },
 ];
@@ -67,9 +55,9 @@ export function StatsSection() {
           viewport={{ once: true }}
           transition={appleTransition}
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">Ergebnisse aus Köniz</p>
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">Mehrwert schaffen</p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            Zahlen, die überzeugen.
+            RubikONE funktioniert.
           </h2>
         </motion.div>
       </div>

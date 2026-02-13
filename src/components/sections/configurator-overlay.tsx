@@ -352,9 +352,6 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                               </p>
                             </div>
                             <div className="flex items-center gap-2 flex-shrink-0">
-                              <span className="text-body-sm font-semibold text-[var(--color-apple-gray-500)]">
-                                {('priceLabel' in service && service.priceLabel) ? service.priceLabel : `+${formatPrice(price)}`}
-                              </span>
                               <div className={cn(
                                 "w-5 h-5 rounded flex items-center justify-center",
                                 isSelected
@@ -398,9 +395,6 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           </p>
                         </div>
                       </div>
-                      <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
-                        {formatPrice(currentPackage.basePrice)}
-                      </p>
                     </div>
 
                     <div className="mb-3">
@@ -417,16 +411,9 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                         {CONFIGURATOR.additionalServices
                           .filter((s) => selectedServices.has(s.id as ServiceId))
                           .map((service) => (
-                            <div key={service.id} className="flex items-center justify-between gap-2 text-body-sm">
-                              <div className="flex items-center gap-2">
-                                <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
-                                <span className="text-[var(--color-apple-dark)]">{service.name}</span>
-                              </div>
-                              <span className="text-[var(--color-apple-gray-500)]">
-                                {('priceLabel' in service && service.priceLabel)
-                                  ? service.priceLabel
-                                  : `+${formatPrice(service.prices[selectedPackage as keyof typeof service.prices])}`}
-                              </span>
+                            <div key={service.id} className="flex items-center gap-2 text-body-sm">
+                              <span className="text-[var(--color-apple-gray-500)]">{serviceIcons[service.id as ServiceId]}</span>
+                              <span className="text-[var(--color-apple-dark)]">{service.name}</span>
                             </div>
                           ))}
                       </div>
@@ -573,9 +560,6 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                   <div className="flex items-center justify-between gap-4">
                     <div>
                       <p className="text-caption text-[var(--color-apple-gray-600)]">{currentPackage.name} ({currentPackage.posts} Posten)</p>
-                      <p className="text-title-3 text-[var(--color-apple-dark)] font-bold">
-                        {formatPrice(totalPrice)}
-                      </p>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -663,7 +647,7 @@ export function ConfiguratorTrigger({
           )}
         >
           <Sparkles className="h-8 w-8 mb-4 opacity-80" />
-          <h3 className="text-headline font-semibold mb-1">Preis berechnen</h3>
+          <h3 className="text-headline font-semibold mb-1">Leistungspaket konfigurieren</h3>
           <p className="text-body-sm opacity-80 mb-4">
             In 3 Schritten zu Ihrem individuellen Angebot.
           </p>
@@ -688,7 +672,7 @@ export function ConfiguratorTrigger({
           )}
         >
           <Sparkles className="h-4 w-4" />
-          Preis berechnen
+          Leistungspaket konfigurieren
           <ArrowRight className="h-4 w-4" />
         </button>
         <ConfiguratorOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
@@ -703,7 +687,7 @@ export function ConfiguratorTrigger({
         className={cn("btn-primary", className)}
       >
         <Sparkles className="h-4 w-4" />
-        Preis berechnen
+        Leistungspaket konfigurieren
       </button>
       <ConfiguratorOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </>

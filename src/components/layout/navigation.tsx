@@ -89,7 +89,7 @@ export function Navigation() {
               className="flex items-center gap-2 text-sm font-medium text-[var(--color-apple-blue)] hover:opacity-70 transition-opacity"
             >
               <Calculator className="h-4 w-4" />
-              Preis berechnen
+              Leistungspaket
             </button>
             <Link href="/kontakt" className="btn-primary text-sm py-2 px-5">
               Beratung anfragen
@@ -160,7 +160,7 @@ export function Navigation() {
                   className="w-full flex items-center justify-center gap-2 py-4 bg-[var(--color-apple-gray-100)] rounded-xl text-lg font-medium text-[var(--color-apple-blue)]"
                 >
                   <Calculator className="h-5 w-5" />
-                  Preis berechnen
+                  Leistungspaket
                 </button>
                 <Link href="/kontakt" className="btn-primary w-full text-center block">
                   Beratung anfragen

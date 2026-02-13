@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   name: "RubikONE",
   tagline: "Die Stadt wird zum Bewegungsraum",
   url: "https://rubikone.ch",
-  description: "RubikONE verwandelt bestehende Orte in Bewegungsräume – wissenschaftlich fundiert, von Köniz bewiesen.",
+  description: "RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel.",
   company: "ParkourONE",
   companyUrl: "https://parkourone.ch",
 } as const;
@@ -16,7 +16,7 @@ export const SITE_CONFIG = {
 // Navigation (Konfigurator is handled separately as overlay button)
 export const NAVIGATION_ITEMS = [
   { label: "Konzept", href: "/konzept" },
-  { label: "Für Gemeinden", href: "/fuer-gemeinden" },
+  { label: "Raumgestaltung", href: "/raumgestaltung" },
   { label: "Referenz Köniz", href: "/koeniz" },
   { label: "Impulsworkshop", href: "/impulsworkshop" },
   { label: "Über uns", href: "/ueber-uns" },
@@ -24,13 +24,13 @@ export const NAVIGATION_ITEMS = [
 
 // Hero Content
 export const HERO_CONTENT = {
-  headline: "Sie sehen eine Treppe.",
-  headlineAccent: "Wir sehen einen Spielplatz.",
-  subheadline: "RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum. Ohne neue Geräte. Ohne Tiefbau. Mit wissenschaftlicher Wirkung.",
+  headline: "Hier darfst du.",
+  headlineAccent: "",
+  subheadline: "RubikONE macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. Dauerhaft & wetterfest.",
   videoUrl: "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
   ctaPrimary: {
-    label: "Potenzial Ihrer Gemeinde entdecken",
-    href: "/fuer-gemeinden",
+    label: "Raumgestaltung entdecken",
+    href: "/raumgestaltung",
   },
   ctaSecondary: {
     label: "Referenz Köniz ansehen",
@@ -213,7 +213,7 @@ export const PROCESS_PHASES = [
     title: "Kennenlernen",
     subtitle: "Impulsworkshop",
     description: "Wir kommen zu Ihnen und zeigen, was in Ihrer Gemeinde möglich ist.",
-    details: ["120 Minuten", "CHF 690.–", "Bis 12 Personen"],
+    details: ["120 Minuten", "CHF 1'990.–", "Bis 12 Personen"],
     duration: "1 Tag",
   },
   {
@@ -248,7 +248,7 @@ export const PRICING_PACKAGES = [
     name: "Kompakt",
     posts: "6 Posten",
     idealFor: "Schulareale, kleine Gemeinden",
-    price: "ab CHF 60'000",
+    price: "Auf Anfrage",
     features: [
       { name: "Standortanalyse", included: true },
       { name: "Konzeption & Design", included: true },
@@ -265,7 +265,7 @@ export const PRICING_PACKAGES = [
     name: "Standard",
     posts: "9 Posten",
     idealFor: "Gemeinden bis 20'000 EW",
-    price: "ab CHF 100'000",
+    price: "Auf Anfrage",
     features: [
       { name: "Standortanalyse", included: true },
       { name: "Konzeption & Design", included: true },
@@ -283,7 +283,7 @@ export const PRICING_PACKAGES = [
     name: "Premium",
     posts: "15 Posten",
     idealFor: "Städte, grosse Areale",
-    price: "ab CHF 150'000",
+    price: "Auf Anfrage",
     features: [
       { name: "Standortanalyse", included: true },
       { name: "Konzeption & Design", included: true },
@@ -303,7 +303,7 @@ export const IMPULSWORKSHOP = {
   headline: "Der einfachste Weg zu starten",
   subheadline: "Ein Impulsworkshop vor Ort",
   description: "Wir kommen zu Ihnen und zeigen, was in Ihrer Gemeinde möglich ist. Nach 120 Minuten sehen Sie Ihre Umgebung mit anderen Augen.",
-  price: "CHF 690.–",
+  price: "CHF 1'990.–",
   priceNote: "zzgl. Spesen",
   duration: "120 Minuten",
   participants: "Bis 12 Personen",
@@ -351,33 +351,33 @@ export const KOENIZ_CASE_STUDY = {
   insights: [
     {
       title: "Sofort verstanden",
-      shortDesc: "Die Postenschilder und Markierungen sind selbsterklärend",
-      fullDesc: "94% der Teilnehmenden verstehen das Konzept auf Anhieb. Die visuellen Signale und Anleitungen machen den Einstieg einfach – ohne Erklärung durch Dritte.",
+      shortDesc: "RubikONE ist selbsterklärend und spricht eine simple Farb- und Formsprache.",
+      fullDesc: "94% der Befragten verstehen auf Anhieb, wie sie RubikONE nutzen können. Die Farbmarkierungen und Postenschilder erleichtern den Einstieg – ohne zusätzlichen Coach.",
     },
     {
-      title: "Freude als Motor",
-      shortDesc: "Bewegung wird zum positiven Erlebnis",
-      fullDesc: "75% der Nutzenden werden primär durch Freude und Spass motiviert. RubikONE holt das Spielerische zurück – für Menschen jeden Alters.",
+      title: "Gemeinsame Freude",
+      shortDesc: "Alleine oder als Team – die Spielfreude wird geweckt",
+      fullDesc: "75% der befragten Nutzenden sagen: RubikONE macht Spass, besonders gemeinsam mit Gleichgesinnten.",
     },
     {
       title: "Spontan genutzt",
       shortDesc: "Menschen integrieren RubikONE in ihren Alltag",
-      fullDesc: "59% nutzen RubikONE spontan im Vorbeigehen. Die zentrale Lage und der niedrigschwellige Zugang machen Bewegung zur Selbstverständlichkeit.",
+      fullDesc: "Beobachtungen und Berichte aus der Nachbarschaft zeigen, dass zentral gelegene Posten regelmässig von Sporttreibenden als Trainingsort, sowie von Familien und Kindern als Spielaktivität genutzt werden.",
     },
     {
-      title: "Kostenlos geschätzt",
-      shortDesc: "Bewegung ohne Hürden, frei zugänglich",
-      fullDesc: "84% schätzen besonders den kostenfreien Zugang. Keine Mitgliedschaft, keine Öffnungszeiten, keine Anfahrt – Bewegung direkt vor der Haustür.",
+      title: "Qualität überzeugt",
+      shortDesc: "Politische Hürden sind überwindbar",
+      fullDesc: "Aus Bedenken wurde Überzeugung: Kein Vandalismus, keine Unfälle. 84% schätzen den kostenfreien Zugang zu jeder Zeit und direkt vor der Haustür.",
     },
     {
-      title: "Gemeinsam bewegen",
-      shortDesc: "RubikONE fördert soziale Interaktion",
-      fullDesc: "Das Gruppentraining wurde besonders geschätzt. Gegenseitige Unterstützung, gemeinsame Herausforderungen und der Austausch machen Bewegung zum sozialen Erlebnis.",
+      title: "Workshops ergänzen",
+      shortDesc: "Lehrpersonen entdecken eine Alternative zur Sporthalle",
+      fullDesc: "29 Schulklassen waren mit einem Parkourcoach auf dem RubikONE. Die Lehrpersonen können sich vorstellen den Fitnessparkour in den Sportunterricht einzubauen.",
     },
     {
-      title: "Null Vandalismus",
-      shortDesc: "Die Installation bleibt unangetastet",
-      fullDesc: "In 8 Monaten Testbetrieb gab es keinen einzigen Vandalismus-Vorfall. Null Wartungskosten für Reparaturen. Die Bevölkerung respektiert und schätzt das Angebot.",
+      title: "Effektive Kommunikation",
+      shortDesc: "RubikONE verbindet Ideen und Fachdisziplinen",
+      fullDesc: "Als ersten Schritt der Zusammenarbeit einen Impulsworkshop (120 Minuten, bis 12 Personen) durchzuführen, hat sich bewährt. Die wichtigsten Verwaltungsabteilungen erlebten vor Ort, wie RubikONE aussehen kann und was es dazu braucht.",
     },
   ],
   timeline: [
@@ -441,7 +441,7 @@ export const CONTACT_INFO = {
 export const FOOTER_LINKS = {
   hauptseiten: [
     { label: "Konzept", href: "/konzept" },
-    { label: "Für Gemeinden", href: "/fuer-gemeinden" },
+    { label: "Raumgestaltung", href: "/raumgestaltung" },
     { label: "Referenz Köniz", href: "/koeniz" },
     { label: "Über uns", href: "/ueber-uns" },
     { label: "Impulsworkshop", href: "/impulsworkshop" },
@@ -450,9 +450,7 @@ export const FOOTER_LINKS = {
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutz", href: "/datenschutz" },
   ],
-  partner: [
-    { label: "BASPO (Innovationslabor lab7x1)", href: "https://www.baspo.admin.ch/de/das-innovationslabor-lab7x1", logo: "/images/logos/baspo-logo.gif" },
-  ],
+  partner: [] as { label: string; href: string; logo?: string }[],
 } as const;
 
 // FAQ Items
@@ -493,8 +491,8 @@ export const FAQ_ITEMS = [
 
 // CTA Content
 export const CTA_CONTENT = {
-  headline: "Bereit für den neuen Blick?",
-  subheadline: "Köniz war die erste Gemeinde. Werden Sie die zweite.",
+  headline: "Bereit für den nächsten Schritt?",
+  subheadline: "Starten Sie mit einem Impulsworkshop. Wir begleiten Sie dabei und zeigen Ihnen die Multiperspektive des Parkours.",
   ctaPrimary: {
     label: "Impulsworkshop buchen",
     href: "/impulsworkshop",
@@ -514,10 +512,10 @@ export const CTA_CONTENT = {
 // Mehrwert für Stakeholder
 export const STAKEHOLDER_BENEFITS = {
   gemeinden: {
-    title: "Für Gemeinden",
+    title: "Städte & Gemeinden",
     icon: "Building2",
     benefits: [
-      "Nachhaltige Stadtentwicklung ohne Platzanspruch",
+      "Nachhaltige Raumentwicklung ohne zusätzlichen Platzanspruch",
       "Innovative Gesundheitsförderung vor der Haustür",
       "Stärkung der lokalen Gemeinschaft",
       "Minimaler Ressourceneinsatz",
@@ -781,8 +779,8 @@ export const WORKSHOP_DETAILS = {
 
 // Konfigurator
 export const CONFIGURATOR = {
-  headline: "Ihr RubikONE – Ihr Preis",
-  subheadline: "Konfigurieren Sie Ihr Projekt und sehen Sie direkt, was es kostet.",
+  headline: "Ihr individuelles Leistungspaket",
+  subheadline: "Konfigurieren Sie Ihr Projekt und erhalten Sie eine persönliche Übersicht per E-Mail.",
 
   packages: [
     {
@@ -797,7 +795,7 @@ export const CONFIGURATOR = {
       name: "RubikONE",
       posts: 9,
       basePrice: 60000,
-      description: "Für Gemeinden bis 20'000 Einwohner",
+      description: "Für Gemeinden und Städte bis 20'000 Einwohner",
       recommended: true,
     },
     {
@@ -821,7 +819,7 @@ export const CONFIGURATOR = {
       name: "Impulsworkshop",
       info: null,
       selfDescription: "Sie organisieren den Workshop selbst.",
-      prices: { kompakt: 690, standard: 690, premium: 690 },
+      prices: { kompakt: 1990, standard: 1990, premium: 1990 },
       note: "zzgl. Spesen",
     },
     {
@@ -853,7 +851,7 @@ export const CONFIGURATOR = {
       id: "impulsworkshop",
       name: "Impulsworkshop",
       description: "2-stündiger Workshop vor Projektstart – ideal zum Kennenlernen des Konzepts",
-      price: 690,
+      price: 1990,
       note: "zzgl. Spesen",
     },
     {

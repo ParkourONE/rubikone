@@ -18,17 +18,23 @@ export function ProzessTeaser() {
         >
           <div>
             <p className="text-body-sm text-white/60 mb-2">
-              Von der Idee zur Eröffnung
+              Individuell angepasst
             </p>
             <h2 className="text-title-2 text-white">
-              In vier Schritten zu Ihrem RubikONE.
+              Wir gestalten mit Ihnen.
             </h2>
+            <p className="mt-4 text-body text-white/70 max-w-xl">
+              Es geht darum sich draussen zu bewegen, Neues auszuprobieren, sich aus der Komfortzone zu locken und Erfolgserlebnisse zu sammeln. Mit welchen Bewegungsaufforderungen gelingt das in Ihrer Ortschaft?
+            </p>
+            <p className="mt-2 text-body text-white/70 max-w-xl">
+              Wir helfen Ihnen dabei, aus dem Raumpotenzial gesellschaftlichen Mehrwert zu schöpfen.
+            </p>
           </div>
           <Link
-            href="/fuer-gemeinden"
+            href="/raumgestaltung"
             className="btn-primary bg-white text-[var(--color-apple-dark)] hover:bg-white/90 inline-flex self-start md:self-center"
           >
-            Prozess ansehen
+            Gestalten Sie Ihren Parkour- & Bewegungsraum
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

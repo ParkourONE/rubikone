@@ -19,12 +19,12 @@ export function VideoSection() {
           transition={appleTransition}
           className="text-center mb-12"
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">RubikONE in Aktion</p>
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">Heute in Köniz</p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            So funktioniert es.
+            RubikONE in Aktion
           </h2>
           <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl mx-auto">
-            Erleben Sie, wie RubikONE Gemeinden in Bewegung bringt – am Beispiel unseres Pilotprojekts in Köniz.
+            2024 eröffnete die Gemeinde Köniz den ersten RubikONE überhaupt. Die Erkenntnis nach 12 Monaten: Wartung Fr. 0.-. Akzeptanz & Dankbarkeit in der Nachbarschaft. Begeisterte Lehrpersonen.
           </p>
         </motion.div>
 

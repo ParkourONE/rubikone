@@ -8,7 +8,7 @@ import { FadeUp } from "@/components/shared/fade-up";
 
 export const metadata: Metadata = {
   title: "Kontakt | RubikONE",
-  description: "Kontaktieren Sie uns für eine unverbindliche Beratung zu RubikONE. Wir antworten innerhalb von 2 Werktagen.",
+  description: "Kontaktieren Sie uns für eine unverbindliche Beratung zu RubikONE.",
 };
 
 export default function KontaktPage() {
@@ -54,9 +54,6 @@ export default function KontaktPage() {
                     {CONTACT_INFO.email}
                   </a>
                 </p>
-                <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                  Antwort innerhalb von 2 Werktagen
-                </p>
               </div>
             </FadeUp>
 
@@ -75,7 +72,7 @@ export default function KontaktPage() {
                   </a>
                 </p>
                 <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                  Mo–Fr, 8:00–17:00 Uhr
+                  Mo, Di & Do, 09:00–12:00 & 13:30–16:00 Uhr
                 </p>
               </div>
             </FadeUp>

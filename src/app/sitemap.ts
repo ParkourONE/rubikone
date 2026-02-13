@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/ueber-uns",
     "/impulsworkshop",
     "/kontakt",
-    "/fuer-gemeinden",
+    "/raumgestaltung",
     "/impressum",
     "/datenschutz",
   ];

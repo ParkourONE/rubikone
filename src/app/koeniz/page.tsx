@@ -54,6 +54,21 @@ export default function KoenizPage() {
         imageAlt="Luftaufnahme RubikONE Köniz im Schlossareal"
       />
 
+      {/* CTA: Selbst entdecken */}
+      <section className="py-8 bg-white">
+        <div className="container-content text-center">
+          <FadeUp>
+            <Link
+              href="#selbst-erleben"
+              className="btn-primary inline-flex items-center gap-2"
+            >
+              Selbst entdecken
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* Die Geschichte - mit lab7x1 */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
@@ -378,7 +393,7 @@ export default function KoenizPage() {
       </section>
 
       {/* Offizielle Stimmen */}
-      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
+      <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <SectionHeader
             title="Stimmen zum Projekt"
@@ -417,6 +432,26 @@ export default function KoenizPage() {
         </div>
       </section>
 
+      {/* Statement Annina */}
+      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
+        <div className="container-content">
+          <FadeUp>
+            <div className="max-w-3xl mx-auto">
+              <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
+              <blockquote>
+                <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
+                  «Wir haben gelacht, geschwitzt, uns gegenseitig angefeuert und den Teamgeist gestärkt. Für mich ist das RubikONE die perfekte Möglichkeit, eine bewegte Mittagspause zu organisieren. Der Parcours funktioniert unabhängig vom individuellen Fitness-Niveau und bietet auch schöne Möglichkeiten für ein paar Minuten Achtsamkeit.»
+                </p>
+              </blockquote>
+              <div className="mt-6">
+                <p className="text-body font-semibold text-[var(--color-apple-dark)]">Annina</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">Fachspezialistin Betriebliches Gesundheitsmanagement, Diversity & Inclusion</p>
+              </div>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
       {/* Gallery */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
@@ -443,7 +478,7 @@ export default function KoenizPage() {
       </section>
 
       {/* Praktische Infos */}
-      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
+      <section id="selbst-erleben" className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
             title="Selbst erleben"

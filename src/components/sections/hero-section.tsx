@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { HERO_CONTENT } from "@/lib/constants";
 import { staggerContainer, staggerItem, appleTransition } from "@/lib/animations";
 
@@ -33,11 +33,7 @@ export function HeroSection() {
               variants={staggerItem}
               className="text-hero text-[var(--color-apple-dark)]"
             >
-              Parkour beginnt
-              <br />
-              <span className="text-[var(--color-apple-blue)]">
-                vor der Haustür.
-              </span>
+              {HERO_CONTENT.headline}
             </motion.h1>
 
             {/* Subheadline */}
@@ -45,21 +41,16 @@ export function HeroSection() {
               variants={staggerItem}
               className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
             >
-              RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum.
-              Für alle Generationen. Bewegung, die verbindet.
+              {HERO_CONTENT.subheadline}
             </motion.p>
 
-            {/* CTAs */}
+            {/* CTA */}
             <motion.div
               variants={staggerItem}
               className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
             >
               <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
                 {HERO_CONTENT.ctaPrimary.label}
-              </Link>
-              <Link href={HERO_CONTENT.ctaSecondary.href} className="btn-secondary">
-                {HERO_CONTENT.ctaSecondary.label}
-                <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
           </motion.div>
@@ -106,11 +97,7 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="text-display text-[var(--color-apple-dark)]"
               >
-                Parkour beginnt
-                <br />
-                <span className="text-[var(--color-apple-blue)]">
-                  vor der Haustür.
-                </span>
+                {HERO_CONTENT.headline}
               </motion.h1>
 
               {/* Subheadline */}
@@ -118,21 +105,16 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
               >
-                RubikONE verwandelt Ihre Gemeinde in einen Bewegungsraum.
-                Für alle Generationen. Bewegung, die verbindet.
+                {HERO_CONTENT.subheadline}
               </motion.p>
 
-              {/* CTAs */}
+              {/* CTA */}
               <motion.div
                 variants={staggerItem}
                 className="mt-10 flex flex-row gap-4"
               >
                 <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
                   {HERO_CONTENT.ctaPrimary.label}
-                </Link>
-                <Link href={HERO_CONTENT.ctaSecondary.href} className="btn-secondary">
-                  {HERO_CONTENT.ctaSecondary.label}
-                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </motion.div>
 
