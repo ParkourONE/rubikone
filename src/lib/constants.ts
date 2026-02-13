@@ -450,7 +450,9 @@ export const FOOTER_LINKS = {
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutz", href: "/datenschutz" },
   ],
-  partner: [] as { label: string; href: string; logo?: string }[],
+  partner: [
+    { label: "BASPO (Innovationslabor lab7x1)", href: "https://www.baspo.admin.ch/de/das-innovationslabor-lab7x1", logo: "/images/logos/baspo-logo.gif" },
+  ],
 } as const;
 
 // FAQ Items
