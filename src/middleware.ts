@@ -4,6 +4,11 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Skip Tina CMS static files (served from public/admin/)
+  if (pathname === "/admin/index.html" || pathname.startsWith("/admin/assets/")) {
+    return NextResponse.next();
+  }
+
   // Only protect /admin routes (except /admin/login)
   if (pathname.startsWith("/admin") && pathname !== "/admin/login") {
     const session = request.cookies.get("admin_session");
