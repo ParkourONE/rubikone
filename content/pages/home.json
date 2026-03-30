@@ -1,0 +1,135 @@
+{
+  "title": "RubikONE – Die Stadt wird zum Bewegungsraum",
+  "seoDescription": "RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel. Für Gemeinden, Schulen und Immobilienentwickler in der Schweiz.",
+  "blocks": [
+    {
+      "_template": "hero",
+      "headline": "Hier darfst du.",
+      "headlineAccent": "",
+      "subheadline": "RubikONE macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. Dauerhaft & wetterfest.",
+      "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
+      "ctaPrimary": {
+        "label": "Raumgestaltung entdecken",
+        "href": "/raumgestaltung"
+      },
+      "ctaSecondary": {
+        "label": "Referenz Köniz ansehen",
+        "href": "/koeniz"
+      }
+    },
+    {
+      "_template": "textHook",
+      "statistic": "40%",
+      "statisticLabel": "der Schweizer Bevölkerung bewegt sich zu wenig.",
+      "headline": "Nicht weil sie nicht wollen.",
+      "subheadline": "Sondern weil niemand sie einlädt.",
+      "source": "Bundesamt für Gesundheit",
+      "solutionHeadline": "RubikONE gibt Menschen die Erlaubnis, sich zu bewegen.",
+      "solutionDescription": "Wir machen sichtbar, was schon da ist: Treppen werden zu Trainingsgeräten. Mauern zu Balancierbalken. Geländer zu Kletterstangen.",
+      "solutionFeatures": [
+        "9 Bewegungen",
+        "0 neue Geräte",
+        "100% Wirkung"
+      ]
+    },
+    {
+      "_template": "videoSection",
+      "headline": "RubikONE in Aktion",
+      "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac"
+    },
+    {
+      "_template": "vorherNachher",
+      "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
+      "description": "RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar.",
+      "imageBefore": "/images/konzept/vorher.jpg",
+      "imageAfter": "/images/konzept/nachher.jpg",
+      "labelBefore": "Vorher",
+      "labelAfter": "Nachher"
+    },
+    {
+      "_template": "testimonials",
+      "headline": "Das sagen unsere Partner",
+      "items": [
+        {
+          "quote": "Das Potenzial für Bewegung, für Wohlbefinden und Leistungsfähigkeit ist elementar. Hauptsache Menschen bewegen sich – und im Idealfall draussen. RubikONE macht genau das möglich.",
+          "author": "Christoph Conz",
+          "role": "Bundesamt für Sport BASPO, lab7x1"
+        },
+        {
+          "quote": "RubikONE bedeutet für uns ein niederschwelliges Angebot, das die Bevölkerung zu Bewegung einlädt – und zwar mit Sachen, die schon vorhanden sind. Als Roger das Projekt vorstellte, war sofort klar: Das ist innovativ.",
+          "author": "Stephan Baeriswyl",
+          "role": "Fachstelle Sport, Gemeinde Köniz"
+        }
+      ]
+    },
+    {
+      "_template": "imageGallery",
+      "headline": "Impressionen",
+      "images": [
+        { "src": "/images/koeniz/schulklasse.jpg", "alt": "Schulklasse beim RubikONE Training" },
+        { "src": "/images/koeniz/kind-springt.jpg", "alt": "Kind springt am Posten" },
+        { "src": "/images/koeniz/kinder-springen.jpg", "alt": "Kinder springen gemeinsam" },
+        { "src": "/images/koeniz/spass.jpg", "alt": "Spass beim Bewegen" },
+        { "src": "/images/koeniz/schloss.jpg", "alt": "Schlossareal Köniz" }
+      ]
+    },
+    {
+      "_template": "processSteps",
+      "headline": "In vier Schritten zum Ziel",
+      "subtitle": "So entsteht Ihr RubikONE",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Kennenlernen",
+          "subtitle": "Impulsworkshop",
+          "description": "Wir kommen zu Ihnen und zeigen, was in Ihrer Gemeinde möglich ist.",
+          "details": ["120 Minuten", "CHF 1'990.–", "Bis 12 Personen"],
+          "duration": "1 Tag"
+        },
+        {
+          "number": "2",
+          "title": "Planen",
+          "subtitle": "Konzeption",
+          "description": "Standortanalyse, Route definieren, Sicherheitsprüfung nach Schweizer Normen.",
+          "details": ["Route & Posten", "Eigentümer klären", "Sicherheitsprüfung"],
+          "duration": "4–6 Wochen"
+        },
+        {
+          "number": "3",
+          "title": "Umsetzen",
+          "subtitle": "Realisierung",
+          "description": "Baugesuch einreichen, Produktion, Montage.",
+          "details": ["Baugesuch", "Produktion", "Installation"],
+          "duration": "3–4 Monate"
+        },
+        {
+          "number": "4",
+          "title": "Eröffnen",
+          "subtitle": "Aktivierung",
+          "description": "Eröffnungsevent mit Workshops. Ihre Gemeinde bewegt sich.",
+          "details": ["Eröffnungsfeier", "Workshops", "Übergabe"],
+          "duration": "1 Tag"
+        }
+      ]
+    },
+    {
+      "_template": "configuratorCta",
+      "headline": "Ihr individuelles Leistungspaket",
+      "description": "Konfigurieren Sie Ihr Projekt und erhalten Sie eine persönliche Übersicht per E-Mail."
+    },
+    {
+      "_template": "ctaSection",
+      "variant": "dark",
+      "headline": "Bereit für den nächsten Schritt?",
+      "description": "Starten Sie mit einem Impulsworkshop. Wir begleiten Sie dabei und zeigen Ihnen die Multiperspektive des Parkours.",
+      "ctaPrimary": {
+        "label": "Impulsworkshop buchen",
+        "href": "/impulsworkshop"
+      },
+      "ctaSecondary": {
+        "label": "Kostenlose Standort-Analyse anfragen",
+        "href": "/kontakt"
+      }
+    }
+  ]
+}

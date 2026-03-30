@@ -1,0 +1,16 @@
+{
+  "title": "Datenschutz | RubikONE",
+  "seoDescription": "Datenschutzerklärung der RubikONE Website von ParkourONE GmbH.",
+  "blocks": [
+    {
+      "_template": "pageHero",
+      "title": "Datenschutzerklärung",
+      "description": "Informationen zum Umgang mit Ihren personenbezogenen Daten.",
+      "breadcrumb": "Datenschutz"
+    },
+    {
+      "_template": "richText",
+      "content": "## 1. Verantwortliche Stelle\n\nParkourONE GmbH\nSüdstrasse 16, SPOT 101\n3110 Münsingen\nSchweiz\n\nE-Mail: info@rubikone.ch\nTelefon: +41 31 971 28 27\n\n## 2. Erhebung und Verarbeitung personenbezogener Daten\n\nWir erheben personenbezogene Daten nur, wenn Sie uns diese freiwillig mitteilen, z.B. über unser Kontaktformular oder den Konfigurator.\n\n## 3. Verwendung der Daten\n\nDie von Ihnen übermittelten Daten verwenden wir ausschliesslich zur Bearbeitung Ihrer Anfrage und zur Kontaktaufnahme.\n\n## 4. Weitergabe an Dritte\n\nIhre Daten werden nicht an Dritte weitergegeben, es sei denn, dies ist zur Vertragserfüllung erforderlich oder Sie haben ausdrücklich eingewilligt.\n\n## 5. Cookies und Analyse\n\nDiese Website verwendet Vercel Analytics und Speed Insights zur anonymen Erfassung von Nutzungsdaten. Es werden keine personenbezogenen Daten erfasst.\n\n## 6. Ihre Rechte\n\nSie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten. Kontaktieren Sie uns unter info@rubikone.ch.\n\n## 7. Änderungen\n\nWir behalten uns vor, diese Datenschutzerklärung jederzeit anzupassen."
+    }
+  ]
+}

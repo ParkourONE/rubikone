@@ -36,6 +36,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# WordPress (local testing only)
+/wordpress-local/
+/rubikone-theme/
+/parkourone-theme/
+
+# Claude
+/.claude/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

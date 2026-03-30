@@ -1,0 +1,150 @@
+{
+  "title": "Referenz Köniz | RubikONE",
+  "seoDescription": "Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation im Schlossareal Köniz.",
+  "blocks": [
+    {
+      "_template": "pageHero",
+      "title": "Köniz macht es vor.",
+      "description": "Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation.",
+      "breadcrumb": "Referenz Köniz",
+      "image": "/images/koeniz/luftbild.jpg",
+      "imageAlt": "Luftaufnahme RubikONE Köniz im Schlossareal"
+    },
+    {
+      "_template": "timeline",
+      "headline": "Ein Innovationsprojekt des Bundes.",
+      "subtitle": "BASPO lab7x1",
+      "description": "«Täglich eine Stunde, sieben Tage die Woche» – nach dieser Formel soll sich die Schweizer Bevölkerung bewegen. Das Bundesamt für Sport BASPO hat dafür das lab7x1 aufgebaut: Ein Innovationslabor, das neue Ideen zur Bewegungsförderung testet und evaluiert. RubikONE wurde als Laborversuch finanziert und über zwei Jahre wissenschaftlich begleitet. Die Gemeinde Köniz stellte das Schlossareal zur Verfügung – ein anspruchsvoller Standort unter Denkmalschutz.",
+      "items": [
+        { "date": "März 2023", "event": "Standortanalyse und erste Gespräche mit Köniz" },
+        { "date": "Januar 2024", "event": "Testtrainings mit der Bevölkerung" },
+        { "date": "Oktober 2024", "event": "Installation der Posten und Markierungen" },
+        { "date": "9. November 2024", "event": "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO" },
+        { "date": "Juli 2025", "event": "Abschluss der wissenschaftlichen Evaluation" }
+      ],
+      "challenge": {
+        "title": "Die Herausforderung",
+        "image": "/images/koeniz/schloss.jpg",
+        "points": [
+          "Denkmalgeschütztes Schlossareal mit nationaler Bedeutung",
+          "Verschiedene Grundeigentümer und politische Hürden",
+          "Wissenschaftliche Evaluation durch Affective Advisory gefordert"
+        ]
+      },
+      "solution": {
+        "title": "Die Lösung",
+        "image": "/images/koeniz/kind-springt.jpg",
+        "points": [
+          "Reversible Installation: nur Schilder und Farbmarkierungen",
+          "Vereinbarungen mit allen Eigentümerschaften",
+          "Finanzierung durch BASPO lab7x1 Innovationslabor"
+        ]
+      },
+      "denkmalpflege": "Das Schlossareal Köniz ist als Kulturgut von nationaler Bedeutung eingestuft. Zum Erstaunen aller Beteiligten wurde die Farbmarkierung von der Denkmalpflege auf Anhieb als bewilligungsfähig beurteilt – weil die Installation reversibel ist.",
+      "insights": [
+        {
+          "title": "Sofort verstanden",
+          "shortDesc": "RubikONE ist selbsterklärend und spricht eine simple Farb- und Formsprache.",
+          "fullDesc": "94% der Befragten verstehen auf Anhieb, wie sie RubikONE nutzen können. Die Farbmarkierungen und Postenschilder erleichtern den Einstieg – ohne zusätzlichen Coach."
+        },
+        {
+          "title": "Gemeinsame Freude",
+          "shortDesc": "Alleine oder als Team – die Spielfreude wird geweckt",
+          "fullDesc": "75% der befragten Nutzenden sagen: RubikONE macht Spass, besonders gemeinsam mit Gleichgesinnten."
+        },
+        {
+          "title": "Spontan genutzt",
+          "shortDesc": "Menschen integrieren RubikONE in ihren Alltag",
+          "fullDesc": "Beobachtungen und Berichte aus der Nachbarschaft zeigen, dass zentral gelegene Posten regelmässig von Sporttreibenden als Trainingsort, sowie von Familien und Kindern als Spielaktivität genutzt werden."
+        },
+        {
+          "title": "Qualität überzeugt",
+          "shortDesc": "Politische Hürden sind überwindbar",
+          "fullDesc": "Aus Bedenken wurde Überzeugung: Kein Vandalismus, keine Unfälle. 84% schätzen den kostenfreien Zugang zu jeder Zeit und direkt vor der Haustür."
+        },
+        {
+          "title": "Workshops ergänzen",
+          "shortDesc": "Lehrpersonen entdecken eine Alternative zur Sporthalle",
+          "fullDesc": "29 Schulklassen waren mit einem Parkourcoach auf dem RubikONE. Die Lehrpersonen können sich vorstellen den Fitnessparkour in den Sportunterricht einzubauen."
+        },
+        {
+          "title": "Effektive Kommunikation",
+          "shortDesc": "RubikONE verbindet Ideen und Fachdisziplinen",
+          "fullDesc": "Als ersten Schritt der Zusammenarbeit einen Impulsworkshop (120 Minuten, bis 12 Personen) durchzuführen, hat sich bewährt. Die wichtigsten Verwaltungsabteilungen erlebten vor Ort, wie RubikONE aussehen kann und was es dazu braucht."
+        }
+      ]
+    },
+    {
+      "_template": "testimonials",
+      "headline": "Das sagen die Teilnehmenden.",
+      "subtitle": "Workshop-Feedback",
+      "items": [
+        { "quote": "Draussen sein, die Kombination aus Laufen und Übung – nicht nur an einem Fleck.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Abwechslungsreiche Route, Interaktion miteinander, Kombi aus Kraft-Koordination-Ausdauer.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Das Zusammentrainieren. Unter Leuten sein, Austausch.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Gemeinsam, gegenseitig Aufgaben geben, herausfordern.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Dauer sehr passend, abseits von Verkehr, cool.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Die Vielseitigkeit, Animation, Sonne – und dass alles draussen stattfindet.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Mal was anderes als die Sporthalle – mit dem arbeiten, was schon da ist.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Abwechslungsreich, coole Umgebung, aus wenig viel herausholen – nur mit ein bisschen Farbe.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Spass in der Gruppe die man schon kennt, Bewegung tut gut.", "author": "Workshop-Teilnehmer:in", "role": "" },
+        { "quote": "Köniz als Sportplatz nutzen. Neue Übungen kennengelernt.", "author": "Workshop-Teilnehmer:in", "role": "" }
+      ]
+    },
+    {
+      "_template": "quoteHighlight",
+      "quote": "Wir haben gelacht, geschwitzt, uns gegenseitig angefeuert und den Teamgeist gestärkt. Für mich ist das RubikONE die perfekte Möglichkeit, eine bewegte Mittagspause zu organisieren. Der Parcours funktioniert unabhängig vom individuellen Fitness-Niveau und bietet auch schöne Möglichkeiten für ein paar Minuten Achtsamkeit.",
+      "author": "Annina",
+      "role": "Fachspezialistin Betriebliches Gesundheitsmanagement, Diversity & Inclusion"
+    },
+    {
+      "_template": "imageGallery",
+      "headline": "Impressionen",
+      "subtitle": "RubikONE in Aktion",
+      "images": [
+        { "src": "/images/koeniz/schulklasse.jpg", "alt": "Schulklasse beim RubikONE Training" },
+        { "src": "/images/koeniz/kind-springt.jpg", "alt": "Kind springt am Posten" },
+        { "src": "/images/koeniz/kinder-springen.jpg", "alt": "Kinder springen gemeinsam" },
+        { "src": "/images/koeniz/spass.jpg", "alt": "Spass beim Bewegen" },
+        { "src": "/images/koeniz/schloss.jpg", "alt": "Schlossareal Köniz" }
+      ]
+    },
+    {
+      "_template": "keyFacts",
+      "headline": "Selbst erleben",
+      "subtitle": "RubikONE Köniz besuchen",
+      "facts": [
+        { "icon": "MapPin", "label": "Standort", "value": "Muhlernstrasse 7, 3098 Köniz" },
+        { "icon": "Route", "label": "Route", "value": "2.5 km | 9 Posten | 45-60 Minuten" },
+        { "icon": "Clock", "label": "Öffnungszeiten", "value": "24/7 frei zugänglich" },
+        { "icon": "Calendar", "label": "Anreise", "value": "Bus 10 bis Köniz Schloss. Parkplätze beim Schloss und gegenüber beim Schulhaus (Oberstufenzentrum Köniz)" }
+      ],
+      "quotes": [
+        {
+          "text": "Nach einem halben Jahr Arbeit mit verschiedenen Abteilungen und dem Kanton hat es geklappt. RubikONE ist bewilligt – mitten im denkmalgeschützten Schlossareal.",
+          "author": "Stephan Baeriswyl",
+          "role": "Fachstelle Sport, Gemeinde Köniz"
+        },
+        {
+          "text": "Ich habe heute das erste Mal den RubikONE erlebt. Es ist perfekt. Was super wäre: Wenn er noch 100 Jahre bestehen bleibt und viel genutzt wird.",
+          "author": "Christoph Conz",
+          "role": "BASPO lab7x1"
+        }
+      ]
+    },
+    {
+      "_template": "ctaSection",
+      "variant": "primary",
+      "headline": "Köniz war der Anfang.",
+      "description": "Jetzt ist Ihre Gemeinde dran. Starten Sie mit einem Impulsworkshop und entdecken Sie, welches Potenzial in Ihrer Umgebung steckt.",
+      "ctaPrimary": {
+        "label": "Impulsworkshop anfragen",
+        "href": "/impulsworkshop"
+      },
+      "ctaSecondary": {
+        "label": "Beratungsgespräch",
+        "href": "/kontakt"
+      }
+    }
+  ]
+}

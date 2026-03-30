@@ -1,0 +1,11 @@
+{
+  "title": "Konfigurator | RubikONE",
+  "seoDescription": "Konfigurieren Sie Ihr individuelles RubikONE-Projekt und erhalten Sie eine persönliche Übersicht per E-Mail.",
+  "blocks": [
+    {
+      "_template": "configurator",
+      "headline": "Ihr individuelles Leistungspaket",
+      "description": "Konfigurieren Sie Ihr Projekt und erhalten Sie eine persönliche Übersicht per E-Mail."
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "title": "Impulsworkshop | RubikONE",
+  "seoDescription": "Der einfachste Weg zu starten. Ein 120-minütiger Workshop vor Ort in Ihrer Gemeinde. Nach dem Workshop sehen Sie Ihre Umgebung mit anderen Augen.",
+  "blocks": [
+    {
+      "_template": "pageHero",
+      "title": "Der einfachste Weg zu starten.",
+      "description": "Ein Workshop vor Ort. 120 Minuten. Danach sehen Sie Ihre Gemeinde mit anderen Augen.",
+      "breadcrumb": "Impulsworkshop",
+      "image": "/images/workshop/frauen-balancieren.jpg",
+      "imageAlt": "Workshop-Teilnehmerinnen beim Balancieren"
+    },
+    {
+      "_template": "keyFacts",
+      "facts": [
+        { "icon": "Clock", "value": "120 Minuten", "label": "Workshop-Dauer" },
+        { "icon": "Users", "value": "Bis 12 Personen", "label": "Teilnehmende" },
+        { "icon": "MapPin", "value": "Vor Ort", "label": "Bei Ihnen" },
+        { "icon": "Cloud", "value": "Jedes Wetter", "label": "Draussen" }
+      ]
+    },
+    {
+      "_template": "processSteps",
+      "headline": "Was Sie erwartet",
+      "subtitle": "Ein Workshop, der bewegt",
+      "description": "Wir kommen zu Ihnen und zeigen, was in Ihrer Gemeinde möglich ist. Nach 120 Minuten sehen Sie Ihre Umgebung mit anderen Augen.",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Begrüssung",
+          "description": "Ziel und Absicht des Workshops"
+        },
+        {
+          "number": "2",
+          "title": "Einführung",
+          "description": "Was ist Parkour und weshalb braucht es das?"
+        },
+        {
+          "number": "3",
+          "title": "Hauptteil",
+          "description": "Umgebung neu interpretieren, Beispiele testen"
+        },
+        {
+          "number": "4",
+          "title": "Abschluss",
+          "description": "Potenzial erkennen, nächste Schritte"
+        }
+      ]
+    },
+    {
+      "_template": "imageGallery",
+      "images": [
+        { "src": "/images/workshop/frauen-balancieren.jpg", "alt": "Frauen balancieren beim Workshop" },
+        { "src": "/images/workshop/balancieren-helfen.jpg", "alt": "Gegenseitige Hilfe beim Balancieren" },
+        { "src": "/images/workshop/quadrupedie.jpg", "alt": "Quadrupedie-Übung auf der Linie" }
+      ]
+    },
+    {
+      "_template": "stakeholderGrid",
+      "headline": "Für wen ist der Workshop?",
+      "subtitle": "Der richtige Mix macht's",
+      "description": "Ideal: 6-12 Teilnehmende aus verschiedenen Abteilungen. So entsteht ein gemeinsames Verständnis.",
+      "stakeholders": [
+        {
+          "title": "Gemeindeverantwortliche",
+          "roles": ["Sportamt", "Raumplanung", "Tiefbau", "Gesundheitsförderung"]
+        },
+        {
+          "title": "Bildungsverantwortliche",
+          "roles": ["Schulleitung", "Sportlehrpersonen", "Jugendarbeit"]
+        },
+        {
+          "title": "Weitere Stakeholder",
+          "roles": ["Quartiervereine", "Seniorenvertretung", "Gesundheitsligen"]
+        }
+      ],
+      "whatYouGet": [
+        "Hands-on Erfahrung mit Parkour-Bewegungen",
+        "Begehung Ihrer Umgebung mit neuen Augen",
+        "Konkrete Vorschläge für mögliche Standorte",
+        "Verständnis für den weiteren Prozess",
+        "Entscheidungsgrundlage für Gemeinderat"
+      ]
+    },
+    {
+      "_template": "faq",
+      "headline": "Häufige Fragen",
+      "subtitle": "Zum Impulsworkshop",
+      "items": [
+        {
+          "question": "Muss ich sportlich sein?",
+          "answer": "Nein! Der Workshop ist für alle Fitnesslevel geeignet. Wir zeigen Übungen von einfach bis fortgeschritten."
+        },
+        {
+          "question": "Was, wenn es regnet?",
+          "answer": "Der Workshop findet bei jedem Wetter draussen statt. Das gehört dazu – RubikONE funktioniert auch bei Regen."
+        },
+        {
+          "question": "Wie viele Personen können teilnehmen?",
+          "answer": "Idealerweise 6-12 Personen. Bei mehr Teilnehmenden empfehlen wir zwei Workshops."
+        }
+      ]
+    },
+    {
+      "_template": "quoteHighlight",
+      "headline": "Ihre Ansprechpartnerin",
+      "author": "Michèle Lütolf",
+      "role": "Ansprechpartnerin RubikONE",
+      "email": "michele@parkourone.ch",
+      "phone": "+41 31 971 28 27"
+    },
+    {
+      "_template": "ctaSection",
+      "variant": "primary",
+      "headline": "Bereit für den neuen Blick?",
+      "description": "In 120 Minuten zeigen wir Ihnen, was in Ihrer Gemeinde möglich ist. Ohne Verpflichtung, mit konkreten Ideen.",
+      "ctaPrimary": {
+        "label": "Workshop anfragen",
+        "href": "/kontakt"
+      },
+      "ctaSecondary": {
+        "label": "Referenz ansehen",
+        "href": "/koeniz"
+      }
+    }
+  ]
+}

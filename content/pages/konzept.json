@@ -1,0 +1,164 @@
+{
+  "title": "Das Konzept | RubikONE",
+  "seoDescription": "Was wäre wenn eine Treppe zum Fitnessplatz wird? RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.",
+  "blocks": [
+    {
+      "_template": "pageHero",
+      "title": "Was wäre wenn...",
+      "description": "...eine Treppe zum Fitnessplatz wird? ...die Mauer zur Balancechallenge? ...Möglichkeiten zu Hindernissen werden? RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.",
+      "breadcrumb": "Das Konzept",
+      "image": "/images/hero/generationen-kraft.jpg",
+      "imageAlt": "Generationen trainieren gemeinsam im urbanen Raum"
+    },
+    {
+      "_template": "vorherNachher",
+      "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
+      "subtitle": "Das Prinzip",
+      "description": "RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar.",
+      "imageBefore": "/images/konzept/vorher.jpg",
+      "imageAfter": "/images/konzept/nachher.jpg",
+      "labelBefore": "Vorher",
+      "labelAfter": "Nachher",
+      "elements": [
+        { "title": "Beschilderung", "description": "Klare Schilder mit Übungen und QR-Codes für Video-Anleitungen" },
+        { "title": "Farbmarkierungen", "description": "Farbige Markierungen zeigen, wo trainiert wird" },
+        { "title": "Normenkonform", "description": "Entspricht allen relevanten Schweizer Sicherheitsnormen" }
+      ]
+    },
+    {
+      "_template": "comparisonTable",
+      "headline": "Was RubikONE auszeichnet",
+      "subheadline": "Eine neue Art, Bewegung in den öffentlichen Raum zu bringen.",
+      "features": [
+        {
+          "label": "Keine neue Fläche nötig",
+          "description": "RubikONE nutzt bestehende Infrastruktur – Treppen, Mauern, Geländer werden zu Bewegungsposten."
+        },
+        {
+          "label": "Minimaler baulicher Eingriff",
+          "description": "Kein Tiefbau, nur kleine Fundamente für die Schilder. Denkmalschutz-kompatibel bewiesen in Köniz."
+        },
+        {
+          "label": "Für alle Generationen",
+          "description": "Von 6 bis 96 – RubikONE spricht alle an. Fünf Lerndimensionen machen Bewegung für alle zugänglich."
+        },
+        {
+          "label": "Wissenschaftlich evaluiert",
+          "description": "Im Rahmen des BASPO lab7x1 über zwei Jahre begleitet und durch Affective Advisory evaluiert."
+        },
+        {
+          "label": "Wartungsarm",
+          "description": "8 Monate Betrieb in Köniz: CHF 0 Wartungskosten, 0 Vandalismusfälle."
+        },
+        {
+          "label": "Modulare Umsetzung",
+          "description": "Sie entscheiden, welche Leistungen Sie selbst übernehmen und wo Sie unsere Expertise nutzen."
+        }
+      ]
+    },
+    {
+      "_template": "imageGallery",
+      "headline": "Natürliche Bewegungen, klar erklärt.",
+      "subtitle": "Beispiele aus Köniz",
+      "description": "Jeder Posten zeigt Übungen mit Illustrationen und zusätzlichen Challenges für ganzheitliches Lernen.",
+      "images": [
+        { "src": "/images/posten/schild-01.jpg", "alt": "Posten 01" },
+        { "src": "/images/posten/schild-02.jpg", "alt": "Posten 02" },
+        { "src": "/images/posten/schild-03.jpg", "alt": "Posten 03" },
+        { "src": "/images/posten/schild-04.jpg", "alt": "Posten 04" },
+        { "src": "/images/posten/schild-05.jpg", "alt": "Posten 05" },
+        { "src": "/images/posten/schild-06.jpg", "alt": "Posten 06" },
+        { "src": "/images/posten/schild-07.jpg", "alt": "Posten 07" },
+        { "src": "/images/posten/schild-08.jpg", "alt": "Posten 08" },
+        { "src": "/images/posten/schild-09.jpg", "alt": "Posten 09" }
+      ]
+    },
+    {
+      "_template": "lerndimensionen",
+      "headline": "Mehr als Bewegung. Ganzheitliches Lernen.",
+      "subtitle": "TRUST Education",
+      "description": "Jeder Posten fördert fünf Lerndimensionen gleichzeitig – durch zusätzliche Challenges auf jedem Schild.",
+      "dimensions": [
+        {
+          "id": "motorisch",
+          "title": "Motorisch",
+          "icon": "/images/lerndimensionen/motorisch.jpg",
+          "shortDesc": "Körperliche Bewegung",
+          "modalTitle": "Motorisches Lernen",
+          "modalContent": "Die motorische Dimension umfasst alle körperlichen Bewegungsabläufe und deren Koordination.\n\nBei RubikONE trainieren Teilnehmende:\n- Gleichgewicht und Balance\n- Koordination und Körperkontrolle\n- Kraft und Ausdauer\n- Beweglichkeit und Flexibilität\n- Räumliche Orientierung\n\nJede Übung kann in drei Schwierigkeitsstufen ausgeführt werden, sodass vom Einsteiger bis zum Fortgeschrittenen alle eine passende Herausforderung finden."
+        },
+        {
+          "id": "kognitiv",
+          "title": "Kognitiv",
+          "icon": "/images/lerndimensionen/kognitiv.jpg",
+          "shortDesc": "Denken & Konzentration",
+          "modalTitle": "Kognitives Lernen",
+          "modalContent": "Die kognitive Dimension fördert geistige Prozesse wie Aufmerksamkeit, Konzentration und Problemlösung.\n\nBeispiel-Challenges auf den Posten:\n- \"Zähle während der Übung rückwärts von 20\"\n- \"Atme bewusst ein und aus\"\n- \"Merke dir die Reihenfolge der Posten\"\n\nDiese Aufgaben verbinden Bewegung mit Denkprozessen – ein Ansatz, der nachweislich die Gehirnleistung fördert und besonders für Kinder und ältere Menschen wertvoll ist."
+        },
+        {
+          "id": "emotional",
+          "title": "Emotional",
+          "icon": "/images/lerndimensionen/emotional.jpg",
+          "shortDesc": "Gefühle ausdrücken",
+          "modalTitle": "Emotionales Lernen",
+          "modalContent": "Die emotionale Dimension hilft, Gefühle wahrzunehmen und auszudrücken.\n\nBeispiel-Challenges auf den Posten:\n- \"Lächle während jeder Übung\"\n- \"Singe dein Lieblingslied während du balancierst\"\n- \"Beschreibe mit zwei Adjektiven, wie du dich fühlst\"\n\nBewegung und Emotionen sind eng verknüpft. RubikONE nutzt diese Verbindung bewusst, um positive Gefühle zu fördern und Stress abzubauen."
+        },
+        {
+          "id": "sozial",
+          "title": "Sozial",
+          "icon": "/images/lerndimensionen/sozial.jpg",
+          "shortDesc": "Gemeinsam bewegen",
+          "modalTitle": "Soziales Lernen",
+          "modalContent": "Die soziale Dimension fördert Interaktion und Gemeinschaft.\n\nBeispiel-Challenges auf den Posten:\n- \"Grüsse alle Personen, denen du begegnest\"\n- \"Führe die Übung zu zweit aus\"\n- \"Gib der nächsten Person ein High-Five\"\n\nRubikONE ist bewusst im öffentlichen Raum platziert. Menschen begegnen sich, kommen ins Gespräch, trainieren zusammen. So entsteht Gemeinschaft – generationenübergreifend."
+        },
+        {
+          "id": "sensorisch",
+          "title": "Sensorisch",
+          "icon": "/images/lerndimensionen/sensorisch.jpg",
+          "shortDesc": "Sinne schärfen",
+          "modalTitle": "Sensorisches Lernen",
+          "modalContent": "Die sensorische Dimension schärft die Sinneswahrnehmung.\n\nBeispiel-Challenges auf den Posten:\n- \"Schliesse während der Übung die Augen\"\n- \"Nimm die Geräusche in deiner Umgebung wahr\"\n- \"Laufe barfuss zum nächsten Posten\"\n\nDurch bewusstes Wahrnehmen der Umgebung wird die Achtsamkeit gefördert. Die Teilnehmenden lernen, ihren Körper und ihre Umwelt intensiver zu spüren."
+        }
+      ]
+    },
+    {
+      "_template": "statsCounter",
+      "headline": "RubikONE funktioniert",
+      "stats": [
+        { "value": "531", "label": "Teilnehmende", "sublabel": "in Köniz" },
+        { "value": "94%", "label": "verstehen's", "sublabel": "sofort" },
+        { "value": "84%", "label": "schätzen den", "sublabel": "Gratiszugang" },
+        { "value": "0 CHF", "label": "Wartung", "sublabel": "in 8 Monaten" },
+        { "value": "BASPO", "label": "lab7x1", "sublabel": "evaluiert" }
+      ]
+    },
+    {
+      "_template": "safetyInfo",
+      "headline": "Sicherheit nach Schweizer Standards.",
+      "subtitle": "Normenkonform",
+      "description": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen für Fitnessgeräte im Aussenbereich.",
+      "image": "/images/konzept/wegweiser.jpg",
+      "imageAlt": "RubikONE Beschilderung",
+      "norms": [
+        { "code": "SN EN 16630:2015", "name": "Fitnessgeräte" },
+        { "code": "SN EN 1177:2020", "name": "Spielplatzböden" },
+        { "code": "SIA 358", "name": "Geländer" },
+        { "code": "bfu-Richtlinien", "name": "Unfallverhütung" }
+      ]
+    },
+    {
+      "_template": "ctaSection",
+      "variant": "primary",
+      "headline": "Überzeugt? Erleben Sie es selbst.",
+      "description": "In Köniz können Sie RubikONE live erleben. Oder buchen Sie einen Impulsworkshop für Ihre Gemeinde.",
+      "ctaPrimary": {
+        "label": "Referenz Köniz",
+        "href": "/koeniz"
+      },
+      "ctaSecondary": {
+        "label": "Impulsworkshop anfragen",
+        "href": "/impulsworkshop"
+      }
+    }
+  ]
+}
