@@ -1,10 +1,6 @@
 // tina/config.ts
-import { defineConfig, LocalAuthProvider } from "tinacms";
-var isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true";
+import { defineConfig } from "tinacms";
 var config_default = defineConfig({
-  // Self-hosted local mode
-  contentApiUrlOverride: "/api/tina/gql",
-  authProvider: isLocal ? new LocalAuthProvider() : void 0,
   branch: process.env.GITHUB_BRANCH || process.env.VERCEL_GIT_COMMIT_REF || "main",
   clientId: process.env.NEXT_PUBLIC_TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
