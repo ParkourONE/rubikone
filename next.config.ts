@@ -58,11 +58,16 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  // Security headers for all routes
   async headers() {
     return [
+      // No restrictive headers on Tina CMS admin routes
       {
-        source: "/(.*)",
+        source: "/admin/:path*",
+        headers: [],
+      },
+      // Security headers for all other routes
+      {
+        source: "/((?!admin).*)",
         headers: securityHeaders,
       },
     ];
