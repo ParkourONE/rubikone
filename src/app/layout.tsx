@@ -97,11 +97,10 @@ export default async function RootLayout({
       <head>
         <StructuredData />
       </head>
-      <body className={`${inter.variable} font-sans antialiased ${isAdmin ? "pt-10" : ""}`}>
+      <body className={`${inter.variable} font-sans antialiased`}>
         <AdminProvider isAdmin={isAdmin}>
           <ConsentProvider>
             <LenisProvider>
-              <AdminToolbar />
               <Navigation />
               <main>{children}</main>
               <Footer />
@@ -110,6 +109,7 @@ export default async function RootLayout({
             </LenisProvider>
             <ConditionalAnalytics />
           </ConsentProvider>
+          <AdminToolbar />
           <EditPanel />
         </AdminProvider>
       </body>

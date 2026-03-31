@@ -7,11 +7,13 @@ const PAGE_NAMES: Record<string, string> = {
   "/": "Startseite",
   "/konzept": "Konzept",
   "/raumgestaltung": "Raumgestaltung",
-  "/koeniz": "Referenz Koeniz",
+  "/koeniz": "Referenz Köniz",
   "/impulsworkshop": "Impulsworkshop",
-  "/ueber-uns": "Ueber uns",
+  "/ueber-uns": "Über uns",
   "/kontakt": "Kontakt",
   "/konfigurator": "Konfigurator",
+  "/datenschutz": "Datenschutz",
+  "/impressum": "Impressum",
 };
 
 export function AdminToolbar() {
@@ -19,41 +21,30 @@ export function AdminToolbar() {
   const pathname = usePathname();
 
   if (!isAdmin) return null;
-
-  // Don't show on admin pages
   if (pathname.startsWith("/admin")) return null;
 
   const pageName = PAGE_NAMES[pathname] || pathname;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[100] bg-gray-900 text-white h-10 flex items-center px-4 text-sm shadow-lg">
-      {/* Left: Brand */}
-      <div className="flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-        <span className="font-semibold">RubikONE Editor</span>
-      </div>
-
-      {/* Center: Page name */}
-      <div className="flex-1 text-center text-gray-400">{pageName}</div>
-
-      {/* Right: Actions */}
-      <div className="flex items-center gap-3">
-        {hasChanges && (
-          <button
-            onClick={saveContent}
-            disabled={saving}
-            className="px-3 py-1 bg-blue-500 hover:bg-blue-600 disabled:opacity-50 rounded text-xs font-medium transition-colors"
-          >
-            {saving ? "Speichert..." : "Speichern & Deployen"}
-          </button>
-        )}
+    <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 px-4 py-2 bg-[#1D1D1F]/90 backdrop-blur-xl text-white rounded-full shadow-2xl text-sm">
+      <div className="w-2 h-2 rounded-full bg-green-400 flex-shrink-0" />
+      <span className="text-white/60 font-medium">{pageName}</span>
+      <div className="w-px h-4 bg-white/20 mx-1" />
+      {hasChanges && (
         <button
-          onClick={logout}
-          className="px-3 py-1 bg-gray-700 hover:bg-gray-600 rounded text-xs font-medium transition-colors"
+          onClick={saveContent}
+          disabled={saving}
+          className="px-3 py-1 bg-white/15 hover:bg-white/25 disabled:opacity-50 rounded-full text-xs font-medium transition-colors"
         >
-          Beenden
+          {saving ? "Speichert..." : "Speichern"}
         </button>
-      </div>
+      )}
+      <button
+        onClick={logout}
+        className="px-3 py-1 text-white/50 hover:text-white/80 text-xs font-medium transition-colors"
+      >
+        Beenden
+      </button>
     </div>
   );
 }
