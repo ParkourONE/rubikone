@@ -955,50 +955,80 @@
   },
   "PAGE_BLOCKS": {
     "startseite": [
-      { "type": "hero", "contentKey": "HERO_CONTENT" },
-      { "type": "stats", "contentKey": "TRUST_STATS" },
-      { "type": "problem", "contentKey": "PROBLEM_CONTENT" },
-      { "type": "solution", "contentKey": "SOLUTION_CONTENT" },
-      { "type": "testimonials", "contentKey": "TESTIMONIALS" },
-      { "type": "process", "contentKey": "PROCESS_PHASES" },
-      { "type": "cta", "contentKey": "CTA_CONTENT" }
+      { "type": "hero", "contentKey": "HERO_CONTENT", "label": "Hero" },
+      { "type": "texthook", "contentKey": "_HARDCODED_TEXTHOOK", "label": "Raum und Gesundheit kombiniert" },
+      { "type": "video", "contentKey": "_HARDCODED_VIDEO", "label": "RubikONE in Aktion" },
+      { "type": "vorher-nachher", "contentKey": "_HARDCODED_VORHER_NACHHER", "label": "Keine neuen Geräte. Nur ein neuer Blick." },
+      { "type": "testimonials", "contentKey": "TESTIMONIALS", "label": "Kundenstimmen" },
+      { "type": "gallery", "contentKey": "_HARDCODED_GALLERY", "label": "Bewegung verbindet Generationen" },
+      { "type": "prozess-teaser", "contentKey": "_HARDCODED_PROZESS_TEASER", "label": "Wir gestalten mit Ihnen" },
+      { "type": "configurator-cta", "contentKey": "_HARDCODED_CONFIGURATOR_CTA", "label": "Ihr individuelles Leistungspaket" },
+      { "type": "cta-dark", "contentKey": "CTA_CONTENT", "label": "Call-to-Action" }
     ],
     "konzept": [
-      { "type": "comparison", "contentKey": "COMPARISON_TABLE" },
-      { "type": "movements", "contentKey": "NINE_MOVEMENTS" },
-      { "type": "safety", "contentKey": "SAFETY_INFO" }
+      { "type": "konzept-hero", "contentKey": "_HARDCODED_KONZEPT_HERO", "label": "Was wäre wenn..." },
+      { "type": "vorher-nachher-slider", "contentKey": "_HARDCODED_VORHER_NACHHER_SLIDER", "label": "Keine neuen Geräte. Nur ein neuer Blick." },
+      { "type": "comparison", "contentKey": "COMPARISON_TABLE", "label": "Was RubikONE auszeichnet" },
+      { "type": "posten-slider", "contentKey": "_HARDCODED_POSTEN_SLIDER", "label": "Natürliche Bewegungen, klar erklärt" },
+      { "type": "lerndimensionen", "contentKey": "_HARDCODED_LERNDIMENSIONEN", "label": "Mehr als Bewegung. Ganzheitliches Lernen." },
+      { "type": "stats-slider", "contentKey": "_HARDCODED_STATS_SLIDER", "label": "RubikONE funktioniert" },
+      { "type": "safety", "contentKey": "SAFETY_INFO", "label": "Sicherheit nach Schweizer Standards" },
+      { "type": "cta-blue", "contentKey": "_HARDCODED_KONZEPT_CTA", "label": "Überzeugt? Erleben Sie es selbst." }
     ],
     "raumgestaltung": [
-      { "type": "stakeholder", "contentKey": "STAKEHOLDER_BENEFITS" },
-      { "type": "flexibility", "contentKey": "FLEXIBILITY_INFO" },
-      { "type": "faq", "contentKey": "FAQ_ITEMS" },
-      { "type": "cta", "contentKey": "CTA_CONTENT" }
+      { "type": "page-hero", "contentKey": "_HARDCODED_RAUMGESTALTUNG_HERO", "label": "Gewohntes neu entdecken" },
+      { "type": "stakeholder", "contentKey": "STAKEHOLDER_BENEFITS", "label": "Mehrwert für alle" },
+      { "type": "usp-kompakt", "contentKey": "_HARDCODED_USP_KOMPAKT", "label": "Das macht RubikONE einzigartig" },
+      { "type": "testimonial-single", "contentKey": "_HARDCODED_TESTIMONIAL_BERNADETTE", "label": "Testimonial Bernadette" },
+      { "type": "prozess-4-schritte", "contentKey": "PROCESS_PHASES", "label": "In vier Schritten zu Ihrem RubikONE" },
+      { "type": "referenz-koeniz", "contentKey": "_HARDCODED_REFERENZ_KOENIZ", "label": "Köniz war die erste Gemeinde" },
+      { "type": "faq", "contentKey": "_HARDCODED_RAUMGESTALTUNG_FAQ", "label": "Häufig gestellte Fragen" },
+      { "type": "configurator-trigger", "contentKey": "_HARDCODED_CONFIGURATOR_TRIGGER", "label": "Konfigurator" },
+      { "type": "cta-blue", "contentKey": "_HARDCODED_RAUMGESTALTUNG_CTA", "label": "Bereit für den nächsten Schritt?" }
     ],
     "koeniz": [
-      { "type": "casestudy", "contentKey": "KOENIZ_CASE_STUDY" },
-      { "type": "koenizdetails", "contentKey": "KOENIZ_DETAILS" }
+      { "type": "page-hero", "contentKey": "_HARDCODED_KOENIZ_HERO", "label": "Köniz macht es vor." },
+      { "type": "lab7x1", "contentKey": "KOENIZ_CASE_STUDY", "label": "Ein Innovationsprojekt des Bundes" },
+      { "type": "challenge-solution", "contentKey": "KOENIZ_CASE_STUDY", "label": "Herausforderung & Lösung" },
+      { "type": "denkmalschutz", "contentKey": "KOENIZ_CASE_STUDY", "label": "Denkmalschutz" },
+      { "type": "erkenntnisse", "contentKey": "KOENIZ_CASE_STUDY", "label": "Die Erkenntnisse" },
+      { "type": "workshop-feedback", "contentKey": "KOENIZ_CASE_STUDY", "label": "Workshop-Feedback" },
+      { "type": "offizielle-stimmen", "contentKey": "_HARDCODED_KOENIZ_STIMMEN", "label": "Stimmen zum Projekt" },
+      { "type": "statement-annina", "contentKey": "_HARDCODED_ANNINA", "label": "Statement Annina" },
+      { "type": "gallery-koeniz", "contentKey": "_HARDCODED_KOENIZ_GALLERY", "label": "Impressionen" },
+      { "type": "selbst-erleben", "contentKey": "KOENIZ_DETAILS", "label": "Selbst erleben" },
+      { "type": "cta-blue", "contentKey": "_HARDCODED_KOENIZ_CTA", "label": "Köniz war der Anfang" }
     ],
     "impulsworkshop": [
-      { "type": "workshop", "contentKey": "IMPULSWORKSHOP" },
-      { "type": "workshopdetails", "contentKey": "WORKSHOP_DETAILS" }
+      { "type": "page-hero", "contentKey": "_HARDCODED_WORKSHOP_HERO", "label": "Der einfachste Weg zu starten" },
+      { "type": "key-facts", "contentKey": "WORKSHOP_DETAILS", "label": "Key Facts" },
+      { "type": "programm", "contentKey": "IMPULSWORKSHOP", "label": "Was Sie erwartet" },
+      { "type": "workshop-images", "contentKey": "_HARDCODED_WORKSHOP_IMAGES", "label": "Workshop-Bilder" },
+      { "type": "mitnehmen", "contentKey": "_HARDCODED_MITNEHMEN", "label": "Was Sie mitnehmen" },
+      { "type": "fuer-wen", "contentKey": "WORKSHOP_DETAILS", "label": "Für wen ist der Workshop?" },
+      { "type": "preis-box", "contentKey": "WORKSHOP_DETAILS", "label": "Preis" },
+      { "type": "workshop-faq", "contentKey": "WORKSHOP_DETAILS", "label": "Häufige Fragen" },
+      { "type": "ansprechpartnerin", "contentKey": "CONTACT_PERSON", "label": "Ihre Ansprechpartnerin" },
+      { "type": "cta-blue", "contentKey": "_HARDCODED_WORKSHOP_CTA", "label": "Bereit für den neuen Blick?" }
     ],
-    "preise": [
-      { "type": "pricing", "contentKey": "PRICING_PACKAGES" },
-      { "type": "configurator", "contentKey": "CONFIGURATOR" }
-    ],
-    "faq": [
-      { "type": "faq", "contentKey": "FAQ_ITEMS" }
+    "kontakt": [
+      { "type": "page-hero", "contentKey": "_HARDCODED_KONTAKT_HERO", "label": "Sprechen wir darüber" },
+      { "type": "contact-info", "contentKey": "CONTACT_INFO", "label": "Kontaktinformationen" },
+      { "type": "contact-form", "contentKey": "_HARDCODED_CONTACT_FORM", "label": "Kontaktformular" },
+      { "type": "contact-image", "contentKey": "_HARDCODED_CONTACT_IMAGE", "label": "Bild" }
     ],
     "ueber-uns": [
-      { "type": "story", "contentKey": "PARKOURONE_STORY" },
-      { "type": "partners", "contentKey": "PARTNERS" }
+      { "type": "page-hero", "contentKey": "_HARDCODED_UEBER_UNS_HERO", "label": "Die Pioniere hinter RubikONE" },
+      { "type": "story", "contentKey": "PARKOURONE_STORY", "label": "ParkourONE Story" },
+      { "type": "srf-einstein", "contentKey": "_HARDCODED_SRF", "label": "SRF Einstein" },
+      { "type": "cta-blue", "contentKey": "_HARDCODED_UEBER_UNS_CTA", "label": "Lernen Sie uns kennen" }
     ],
     "allgemein": [
-      { "type": "siteconfig", "contentKey": "SITE_CONFIG" },
-      { "type": "navigation", "contentKey": "NAVIGATION_ITEMS" },
-      { "type": "contact", "contentKey": "CONTACT_INFO" },
-      { "type": "contactperson", "contentKey": "CONTACT_PERSON" },
-      { "type": "footer", "contentKey": "FOOTER_LINKS" }
+      { "type": "siteconfig", "contentKey": "SITE_CONFIG", "label": "Website-Einstellungen" },
+      { "type": "navigation", "contentKey": "NAVIGATION_ITEMS", "label": "Navigation" },
+      { "type": "contact", "contentKey": "CONTACT_INFO", "label": "Kontaktdaten" },
+      { "type": "contactperson", "contentKey": "CONTACT_PERSON", "label": "Ansprechpartnerin" },
+      { "type": "footer", "contentKey": "FOOTER_LINKS", "label": "Footer-Links" }
     ]
   }
 }
