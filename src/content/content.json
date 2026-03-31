@@ -952,5 +952,53 @@
       "description": "Roger und Felix beim Training im urbanen Raum",
       "emotion": "Authentisch, erfahren, leidenschaftlich"
     }
+  },
+  "PAGE_BLOCKS": {
+    "startseite": [
+      { "type": "hero", "contentKey": "HERO_CONTENT" },
+      { "type": "stats", "contentKey": "TRUST_STATS" },
+      { "type": "problem", "contentKey": "PROBLEM_CONTENT" },
+      { "type": "solution", "contentKey": "SOLUTION_CONTENT" },
+      { "type": "testimonials", "contentKey": "TESTIMONIALS" },
+      { "type": "process", "contentKey": "PROCESS_PHASES" },
+      { "type": "cta", "contentKey": "CTA_CONTENT" }
+    ],
+    "konzept": [
+      { "type": "comparison", "contentKey": "COMPARISON_TABLE" },
+      { "type": "movements", "contentKey": "NINE_MOVEMENTS" },
+      { "type": "safety", "contentKey": "SAFETY_INFO" }
+    ],
+    "raumgestaltung": [
+      { "type": "stakeholder", "contentKey": "STAKEHOLDER_BENEFITS" },
+      { "type": "flexibility", "contentKey": "FLEXIBILITY_INFO" },
+      { "type": "faq", "contentKey": "FAQ_ITEMS" },
+      { "type": "cta", "contentKey": "CTA_CONTENT" }
+    ],
+    "koeniz": [
+      { "type": "casestudy", "contentKey": "KOENIZ_CASE_STUDY" },
+      { "type": "koenizdetails", "contentKey": "KOENIZ_DETAILS" }
+    ],
+    "impulsworkshop": [
+      { "type": "workshop", "contentKey": "IMPULSWORKSHOP" },
+      { "type": "workshopdetails", "contentKey": "WORKSHOP_DETAILS" }
+    ],
+    "preise": [
+      { "type": "pricing", "contentKey": "PRICING_PACKAGES" },
+      { "type": "configurator", "contentKey": "CONFIGURATOR" }
+    ],
+    "faq": [
+      { "type": "faq", "contentKey": "FAQ_ITEMS" }
+    ],
+    "ueber-uns": [
+      { "type": "story", "contentKey": "PARKOURONE_STORY" },
+      { "type": "partners", "contentKey": "PARTNERS" }
+    ],
+    "allgemein": [
+      { "type": "siteconfig", "contentKey": "SITE_CONFIG" },
+      { "type": "navigation", "contentKey": "NAVIGATION_ITEMS" },
+      { "type": "contact", "contentKey": "CONTACT_INFO" },
+      { "type": "contactperson", "contentKey": "CONTACT_PERSON" },
+      { "type": "footer", "contentKey": "FOOTER_LINKS" }
+    ]
   }
 }
