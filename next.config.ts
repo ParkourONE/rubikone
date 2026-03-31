@@ -46,7 +46,7 @@ const securityHeaders = [
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
-      "frame-ancestors 'self'",
+      "frame-ancestors 'none'",
       "upgrade-insecure-requests",
     ].join("; "),
   },
@@ -60,14 +60,8 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   async headers() {
     return [
-      // No restrictive headers on Tina CMS admin routes
       {
-        source: "/admin/:path*",
-        headers: [],
-      },
-      // Security headers for all other routes
-      {
-        source: "/((?!admin).*)",
+        source: "/(.*)",
         headers: securityHeaders,
       },
     ];
