@@ -1,30 +1,36 @@
-import { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
-import { CONTACT_INFO, KONTAKT_PAGE } from "@/lib/constants";
 import { EditableSection } from "@/components/admin/editable-section";
+import { useContent } from "@/hooks/useContent";
 import { FadeUp } from "@/components/shared/fade-up";
-
-export const metadata: Metadata = {
-  title: "Kontakt | RubikONE",
-  description: "Kontaktieren Sie uns für eine unverbindliche Beratung zu RubikONE.",
-};
+import {
+  CONTACT_INFO,
+  KONTAKT_HERO,
+  KONTAKT_FORM,
+} from "@/lib/constants";
 
 export default function KontaktPage() {
+  const hero = useContent("KONTAKT_HERO", KONTAKT_HERO) as any;
+  const form = useContent("KONTAKT_FORM", KONTAKT_FORM) as any;
+
   return (
     <>
-      <EditableSection contentKey="KONTAKT_PAGE" label="Kontakt-Seite">
+      <EditableSection contentKey="KONTAKT_HERO" label="Hero">
       <PageHero
-        title={KONTAKT_PAGE.hero.title}
-        description={KONTAKT_PAGE.hero.description}
-        breadcrumb={KONTAKT_PAGE.hero.breadcrumb}
-        image={KONTAKT_PAGE.hero.image}
-        imageAlt={KONTAKT_PAGE.hero.imageAlt}
+        title={hero.title}
+        description={hero.description}
+        breadcrumb={hero.breadcrumb}
+        image={hero.image}
+        imageAlt={hero.imageAlt}
       />
+      </EditableSection>
 
       {/* Contact Info */}
+      <EditableSection contentKey="KONTAKT_FORM" label="Kontakt & Formular">
       <section className="section-spacing">
         <div className="container-content">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
@@ -74,7 +80,7 @@ export default function KontaktPage() {
                   </a>
                 </p>
                 <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                  {KONTAKT_PAGE.phoneHours}
+                  {form.phoneHours}
                 </p>
               </div>
             </FadeUp>
@@ -83,14 +89,14 @@ export default function KontaktPage() {
       </section>
 
       <ContactForm
-        title={KONTAKT_PAGE.contactFormTitle}
-        subtitle={KONTAKT_PAGE.contactFormSubtitle}
+        title={form.contactFormTitle}
+        subtitle={form.contactFormSubtitle}
       />
 
       {/* Image Section */}
       <section className="relative h-[40vh] min-h-[300px]">
         <Image
-          src={KONTAKT_PAGE.footerImage}
+          src={form.footerImage}
           alt="Parkour in Aktion"
           fill
           className="object-cover"

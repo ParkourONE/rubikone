@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft, Quote, Users, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PARKOURONE_STORY, UEBER_UNS_PAGE } from "@/lib/constants";
+import { PARKOURONE_STORY, UEBER_UNS_STORY } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
@@ -23,7 +23,7 @@ const TIMELINE_IMAGES: Record<string, string> = {
 // Full ParkourONE Story Section for dedicated page
 export function ParkourONEStoryFull() {
   const parkourStory = useContent("PARKOURONE_STORY", PARKOURONE_STORY);
-  const ueberUnsPage = useContent("UEBER_UNS_PAGE", UEBER_UNS_PAGE);
+  const ueberUnsPage = useContent("UEBER_UNS_STORY", UEBER_UNS_STORY);
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   const timelineScrollRef = useRef<HTMLDivElement>(null);
 
@@ -335,7 +335,7 @@ export function ParkourONEStoryFull() {
 // Compact ParkourONE Story Section for Homepage
 export function ParkourONEStoryCompact() {
   const parkourStory = useContent("PARKOURONE_STORY", PARKOURONE_STORY);
-  const ueberUnsPage = useContent("UEBER_UNS_PAGE", UEBER_UNS_PAGE);
+  const ueberUnsPage = useContent("UEBER_UNS_STORY", UEBER_UNS_STORY);
   return (
     <section className="section-spacing bg-white">
       <div className="container-content">

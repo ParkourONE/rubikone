@@ -951,14 +951,46 @@
     "tagline": "Eindrücke aus der Praxis",
     "headline": "Bewegung verbindet Generationen.",
     "images": [
-      { "src": "/images/hero/oma-enkelin.jpg", "title": "Generationen verbinden", "comment": "Grosseltern und Enkel trainieren gemeinsam – natürlich und ungezwungen." },
-      { "src": "/images/hero/generationen-kraft.jpg", "title": "Kraft für alle", "comment": "Vom Teenager bis zur Seniorin: Jeder findet seine passende Herausforderung." },
-      { "src": "/images/koeniz/schulklasse.jpg", "title": "Schulen integrieren", "comment": "RubikONE wird zum Outdoor-Klassenzimmer für Bewegung und Spiel." },
-      { "src": "/images/koeniz/kinder-springen.jpg", "title": "Spielerisch lernen", "comment": "Kinder entdecken natürliche Bewegungen – ganz ohne Anleitung." },
-      { "src": "/images/workshop/frauen-balancieren.jpg", "title": "Gemeinschaft stärken", "comment": "Bewegung schafft Begegnung – über alle Altersgruppen hinweg." },
-      { "src": "/images/posten/balance-nahaufnahme.jpg", "title": "Koordination fördern", "comment": "Balancieren trainiert Körper und Geist gleichzeitig." },
-      { "src": "/images/konzept/wegweiser.jpg", "title": "Intuitiv verstehen", "comment": "Klare Beschilderung macht den Einstieg kinderleicht." },
-      { "src": "/images/koeniz/spass.jpg", "title": "Freude an Bewegung", "comment": "Das wichtigste Ergebnis: Menschen, die Spass an Bewegung haben." }
+      {
+        "src": "/images/hero/oma-enkelin.jpg",
+        "title": "Generationen verbinden",
+        "comment": "Grosseltern und Enkel trainieren gemeinsam – natürlich und ungezwungen."
+      },
+      {
+        "src": "/images/hero/generationen-kraft.jpg",
+        "title": "Kraft für alle",
+        "comment": "Vom Teenager bis zur Seniorin: Jeder findet seine passende Herausforderung."
+      },
+      {
+        "src": "/images/koeniz/schulklasse.jpg",
+        "title": "Schulen integrieren",
+        "comment": "RubikONE wird zum Outdoor-Klassenzimmer für Bewegung und Spiel."
+      },
+      {
+        "src": "/images/koeniz/kinder-springen.jpg",
+        "title": "Spielerisch lernen",
+        "comment": "Kinder entdecken natürliche Bewegungen – ganz ohne Anleitung."
+      },
+      {
+        "src": "/images/workshop/frauen-balancieren.jpg",
+        "title": "Gemeinschaft stärken",
+        "comment": "Bewegung schafft Begegnung – über alle Altersgruppen hinweg."
+      },
+      {
+        "src": "/images/posten/balance-nahaufnahme.jpg",
+        "title": "Koordination fördern",
+        "comment": "Balancieren trainiert Körper und Geist gleichzeitig."
+      },
+      {
+        "src": "/images/konzept/wegweiser.jpg",
+        "title": "Intuitiv verstehen",
+        "comment": "Klare Beschilderung macht den Einstieg kinderleicht."
+      },
+      {
+        "src": "/images/koeniz/spass.jpg",
+        "title": "Freude an Bewegung",
+        "comment": "Das wichtigste Ergebnis: Menschen, die Spass an Bewegung haben."
+      }
     ]
   },
   "PROZESS_TEASER_CONTENT": {
@@ -998,339 +1030,6 @@
       }
     ]
   },
-  "KONZEPT_PAGE": {
-    "hero": {
-      "tagline": "Das Konzept",
-      "headline": "Was wäre wenn...",
-      "questions": "...eine Treppe zum Fitnessplatz wird?\n...die Mauer zur Balancechallenge?\n...Möglichkeiten zu Hindernissen werden?",
-      "description": "RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.",
-      "heroImage": "/images/hero/generationen-kraft.jpg"
-    },
-    "prinzip": {
-      "tagline": "Das Prinzip",
-      "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
-      "description": "RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar.",
-      "elements": [
-        { "title": "Beschilderung", "desc": "Klare Schilder mit Übungen und QR-Codes für Video-Anleitungen" },
-        { "title": "Farbmarkierungen", "desc": "Farbige Markierungen zeigen, wo trainiert wird" },
-        { "title": "Normenkonform", "desc": "Entspricht allen relevanten Schweizer Sicherheitsnormen" }
-      ]
-    },
-    "postenSlider": {
-      "tagline": "Beispiele aus Köniz",
-      "headline": "Natürliche Bewegungen, klar erklärt.",
-      "description": "Jeder Posten zeigt Übungen mit Illustrationen und zusätzlichen Challenges für ganzheitliches Lernen."
-    },
-    "lerndimensionen": {
-      "tagline": "TRUST Education",
-      "headline": "Mehr als Bewegung. Ganzheitliches Lernen.",
-      "description": "Jeder Posten fördert fünf Lerndimensionen gleichzeitig – durch zusätzliche Challenges auf jedem Schild.",
-      "dimensions": [
-        {
-          "id": "motorisch",
-          "title": "Motorisch",
-          "shortDesc": "Körperliche Bewegung",
-          "modalTitle": "Motorisches Lernen",
-          "modalContent": "Die motorische Dimension umfasst alle körperlichen Bewegungsabläufe und deren Koordination.\n\nBei RubikONE trainieren Teilnehmende:\n• Gleichgewicht und Balance\n• Koordination und Körperkontrolle\n• Kraft und Ausdauer\n• Beweglichkeit und Flexibilität\n• Räumliche Orientierung\n\nJede Übung kann in drei Schwierigkeitsstufen ausgeführt werden, sodass vom Einsteiger bis zum Fortgeschrittenen alle eine passende Herausforderung finden."
-        },
-        {
-          "id": "kognitiv",
-          "title": "Kognitiv",
-          "shortDesc": "Denken & Konzentration",
-          "modalTitle": "Kognitives Lernen",
-          "modalContent": "Die kognitive Dimension fördert geistige Prozesse wie Aufmerksamkeit, Konzentration und Problemlösung.\n\nBeispiel-Challenges auf den Posten:\n• \"Zähle während der Übung rückwärts von 20\"\n• \"Atme bewusst ein und aus\"\n• \"Merke dir die Reihenfolge der Posten\"\n\nDiese Aufgaben verbinden Bewegung mit Denkprozessen – ein Ansatz, der nachweislich die Gehirnleistung fördert und besonders für Kinder und ältere Menschen wertvoll ist."
-        },
-        {
-          "id": "emotional",
-          "title": "Emotional",
-          "shortDesc": "Gefühle ausdrücken",
-          "modalTitle": "Emotionales Lernen",
-          "modalContent": "Die emotionale Dimension hilft, Gefühle wahrzunehmen und auszudrücken.\n\nBeispiel-Challenges auf den Posten:\n• \"Lächle während jeder Übung\"\n• \"Singe dein Lieblingslied während du balancierst\"\n• \"Beschreibe mit zwei Adjektiven, wie du dich fühlst\"\n\nBewegung und Emotionen sind eng verknüpft. RubikONE nutzt diese Verbindung bewusst, um positive Gefühle zu fördern und Stress abzubauen."
-        },
-        {
-          "id": "sozial",
-          "title": "Sozial",
-          "shortDesc": "Gemeinsam bewegen",
-          "modalTitle": "Soziales Lernen",
-          "modalContent": "Die soziale Dimension fördert Interaktion und Gemeinschaft.\n\nBeispiel-Challenges auf den Posten:\n• \"Grüsse alle Personen, denen du begegnest\"\n• \"Führe die Übung zu zweit aus\"\n• \"Gib der nächsten Person ein High-Five\"\n\nRubikONE ist bewusst im öffentlichen Raum platziert. Menschen begegnen sich, kommen ins Gespräch, trainieren zusammen. So entsteht Gemeinschaft – generationenübergreifend."
-        },
-        {
-          "id": "sensorisch",
-          "title": "Sensorisch",
-          "shortDesc": "Sinne schärfen",
-          "modalTitle": "Sensorisches Lernen",
-          "modalContent": "Die sensorische Dimension schärft die Sinneswahrnehmung.\n\nBeispiel-Challenges auf den Posten:\n• \"Schliesse während der Übung die Augen\"\n• \"Nimm die Geräusche in deiner Umgebung wahr\"\n• \"Laufe barfuss zum nächsten Posten\"\n\nDurch bewusstes Wahrnehmen der Umgebung wird die Achtsamkeit gefördert. Die Teilnehmenden lernen, ihren Körper und ihre Umwelt intensiver zu spüren."
-        }
-      ]
-    },
-    "sicherheit": {
-      "tagline": "Normenkonform",
-      "headline": "Sicherheit nach Schweizer Standards.",
-      "description": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen für Fitnessgeräte im Aussenbereich.",
-      "normen": [
-        { "code": "SN EN 16630:2015", "name": "Fitnessgeräte" },
-        { "code": "SN EN 1177:2020", "name": "Spielplatzböden" },
-        { "code": "SIA 358", "name": "Geländer" },
-        { "code": "bfu-Richtlinien", "name": "Unfallverhütung" }
-      ],
-      "image": "/images/konzept/wegweiser.jpg"
-    },
-    "cta": {
-      "headline": "Überzeugt? Erleben Sie es selbst.",
-      "description": "In Köniz können Sie RubikONE live erleben. Oder buchen Sie einen Impulsworkshop für Ihre Gemeinde.",
-      "ctaPrimary": { "label": "Referenz Köniz", "href": "/koeniz" },
-      "ctaSecondary": { "label": "Impulsworkshop anfragen", "href": "/impulsworkshop" }
-    }
-  },
-  "RAUMGESTALTUNG_PAGE": {
-    "hero": {
-      "title": "Gewohntes neu entdecken",
-      "description": "RubikONE oder Ihre individuelle Lösung transformiert die bekannte Umgebung in einen Parkour- & Bewegungsraum.",
-      "breadcrumb": "Die Multiperspektive",
-      "image": "/images/koeniz/kind-springt.jpg",
-      "imageAlt": "Kind springt bei RubikONE"
-    },
-    "mehrwert": {
-      "title": "Mehrwert für alle",
-      "subtitle": "Aufenthaltsqualität steigern",
-      "description": "Mit RubikONE wird die Gemeinde, das Quartier oder das Schulareal zum vielseitigen Bewegungsraum.",
-      "stakeholders": [
-        {
-          "title": "Städte & Gemeinden",
-          "benefits": [
-            "Nachhaltige Raumentwicklung ohne zusätzlichen Platzanspruch",
-            "Innovative Gesundheitsförderung vor der Haustür",
-            "Stärkung der lokalen Gemeinschaft",
-            "Minimaler Ressourceneinsatz"
-          ]
-        },
-        {
-          "title": "Bildung & Kultur",
-          "benefits": [
-            "Erweitertes Klassenzimmer & Alternative zur Sporthalle",
-            "Kreative Bewegungspausen & Lernmöglichkeiten",
-            "Förderung von Teamwork",
-            "Vielfältige Bewegungspausen"
-          ]
-        },
-        {
-          "title": "Bevölkerung",
-          "benefits": [
-            "Jederzeit & kostenfrei zugänglich",
-            "Für alle Altersgruppen & Fitnesslevel",
-            "Leicht verständlich dank Bilder & Symbolen",
-            "Fördert einen aktiven Lebensstil"
-          ]
-        }
-      ]
-    },
-    "uspKompakt": [
-      { "title": "Einfache Integration", "description": "Nutzt vorhandene Strukturen" },
-      { "title": "Nachhaltigkeit", "description": "Langlebiges Material" },
-      { "title": "Lebensqualität", "description": "Fördert ganzheitliche Gesundheit" }
-    ],
-    "testimonialBernadette": {
-      "quote": "Als Seniorin und Grossmutter war ich anfangs skeptisch, ob RubikONE auch für mich geeignet ist. Die klaren Anleitungen und die Möglichkeit, alles mit der Familie zu machen, haben mich überzeugt.",
-      "name": "Bernadette",
-      "detail": "66 Jahre, Köniz",
-      "image": "/images/gemeinden/bernadette.jpg"
-    },
-    "prozess": {
-      "title": "In vier Schritten zu Ihrem RubikONE",
-      "subtitle": "Das Vorgehen",
-      "description": "Wir begleiten Sie von A bis Z und übernehmen die fachliche Leitung im gesamten Prozess.",
-      "schritte": [
-        { "nummer": "1", "titel": "Analyse", "beschreibung": "Impulsworkshop und Ausgangslage klären", "image": "/images/gemeinden/prozess-1.jpg" },
-        { "nummer": "2", "titel": "Planung", "beschreibung": "RubikONE auf Ihre Gemeinde anpassen", "image": "/images/gemeinden/prozess-2.jpg" },
-        { "nummer": "3", "titel": "Umsetzung", "beschreibung": "Produktion und Installation von RubikONE", "image": "/images/gemeinden/prozess-3.jpg" },
-        { "nummer": "4", "titel": "Nutzung", "beschreibung": "Eröffnung und Workshops", "image": "/images/gemeinden/prozess-4.jpg" }
-      ]
-    },
-    "referenzKoeniz": {
-      "tagline": "Referenz",
-      "headline": "Köniz war die erste Gemeinde.",
-      "description": "Im August 2024 eröffnete der erste RubikONE mit 9 Posten im Schlossareal Köniz – bewilligt im Denkmalschutz.",
-      "image": "/images/gemeinden/koeniz-ref.jpg",
-      "ctaText": "Mehr erfahren",
-      "ctaHref": "/koeniz"
-    },
-    "faq": [
-      {
-        "question": "Wie trägt RubikONE zur Gesundheitsförderung bei?",
-        "answer": "RubikONE lädt zu täglicher Bewegung ein und motiviert Menschen, sich physisch und mental aus der Komfortzone zu locken. Sportmotorische wie auch sensorische und emotionale Challenges haben das Potenzial, die Gesundheit auf allen Ebenen zu steigern."
-      },
-      {
-        "question": "Warum ist RubikONE eine nachhaltige Lösung?",
-        "answer": "Das verwendete Material ist langlebig und wartungsarm. Es werden keine neuen Geräte oder Anlagen gebaut – nur bestehende Elemente werden sichtbar gemacht. In 8 Monaten Testbetrieb in Köniz sind keine Wartungskosten angefallen."
-      },
-      {
-        "question": "Wie schnell kann RubikONE umgesetzt werden?",
-        "answer": "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate). Die physische Installation dauert nur wenige Tage."
-      },
-      {
-        "question": "Braucht es ein Baugesuch?",
-        "answer": "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen."
-      },
-      {
-        "question": "Was ist mit Haftung und Sicherheit?",
-        "answer": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards. Die Haftungsfrage ist klar geregelt."
-      },
-      {
-        "question": "Gibt es spezielle Angebote für Schulen?",
-        "answer": "Ja! RubikONE eignet sich ideal für Schulareale. Wir bieten spezielle Pakete für Schulen an, inklusive pädagogischem Begleitmaterial und Einführungsworkshops für Lehrpersonen."
-      }
-    ],
-    "cta": {
-      "headline": "Bereit für den nächsten Schritt?",
-      "description": "Erleben Sie, wie RubikONE auch in Ihrer Gemeinde Bewegung neu definiert. Nutzen Sie den öffentlichen Raum clever, nachhaltig und innovativ.",
-      "ctaPrimary": { "label": "Impulsworkshop buchen", "href": "/impulsworkshop" },
-      "ctaSecondary": { "label": "Beratungsgespräch vereinbaren", "href": "/kontakt" }
-    }
-  },
-  "KOENIZ_PAGE": {
-    "hero": {
-      "title": "Köniz macht es vor.",
-      "description": "Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation.",
-      "breadcrumb": "Referenz Köniz",
-      "image": "/images/koeniz/luftbild.jpg",
-      "imageAlt": "Luftaufnahme RubikONE Köniz im Schlossareal"
-    },
-    "lab7x1": {
-      "tagline": "BASPO lab7x1",
-      "headline": "Ein Innovationsprojekt des Bundes.",
-      "description1": "«Täglich eine Stunde, sieben Tage die Woche» – nach dieser Formel soll sich die Schweizer Bevölkerung bewegen. Das Bundesamt für Sport BASPO hat dafür das <strong>lab7x1</strong> aufgebaut: Ein Innovationslabor, das neue Ideen zur Bewegungsförderung testet und evaluiert.",
-      "description2": "RubikONE wurde als Laborversuch finanziert und über zwei Jahre wissenschaftlich begleitet. Die Gemeinde Köniz stellte das Schlossareal zur Verfügung – ein anspruchsvoller Standort unter Denkmalschutz.",
-      "downloadLabel": "Evaluationsbericht herunterladen",
-      "downloadDesc": "Vollständiger wissenschaftlicher Abschlussbericht (PDF)",
-      "downloadHref": "/downloads/RubikONE-Evaluation-Koeniz.pdf"
-    },
-    "denkmalschutzLabel": "Denkmalschutz? Wir haben Erfahrung.",
-    "erkenntnisse": {
-      "tagline": "Wissenschaftlich evaluiert",
-      "headline": "Die Erkenntnisse."
-    },
-    "workshopFeedback": {
-      "tagline": "Workshop-Feedback",
-      "headline": "Das sagen die Teilnehmenden."
-    },
-    "statementAnnina": {
-      "quote": "Wir haben gelacht, geschwitzt, uns gegenseitig angefeuert und den Teamgeist gestärkt. Für mich ist das RubikONE die perfekte Möglichkeit, eine bewegte Mittagspause zu organisieren. Der Parcours funktioniert unabhängig vom individuellen Fitness-Niveau und bietet auch schöne Möglichkeiten für ein paar Minuten Achtsamkeit.",
-      "name": "Annina",
-      "role": "Fachspezialistin Betriebliches Gesundheitsmanagement, Diversity & Inclusion"
-    },
-    "galleryImages": [
-      { "src": "/images/koeniz/schulklasse.jpg", "alt": "Schulklasse beim RubikONE Training" },
-      { "src": "/images/koeniz/kind-springt.jpg", "alt": "Kind springt am Posten" },
-      { "src": "/images/koeniz/kinder-springen.jpg", "alt": "Kinder springen gemeinsam" },
-      { "src": "/images/koeniz/spass.jpg", "alt": "Spass beim Bewegen" },
-      { "src": "/images/koeniz/schloss.jpg", "alt": "Schlossareal Köniz" }
-    ],
-    "cta": {
-      "headline": "Köniz war der Anfang.",
-      "description": "Jetzt ist Ihre Gemeinde dran. Starten Sie mit einem Impulsworkshop und entdecken Sie, welches Potenzial in Ihrer Umgebung steckt.",
-      "ctaPrimary": { "label": "Impulsworkshop anfragen", "href": "/impulsworkshop" },
-      "ctaSecondary": { "label": "Beratungsgespräch", "href": "/kontakt" }
-    }
-  },
-  "IMPULSWORKSHOP_PAGE": {
-    "hero": {
-      "title": "Der einfachste Weg zu starten.",
-      "description": "Ein Workshop vor Ort. 120 Minuten. Danach sehen Sie Ihre Gemeinde mit anderen Augen.",
-      "breadcrumb": "Impulsworkshop",
-      "image": "/images/workshop/frauen-balancieren.jpg",
-      "imageAlt": "Workshop-Teilnehmerinnen beim Balancieren"
-    },
-    "keyFacts": [
-      { "label": "Workshop-Dauer", "value": "120 Minuten" },
-      { "label": "Teilnehmende", "value": "Bis 12 Personen" },
-      { "label": "Bei Ihnen", "value": "Vor Ort" },
-      { "label": "Draussen", "value": "Jedes Wetter" }
-    ],
-    "workshopImages": {
-      "images": [
-        { "src": "/images/workshop/frauen-balancieren.jpg", "alt": "Frauen balancieren beim Workshop" },
-        { "src": "/images/workshop/balancieren-helfen.jpg", "alt": "Gegenseitige Hilfe beim Balancieren" },
-        { "src": "/images/workshop/quadrupedie.jpg", "alt": "Quadrupedie-Übung auf der Linie" }
-      ]
-    },
-    "mitnehmen": {
-      "title": "Was Sie mitnehmen",
-      "subtitle": "Nach 120 Minuten"
-    },
-    "preisWetter": "Draussen, bei jedem Wetter",
-    "idealNote": "Ideal: 6-12 Teilnehmende aus verschiedenen Abteilungen. So entsteht ein gemeinsames Verständnis.",
-    "cta": {
-      "headline": "Bereit für den neuen Blick?",
-      "description": "In 120 Minuten zeigen wir Ihnen, was in Ihrer Gemeinde möglich ist. Ohne Verpflichtung, mit konkreten Ideen.",
-      "ctaPrimary": { "label": "Workshop anfragen", "href": "/kontakt" },
-      "ctaSecondary": { "label": "Referenz ansehen", "href": "/koeniz" }
-    }
-  },
-  "KONTAKT_PAGE": {
-    "hero": {
-      "title": "Sprechen wir darüber.",
-      "description": "Ob Impulsworkshop, Beratungsgespräch oder allgemeine Fragen – wir freuen uns auf Ihre Anfrage.",
-      "breadcrumb": "Kontakt",
-      "image": "/images/parkour/training.jpg",
-      "imageAlt": "Parkour Training"
-    },
-    "phoneHours": "Mo, Di & Do, 09:00–12:00 & 13:30–16:00 Uhr",
-    "contactFormTitle": "Schreiben Sie uns",
-    "contactFormSubtitle": "Kontaktformular",
-    "footerImage": "/images/parkour/sprung-hoch.jpg"
-  },
-  "UEBER_UNS_PAGE": {
-    "hero": {
-      "title": "Die Pioniere hinter RubikONE.",
-      "description": "ParkourONE. Seit 2007 bringen wir Menschen in Bewegung. Jetzt bringen wir Bewegung zu den Menschen.",
-      "breadcrumb": "Über uns",
-      "image": "/images/parkour/mann-parkour.jpg",
-      "imageAlt": "Parkour Athlet in Aktion"
-    },
-    "storyIntro": {
-      "tagline": "Die Pioniere",
-      "headline": "Entwickelt von Pionieren.",
-      "description1": "Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist die logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.",
-      "description2": "Was 2000 mit einer Handvoll Traceure begann, ist heute die grösste Parkourschule der Deutschschweiz. Über 20 Jahre Erfahrung, tausende Schüler:innen und ein klares Ziel: Menschen in Bewegung bringen.",
-      "image": "/images/parkour/training.jpg"
-    },
-    "timelineTagline": "Von den Anfängen bis heute",
-    "threeThemes": {
-      "title": "Wofür wir stehen",
-      "subtitle": "Drei Grundsätze",
-      "themes": [
-        { "title": "Stark", "description": "Körperliche und mentale Stärke durch Bewegung entwickeln.", "image": "/images/parkour/sprung-hoch.jpg" },
-        { "title": "Sinnvoll", "description": "Bewegung in den Alltag integrieren, nicht davon trennen.", "image": "/images/parkour/parkourhelfen.jpg" },
-        { "title": "Nachhaltig", "description": "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen.", "image": "/images/parkour/geschichte/schueler-bewegen.jpg" }
-      ]
-    },
-    "expertiseTagline": "Was uns auszeichnet",
-    "fullWidthQuote": "Bewegung ist mehr als Sport. Es ist eine Art, die Welt zu sehen.",
-    "compactIntro": {
-      "tagline": "Die Pioniere",
-      "headline": "Entwickelt von Pionieren.",
-      "description": "Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist unsere logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.",
-      "stat1": { "value": "20+", "label": "Jahre Blickwinkel" },
-      "stat2": { "value": "1'500+", "label": "Schüler:innen" },
-      "ctaText": "Mehr über ParkourONE",
-      "ctaHref": "/ueber-uns"
-    },
-    "srfEinstein": {
-      "tagline": "Bekannt aus SRF Einstein",
-      "headline": "Ein Traum wird Realität.",
-      "description1": "Mit RubikONE geht ein Traum in Erfüllung: Parkour wird sichtbar und frei zugänglich – unabhängig von Alter und Fitnesslevel.",
-      "description2": "Das Schweizer Fernsehen besuchte uns in einem Training und zeigt, was damit gemeint ist.",
-      "ctaText": "SRF Einstein Beitrag ansehen",
-      "videoUrl": "https://www.srf.ch/play/tv/einstein/video/parkour---die-hohe-kunst-des-springens?urn=urn:srf:video:12345",
-      "image": "/images/about/srf-einstein.jpg"
-    },
-    "cta": {
-      "headline": "Lernen Sie uns kennen.",
-      "description": "Buchen Sie einen Impulsworkshop und erleben Sie, was 20 Jahre Parkour-Expertise für Ihre Gemeinde bedeuten können.",
-      "ctaPrimary": { "label": "Impulsworkshop anfragen", "href": "/impulsworkshop" },
-      "ctaSecondary": { "label": "Kontakt aufnehmen", "href": "/kontakt" }
-    }
-  },
   "IMAGE_CONCEPTS": {
     "hero": {
       "description": "Ältere Frau und Kind balancieren gemeinsam auf einer Mauer",
@@ -1359,80 +1058,789 @@
   },
   "PAGE_BLOCKS": {
     "startseite": [
-      { "type": "hero", "contentKey": "HERO_CONTENT", "label": "Hero" },
-      { "type": "texthook", "contentKey": "TEXTHOOK_CONTENT", "label": "Raum und Gesundheit kombiniert" },
-      { "type": "video", "contentKey": "VIDEO_CONTENT", "label": "RubikONE in Aktion" },
-      { "type": "vorher-nachher", "contentKey": "VORHER_NACHHER_CONTENT", "label": "Keine neuen Geräte. Nur ein neuer Blick." },
-      { "type": "testimonials", "contentKey": "TESTIMONIALS", "label": "Kundenstimmen" },
-      { "type": "gallery", "contentKey": "GALLERY_CONTENT", "label": "Bewegung verbindet Generationen" },
-      { "type": "prozess-teaser", "contentKey": "PROZESS_TEASER_CONTENT", "label": "Wir gestalten mit Ihnen" },
-      { "type": "configurator-cta", "contentKey": "CONFIGURATOR_CTA_CONTENT", "label": "Ihr individuelles Leistungspaket" },
-      { "type": "cta-dark", "contentKey": "CTA_CONTENT", "label": "Call-to-Action" }
+      {
+        "type": "hero",
+        "contentKey": "HERO_CONTENT",
+        "label": "Hero"
+      },
+      {
+        "type": "texthook",
+        "contentKey": "TEXTHOOK_CONTENT",
+        "label": "Raum und Gesundheit kombiniert"
+      },
+      {
+        "type": "video",
+        "contentKey": "VIDEO_CONTENT",
+        "label": "RubikONE in Aktion"
+      },
+      {
+        "type": "vorher-nachher",
+        "contentKey": "VORHER_NACHHER_CONTENT",
+        "label": "Keine neuen Geräte. Nur ein neuer Blick."
+      },
+      {
+        "type": "testimonials",
+        "contentKey": "TESTIMONIALS",
+        "label": "Kundenstimmen"
+      },
+      {
+        "type": "gallery",
+        "contentKey": "GALLERY_CONTENT",
+        "label": "Bewegung verbindet Generationen"
+      },
+      {
+        "type": "prozess-teaser",
+        "contentKey": "PROZESS_TEASER_CONTENT",
+        "label": "Wir gestalten mit Ihnen"
+      },
+      {
+        "type": "configurator-cta",
+        "contentKey": "CONFIGURATOR_CTA_CONTENT",
+        "label": "Ihr individuelles Leistungspaket"
+      },
+      {
+        "type": "cta-dark",
+        "contentKey": "CTA_CONTENT",
+        "label": "Call-to-Action"
+      }
     ],
     "konzept": [
-      { "type": "konzept-hero", "contentKey": "KONZEPT_PAGE", "label": "Was wäre wenn..." },
-      { "type": "vorher-nachher-slider", "contentKey": "KONZEPT_PAGE", "label": "Keine neuen Geräte. Nur ein neuer Blick." },
-      { "type": "comparison", "contentKey": "COMPARISON_TABLE", "label": "Was RubikONE auszeichnet" },
-      { "type": "posten-slider", "contentKey": "KONZEPT_PAGE", "label": "Natürliche Bewegungen, klar erklärt" },
-      { "type": "lerndimensionen", "contentKey": "KONZEPT_PAGE", "label": "Mehr als Bewegung. Ganzheitliches Lernen." },
-      { "type": "stats-slider", "contentKey": "STATS_CONTENT", "label": "RubikONE funktioniert" },
-      { "type": "safety", "contentKey": "SAFETY_INFO", "label": "Sicherheit nach Schweizer Standards" },
-      { "type": "cta-blue", "contentKey": "KONZEPT_PAGE", "label": "Überzeugt? Erleben Sie es selbst." }
+      {
+        "type": "konzept-hero",
+        "contentKey": "KONZEPT_HERO",
+        "label": "Was wäre wenn..."
+      },
+      {
+        "type": "vorher-nachher-slider",
+        "contentKey": "KONZEPT_PRINZIP",
+        "label": "Keine neuen Geräte. Nur ein neuer Blick."
+      },
+      {
+        "type": "comparison",
+        "contentKey": "COMPARISON_TABLE",
+        "label": "Was RubikONE auszeichnet"
+      },
+      {
+        "type": "posten-slider",
+        "contentKey": "KONZEPT_POSTEN_SLIDER",
+        "label": "Natürliche Bewegungen, klar erklärt"
+      },
+      {
+        "type": "lerndimensionen",
+        "contentKey": "KONZEPT_LERNDIMENSIONEN",
+        "label": "Mehr als Bewegung. Ganzheitliches Lernen."
+      },
+      {
+        "type": "stats-slider",
+        "contentKey": "STATS_CONTENT",
+        "label": "RubikONE funktioniert"
+      },
+      {
+        "type": "safety",
+        "contentKey": "KONZEPT_SICHERHEIT",
+        "label": "Sicherheit nach Schweizer Standards"
+      },
+      {
+        "type": "cta-blue",
+        "contentKey": "KONZEPT_CTA",
+        "label": "Überzeugt? Erleben Sie es selbst."
+      }
     ],
     "raumgestaltung": [
-      { "type": "page-hero", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Gewohntes neu entdecken" },
-      { "type": "stakeholder", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Mehrwert für alle" },
-      { "type": "usp-kompakt", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Das macht RubikONE einzigartig" },
-      { "type": "testimonial-single", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Testimonial Bernadette" },
-      { "type": "prozess-4-schritte", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "In vier Schritten zu Ihrem RubikONE" },
-      { "type": "referenz-koeniz", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Köniz war die erste Gemeinde" },
-      { "type": "faq", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Häufig gestellte Fragen" },
-      { "type": "configurator-trigger", "contentKey": "CONFIGURATOR_CTA_CONTENT", "label": "Konfigurator" },
-      { "type": "cta-blue", "contentKey": "RAUMGESTALTUNG_PAGE", "label": "Bereit für den nächsten Schritt?" }
+      {
+        "type": "page-hero",
+        "contentKey": "RAUMGESTALTUNG_HERO",
+        "label": "Gewohntes neu entdecken"
+      },
+      {
+        "type": "stakeholder",
+        "contentKey": "RAUMGESTALTUNG_MEHRWERT",
+        "label": "Mehrwert für alle"
+      },
+      {
+        "type": "usp-kompakt",
+        "contentKey": "RAUMGESTALTUNG_USP",
+        "label": "Das macht RubikONE einzigartig"
+      },
+      {
+        "type": "testimonial-single",
+        "contentKey": "RAUMGESTALTUNG_TESTIMONIAL",
+        "label": "Testimonial Bernadette"
+      },
+      {
+        "type": "prozess-4-schritte",
+        "contentKey": "RAUMGESTALTUNG_PROZESS",
+        "label": "In vier Schritten zu Ihrem RubikONE"
+      },
+      {
+        "type": "referenz-koeniz",
+        "contentKey": "RAUMGESTALTUNG_REFERENZ",
+        "label": "Köniz war die erste Gemeinde"
+      },
+      {
+        "type": "faq",
+        "contentKey": "RAUMGESTALTUNG_FAQ",
+        "label": "Häufig gestellte Fragen"
+      },
+      {
+        "type": "configurator-trigger",
+        "contentKey": "CONFIGURATOR_CTA_CONTENT",
+        "label": "Konfigurator"
+      },
+      {
+        "type": "cta-blue",
+        "contentKey": "RAUMGESTALTUNG_CTA",
+        "label": "Bereit für den nächsten Schritt?"
+      }
     ],
     "koeniz": [
-      { "type": "page-hero", "contentKey": "KOENIZ_PAGE", "label": "Köniz macht es vor." },
-      { "type": "lab7x1", "contentKey": "KOENIZ_PAGE", "label": "Ein Innovationsprojekt des Bundes" },
-      { "type": "challenge-solution", "contentKey": "KOENIZ_CASE_STUDY", "label": "Herausforderung & Lösung" },
-      { "type": "denkmalschutz", "contentKey": "KOENIZ_CASE_STUDY", "label": "Denkmalschutz" },
-      { "type": "erkenntnisse", "contentKey": "KOENIZ_CASE_STUDY", "label": "Die Erkenntnisse" },
-      { "type": "workshop-feedback", "contentKey": "KOENIZ_CASE_STUDY", "label": "Workshop-Feedback" },
-      { "type": "offizielle-stimmen", "contentKey": "KOENIZ_DETAILS", "label": "Stimmen zum Projekt" },
-      { "type": "statement-annina", "contentKey": "KOENIZ_PAGE", "label": "Statement Annina" },
-      { "type": "gallery-koeniz", "contentKey": "KOENIZ_PAGE", "label": "Impressionen" },
-      { "type": "selbst-erleben", "contentKey": "KOENIZ_DETAILS", "label": "Selbst erleben" },
-      { "type": "cta-blue", "contentKey": "KOENIZ_PAGE", "label": "Köniz war der Anfang" }
+      {
+        "type": "page-hero",
+        "contentKey": "KOENIZ_HERO",
+        "label": "Köniz macht es vor."
+      },
+      {
+        "type": "lab7x1",
+        "contentKey": "KOENIZ_LAB7X1",
+        "label": "Ein Innovationsprojekt des Bundes"
+      },
+      {
+        "type": "challenge-solution",
+        "contentKey": "KOENIZ_CASE_STUDY",
+        "label": "Herausforderung & Lösung"
+      },
+      {
+        "type": "denkmalschutz",
+        "contentKey": "KOENIZ_DENKMALSCHUTZ",
+        "label": "Denkmalschutz"
+      },
+      {
+        "type": "erkenntnisse",
+        "contentKey": "KOENIZ_ERKENNTNISSE",
+        "label": "Die Erkenntnisse"
+      },
+      {
+        "type": "workshop-feedback",
+        "contentKey": "KOENIZ_FEEDBACK",
+        "label": "Workshop-Feedback"
+      },
+      {
+        "type": "offizielle-stimmen",
+        "contentKey": "KOENIZ_DETAILS",
+        "label": "Stimmen zum Projekt"
+      },
+      {
+        "type": "statement-annina",
+        "contentKey": "KOENIZ_ANNINA",
+        "label": "Statement Annina"
+      },
+      {
+        "type": "gallery-koeniz",
+        "contentKey": "KOENIZ_GALLERY",
+        "label": "Impressionen"
+      },
+      {
+        "type": "selbst-erleben",
+        "contentKey": "KOENIZ_DETAILS",
+        "label": "Selbst erleben"
+      },
+      {
+        "type": "cta-blue",
+        "contentKey": "KOENIZ_CTA",
+        "label": "Köniz war der Anfang"
+      }
     ],
     "impulsworkshop": [
-      { "type": "page-hero", "contentKey": "IMPULSWORKSHOP_PAGE", "label": "Der einfachste Weg zu starten" },
-      { "type": "key-facts", "contentKey": "IMPULSWORKSHOP_PAGE", "label": "Key Facts" },
-      { "type": "programm", "contentKey": "IMPULSWORKSHOP", "label": "Was Sie erwartet" },
-      { "type": "workshop-images", "contentKey": "IMPULSWORKSHOP_PAGE", "label": "Workshop-Bilder" },
-      { "type": "mitnehmen", "contentKey": "IMPULSWORKSHOP_PAGE", "label": "Was Sie mitnehmen" },
-      { "type": "fuer-wen", "contentKey": "WORKSHOP_DETAILS", "label": "Für wen ist der Workshop?" },
-      { "type": "preis-box", "contentKey": "WORKSHOP_DETAILS", "label": "Preis" },
-      { "type": "workshop-faq", "contentKey": "WORKSHOP_DETAILS", "label": "Häufige Fragen" },
-      { "type": "ansprechpartnerin", "contentKey": "CONTACT_PERSON", "label": "Ihre Ansprechpartnerin" },
-      { "type": "cta-blue", "contentKey": "IMPULSWORKSHOP_PAGE", "label": "Bereit für den neuen Blick?" }
+      {
+        "type": "page-hero",
+        "contentKey": "WORKSHOP_HERO",
+        "label": "Der einfachste Weg zu starten"
+      },
+      {
+        "type": "key-facts",
+        "contentKey": "WORKSHOP_KEY_FACTS",
+        "label": "Key Facts"
+      },
+      {
+        "type": "programm",
+        "contentKey": "IMPULSWORKSHOP",
+        "label": "Was Sie erwartet"
+      },
+      {
+        "type": "workshop-images",
+        "contentKey": "WORKSHOP_IMAGES",
+        "label": "Workshop-Bilder"
+      },
+      {
+        "type": "mitnehmen",
+        "contentKey": "WORKSHOP_MITNEHMEN",
+        "label": "Was Sie mitnehmen"
+      },
+      {
+        "type": "fuer-wen",
+        "contentKey": "WORKSHOP_FUER_WEN",
+        "label": "Für wen ist der Workshop?"
+      },
+      {
+        "type": "preis-box",
+        "contentKey": "WORKSHOP_PREIS",
+        "label": "Preis"
+      },
+      {
+        "type": "workshop-faq",
+        "contentKey": "WORKSHOP_DETAILS",
+        "label": "Häufige Fragen"
+      },
+      {
+        "type": "ansprechpartnerin",
+        "contentKey": "CONTACT_PERSON",
+        "label": "Ihre Ansprechpartnerin"
+      },
+      {
+        "type": "cta-blue",
+        "contentKey": "WORKSHOP_CTA",
+        "label": "Bereit für den neuen Blick?"
+      }
     ],
     "kontakt": [
-      { "type": "page-hero", "contentKey": "KONTAKT_PAGE", "label": "Sprechen wir darüber" },
-      { "type": "contact-info", "contentKey": "CONTACT_INFO", "label": "Kontaktinformationen" },
-      { "type": "contact-form", "contentKey": "KONTAKT_PAGE", "label": "Kontaktformular" },
-      { "type": "contact-image", "contentKey": "KONTAKT_PAGE", "label": "Bild" }
+      {
+        "type": "page-hero",
+        "contentKey": "KONTAKT_HERO",
+        "label": "Sprechen wir darüber"
+      },
+      {
+        "type": "contact-info",
+        "contentKey": "CONTACT_INFO",
+        "label": "Kontaktinformationen"
+      },
+      {
+        "type": "contact-form",
+        "contentKey": "KONTAKT_FORM",
+        "label": "Kontaktformular"
+      },
+      {
+        "type": "contact-image",
+        "contentKey": "KONTAKT_FORM",
+        "label": "Bild"
+      }
     ],
     "ueber-uns": [
-      { "type": "page-hero", "contentKey": "UEBER_UNS_PAGE", "label": "Die Pioniere hinter RubikONE" },
-      { "type": "story", "contentKey": "PARKOURONE_STORY", "label": "ParkourONE Story" },
-      { "type": "srf-einstein", "contentKey": "UEBER_UNS_PAGE", "label": "SRF Einstein" },
-      { "type": "cta-blue", "contentKey": "UEBER_UNS_PAGE", "label": "Lernen Sie uns kennen" }
+      {
+        "type": "page-hero",
+        "contentKey": "UEBER_UNS_HERO",
+        "label": "Die Pioniere hinter RubikONE"
+      },
+      {
+        "type": "story",
+        "contentKey": "PARKOURONE_STORY",
+        "label": "ParkourONE Story"
+      },
+      {
+        "type": "srf-einstein",
+        "contentKey": "UEBER_UNS_SRF",
+        "label": "SRF Einstein"
+      },
+      {
+        "type": "cta-blue",
+        "contentKey": "UEBER_UNS_CTA",
+        "label": "Lernen Sie uns kennen"
+      }
     ],
     "allgemein": [
-      { "type": "siteconfig", "contentKey": "SITE_CONFIG", "label": "Website-Einstellungen" },
-      { "type": "navigation", "contentKey": "NAVIGATION_ITEMS", "label": "Navigation" },
-      { "type": "contact", "contentKey": "CONTACT_INFO", "label": "Kontaktdaten" },
-      { "type": "contactperson", "contentKey": "CONTACT_PERSON", "label": "Ansprechpartnerin" },
-      { "type": "footer", "contentKey": "FOOTER_LINKS", "label": "Footer-Links" }
+      {
+        "type": "siteconfig",
+        "contentKey": "SITE_CONFIG",
+        "label": "Website-Einstellungen"
+      },
+      {
+        "type": "navigation",
+        "contentKey": "NAVIGATION_ITEMS",
+        "label": "Navigation"
+      },
+      {
+        "type": "contact",
+        "contentKey": "CONTACT_INFO",
+        "label": "Kontaktdaten"
+      },
+      {
+        "type": "contactperson",
+        "contentKey": "CONTACT_PERSON",
+        "label": "Ansprechpartnerin"
+      },
+      {
+        "type": "footer",
+        "contentKey": "FOOTER_LINKS",
+        "label": "Footer-Links"
+      }
     ]
+  },
+  "KONZEPT_HERO": {
+    "tagline": "Das Konzept",
+    "headline": "Was wäre wenn...",
+    "questions": "...eine Treppe zum Fitnessplatz wird?\n...die Mauer zur Balancechallenge?\n...Möglichkeiten zu Hindernissen werden?",
+    "description": "RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.",
+    "heroImage": "/images/hero/generationen-kraft.jpg"
+  },
+  "KONZEPT_PRINZIP": {
+    "tagline": "Das Prinzip",
+    "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
+    "description": "RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar.",
+    "elements": [
+      {
+        "title": "Beschilderung",
+        "desc": "Klare Schilder mit Übungen und QR-Codes für Video-Anleitungen"
+      },
+      {
+        "title": "Farbmarkierungen",
+        "desc": "Farbige Markierungen zeigen, wo trainiert wird"
+      },
+      {
+        "title": "Normenkonform",
+        "desc": "Entspricht allen relevanten Schweizer Sicherheitsnormen"
+      }
+    ]
+  },
+  "KONZEPT_POSTEN_SLIDER": {
+    "tagline": "Beispiele aus Köniz",
+    "headline": "Natürliche Bewegungen, klar erklärt.",
+    "description": "Jeder Posten zeigt Übungen mit Illustrationen und zusätzlichen Challenges für ganzheitliches Lernen."
+  },
+  "KONZEPT_LERNDIMENSIONEN": {
+    "tagline": "TRUST Education",
+    "headline": "Mehr als Bewegung. Ganzheitliches Lernen.",
+    "description": "Jeder Posten fördert fünf Lerndimensionen gleichzeitig – durch zusätzliche Challenges auf jedem Schild.",
+    "dimensions": [
+      {
+        "id": "motorisch",
+        "title": "Motorisch",
+        "shortDesc": "Körperliche Bewegung",
+        "modalTitle": "Motorisches Lernen",
+        "modalContent": "Die motorische Dimension umfasst alle körperlichen Bewegungsabläufe und deren Koordination.\n\nBei RubikONE trainieren Teilnehmende:\n• Gleichgewicht und Balance\n• Koordination und Körperkontrolle\n• Kraft und Ausdauer\n• Beweglichkeit und Flexibilität\n• Räumliche Orientierung\n\nJede Übung kann in drei Schwierigkeitsstufen ausgeführt werden, sodass vom Einsteiger bis zum Fortgeschrittenen alle eine passende Herausforderung finden."
+      },
+      {
+        "id": "kognitiv",
+        "title": "Kognitiv",
+        "shortDesc": "Denken & Konzentration",
+        "modalTitle": "Kognitives Lernen",
+        "modalContent": "Die kognitive Dimension fördert geistige Prozesse wie Aufmerksamkeit, Konzentration und Problemlösung.\n\nBeispiel-Challenges auf den Posten:\n• \"Zähle während der Übung rückwärts von 20\"\n• \"Atme bewusst ein und aus\"\n• \"Merke dir die Reihenfolge der Posten\"\n\nDiese Aufgaben verbinden Bewegung mit Denkprozessen – ein Ansatz, der nachweislich die Gehirnleistung fördert und besonders für Kinder und ältere Menschen wertvoll ist."
+      },
+      {
+        "id": "emotional",
+        "title": "Emotional",
+        "shortDesc": "Gefühle ausdrücken",
+        "modalTitle": "Emotionales Lernen",
+        "modalContent": "Die emotionale Dimension hilft, Gefühle wahrzunehmen und auszudrücken.\n\nBeispiel-Challenges auf den Posten:\n• \"Lächle während jeder Übung\"\n• \"Singe dein Lieblingslied während du balancierst\"\n• \"Beschreibe mit zwei Adjektiven, wie du dich fühlst\"\n\nBewegung und Emotionen sind eng verknüpft. RubikONE nutzt diese Verbindung bewusst, um positive Gefühle zu fördern und Stress abzubauen."
+      },
+      {
+        "id": "sozial",
+        "title": "Sozial",
+        "shortDesc": "Gemeinsam bewegen",
+        "modalTitle": "Soziales Lernen",
+        "modalContent": "Die soziale Dimension fördert Interaktion und Gemeinschaft.\n\nBeispiel-Challenges auf den Posten:\n• \"Grüsse alle Personen, denen du begegnest\"\n• \"Führe die Übung zu zweit aus\"\n• \"Gib der nächsten Person ein High-Five\"\n\nRubikONE ist bewusst im öffentlichen Raum platziert. Menschen begegnen sich, kommen ins Gespräch, trainieren zusammen. So entsteht Gemeinschaft – generationenübergreifend."
+      },
+      {
+        "id": "sensorisch",
+        "title": "Sensorisch",
+        "shortDesc": "Sinne schärfen",
+        "modalTitle": "Sensorisches Lernen",
+        "modalContent": "Die sensorische Dimension schärft die Sinneswahrnehmung.\n\nBeispiel-Challenges auf den Posten:\n• \"Schliesse während der Übung die Augen\"\n• \"Nimm die Geräusche in deiner Umgebung wahr\"\n• \"Laufe barfuss zum nächsten Posten\"\n\nDurch bewusstes Wahrnehmen der Umgebung wird die Achtsamkeit gefördert. Die Teilnehmenden lernen, ihren Körper und ihre Umwelt intensiver zu spüren."
+      }
+    ]
+  },
+  "KONZEPT_SICHERHEIT": {
+    "tagline": "Normenkonform",
+    "headline": "Sicherheit nach Schweizer Standards.",
+    "description": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen für Fitnessgeräte im Aussenbereich.",
+    "normen": [
+      {
+        "code": "SN EN 16630:2015",
+        "name": "Fitnessgeräte"
+      },
+      {
+        "code": "SN EN 1177:2020",
+        "name": "Spielplatzböden"
+      },
+      {
+        "code": "SIA 358",
+        "name": "Geländer"
+      },
+      {
+        "code": "bfu-Richtlinien",
+        "name": "Unfallverhütung"
+      }
+    ],
+    "image": "/images/konzept/wegweiser.jpg"
+  },
+  "KONZEPT_CTA": {
+    "headline": "Überzeugt? Erleben Sie es selbst.",
+    "description": "In Köniz können Sie RubikONE live erleben. Oder buchen Sie einen Impulsworkshop für Ihre Gemeinde.",
+    "ctaPrimary": {
+      "label": "Referenz Köniz",
+      "href": "/koeniz"
+    },
+    "ctaSecondary": {
+      "label": "Impulsworkshop anfragen",
+      "href": "/impulsworkshop"
+    }
+  },
+  "RAUMGESTALTUNG_HERO": {
+    "title": "Gewohntes neu entdecken",
+    "description": "RubikONE oder Ihre individuelle Lösung transformiert die bekannte Umgebung in einen Parkour- & Bewegungsraum.",
+    "breadcrumb": "Die Multiperspektive",
+    "image": "/images/koeniz/kind-springt.jpg",
+    "imageAlt": "Kind springt bei RubikONE"
+  },
+  "RAUMGESTALTUNG_MEHRWERT": {
+    "title": "Mehrwert für alle",
+    "subtitle": "Aufenthaltsqualität steigern",
+    "description": "Mit RubikONE wird die Gemeinde, das Quartier oder das Schulareal zum vielseitigen Bewegungsraum.",
+    "stakeholders": [
+      {
+        "title": "Städte & Gemeinden",
+        "benefits": [
+          "Nachhaltige Raumentwicklung ohne zusätzlichen Platzanspruch",
+          "Innovative Gesundheitsförderung vor der Haustür",
+          "Stärkung der lokalen Gemeinschaft",
+          "Minimaler Ressourceneinsatz"
+        ]
+      },
+      {
+        "title": "Bildung & Kultur",
+        "benefits": [
+          "Erweitertes Klassenzimmer & Alternative zur Sporthalle",
+          "Kreative Bewegungspausen & Lernmöglichkeiten",
+          "Förderung von Teamwork",
+          "Vielfältige Bewegungspausen"
+        ]
+      },
+      {
+        "title": "Bevölkerung",
+        "benefits": [
+          "Jederzeit & kostenfrei zugänglich",
+          "Für alle Altersgruppen & Fitnesslevel",
+          "Leicht verständlich dank Bilder & Symbolen",
+          "Fördert einen aktiven Lebensstil"
+        ]
+      }
+    ]
+  },
+  "RAUMGESTALTUNG_USP": [
+    {
+      "title": "Einfache Integration",
+      "description": "Nutzt vorhandene Strukturen"
+    },
+    {
+      "title": "Nachhaltigkeit",
+      "description": "Langlebiges Material"
+    },
+    {
+      "title": "Lebensqualität",
+      "description": "Fördert ganzheitliche Gesundheit"
+    }
+  ],
+  "RAUMGESTALTUNG_TESTIMONIAL": {
+    "quote": "Als Seniorin und Grossmutter war ich anfangs skeptisch, ob RubikONE auch für mich geeignet ist. Die klaren Anleitungen und die Möglichkeit, alles mit der Familie zu machen, haben mich überzeugt.",
+    "name": "Bernadette",
+    "detail": "66 Jahre, Köniz",
+    "image": "/images/gemeinden/bernadette.jpg"
+  },
+  "RAUMGESTALTUNG_PROZESS": {
+    "title": "In vier Schritten zu Ihrem RubikONE",
+    "subtitle": "Das Vorgehen",
+    "description": "Wir begleiten Sie von A bis Z und übernehmen die fachliche Leitung im gesamten Prozess.",
+    "schritte": [
+      {
+        "nummer": "1",
+        "titel": "Analyse",
+        "beschreibung": "Impulsworkshop und Ausgangslage klären",
+        "image": "/images/gemeinden/prozess-1.jpg"
+      },
+      {
+        "nummer": "2",
+        "titel": "Planung",
+        "beschreibung": "RubikONE auf Ihre Gemeinde anpassen",
+        "image": "/images/gemeinden/prozess-2.jpg"
+      },
+      {
+        "nummer": "3",
+        "titel": "Umsetzung",
+        "beschreibung": "Produktion und Installation von RubikONE",
+        "image": "/images/gemeinden/prozess-3.jpg"
+      },
+      {
+        "nummer": "4",
+        "titel": "Nutzung",
+        "beschreibung": "Eröffnung und Workshops",
+        "image": "/images/gemeinden/prozess-4.jpg"
+      }
+    ]
+  },
+  "RAUMGESTALTUNG_REFERENZ": {
+    "tagline": "Referenz",
+    "headline": "Köniz war die erste Gemeinde.",
+    "description": "Im August 2024 eröffnete der erste RubikONE mit 9 Posten im Schlossareal Köniz – bewilligt im Denkmalschutz.",
+    "image": "/images/gemeinden/koeniz-ref.jpg",
+    "ctaText": "Mehr erfahren",
+    "ctaHref": "/koeniz"
+  },
+  "RAUMGESTALTUNG_FAQ": [
+    {
+      "question": "Wie trägt RubikONE zur Gesundheitsförderung bei?",
+      "answer": "RubikONE lädt zu täglicher Bewegung ein und motiviert Menschen, sich physisch und mental aus der Komfortzone zu locken. Sportmotorische wie auch sensorische und emotionale Challenges haben das Potenzial, die Gesundheit auf allen Ebenen zu steigern."
+    },
+    {
+      "question": "Warum ist RubikONE eine nachhaltige Lösung?",
+      "answer": "Das verwendete Material ist langlebig und wartungsarm. Es werden keine neuen Geräte oder Anlagen gebaut – nur bestehende Elemente werden sichtbar gemacht. In 8 Monaten Testbetrieb in Köniz sind keine Wartungskosten angefallen."
+    },
+    {
+      "question": "Wie schnell kann RubikONE umgesetzt werden?",
+      "answer": "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate). Die physische Installation dauert nur wenige Tage."
+    },
+    {
+      "question": "Braucht es ein Baugesuch?",
+      "answer": "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen."
+    },
+    {
+      "question": "Was ist mit Haftung und Sicherheit?",
+      "answer": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards. Die Haftungsfrage ist klar geregelt."
+    },
+    {
+      "question": "Gibt es spezielle Angebote für Schulen?",
+      "answer": "Ja! RubikONE eignet sich ideal für Schulareale. Wir bieten spezielle Pakete für Schulen an, inklusive pädagogischem Begleitmaterial und Einführungsworkshops für Lehrpersonen."
+    }
+  ],
+  "RAUMGESTALTUNG_CTA": {
+    "headline": "Bereit für den nächsten Schritt?",
+    "description": "Erleben Sie, wie RubikONE auch in Ihrer Gemeinde Bewegung neu definiert. Nutzen Sie den öffentlichen Raum clever, nachhaltig und innovativ.",
+    "ctaPrimary": {
+      "label": "Impulsworkshop buchen",
+      "href": "/impulsworkshop"
+    },
+    "ctaSecondary": {
+      "label": "Beratungsgespräch vereinbaren",
+      "href": "/kontakt"
+    }
+  },
+  "KOENIZ_HERO": {
+    "title": "Köniz macht es vor.",
+    "description": "Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation.",
+    "breadcrumb": "Referenz Köniz",
+    "image": "/images/koeniz/luftbild.jpg",
+    "imageAlt": "Luftaufnahme RubikONE Köniz im Schlossareal"
+  },
+  "KOENIZ_LAB7X1": {
+    "tagline": "BASPO lab7x1",
+    "headline": "Ein Innovationsprojekt des Bundes.",
+    "description1": "«Täglich eine Stunde, sieben Tage die Woche» – nach dieser Formel soll sich die Schweizer Bevölkerung bewegen. Das Bundesamt für Sport BASPO hat dafür das <strong>lab7x1</strong> aufgebaut: Ein Innovationslabor, das neue Ideen zur Bewegungsförderung testet und evaluiert.",
+    "description2": "RubikONE wurde als Laborversuch finanziert und über zwei Jahre wissenschaftlich begleitet. Die Gemeinde Köniz stellte das Schlossareal zur Verfügung – ein anspruchsvoller Standort unter Denkmalschutz.",
+    "downloadLabel": "Evaluationsbericht herunterladen",
+    "downloadDesc": "Vollständiger wissenschaftlicher Abschlussbericht (PDF)",
+    "downloadHref": "/downloads/RubikONE-Evaluation-Koeniz.pdf"
+  },
+  "KOENIZ_DENKMALSCHUTZ": {
+    "label": "Denkmalschutz? Wir haben Erfahrung."
+  },
+  "KOENIZ_ERKENNTNISSE": {
+    "tagline": "Wissenschaftlich evaluiert",
+    "headline": "Die Erkenntnisse."
+  },
+  "KOENIZ_FEEDBACK": {
+    "tagline": "Workshop-Feedback",
+    "headline": "Das sagen die Teilnehmenden."
+  },
+  "KOENIZ_ANNINA": {
+    "quote": "Wir haben gelacht, geschwitzt, uns gegenseitig angefeuert und den Teamgeist gestärkt. Für mich ist das RubikONE die perfekte Möglichkeit, eine bewegte Mittagspause zu organisieren. Der Parcours funktioniert unabhängig vom individuellen Fitness-Niveau und bietet auch schöne Möglichkeiten für ein paar Minuten Achtsamkeit.",
+    "name": "Annina",
+    "role": "Fachspezialistin Betriebliches Gesundheitsmanagement, Diversity & Inclusion"
+  },
+  "KOENIZ_GALLERY": {
+    "images": [
+      {
+        "src": "/images/koeniz/schulklasse.jpg",
+        "alt": "Schulklasse beim RubikONE Training"
+      },
+      {
+        "src": "/images/koeniz/kind-springt.jpg",
+        "alt": "Kind springt am Posten"
+      },
+      {
+        "src": "/images/koeniz/kinder-springen.jpg",
+        "alt": "Kinder springen gemeinsam"
+      },
+      {
+        "src": "/images/koeniz/spass.jpg",
+        "alt": "Spass beim Bewegen"
+      },
+      {
+        "src": "/images/koeniz/schloss.jpg",
+        "alt": "Schlossareal Köniz"
+      }
+    ]
+  },
+  "KOENIZ_CTA": {
+    "headline": "Köniz war der Anfang.",
+    "description": "Jetzt ist Ihre Gemeinde dran. Starten Sie mit einem Impulsworkshop und entdecken Sie, welches Potenzial in Ihrer Umgebung steckt.",
+    "ctaPrimary": {
+      "label": "Impulsworkshop anfragen",
+      "href": "/impulsworkshop"
+    },
+    "ctaSecondary": {
+      "label": "Beratungsgespräch",
+      "href": "/kontakt"
+    }
+  },
+  "WORKSHOP_HERO": {
+    "title": "Der einfachste Weg zu starten.",
+    "description": "Ein Workshop vor Ort. 120 Minuten. Danach sehen Sie Ihre Gemeinde mit anderen Augen.",
+    "breadcrumb": "Impulsworkshop",
+    "image": "/images/workshop/frauen-balancieren.jpg",
+    "imageAlt": "Workshop-Teilnehmerinnen beim Balancieren"
+  },
+  "WORKSHOP_KEY_FACTS": {
+    "keyFacts": [
+      {
+        "label": "Workshop-Dauer",
+        "value": "120 Minuten"
+      },
+      {
+        "label": "Teilnehmende",
+        "value": "Bis 12 Personen"
+      },
+      {
+        "label": "Bei Ihnen",
+        "value": "Vor Ort"
+      },
+      {
+        "label": "Draussen",
+        "value": "Jedes Wetter"
+      }
+    ]
+  },
+  "WORKSHOP_IMAGES": {
+    "images": [
+      {
+        "src": "/images/workshop/frauen-balancieren.jpg",
+        "alt": "Frauen balancieren beim Workshop"
+      },
+      {
+        "src": "/images/workshop/balancieren-helfen.jpg",
+        "alt": "Gegenseitige Hilfe beim Balancieren"
+      },
+      {
+        "src": "/images/workshop/quadrupedie.jpg",
+        "alt": "Quadrupedie-Übung auf der Linie"
+      }
+    ]
+  },
+  "WORKSHOP_MITNEHMEN": {
+    "title": "Was Sie mitnehmen",
+    "subtitle": "Nach 120 Minuten"
+  },
+  "WORKSHOP_PREIS": {
+    "preisWetter": "Draussen, bei jedem Wetter"
+  },
+  "WORKSHOP_FUER_WEN": {
+    "idealNote": "Ideal: 6-12 Teilnehmende aus verschiedenen Abteilungen. So entsteht ein gemeinsames Verständnis."
+  },
+  "WORKSHOP_CTA": {
+    "headline": "Bereit für den neuen Blick?",
+    "description": "In 120 Minuten zeigen wir Ihnen, was in Ihrer Gemeinde möglich ist. Ohne Verpflichtung, mit konkreten Ideen.",
+    "ctaPrimary": {
+      "label": "Workshop anfragen",
+      "href": "/kontakt"
+    },
+    "ctaSecondary": {
+      "label": "Referenz ansehen",
+      "href": "/koeniz"
+    }
+  },
+  "KONTAKT_HERO": {
+    "title": "Sprechen wir darüber.",
+    "description": "Ob Impulsworkshop, Beratungsgespräch oder allgemeine Fragen – wir freuen uns auf Ihre Anfrage.",
+    "breadcrumb": "Kontakt",
+    "image": "/images/parkour/training.jpg",
+    "imageAlt": "Parkour Training"
+  },
+  "KONTAKT_FORM": {
+    "phoneHours": "Mo, Di & Do, 09:00–12:00 & 13:30–16:00 Uhr",
+    "contactFormTitle": "Schreiben Sie uns",
+    "contactFormSubtitle": "Kontaktformular",
+    "footerImage": "/images/parkour/sprung-hoch.jpg"
+  },
+  "UEBER_UNS_HERO": {
+    "title": "Die Pioniere hinter RubikONE.",
+    "description": "ParkourONE. Seit 2007 bringen wir Menschen in Bewegung. Jetzt bringen wir Bewegung zu den Menschen.",
+    "breadcrumb": "Über uns",
+    "image": "/images/parkour/mann-parkour.jpg",
+    "imageAlt": "Parkour Athlet in Aktion"
+  },
+  "UEBER_UNS_SRF": {
+    "tagline": "Bekannt aus SRF Einstein",
+    "headline": "Ein Traum wird Realität.",
+    "description1": "Mit RubikONE geht ein Traum in Erfüllung: Parkour wird sichtbar und frei zugänglich – unabhängig von Alter und Fitnesslevel.",
+    "description2": "Das Schweizer Fernsehen besuchte uns in einem Training und zeigt, was damit gemeint ist.",
+    "ctaText": "SRF Einstein Beitrag ansehen",
+    "videoUrl": "https://www.srf.ch/play/tv/einstein/video/parkour---die-hohe-kunst-des-springens?urn=urn:srf:video:12345",
+    "image": "/images/about/srf-einstein.jpg"
+  },
+  "UEBER_UNS_CTA": {
+    "headline": "Lernen Sie uns kennen.",
+    "description": "Buchen Sie einen Impulsworkshop und erleben Sie, was 20 Jahre Parkour-Expertise für Ihre Gemeinde bedeuten können.",
+    "ctaPrimary": {
+      "label": "Impulsworkshop anfragen",
+      "href": "/impulsworkshop"
+    },
+    "ctaSecondary": {
+      "label": "Kontakt aufnehmen",
+      "href": "/kontakt"
+    }
+  },
+  "UEBER_UNS_STORY": {
+    "storyIntro": {
+      "tagline": "Die Pioniere",
+      "headline": "Entwickelt von Pionieren.",
+      "description1": "Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist die logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.",
+      "description2": "Was 2000 mit einer Handvoll Traceure begann, ist heute die grösste Parkourschule der Deutschschweiz. Über 20 Jahre Erfahrung, tausende Schüler:innen und ein klares Ziel: Menschen in Bewegung bringen.",
+      "image": "/images/parkour/training.jpg"
+    },
+    "timelineTagline": "Von den Anfängen bis heute",
+    "threeThemes": {
+      "title": "Wofür wir stehen",
+      "subtitle": "Drei Grundsätze",
+      "themes": [
+        {
+          "title": "Stark",
+          "description": "Körperliche und mentale Stärke durch Bewegung entwickeln.",
+          "image": "/images/parkour/sprung-hoch.jpg"
+        },
+        {
+          "title": "Sinnvoll",
+          "description": "Bewegung in den Alltag integrieren, nicht davon trennen.",
+          "image": "/images/parkour/parkourhelfen.jpg"
+        },
+        {
+          "title": "Nachhaltig",
+          "description": "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen.",
+          "image": "/images/parkour/geschichte/schueler-bewegen.jpg"
+        }
+      ]
+    },
+    "expertiseTagline": "Was uns auszeichnet",
+    "fullWidthQuote": "Bewegung ist mehr als Sport. Es ist eine Art, die Welt zu sehen.",
+    "compactIntro": {
+      "tagline": "Die Pioniere",
+      "headline": "Entwickelt von Pionieren.",
+      "description": "Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist unsere logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.",
+      "stat1": {
+        "value": "20+",
+        "label": "Jahre Blickwinkel"
+      },
+      "stat2": {
+        "value": "1'500+",
+        "label": "Schüler:innen"
+      },
+      "ctaText": "Mehr über ParkourONE",
+      "ctaHref": "/ueber-uns"
+    }
   }
 }

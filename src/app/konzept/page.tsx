@@ -10,7 +10,15 @@ import { useScrollLock } from "@/hooks/useScrollLock";
 import { ComparisonSection } from "@/components/sections/comparison-table";
 import { StatsSection } from "@/components/sections/stats-section";
 import { EditableSection } from "@/components/admin/editable-section";
-import { KONZEPT_PAGE } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import {
+  KONZEPT_HERO,
+  KONZEPT_PRINZIP,
+  KONZEPT_POSTEN_SLIDER,
+  KONZEPT_LERNDIMENSIONEN,
+  KONZEPT_SICHERHEIT,
+  KONZEPT_CTA,
+} from "@/lib/constants";
 
 // Alle Posten-Schilder aus Köniz
 const POSTEN_SCHILDER = [
@@ -25,18 +33,25 @@ const POSTEN_SCHILDER = [
   { nummer: "09", image: "/images/posten/schild-09.jpg" },
 ];
 
-// Lerndimensionen from content with icon paths
-const LERNDIMENSIONEN = (KONZEPT_PAGE.lerndimensionen.dimensions as any[]).map((d: any) => ({
-  ...d,
-  icon: `/images/lerndimensionen/${d.id}.jpg`,
-}));
-
 export default function KonzeptPage() {
   const postenScrollRef = useRef<HTMLDivElement>(null);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+
+  const hero = useContent("KONZEPT_HERO", KONZEPT_HERO) as any;
+  const prinzip = useContent("KONZEPT_PRINZIP", KONZEPT_PRINZIP) as any;
+  const postenSlider = useContent("KONZEPT_POSTEN_SLIDER", KONZEPT_POSTEN_SLIDER) as any;
+  const lerndimensionen = useContent("KONZEPT_LERNDIMENSIONEN", KONZEPT_LERNDIMENSIONEN) as any;
+  const sicherheit = useContent("KONZEPT_SICHERHEIT", KONZEPT_SICHERHEIT) as any;
+  const cta = useContent("KONZEPT_CTA", KONZEPT_CTA) as any;
+
+  // Lerndimensionen from content with icon paths
+  const LERNDIMENSIONEN = (lerndimensionen.dimensions as any[]).map((d: any) => ({
+    ...d,
+    icon: `/images/lerndimensionen/${d.id}.jpg`,
+  }));
 
   const scrollPosten = (direction: "left" | "right") => {
     if (postenScrollRef.current) {
@@ -67,15 +82,15 @@ export default function KonzeptPage() {
     handleSliderMove(e.touches[0].clientX);
   };
 
-  const activeDimension = LERNDIMENSIONEN.find((d) => d.id === activeModal);
+  const activeDimension = LERNDIMENSIONEN.find((d: any) => d.id === activeModal);
 
   // Lock body scroll when modal is open
   useScrollLock(activeModal !== null);
 
   return (
     <>
-      <EditableSection contentKey="KONZEPT_PAGE" label="Konzept-Seite">
       {/* Hero - Was wäre wenn - Split Layout */}
+      <EditableSection contentKey="KONZEPT_HERO" label="Hero">
       {/* Mobile */}
       <section className="lg:hidden relative pt-24 pb-12 bg-white">
         <div className="px-6">
@@ -86,18 +101,18 @@ export default function KonzeptPage() {
             className="max-w-xl"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-              {KONZEPT_PAGE.hero.tagline}
+              {hero.tagline}
             </p>
             <h1 className="text-hero text-[var(--color-apple-dark)] leading-tight">
-              {KONZEPT_PAGE.hero.headline}
+              {hero.headline}
             </h1>
             <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
-              {KONZEPT_PAGE.hero.questions.split("\n").map((line: string, i: number) => (
-                <span key={i}>{line}{i < KONZEPT_PAGE.hero.questions.split("\n").length - 1 && <br />}</span>
+              {hero.questions.split("\n").map((line: string, i: number) => (
+                <span key={i}>{line}{i < hero.questions.split("\n").length - 1 && <br />}</span>
               ))}
             </p>
             <p className="mt-6 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
-              {KONZEPT_PAGE.hero.description}
+              {hero.description}
             </p>
           </motion.div>
 
@@ -109,7 +124,7 @@ export default function KonzeptPage() {
             className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
           >
             <Image
-              src={KONZEPT_PAGE.hero.heroImage}
+              src={hero.heroImage}
               alt="Generationen trainieren gemeinsam im urbanen Raum"
               fill
               className="object-cover"
@@ -131,18 +146,18 @@ export default function KonzeptPage() {
               className="max-w-xl"
             >
               <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-                {KONZEPT_PAGE.hero.tagline}
+                {hero.tagline}
               </p>
               <h1 className="text-display text-[var(--color-apple-dark)] leading-tight">
-                {KONZEPT_PAGE.hero.headline}
+                {hero.headline}
               </h1>
               <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
-                {KONZEPT_PAGE.hero.questions.split("\n").map((line: string, i: number) => (
-                  <span key={i}>{line}{i < KONZEPT_PAGE.hero.questions.split("\n").length - 1 && <br />}</span>
+                {hero.questions.split("\n").map((line: string, i: number) => (
+                  <span key={i}>{line}{i < hero.questions.split("\n").length - 1 && <br />}</span>
                 ))}
               </p>
               <p className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
-                {KONZEPT_PAGE.hero.description}
+                {hero.description}
               </p>
 
               {/* Scroll Indicator */}
@@ -171,7 +186,7 @@ export default function KonzeptPage() {
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden">
               <Image
-                src={KONZEPT_PAGE.hero.heroImage}
+                src={hero.heroImage}
                 alt="Generationen trainieren gemeinsam im urbanen Raum"
                 fill
                 className="object-cover"
@@ -182,8 +197,10 @@ export default function KonzeptPage() {
         </div>
 
       </section>
+      </EditableSection>
 
       {/* Das Prinzip mit Vorher/Nachher Slider */}
+      <EditableSection contentKey="KONZEPT_PRINZIP" label="Das Prinzip">
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <motion.div
@@ -194,13 +211,13 @@ export default function KonzeptPage() {
             className="mb-12"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {KONZEPT_PAGE.prinzip.tagline}
+              {prinzip.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              {KONZEPT_PAGE.prinzip.headline}
+              {prinzip.headline}
             </h2>
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
-              {KONZEPT_PAGE.prinzip.description}
+              {prinzip.description}
             </p>
           </motion.div>
 
@@ -277,7 +294,7 @@ export default function KonzeptPage() {
             transition={{ ...appleTransition, delay: 0.2 }}
             className="mt-12 grid md:grid-cols-3 gap-6"
           >
-            {(KONZEPT_PAGE.prinzip.elements as any[]).map((item: any, index: number) => (
+            {(prinzip.elements as any[]).map((item: any, index: number) => (
               <div key={index} className="flex items-start gap-4 bg-[var(--color-apple-gray-100)] rounded-2xl p-6">
                 <div className="w-8 h-8 rounded-full bg-[var(--color-apple-blue)] flex items-center justify-center flex-shrink-0">
                   <Check className="h-4 w-4 text-white" />
@@ -291,6 +308,7 @@ export default function KonzeptPage() {
           </motion.div>
         </div>
       </section>
+      </EditableSection>
 
       {/* Was RubikONE auszeichnet */}
       <EditableSection contentKey="COMPARISON_TABLE" label="Vergleichstabelle">
@@ -298,6 +316,7 @@ export default function KonzeptPage() {
       </EditableSection>
 
       {/* Beispiel-Posten - Slider */}
+      <EditableSection contentKey="KONZEPT_POSTEN_SLIDER" label="Posten-Slider">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
         {/* Header */}
         <div className="container-content mb-12">
@@ -308,13 +327,13 @@ export default function KonzeptPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {KONZEPT_PAGE.postenSlider.tagline}
+              {postenSlider.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              {KONZEPT_PAGE.postenSlider.headline}
+              {postenSlider.headline}
             </h2>
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
-              {KONZEPT_PAGE.postenSlider.description}
+              {postenSlider.description}
             </p>
           </motion.div>
         </div>
@@ -369,8 +388,10 @@ export default function KonzeptPage() {
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* Die 5 Lerndimensionen mit Modals */}
+      <EditableSection contentKey="KONZEPT_LERNDIMENSIONEN" label="Lerndimensionen">
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <motion.div
@@ -381,19 +402,19 @@ export default function KonzeptPage() {
             className="mb-12"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {KONZEPT_PAGE.lerndimensionen.tagline}
+              {lerndimensionen.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-2xl">
-              {KONZEPT_PAGE.lerndimensionen.headline}
+              {lerndimensionen.headline}
             </h2>
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
-              {KONZEPT_PAGE.lerndimensionen.description}
+              {lerndimensionen.description}
             </p>
           </motion.div>
 
           {/* 5 Dimensionen - Clickable Cards */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {LERNDIMENSIONEN.map((dim, index) => (
+            {LERNDIMENSIONEN.map((dim: any, index: number) => (
               <motion.div
                 key={dim.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -426,6 +447,7 @@ export default function KonzeptPage() {
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* RubikONE funktioniert - Zahlen */}
       <EditableSection contentKey="STATS_CONTENT" label="Statistiken">
@@ -433,6 +455,7 @@ export default function KonzeptPage() {
       </EditableSection>
 
       {/* Sicherheit */}
+      <EditableSection contentKey="KONZEPT_SICHERHEIT" label="Sicherheit">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -444,18 +467,18 @@ export default function KonzeptPage() {
               transition={appleTransition}
             >
               <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                {KONZEPT_PAGE.sicherheit.tagline}
+                {sicherheit.tagline}
               </p>
               <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                {KONZEPT_PAGE.sicherheit.headline}
+                {sicherheit.headline}
               </h2>
               <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                {KONZEPT_PAGE.sicherheit.description}
+                {sicherheit.description}
               </p>
 
               {/* Normen */}
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {(KONZEPT_PAGE.sicherheit.normen as any[]).map((norm: any, index: number) => (
+                {(sicherheit.normen as any[]).map((norm: any, index: number) => (
                   <div key={index} className="bg-white rounded-xl p-4 shadow-apple">
                     <p className="text-body-sm font-mono font-semibold text-[var(--color-apple-blue)]">{norm.code}</p>
                     <p className="text-caption text-[var(--color-apple-gray-600)] mt-1">{norm.name}</p>
@@ -473,7 +496,7 @@ export default function KonzeptPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src={KONZEPT_PAGE.sicherheit.image}
+                  src={sicherheit.image}
                   alt="RubikONE Beschilderung"
                   fill
                   className="object-cover"
@@ -483,8 +506,10 @@ export default function KonzeptPage() {
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* CTA */}
+      <EditableSection contentKey="KONZEPT_CTA" label="Call-to-Action">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <motion.div
@@ -494,24 +519,23 @@ export default function KonzeptPage() {
             transition={appleTransition}
           >
             <h2 className="text-title-1 text-white">
-              {KONZEPT_PAGE.cta.headline}
+              {cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              {KONZEPT_PAGE.cta.description}
+              {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={KONZEPT_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                {KONZEPT_PAGE.cta.ctaPrimary.label}
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {cta.ctaPrimary.label}
               </Link>
-              <Link href={KONZEPT_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
-                {KONZEPT_PAGE.cta.ctaSecondary.label}
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
-
       </EditableSection>
 
       {/* Modal für Lerndimensionen */}

@@ -6,16 +6,37 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCircle, X, Download } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
-import { KOENIZ_CASE_STUDY, KOENIZ_DETAILS, KOENIZ_PAGE } from "@/lib/constants";
 import { EditableSection } from "@/components/admin/editable-section";
+import { useContent } from "@/hooks/useContent";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
+import {
+  KOENIZ_CASE_STUDY,
+  KOENIZ_DETAILS,
+  KOENIZ_HERO,
+  KOENIZ_LAB7X1,
+  KOENIZ_DENKMALSCHUTZ,
+  KOENIZ_ERKENNTNISSE,
+  KOENIZ_FEEDBACK,
+  KOENIZ_ANNINA,
+  KOENIZ_GALLERY,
+  KOENIZ_CTA,
+} from "@/lib/constants";
 
 export default function KoenizPage() {
   const [activeInsight, setActiveInsight] = useState<number | null>(null);
   const insightScrollRef = useRef<HTMLDivElement>(null);
   const feedbackScrollRef = useRef<HTMLDivElement>(null);
+
+  const hero = useContent("KOENIZ_HERO", KOENIZ_HERO) as any;
+  const lab7x1 = useContent("KOENIZ_LAB7X1", KOENIZ_LAB7X1) as any;
+  const denkmalschutz = useContent("KOENIZ_DENKMALSCHUTZ", KOENIZ_DENKMALSCHUTZ) as any;
+  const erkenntnisse = useContent("KOENIZ_ERKENNTNISSE", KOENIZ_ERKENNTNISSE) as any;
+  const feedback = useContent("KOENIZ_FEEDBACK", KOENIZ_FEEDBACK) as any;
+  const annina = useContent("KOENIZ_ANNINA", KOENIZ_ANNINA) as any;
+  const gallery = useContent("KOENIZ_GALLERY", KOENIZ_GALLERY) as any;
+  const cta = useContent("KOENIZ_CTA", KOENIZ_CTA) as any;
 
   const scrollInsights = (direction: "left" | "right") => {
     if (insightScrollRef.current) {
@@ -39,14 +60,15 @@ export default function KoenizPage() {
 
   return (
     <>
-      <EditableSection contentKey="KOENIZ_PAGE" label="Koeniz-Seite">
+      <EditableSection contentKey="KOENIZ_HERO" label="Hero">
       <PageHero
-        title={KOENIZ_PAGE.hero.title}
-        description={KOENIZ_PAGE.hero.description}
-        breadcrumb={KOENIZ_PAGE.hero.breadcrumb}
-        image={KOENIZ_PAGE.hero.image}
-        imageAlt={KOENIZ_PAGE.hero.imageAlt}
+        title={hero.title}
+        description={hero.description}
+        breadcrumb={hero.breadcrumb}
+        image={hero.image}
+        imageAlt={hero.imageAlt}
       />
+      </EditableSection>
 
       {/* CTA: Selbst entdecken */}
       <section className="py-8 bg-white">
@@ -64,6 +86,7 @@ export default function KoenizPage() {
       </section>
 
       {/* Die Geschichte - mit lab7x1 */}
+      <EditableSection contentKey="KOENIZ_LAB7X1" label="lab7x1 Geschichte">
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <motion.div
@@ -74,14 +97,14 @@ export default function KoenizPage() {
             className="mb-12"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {KOENIZ_PAGE.lab7x1.tagline}
+              {lab7x1.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-3xl">
-              {KOENIZ_PAGE.lab7x1.headline}
+              {lab7x1.headline}
             </h2>
-            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl" dangerouslySetInnerHTML={{ __html: KOENIZ_PAGE.lab7x1.description1 }} />
+            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl" dangerouslySetInnerHTML={{ __html: lab7x1.description1 }} />
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl">
-              {KOENIZ_PAGE.lab7x1.description2}
+              {lab7x1.description2}
             </p>
           </motion.div>
 
@@ -110,20 +133,21 @@ export default function KoenizPage() {
           {/* Download Evaluation Report */}
           <FadeUp className="mt-12">
             <a
-              href={KOENIZ_PAGE.lab7x1.downloadHref}
+              href={lab7x1.downloadHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 bg-[var(--color-apple-gray-100)] rounded-xl hover:bg-[var(--color-apple-gray-200)] transition-colors group"
             >
               <Download className="h-5 w-5 text-[var(--color-apple-blue)]" />
               <div>
-                <p className="text-body font-medium text-[var(--color-apple-dark)]">{KOENIZ_PAGE.lab7x1.downloadLabel}</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_PAGE.lab7x1.downloadDesc}</p>
+                <p className="text-body font-medium text-[var(--color-apple-dark)]">{lab7x1.downloadLabel}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{lab7x1.downloadDesc}</p>
               </div>
             </a>
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Herausforderung & Lösung - mit Bildern */}
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
@@ -185,12 +209,13 @@ export default function KoenizPage() {
       </section>
 
       {/* Denkmalschutz Highlight */}
+      <EditableSection contentKey="KOENIZ_DENKMALSCHUTZ" label="Denkmalschutz">
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <FadeUp>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full mb-6">
-                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">{KOENIZ_PAGE.denkmalschutzLabel}</span>
+                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">{denkmalschutz.label}</span>
               </div>
               <p className="text-title-2 text-[var(--color-apple-dark)]">
                 {KOENIZ_CASE_STUDY.denkmalpflege}
@@ -199,8 +224,10 @@ export default function KoenizPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Erkenntnisse - Slider Cards mit Modal */}
+      <EditableSection contentKey="KOENIZ_ERKENNTNISSE" label="Erkenntnisse">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
         <div className="container-content mb-8">
           <motion.div
@@ -210,10 +237,10 @@ export default function KoenizPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {KOENIZ_PAGE.erkenntnisse.tagline}
+              {erkenntnisse.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              {KOENIZ_PAGE.erkenntnisse.headline}
+              {erkenntnisse.headline}
             </h2>
           </motion.div>
         </div>
@@ -274,6 +301,7 @@ export default function KoenizPage() {
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* Insight Modal */}
       <AnimatePresence>
@@ -312,6 +340,7 @@ export default function KoenizPage() {
       </AnimatePresence>
 
       {/* Stimmen der Teilnehmenden - Slider wie Homepage */}
+      <EditableSection contentKey="KOENIZ_FEEDBACK" label="Workshop-Feedback">
       <section className="py-16 lg:py-24 bg-white overflow-hidden">
         <div className="container-content mb-8">
           <motion.div
@@ -321,10 +350,10 @@ export default function KoenizPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {KOENIZ_PAGE.workshopFeedback.tagline}
+              {feedback.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              {KOENIZ_PAGE.workshopFeedback.headline}
+              {feedback.headline}
             </h2>
           </motion.div>
         </div>
@@ -337,7 +366,7 @@ export default function KoenizPage() {
         >
           <div className="slider-spacer" />
 
-          {KOENIZ_CASE_STUDY.workshopFeedback.map((feedback: string, index: number) => (
+          {KOENIZ_CASE_STUDY.workshopFeedback.map((feedbackItem: string, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -349,7 +378,7 @@ export default function KoenizPage() {
               <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6 h-full">
                 <Quote className="h-8 w-8 text-[var(--color-apple-gray-300)] mb-4" strokeWidth={1} />
                 <p className="text-body text-[var(--color-apple-dark)] leading-relaxed">
-                  &ldquo;{feedback}&rdquo;
+                  &ldquo;{feedbackItem}&rdquo;
                 </p>
                 <p className="mt-4 text-body-sm text-[var(--color-apple-gray-500)]">
                   Workshop-Teilnehmer:in
@@ -379,6 +408,7 @@ export default function KoenizPage() {
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* Offizielle Stimmen */}
       <section className="py-16 lg:py-24 bg-white">
@@ -421,6 +451,7 @@ export default function KoenizPage() {
       </section>
 
       {/* Statement Annina */}
+      <EditableSection contentKey="KOENIZ_ANNINA" label="Statement Annina">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <FadeUp>
@@ -428,19 +459,21 @@ export default function KoenizPage() {
               <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
               <blockquote>
                 <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
-                  &laquo;{KOENIZ_PAGE.statementAnnina.quote}&raquo;
+                  &laquo;{annina.quote}&raquo;
                 </p>
               </blockquote>
               <div className="mt-6">
-                <p className="text-body font-semibold text-[var(--color-apple-dark)]">{KOENIZ_PAGE.statementAnnina.name}</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_PAGE.statementAnnina.role}</p>
+                <p className="text-body font-semibold text-[var(--color-apple-dark)]">{annina.name}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{annina.role}</p>
               </div>
             </div>
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Gallery */}
+      <EditableSection contentKey="KOENIZ_GALLERY" label="Galerie">
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <SectionHeader
@@ -449,7 +482,7 @@ export default function KoenizPage() {
           />
 
           <StaggerContainer className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {(KOENIZ_PAGE.galleryImages as any[]).map((image: any, index: number) => (
+            {(gallery.images as any[]).map((image: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="aspect-square rounded-xl overflow-hidden relative group">
                   <Image
@@ -464,6 +497,7 @@ export default function KoenizPage() {
           </StaggerContainer>
         </div>
       </section>
+      </EditableSection>
 
       {/* Praktische Infos */}
       <section id="selbst-erleben" className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
@@ -550,21 +584,22 @@ export default function KoenizPage() {
       </section>
 
       {/* CTA */}
+      <EditableSection contentKey="KOENIZ_CTA" label="Call-to-Action">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              {KOENIZ_PAGE.cta.headline}
+              {cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              {KOENIZ_PAGE.cta.description}
+              {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={KOENIZ_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                {KOENIZ_PAGE.cta.ctaPrimary.label}
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {cta.ctaPrimary.label}
               </Link>
-              <Link href={KOENIZ_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
-                {KOENIZ_PAGE.cta.ctaSecondary.label}
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

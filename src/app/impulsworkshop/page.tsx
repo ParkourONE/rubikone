@@ -1,37 +1,54 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Clock, Users, MapPin, Cloud, CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
-import { WORKSHOP_DETAILS, CONTACT_PERSON, IMPULSWORKSHOP_PAGE } from "@/lib/constants";
 import { EditableSection } from "@/components/admin/editable-section";
+import { useContent } from "@/hooks/useContent";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
-
-export const metadata: Metadata = {
-  title: "Impulsworkshop | RubikONE",
-  description: "Der einfachste Weg zu starten. Ein 120-minütiger Workshop vor Ort in Ihrer Gemeinde. Nach dem Workshop sehen Sie Ihre Umgebung mit anderen Augen.",
-};
+import {
+  WORKSHOP_DETAILS,
+  CONTACT_PERSON,
+  WORKSHOP_HERO,
+  WORKSHOP_KEY_FACTS,
+  WORKSHOP_IMAGES,
+  WORKSHOP_MITNEHMEN,
+  WORKSHOP_PREIS,
+  WORKSHOP_FUER_WEN,
+  WORKSHOP_CTA,
+} from "@/lib/constants";
 
 const KEY_FACT_ICONS = [Clock, Users, MapPin, Cloud];
 
 export default function ImpulsworkshopPage() {
+  const hero = useContent("WORKSHOP_HERO", WORKSHOP_HERO) as any;
+  const keyFactsData = useContent("WORKSHOP_KEY_FACTS", WORKSHOP_KEY_FACTS) as any;
+  const workshopImages = useContent("WORKSHOP_IMAGES", WORKSHOP_IMAGES) as any;
+  const mitnehmen = useContent("WORKSHOP_MITNEHMEN", WORKSHOP_MITNEHMEN) as any;
+  const preis = useContent("WORKSHOP_PREIS", WORKSHOP_PREIS) as any;
+  const fuerWen = useContent("WORKSHOP_FUER_WEN", WORKSHOP_FUER_WEN) as any;
+  const cta = useContent("WORKSHOP_CTA", WORKSHOP_CTA) as any;
+
   return (
     <>
-      <EditableSection contentKey="IMPULSWORKSHOP_PAGE" label="Impulsworkshop">
+      <EditableSection contentKey="WORKSHOP_HERO" label="Hero">
       <PageHero
-        title={IMPULSWORKSHOP_PAGE.hero.title}
-        description={IMPULSWORKSHOP_PAGE.hero.description}
-        breadcrumb={IMPULSWORKSHOP_PAGE.hero.breadcrumb}
-        image={IMPULSWORKSHOP_PAGE.hero.image}
-        imageAlt={IMPULSWORKSHOP_PAGE.hero.imageAlt}
+        title={hero.title}
+        description={hero.description}
+        breadcrumb={hero.breadcrumb}
+        image={hero.image}
+        imageAlt={hero.imageAlt}
       />
+      </EditableSection>
 
       {/* Key Facts */}
+      <EditableSection contentKey="WORKSHOP_KEY_FACTS" label="Key Facts">
       <section className="py-16 lg:py-20 bg-white">
         <div className="container-wide">
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-            {(IMPULSWORKSHOP_PAGE.keyFacts as any[]).map((item: any, index: number) => {
+            {(keyFactsData.keyFacts as any[]).map((item: any, index: number) => {
               const Icon = KEY_FACT_ICONS[index] || Clock;
               return (
                 <StaggerItem key={index}>
@@ -46,6 +63,7 @@ export default function ImpulsworkshopPage() {
           </StaggerContainer>
         </div>
       </section>
+      </EditableSection>
 
       {/* Was Sie erwartet */}
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
@@ -85,11 +103,12 @@ export default function ImpulsworkshopPage() {
       </section>
 
       {/* Workshop Images */}
+      <EditableSection contentKey="WORKSHOP_IMAGES" label="Workshop-Bilder">
       <section className="section-spacing bg-white">
         <div className="container-wide">
           <FadeUp>
             <div className="grid md:grid-cols-3 gap-4">
-              {(IMPULSWORKSHOP_PAGE.workshopImages.images as any[]).map((img: any, index: number) => (
+              {(workshopImages.images as any[]).map((img: any, index: number) => (
                 <div key={index} className={`relative aspect-[4/3] rounded-2xl overflow-hidden ${index === 0 ? "md:col-span-2" : ""}`}>
                   <Image
                     src={img.src}
@@ -103,13 +122,15 @@ export default function ImpulsworkshopPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Was Sie mitnehmen */}
+      <EditableSection contentKey="WORKSHOP_MITNEHMEN" label="Was Sie mitnehmen">
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
         <div className="container-content">
           <SectionHeader
-            title={IMPULSWORKSHOP_PAGE.mitnehmen.title}
-            subtitle={IMPULSWORKSHOP_PAGE.mitnehmen.subtitle}
+            title={mitnehmen.title}
+            subtitle={mitnehmen.subtitle}
             className="[&_h2]:text-white [&_p]:text-white/70"
           />
 
@@ -125,8 +146,10 @@ export default function ImpulsworkshopPage() {
           </StaggerContainer>
         </div>
       </section>
+      </EditableSection>
 
       {/* Für wen? */}
+      <EditableSection contentKey="WORKSHOP_FUER_WEN" label="Für wen?">
       <section className="section-spacing bg-white">
         <div className="container-content">
           <SectionHeader
@@ -156,13 +179,15 @@ export default function ImpulsworkshopPage() {
 
           <FadeUp delay={0.2}>
             <p className="mt-8 text-center text-body text-[var(--color-apple-gray-600)]">
-              {IMPULSWORKSHOP_PAGE.idealNote}
+              {fuerWen.idealNote}
             </p>
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Preis-Box */}
+      <EditableSection contentKey="WORKSHOP_PREIS" label="Preis">
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <FadeUp>
@@ -187,7 +212,7 @@ export default function ImpulsworkshopPage() {
                   </div>
                   <div>
                     <p className="text-caption text-[var(--color-apple-gray-500)]">Wetter</p>
-                    <p className="text-body font-medium text-[var(--color-apple-dark)]">{IMPULSWORKSHOP_PAGE.preisWetter}</p>
+                    <p className="text-body font-medium text-[var(--color-apple-dark)]">{preis.preisWetter}</p>
                   </div>
                 </div>
               </div>
@@ -199,6 +224,7 @@ export default function ImpulsworkshopPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* FAQ */}
       <section className="section-spacing bg-white">
@@ -257,21 +283,22 @@ export default function ImpulsworkshopPage() {
       </section>
 
       {/* CTA */}
+      <EditableSection contentKey="WORKSHOP_CTA" label="Call-to-Action">
       <section className="section-spacing bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              {IMPULSWORKSHOP_PAGE.cta.headline}
+              {cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              {IMPULSWORKSHOP_PAGE.cta.description}
+              {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={IMPULSWORKSHOP_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                {IMPULSWORKSHOP_PAGE.cta.ctaPrimary.label}
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {cta.ctaPrimary.label}
               </Link>
-              <Link href={IMPULSWORKSHOP_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
-                {IMPULSWORKSHOP_PAGE.cta.ctaSecondary.label}
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

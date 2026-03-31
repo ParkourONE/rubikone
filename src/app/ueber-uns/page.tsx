@@ -1,47 +1,54 @@
-import { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Play } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { ParkourONEStoryFull } from "@/components/sections/parkourone-story";
 import { FadeUp } from "@/components/shared/fade-up";
-import { UEBER_UNS_PAGE } from "@/lib/constants";
 import { EditableSection } from "@/components/admin/editable-section";
-
-export const metadata: Metadata = {
-  title: "Über uns | RubikONE",
-  description: "ParkourONE: Die Pioniere hinter RubikONE. Seit 2007 bringen wir Menschen in Bewegung. Über 20 Jahre Erfahrung, 1'500+ Schüler, die TRuST-Methode.",
-};
+import { useContent } from "@/hooks/useContent";
+import {
+  UEBER_UNS_HERO,
+  UEBER_UNS_SRF,
+  UEBER_UNS_CTA,
+} from "@/lib/constants";
 
 export default function UeberUnsPage() {
+  const hero = useContent("UEBER_UNS_HERO", UEBER_UNS_HERO) as any;
+  const srf = useContent("UEBER_UNS_SRF", UEBER_UNS_SRF) as any;
+  const cta = useContent("UEBER_UNS_CTA", UEBER_UNS_CTA) as any;
+
   return (
     <>
-      <EditableSection contentKey="UEBER_UNS_PAGE" label="Ueber uns">
+      <EditableSection contentKey="UEBER_UNS_HERO" label="Hero">
       <PageHero
-        title={UEBER_UNS_PAGE.hero.title}
-        description={UEBER_UNS_PAGE.hero.description}
-        breadcrumb={UEBER_UNS_PAGE.hero.breadcrumb}
-        image={UEBER_UNS_PAGE.hero.image}
-        imageAlt={UEBER_UNS_PAGE.hero.imageAlt}
+        title={hero.title}
+        description={hero.description}
+        breadcrumb={hero.breadcrumb}
+        image={hero.image}
+        imageAlt={hero.imageAlt}
       />
+      </EditableSection>
 
       <ParkourONEStoryFull />
 
       {/* SRF Einstein Section */}
+      <EditableSection contentKey="UEBER_UNS_SRF" label="SRF Einstein">
       <section id="srf-einstein" className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeUp>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-apple-lg">
                 <Image
-                  src={UEBER_UNS_PAGE.srfEinstein.image}
+                  src={srf.image}
                   alt="SRF Einstein Reportage über ParkourONE"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                   <a
-                    href={UEBER_UNS_PAGE.srfEinstein.videoUrl}
+                    href={srf.videoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
@@ -54,24 +61,24 @@ export default function UeberUnsPage() {
             <FadeUp delay={0.1}>
               <div>
                 <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                  {UEBER_UNS_PAGE.srfEinstein.tagline}
+                  {srf.tagline}
                 </p>
                 <h2 className="text-title-2 text-[var(--color-apple-dark)]">
-                  {UEBER_UNS_PAGE.srfEinstein.headline}
+                  {srf.headline}
                 </h2>
                 <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
-                  {UEBER_UNS_PAGE.srfEinstein.description1}
+                  {srf.description1}
                 </p>
                 <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">
-                  {UEBER_UNS_PAGE.srfEinstein.description2}
+                  {srf.description2}
                 </p>
                 <a
-                  href={UEBER_UNS_PAGE.srfEinstein.videoUrl}
+                  href={srf.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary mt-8 inline-flex"
                 >
-                  {UEBER_UNS_PAGE.srfEinstein.ctaText}
+                  {srf.ctaText}
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
@@ -79,23 +86,25 @@ export default function UeberUnsPage() {
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* CTA */}
+      <EditableSection contentKey="UEBER_UNS_CTA" label="Call-to-Action">
       <section className="section-spacing bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              {UEBER_UNS_PAGE.cta.headline}
+              {cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              {UEBER_UNS_PAGE.cta.description}
+              {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={UEBER_UNS_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                {UEBER_UNS_PAGE.cta.ctaPrimary.label}
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {cta.ctaPrimary.label}
               </Link>
-              <Link href={UEBER_UNS_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
-                {UEBER_UNS_PAGE.cta.ctaSecondary.label}
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

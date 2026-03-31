@@ -84,8 +84,8 @@ export const BLOCK_LIBRARY: BlockCategoryDef[] = [
     category: "Hero-Bloecke",
     blocks: [
       { type: "hero", label: "Hero", defaultKey: "HERO_CONTENT", icon: "sparkles" },
-      { type: "page-hero", label: "Seiten-Hero", defaultKey: "RAUMGESTALTUNG_PAGE", icon: "layout" },
-      { type: "konzept-hero", label: "Konzept Hero", defaultKey: "KONZEPT_PAGE", icon: "lightbulb" },
+      { type: "page-hero", label: "Seiten-Hero", defaultKey: "RAUMGESTALTUNG_HERO", icon: "layout" },
+      { type: "konzept-hero", label: "Konzept Hero", defaultKey: "KONZEPT_HERO", icon: "lightbulb" },
     ],
   },
   {
@@ -94,37 +94,37 @@ export const BLOCK_LIBRARY: BlockCategoryDef[] = [
       { type: "texthook", label: "Text-Hook", defaultKey: "TEXTHOOK_CONTENT", icon: "type" },
       { type: "video", label: "Video", defaultKey: "VIDEO_CONTENT", icon: "play" },
       { type: "vorher-nachher", label: "Vorher / Nachher", defaultKey: "VORHER_NACHHER_CONTENT", icon: "arrows" },
-      { type: "vorher-nachher-slider", label: "Vorher/Nachher Slider", defaultKey: "KONZEPT_PAGE", icon: "sliders" },
+      { type: "vorher-nachher-slider", label: "Vorher/Nachher Slider", defaultKey: "KONZEPT_PRINZIP", icon: "sliders" },
       { type: "comparison", label: "Vergleich", defaultKey: "COMPARISON_TABLE", icon: "columns" },
-      { type: "lerndimensionen", label: "Lerndimensionen", defaultKey: "KONZEPT_PAGE", icon: "brain" },
+      { type: "lerndimensionen", label: "Lerndimensionen", defaultKey: "KONZEPT_LERNDIMENSIONEN", icon: "brain" },
       { type: "stats-slider", label: "Stats-Slider", defaultKey: "STATS_CONTENT", icon: "barchart" },
-      { type: "posten-slider", label: "Posten-Slider", defaultKey: "KONZEPT_PAGE", icon: "grid" },
+      { type: "posten-slider", label: "Posten-Slider", defaultKey: "KONZEPT_POSTEN_SLIDER", icon: "grid" },
     ],
   },
   {
     category: "Social Proof",
     blocks: [
       { type: "testimonials", label: "Kundenstimmen", defaultKey: "TESTIMONIALS", icon: "quote" },
-      { type: "testimonial-single", label: "Einzelnes Testimonial", defaultKey: "RAUMGESTALTUNG_PAGE", icon: "user" },
+      { type: "testimonial-single", label: "Einzelnes Testimonial", defaultKey: "RAUMGESTALTUNG_TESTIMONIAL", icon: "user" },
       { type: "offizielle-stimmen", label: "Offizielle Stimmen", defaultKey: "KOENIZ_DETAILS", icon: "megaphone" },
       { type: "workshop-feedback", label: "Workshop-Feedback", defaultKey: "KOENIZ_CASE_STUDY", icon: "message" },
-      { type: "statement-annina", label: "Statement", defaultKey: "KOENIZ_PAGE", icon: "usercheck" },
+      { type: "statement-annina", label: "Statement", defaultKey: "KOENIZ_ANNINA", icon: "usercheck" },
     ],
   },
   {
     category: "Prozess",
     blocks: [
-      { type: "prozess-4-schritte", label: "4-Schritte", defaultKey: "RAUMGESTALTUNG_PAGE", icon: "list" },
+      { type: "prozess-4-schritte", label: "4-Schritte", defaultKey: "RAUMGESTALTUNG_PROZESS", icon: "list" },
       { type: "prozess-teaser", label: "Prozess-Teaser", defaultKey: "PROZESS_TEASER_CONTENT", icon: "rocket" },
       { type: "programm", label: "Programm", defaultKey: "IMPULSWORKSHOP", icon: "calendar" },
-      { type: "key-facts", label: "Key Facts", defaultKey: "IMPULSWORKSHOP_PAGE", icon: "info" },
+      { type: "key-facts", label: "Key Facts", defaultKey: "WORKSHOP_KEY_FACTS", icon: "info" },
     ],
   },
   {
     category: "Call-to-Action",
     blocks: [
       { type: "cta-dark", label: "CTA (Dunkel)", defaultKey: "CTA_CONTENT", icon: "zap" },
-      { type: "cta-blue", label: "CTA (Blau)", defaultKey: "KONZEPT_PAGE", icon: "arrowright" },
+      { type: "cta-blue", label: "CTA (Blau)", defaultKey: "KONZEPT_CTA", icon: "arrowright" },
       { type: "configurator-cta", label: "Konfigurator-CTA", defaultKey: "CONFIGURATOR_CTA_CONTENT", icon: "settings" },
       { type: "configurator-trigger", label: "Konfigurator-Trigger", defaultKey: "CONFIGURATOR_CTA_CONTENT", icon: "sliders" },
     ],
@@ -132,7 +132,7 @@ export const BLOCK_LIBRARY: BlockCategoryDef[] = [
   {
     category: "Kontakt",
     blocks: [
-      { type: "contact-form", label: "Kontaktformular", defaultKey: "KONTAKT_PAGE", icon: "mail" },
+      { type: "contact-form", label: "Kontaktformular", defaultKey: "KONTAKT_FORM", icon: "mail" },
       { type: "contact-info", label: "Kontaktinfo", defaultKey: "CONTACT_INFO", icon: "mappin" },
       { type: "ansprechpartnerin", label: "Ansprechpartnerin", defaultKey: "CONTACT_PERSON", icon: "user" },
     ],
@@ -142,12 +142,12 @@ export const BLOCK_LIBRARY: BlockCategoryDef[] = [
     blocks: [
       { type: "faq", label: "FAQ", defaultKey: "FAQ_ITEMS", icon: "help" },
       { type: "gallery", label: "Galerie", defaultKey: "GALLERY_CONTENT", icon: "image" },
-      { type: "gallery-koeniz", label: "Galerie Koeniz", defaultKey: "KOENIZ_PAGE", icon: "image" },
+      { type: "gallery-koeniz", label: "Galerie Koeniz", defaultKey: "KOENIZ_GALLERY", icon: "image" },
       { type: "preis-box", label: "Preis-Box", defaultKey: "WORKSHOP_DETAILS", icon: "tag" },
       { type: "safety", label: "Sicherheit", defaultKey: "SAFETY_INFO", icon: "shield" },
-      { type: "workshop-images", label: "Workshop-Bilder", defaultKey: "IMPULSWORKSHOP_PAGE", icon: "camera" },
+      { type: "workshop-images", label: "Workshop-Bilder", defaultKey: "WORKSHOP_IMAGES", icon: "camera" },
       { type: "story", label: "Geschichte", defaultKey: "PARKOURONE_STORY", icon: "book" },
-      { type: "srf-einstein", label: "SRF Einstein", defaultKey: "UEBER_UNS_PAGE", icon: "tv" },
+      { type: "srf-einstein", label: "SRF Einstein", defaultKey: "UEBER_UNS_SRF", icon: "tv" },
     ],
   },
 ];

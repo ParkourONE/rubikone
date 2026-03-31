@@ -9,8 +9,19 @@ import { PageHero } from "@/components/sections/hero-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { ConfiguratorTrigger } from "@/components/sections/configurator-overlay";
-import { RAUMGESTALTUNG_PAGE, PROCESS_PHASES } from "@/lib/constants";
 import { EditableSection } from "@/components/admin/editable-section";
+import { useContent } from "@/hooks/useContent";
+import {
+  RAUMGESTALTUNG_HERO,
+  RAUMGESTALTUNG_MEHRWERT,
+  RAUMGESTALTUNG_USP,
+  RAUMGESTALTUNG_TESTIMONIAL,
+  RAUMGESTALTUNG_PROZESS,
+  RAUMGESTALTUNG_REFERENZ,
+  RAUMGESTALTUNG_FAQ,
+  RAUMGESTALTUNG_CTA,
+  PROCESS_PHASES,
+} from "@/lib/constants";
 
 const iconMap: Record<number, any> = {
   0: Building2,
@@ -61,30 +72,41 @@ function FAQItem({ question, answer, isOpen, onToggle }: {
 export default function RaumgestaltungPage() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
 
+  const hero = useContent("RAUMGESTALTUNG_HERO", RAUMGESTALTUNG_HERO) as any;
+  const mehrwert = useContent("RAUMGESTALTUNG_MEHRWERT", RAUMGESTALTUNG_MEHRWERT) as any;
+  const uspKompakt = useContent("RAUMGESTALTUNG_USP", RAUMGESTALTUNG_USP) as any;
+  const testimonial = useContent("RAUMGESTALTUNG_TESTIMONIAL", RAUMGESTALTUNG_TESTIMONIAL) as any;
+  const prozess = useContent("RAUMGESTALTUNG_PROZESS", RAUMGESTALTUNG_PROZESS) as any;
+  const referenz = useContent("RAUMGESTALTUNG_REFERENZ", RAUMGESTALTUNG_REFERENZ) as any;
+  const faq = useContent("RAUMGESTALTUNG_FAQ", RAUMGESTALTUNG_FAQ) as any;
+  const cta = useContent("RAUMGESTALTUNG_CTA", RAUMGESTALTUNG_CTA) as any;
+
   return (
     <>
-      <EditableSection contentKey="RAUMGESTALTUNG_PAGE" label="Raumgestaltung">
       {/* Hero */}
+      <EditableSection contentKey="RAUMGESTALTUNG_HERO" label="Hero">
       <PageHero
-        title={RAUMGESTALTUNG_PAGE.hero.title}
-        description={RAUMGESTALTUNG_PAGE.hero.description}
-        breadcrumb={RAUMGESTALTUNG_PAGE.hero.breadcrumb}
-        image={RAUMGESTALTUNG_PAGE.hero.image}
-        imageAlt={RAUMGESTALTUNG_PAGE.hero.imageAlt}
+        title={hero.title}
+        description={hero.description}
+        breadcrumb={hero.breadcrumb}
+        image={hero.image}
+        imageAlt={hero.imageAlt}
       />
+      </EditableSection>
 
       {/* Mehrwert für alle - 3 Columns */}
+      <EditableSection contentKey="RAUMGESTALTUNG_MEHRWERT" label="Mehrwert für alle">
       <section className="section-spacing">
         <div className="container-content">
           <SectionHeader
-            title={RAUMGESTALTUNG_PAGE.mehrwert.title}
-            subtitle={RAUMGESTALTUNG_PAGE.mehrwert.subtitle}
-            description={RAUMGESTALTUNG_PAGE.mehrwert.description}
+            title={mehrwert.title}
+            subtitle={mehrwert.subtitle}
+            description={mehrwert.description}
             className="mb-12"
           />
 
           <StaggerContainer className="grid md:grid-cols-3 gap-8">
-            {(RAUMGESTALTUNG_PAGE.mehrwert.stakeholders as any[]).map((stakeholder: any, index: number) => {
+            {(mehrwert.stakeholders as any[]).map((stakeholder: any, index: number) => {
               const Icon = iconMap[index] || Users;
               return (
                 <StaggerItem key={index}>
@@ -112,13 +134,15 @@ export default function RaumgestaltungPage() {
           </StaggerContainer>
         </div>
       </section>
+      </EditableSection>
 
       {/* Das macht RubikONE einzigartig - Kompakt */}
+      <EditableSection contentKey="RAUMGESTALTUNG_USP" label="USP kompakt">
       <section className="py-12 bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <FadeUp>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-              {(RAUMGESTALTUNG_PAGE.uspKompakt as any[]).map((item: any, index: number) => (
+              {(uspKompakt as any[]).map((item: any, index: number) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" />
                   <div>
@@ -135,15 +159,17 @@ export default function RaumgestaltungPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Testimonial Bernadette */}
+      <EditableSection contentKey="RAUMGESTALTUNG_TESTIMONIAL" label="Testimonial Bernadette">
       <section className="section-spacing">
         <div className="container-content">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeUp>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src={RAUMGESTALTUNG_PAGE.testimonialBernadette.image}
+                  src={testimonial.image}
                   alt="Bernadette bei RubikONE"
                   fill
                   className="object-cover"
@@ -155,31 +181,33 @@ export default function RaumgestaltungPage() {
                 <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
                 <blockquote>
                   <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
-                    &laquo;{RAUMGESTALTUNG_PAGE.testimonialBernadette.quote}&raquo;
+                    &laquo;{testimonial.quote}&raquo;
                   </p>
                 </blockquote>
                 <div className="mt-6">
-                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">{RAUMGESTALTUNG_PAGE.testimonialBernadette.name}</p>
-                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">{RAUMGESTALTUNG_PAGE.testimonialBernadette.detail}</p>
+                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">{testimonial.name}</p>
+                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">{testimonial.detail}</p>
                 </div>
               </div>
             </FadeUp>
           </div>
         </div>
       </section>
+      </EditableSection>
 
       {/* Prozess */}
+      <EditableSection contentKey="RAUMGESTALTUNG_PROZESS" label="Prozess">
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
         <div className="container-content">
           <SectionHeader
-            title={RAUMGESTALTUNG_PAGE.prozess.title}
-            subtitle={RAUMGESTALTUNG_PAGE.prozess.subtitle}
-            description={RAUMGESTALTUNG_PAGE.prozess.description}
+            title={prozess.title}
+            subtitle={prozess.subtitle}
+            description={prozess.description}
             className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
           />
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {(RAUMGESTALTUNG_PAGE.prozess.schritte as any[]).map((schritt: any, index: number) => (
+            {(prozess.schritte as any[]).map((schritt: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-white/5 rounded-[var(--radius-apple-lg)] overflow-hidden">
                   <div className="relative aspect-[4/3]">
@@ -205,39 +233,43 @@ export default function RaumgestaltungPage() {
           </StaggerContainer>
         </div>
       </section>
+      </EditableSection>
 
       {/* Referenz Köniz - kompakt */}
+      <EditableSection contentKey="RAUMGESTALTUNG_REFERENZ" label="Referenz Köniz">
       <section className="py-12 lg:py-16">
         <div className="container-content">
           <FadeUp>
             <div className="flex flex-col md:flex-row items-center gap-8 p-8 bg-[var(--color-apple-gray-100)] rounded-2xl">
               <div className="relative w-full md:w-48 aspect-[4/3] md:aspect-square rounded-xl overflow-hidden flex-shrink-0">
                 <Image
-                  src={RAUMGESTALTUNG_PAGE.referenzKoeniz.image}
+                  src={referenz.image}
                   alt="RubikONE Köniz"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="flex-grow text-center md:text-left">
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1">{RAUMGESTALTUNG_PAGE.referenzKoeniz.tagline}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1">{referenz.tagline}</p>
                 <h3 className="text-headline text-[var(--color-apple-dark)]">
-                  {RAUMGESTALTUNG_PAGE.referenzKoeniz.headline}
+                  {referenz.headline}
                 </h3>
                 <p className="mt-2 text-body text-[var(--color-apple-gray-600)]">
-                  {RAUMGESTALTUNG_PAGE.referenzKoeniz.description}
+                  {referenz.description}
                 </p>
               </div>
-              <Link href={RAUMGESTALTUNG_PAGE.referenzKoeniz.ctaHref} className="btn-secondary flex-shrink-0">
-                {RAUMGESTALTUNG_PAGE.referenzKoeniz.ctaText}
+              <Link href={referenz.ctaHref} className="btn-secondary flex-shrink-0">
+                {referenz.ctaText}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* FAQ */}
+      <EditableSection contentKey="RAUMGESTALTUNG_FAQ" label="FAQ">
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
@@ -248,7 +280,7 @@ export default function RaumgestaltungPage() {
 
           <FadeUp>
             <div className="max-w-3xl mx-auto">
-              {(RAUMGESTALTUNG_PAGE.faq as any[]).map((item: any, index: number) => (
+              {(faq as any[]).map((item: any, index: number) => (
                 <FAQItem
                   key={index}
                   question={item.question}
@@ -261,6 +293,7 @@ export default function RaumgestaltungPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
 
       {/* Konfigurator CTA */}
       <section className="py-16 lg:py-20 bg-[var(--color-apple-gray-100)]">
@@ -272,21 +305,22 @@ export default function RaumgestaltungPage() {
       </section>
 
       {/* CTA */}
+      <EditableSection contentKey="RAUMGESTALTUNG_CTA" label="Call-to-Action">
       <section className="section-spacing bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              {RAUMGESTALTUNG_PAGE.cta.headline}
+              {cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              {RAUMGESTALTUNG_PAGE.cta.description}
+              {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={RAUMGESTALTUNG_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                {RAUMGESTALTUNG_PAGE.cta.ctaPrimary.label}
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {cta.ctaPrimary.label}
               </Link>
-              <Link href={RAUMGESTALTUNG_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
-                {RAUMGESTALTUNG_PAGE.cta.ctaSecondary.label}
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

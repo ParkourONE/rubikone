@@ -160,13 +160,52 @@ export const PROZESS_TEASER_CONTENT = content.PROZESS_TEASER_CONTENT;
 export const CONFIGURATOR_CTA_CONTENT = content.CONFIGURATOR_CTA_CONTENT;
 export const STATS_CONTENT = content.STATS_CONTENT;
 
-// Page-specific content (previously hardcoded)
-export const KONZEPT_PAGE = content.KONZEPT_PAGE;
-export const RAUMGESTALTUNG_PAGE = content.RAUMGESTALTUNG_PAGE;
-export const KOENIZ_PAGE = content.KOENIZ_PAGE;
-export const IMPULSWORKSHOP_PAGE = content.IMPULSWORKSHOP_PAGE;
-export const KONTAKT_PAGE = content.KONTAKT_PAGE;
-export const UEBER_UNS_PAGE = content.UEBER_UNS_PAGE;
+// Konzept page sections
+export const KONZEPT_HERO = content.KONZEPT_HERO;
+export const KONZEPT_PRINZIP = content.KONZEPT_PRINZIP;
+export const KONZEPT_POSTEN_SLIDER = content.KONZEPT_POSTEN_SLIDER;
+export const KONZEPT_LERNDIMENSIONEN = content.KONZEPT_LERNDIMENSIONEN;
+export const KONZEPT_SICHERHEIT = content.KONZEPT_SICHERHEIT;
+export const KONZEPT_CTA = content.KONZEPT_CTA;
+
+// Raumgestaltung page sections
+export const RAUMGESTALTUNG_HERO = content.RAUMGESTALTUNG_HERO;
+export const RAUMGESTALTUNG_MEHRWERT = content.RAUMGESTALTUNG_MEHRWERT;
+export const RAUMGESTALTUNG_USP = content.RAUMGESTALTUNG_USP;
+export const RAUMGESTALTUNG_TESTIMONIAL = content.RAUMGESTALTUNG_TESTIMONIAL;
+export const RAUMGESTALTUNG_PROZESS = content.RAUMGESTALTUNG_PROZESS;
+export const RAUMGESTALTUNG_REFERENZ = content.RAUMGESTALTUNG_REFERENZ;
+export const RAUMGESTALTUNG_FAQ = content.RAUMGESTALTUNG_FAQ;
+export const RAUMGESTALTUNG_CTA = content.RAUMGESTALTUNG_CTA;
+
+// Koeniz page sections
+export const KOENIZ_HERO = content.KOENIZ_HERO;
+export const KOENIZ_LAB7X1 = content.KOENIZ_LAB7X1;
+export const KOENIZ_DENKMALSCHUTZ = content.KOENIZ_DENKMALSCHUTZ;
+export const KOENIZ_ERKENNTNISSE = content.KOENIZ_ERKENNTNISSE;
+export const KOENIZ_FEEDBACK = content.KOENIZ_FEEDBACK;
+export const KOENIZ_ANNINA = content.KOENIZ_ANNINA;
+export const KOENIZ_GALLERY = content.KOENIZ_GALLERY;
+export const KOENIZ_CTA = content.KOENIZ_CTA;
+
+// Impulsworkshop page sections
+export const WORKSHOP_HERO = content.WORKSHOP_HERO;
+export const WORKSHOP_KEY_FACTS = content.WORKSHOP_KEY_FACTS;
+export const WORKSHOP_IMAGES = content.WORKSHOP_IMAGES;
+export const WORKSHOP_MITNEHMEN = content.WORKSHOP_MITNEHMEN;
+export const WORKSHOP_PREIS = content.WORKSHOP_PREIS;
+export const WORKSHOP_FUER_WEN = content.WORKSHOP_FUER_WEN;
+export const WORKSHOP_CTA = content.WORKSHOP_CTA;
+
+// Kontakt page sections
+export const KONTAKT_HERO = content.KONTAKT_HERO;
+export const KONTAKT_FORM = content.KONTAKT_FORM;
+
+// Ueber uns page sections
+export const UEBER_UNS_HERO = content.UEBER_UNS_HERO;
+export const UEBER_UNS_SRF = content.UEBER_UNS_SRF;
+export const UEBER_UNS_CTA = content.UEBER_UNS_CTA;
+export const UEBER_UNS_STORY = content.UEBER_UNS_STORY;
 
 // Emotionale Bildkonzepte
 export const IMAGE_CONCEPTS = content.IMAGE_CONCEPTS;
