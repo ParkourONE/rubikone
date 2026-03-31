@@ -6,8 +6,10 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { appleTransition } from "@/lib/animations";
 import { GALLERY_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 
 export function ImageGallery() {
+  const galleryContent = useContent("GALLERY_CONTENT", GALLERY_CONTENT);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -31,10 +33,10 @@ export function ImageGallery() {
           transition={appleTransition}
         >
           <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-            {GALLERY_CONTENT.tagline}
+            {galleryContent.tagline}
           </p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            {GALLERY_CONTENT.headline}
+            {galleryContent.headline}
           </h2>
         </motion.div>
       </div>
@@ -48,7 +50,7 @@ export function ImageGallery() {
         {/* Left spacer */}
         <div className="slider-spacer" />
 
-        {GALLERY_CONTENT.images.map((item: any, index: number) => (
+        {galleryContent.images.map((item: any, index: number) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}

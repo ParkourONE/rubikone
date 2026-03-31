@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Clock, Users, MapPin, Cloud, CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { WORKSHOP_DETAILS, CONTACT_PERSON, IMPULSWORKSHOP_PAGE } from "@/lib/constants";
+import { EditableSection } from "@/components/admin/editable-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 
@@ -17,6 +18,7 @@ const KEY_FACT_ICONS = [Clock, Users, MapPin, Cloud];
 export default function ImpulsworkshopPage() {
   return (
     <>
+      <EditableSection contentKey="IMPULSWORKSHOP_PAGE" label="Impulsworkshop">
       <PageHero
         title={IMPULSWORKSHOP_PAGE.hero.title}
         description={IMPULSWORKSHOP_PAGE.hero.description}
@@ -276,6 +278,7 @@ export default function ImpulsworkshopPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
     </>
   );
 }

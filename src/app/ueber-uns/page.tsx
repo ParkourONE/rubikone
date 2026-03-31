@@ -6,6 +6,7 @@ import { PageHero } from "@/components/sections/hero-section";
 import { ParkourONEStoryFull } from "@/components/sections/parkourone-story";
 import { FadeUp } from "@/components/shared/fade-up";
 import { UEBER_UNS_PAGE } from "@/lib/constants";
+import { EditableSection } from "@/components/admin/editable-section";
 
 export const metadata: Metadata = {
   title: "Über uns | RubikONE",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function UeberUnsPage() {
   return (
     <>
+      <EditableSection contentKey="UEBER_UNS_PAGE" label="Ueber uns">
       <PageHero
         title={UEBER_UNS_PAGE.hero.title}
         description={UEBER_UNS_PAGE.hero.description}
@@ -100,6 +102,7 @@ export default function UeberUnsPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
     </>
   );
 }

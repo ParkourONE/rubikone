@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ArrowRight, ArrowLeft, Quote, Users, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PARKOURONE_STORY, UEBER_UNS_PAGE } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
@@ -21,6 +22,8 @@ const TIMELINE_IMAGES: Record<string, string> = {
 
 // Full ParkourONE Story Section for dedicated page
 export function ParkourONEStoryFull() {
+  const parkourStory = useContent("PARKOURONE_STORY", PARKOURONE_STORY);
+  const ueberUnsPage = useContent("UEBER_UNS_PAGE", UEBER_UNS_PAGE);
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   const timelineScrollRef = useRef<HTMLDivElement>(null);
 
@@ -43,23 +46,23 @@ export function ParkourONEStoryFull() {
             <FadeUp>
               <div>
                 <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-                  {UEBER_UNS_PAGE.storyIntro.tagline}
+                  {ueberUnsPage.storyIntro.tagline}
                 </p>
                 <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                  {UEBER_UNS_PAGE.storyIntro.headline}
+                  {ueberUnsPage.storyIntro.headline}
                 </h2>
                 <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                  {UEBER_UNS_PAGE.storyIntro.description1}
+                  {ueberUnsPage.storyIntro.description1}
                 </p>
                 <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">
-                  {UEBER_UNS_PAGE.storyIntro.description2}
+                  {ueberUnsPage.storyIntro.description2}
                 </p>
               </div>
             </FadeUp>
             <FadeUp delay={0.1}>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src={UEBER_UNS_PAGE.storyIntro.image}
+                  src={ueberUnsPage.storyIntro.image}
                   alt="Parkour Training"
                   fill
                   className="object-cover"
@@ -80,10 +83,10 @@ export function ParkourONEStoryFull() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              {UEBER_UNS_PAGE.timelineTagline}
+              {ueberUnsPage.timelineTagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              {PARKOURONE_STORY.history.headline}
+              {parkourStory.history.headline}
             </h2>
           </motion.div>
         </div>
@@ -96,7 +99,7 @@ export function ParkourONEStoryFull() {
         >
           <div className="slider-spacer" />
 
-          {PARKOURONE_STORY.history.milestones.map((milestone, index) => (
+          {parkourStory.history.milestones.map((milestone, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -180,18 +183,18 @@ export function ParkourONEStoryFull() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Image */}
-              {TIMELINE_IMAGES[PARKOURONE_STORY.history.milestones[activeMilestone].year] && (
+              {TIMELINE_IMAGES[parkourStory.history.milestones[activeMilestone].year] && (
                 <div className="relative aspect-[16/9]">
                   <Image
-                    src={TIMELINE_IMAGES[PARKOURONE_STORY.history.milestones[activeMilestone].year]}
-                    alt={PARKOURONE_STORY.history.milestones[activeMilestone].title}
+                    src={TIMELINE_IMAGES[parkourStory.history.milestones[activeMilestone].year]}
+                    alt={parkourStory.history.milestones[activeMilestone].title}
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-6">
                     <span className="text-display text-white font-bold">
-                      {PARKOURONE_STORY.history.milestones[activeMilestone].year}
+                      {parkourStory.history.milestones[activeMilestone].year}
                     </span>
                   </div>
                 </div>
@@ -208,10 +211,10 @@ export function ParkourONEStoryFull() {
               {/* Modal Content */}
               <div className="p-8">
                 <h3 className="text-title-2 text-[var(--color-apple-dark)] mb-4">
-                  {PARKOURONE_STORY.history.milestones[activeMilestone].title}
+                  {parkourStory.history.milestones[activeMilestone].title}
                 </h3>
                 <p className="text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed">
-                  {PARKOURONE_STORY.history.milestones[activeMilestone].description}
+                  {parkourStory.history.milestones[activeMilestone].description}
                 </p>
               </div>
             </motion.div>
@@ -227,12 +230,12 @@ export function ParkourONEStoryFull() {
               <Quote className="h-12 w-12 text-white/30 mx-auto mb-6" strokeWidth={1} />
               <blockquote>
                 <p className="text-title-2 text-white leading-relaxed">
-                  &ldquo;{PARKOURONE_STORY.quote.text}&rdquo;
+                  &ldquo;{parkourStory.quote.text}&rdquo;
                 </p>
               </blockquote>
               <div className="mt-8">
-                <p className="text-body font-semibold text-white">{PARKOURONE_STORY.quote.author}</p>
-                <p className="text-body-sm text-white/60">{PARKOURONE_STORY.quote.role}</p>
+                <p className="text-body font-semibold text-white">{parkourStory.quote.author}</p>
+                <p className="text-body-sm text-white/60">{parkourStory.quote.role}</p>
               </div>
             </div>
           </FadeUp>
@@ -256,14 +259,14 @@ export function ParkourONEStoryFull() {
             <div>
               <FadeUp delay={0.1}>
                 <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                  {UEBER_UNS_PAGE.expertiseTagline}
+                  {ueberUnsPage.expertiseTagline}
                 </p>
                 <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                  {PARKOURONE_STORY.expertise.headline}
+                  {parkourStory.expertise.headline}
                 </h2>
               </FadeUp>
               <StaggerContainer className="mt-8 space-y-6">
-                {PARKOURONE_STORY.expertise.points.map((point, index) => (
+                {parkourStory.expertise.points.map((point, index) => (
                   <StaggerItem key={index}>
                     <div className="border-l-2 border-[var(--color-apple-blue)] pl-6">
                       <h3 className="text-headline text-[var(--color-apple-dark)]">{point.title}</h3>
@@ -281,12 +284,12 @@ export function ParkourONEStoryFull() {
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
-            title={UEBER_UNS_PAGE.threeThemes.title}
-            subtitle={UEBER_UNS_PAGE.threeThemes.subtitle}
+            title={ueberUnsPage.threeThemes.title}
+            subtitle={ueberUnsPage.threeThemes.subtitle}
           />
 
           <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-6">
-            {UEBER_UNS_PAGE.threeThemes.themes.map((theme: any, index: number) => (
+            {ueberUnsPage.threeThemes.themes.map((theme: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
                   <div className="relative aspect-[4/3]">
@@ -320,7 +323,7 @@ export function ParkourONEStoryFull() {
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
           <div className="container-content">
             <p className="text-title-2 text-white max-w-2xl">
-              {UEBER_UNS_PAGE.fullWidthQuote}
+              {ueberUnsPage.fullWidthQuote}
             </p>
           </div>
         </div>
@@ -331,6 +334,8 @@ export function ParkourONEStoryFull() {
 
 // Compact ParkourONE Story Section for Homepage
 export function ParkourONEStoryCompact() {
+  const parkourStory = useContent("PARKOURONE_STORY", PARKOURONE_STORY);
+  const ueberUnsPage = useContent("UEBER_UNS_PAGE", UEBER_UNS_PAGE);
   return (
     <section className="section-spacing bg-white">
       <div className="container-content">
@@ -343,13 +348,13 @@ export function ParkourONEStoryCompact() {
           className="text-center mb-12"
         >
           <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-            {UEBER_UNS_PAGE.compactIntro.tagline}
+            {ueberUnsPage.compactIntro.tagline}
           </p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            {UEBER_UNS_PAGE.compactIntro.headline}
+            {ueberUnsPage.compactIntro.headline}
           </h2>
           <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-3xl mx-auto">
-            {UEBER_UNS_PAGE.compactIntro.description}
+            {ueberUnsPage.compactIntro.description}
           </p>
         </motion.div>
 
@@ -362,12 +367,12 @@ export function ParkourONEStoryCompact() {
           className="flex flex-wrap justify-center gap-12 lg:gap-20 mb-12"
         >
           <div className="text-center">
-            <p className="text-display text-[var(--color-apple-blue)]">{UEBER_UNS_PAGE.compactIntro.stat1.value}</p>
-            <p className="text-body text-[var(--color-apple-gray-600)]">{UEBER_UNS_PAGE.compactIntro.stat1.label}</p>
+            <p className="text-display text-[var(--color-apple-blue)]">{ueberUnsPage.compactIntro.stat1.value}</p>
+            <p className="text-body text-[var(--color-apple-gray-600)]">{ueberUnsPage.compactIntro.stat1.label}</p>
           </div>
           <div className="text-center">
-            <p className="text-display text-[var(--color-apple-blue)]">{UEBER_UNS_PAGE.compactIntro.stat2.value}</p>
-            <p className="text-body text-[var(--color-apple-gray-600)]">{UEBER_UNS_PAGE.compactIntro.stat2.label}</p>
+            <p className="text-display text-[var(--color-apple-blue)]">{ueberUnsPage.compactIntro.stat2.value}</p>
+            <p className="text-body text-[var(--color-apple-gray-600)]">{ueberUnsPage.compactIntro.stat2.label}</p>
           </div>
         </motion.div>
 
@@ -379,8 +384,8 @@ export function ParkourONEStoryCompact() {
           transition={{ ...appleTransition, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <Link href={UEBER_UNS_PAGE.compactIntro.ctaHref} className="btn-secondary inline-flex">
-            {UEBER_UNS_PAGE.compactIntro.ctaText}
+          <Link href={ueberUnsPage.compactIntro.ctaHref} className="btn-secondary inline-flex">
+            {ueberUnsPage.compactIntro.ctaText}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>
@@ -397,7 +402,7 @@ export function ParkourONEStoryCompact() {
             <div className="flex gap-3 mb-4">
               <Quote className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" strokeWidth={1.5} />
               <p className="text-body text-[var(--color-apple-dark)] leading-relaxed">
-                &ldquo;{PARKOURONE_STORY.quote.text}&rdquo;
+                &ldquo;{parkourStory.quote.text}&rdquo;
               </p>
             </div>
             <div className="flex items-center gap-3 pt-4 border-t border-[var(--color-apple-gray-200)]">
@@ -406,10 +411,10 @@ export function ParkourONEStoryCompact() {
               </div>
               <div>
                 <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
-                  {PARKOURONE_STORY.quote.author}
+                  {parkourStory.quote.author}
                 </p>
                 <p className="text-caption text-[var(--color-apple-gray-600)]">
-                  {PARKOURONE_STORY.quote.role}
+                  {parkourStory.quote.role}
                 </p>
               </div>
             </div>
@@ -422,6 +427,7 @@ export function ParkourONEStoryCompact() {
 
 // Timeline only section for use in other pages
 export function ParkourONETimeline() {
+  const parkourStory = useContent("PARKOURONE_STORY", PARKOURONE_STORY);
   return (
     <section className="section-spacing bg-[var(--color-apple-gray-100)]">
       <div className="container-content">
@@ -432,7 +438,7 @@ export function ParkourONETimeline() {
 
         <div className="mt-12 overflow-x-auto scrollbar-hide">
           <div className="flex gap-6 min-w-max px-4">
-            {PARKOURONE_STORY.history.milestones.map((milestone, index) => (
+            {parkourStory.history.milestones.map((milestone, index) => (
               <div
                 key={index}
                 className="w-64 flex-shrink-0 bg-white rounded-2xl p-6 shadow-apple"

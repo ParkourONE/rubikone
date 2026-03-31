@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
 import { FloatingConfigurator } from "@/components/layout/floating-configurator";
 import { LenisProvider } from "@/providers/lenis-provider";
 import { ConsentProvider } from "@/providers/consent-provider";
+import { AdminProvider } from "@/providers/admin-provider";
+import { AdminToolbar } from "@/components/admin/admin-toolbar";
+import { EditPanel } from "@/components/admin/edit-panel";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ConditionalAnalytics } from "@/components/analytics";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -78,27 +82,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookieStore = await cookies();
+  const isAdmin = !!(
+    cookieStore.get("admin_session") && cookieStore.get("admin_token_hash")
+  );
+
   return (
     <html lang="de-CH">
       <head>
         <StructuredData />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <ConsentProvider>
-          <LenisProvider>
-            <Navigation />
-            <main>{children}</main>
-            <Footer />
-            <CookieBanner />
-            <FloatingConfigurator />
-          </LenisProvider>
-          <ConditionalAnalytics />
-        </ConsentProvider>
+      <body className={`${inter.variable} font-sans antialiased ${isAdmin ? "pt-10" : ""}`}>
+        <AdminProvider isAdmin={isAdmin}>
+          <ConsentProvider>
+            <LenisProvider>
+              <AdminToolbar />
+              <Navigation />
+              <main>{children}</main>
+              <Footer />
+              <CookieBanner />
+              <FloatingConfigurator />
+            </LenisProvider>
+            <ConditionalAnalytics />
+          </ConsentProvider>
+          <EditPanel />
+        </AdminProvider>
       </body>
     </html>
   );

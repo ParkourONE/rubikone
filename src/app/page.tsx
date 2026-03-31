@@ -7,36 +7,55 @@ import { ImageGallery } from "@/components/sections/image-gallery";
 import { ProzessTeaser } from "@/components/sections/prozess-teaser";
 import { ConfiguratorCTASection } from "@/components/sections/configurator-cta-section";
 import { CTASection } from "@/components/sections/cta-section";
+import { EditableSection } from "@/components/admin/editable-section";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero: Split-Layout mit Video */}
-      <HeroSection />
+      <EditableSection contentKey="HERO_CONTENT" label="Hero">
+        <HeroSection />
+      </EditableSection>
 
       {/* Emotionaler Hook */}
-      <WasWaereWennHook />
+      <EditableSection contentKey="TEXTHOOK_CONTENT" label="Text-Hook">
+        <WasWaereWennHook />
+      </EditableSection>
 
       {/* Video: RubikONE in Aktion */}
-      <VideoSection />
+      <EditableSection contentKey="VIDEO_CONTENT" label="Video">
+        <VideoSection />
+      </EditableSection>
 
       {/* Vorher/Nachher: Das Prinzip visualisiert */}
-      <VorherNachherTeaser />
+      <EditableSection contentKey="VORHER_NACHHER_CONTENT" label="Vorher/Nachher">
+        <VorherNachherTeaser />
+      </EditableSection>
 
       {/* Social Proof: Testimonials */}
-      <TestimonialsSection />
+      <EditableSection contentKey="TESTIMONIALS" label="Kundenstimmen">
+        <TestimonialsSection />
+      </EditableSection>
 
       {/* Image Gallery: Emotionale Bilder */}
-      <ImageGallery />
+      <EditableSection contentKey="GALLERY_CONTENT" label="Bildergalerie">
+        <ImageGallery />
+      </EditableSection>
 
       {/* Prozess-Teaser: Link zu Raumgestaltung */}
-      <ProzessTeaser />
+      <EditableSection contentKey="PROZESS_TEASER_CONTENT" label="Prozess-Teaser">
+        <ProzessTeaser />
+      </EditableSection>
 
       {/* Konfigurator CTA */}
-      <ConfiguratorCTASection />
+      <EditableSection contentKey="CONFIGURATOR_CTA_CONTENT" label="Konfigurator CTA">
+        <ConfiguratorCTASection />
+      </EditableSection>
 
-      {/* CTA: Nächster Schritt */}
-      <CTASection variant="dark" />
+      {/* CTA: Naechster Schritt */}
+      <EditableSection contentKey="CTA_CONTENT" label="Call-to-Action">
+        <CTASection variant="dark" />
+      </EditableSection>
     </>
   );
 }

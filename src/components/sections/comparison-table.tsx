@@ -2,6 +2,7 @@
 
 import { Map, Construction, Users, FlaskConical, Wrench, Puzzle } from "lucide-react";
 import { COMPARISON_TABLE } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 
@@ -15,17 +16,18 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export function ComparisonSection() {
+  const comparisonTable = useContent("COMPARISON_TABLE", COMPARISON_TABLE);
   return (
     <section className="section-spacing bg-[var(--color-apple-gray-100)]">
       <div className="container-content">
         <SectionHeader
-          title={COMPARISON_TABLE.headline}
-          subtitle={COMPARISON_TABLE.subheadline}
+          title={comparisonTable.headline}
+          subtitle={comparisonTable.subheadline}
           align="center"
         />
 
         <StaggerContainer className="mt-12 lg:mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {COMPARISON_TABLE.features.map((feature, index) => (
+          {comparisonTable.features.map((feature, index) => (
             <StaggerItem key={index}>
               <div className="bg-white rounded-2xl p-6 shadow-apple h-full">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[var(--color-apple-blue)]/10 text-[var(--color-apple-blue)] mb-4">

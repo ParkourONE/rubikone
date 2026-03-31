@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCircle, X, Download } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { KOENIZ_CASE_STUDY, KOENIZ_DETAILS, KOENIZ_PAGE } from "@/lib/constants";
+import { EditableSection } from "@/components/admin/editable-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
@@ -38,6 +39,7 @@ export default function KoenizPage() {
 
   return (
     <>
+      <EditableSection contentKey="KOENIZ_PAGE" label="Koeniz-Seite">
       <PageHero
         title={KOENIZ_PAGE.hero.title}
         description={KOENIZ_PAGE.hero.description}
@@ -569,6 +571,7 @@ export default function KoenizPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
     </>
   );
 }

@@ -5,10 +5,12 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { HERO_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 import { staggerContainer, staggerItem, appleTransition } from "@/lib/animations";
 
 // Main Hero Section - Split Layout
 export function HeroSection() {
+  const heroContent = useContent("HERO_CONTENT", HERO_CONTENT);
 
   return (
     <>
@@ -33,7 +35,7 @@ export function HeroSection() {
               variants={staggerItem}
               className="text-hero text-[var(--color-apple-dark)]"
             >
-              {HERO_CONTENT.headline}
+              {heroContent.headline}
             </motion.h1>
 
             {/* Subheadline */}
@@ -41,7 +43,7 @@ export function HeroSection() {
               variants={staggerItem}
               className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
             >
-              {HERO_CONTENT.subheadline}
+              {heroContent.subheadline}
             </motion.p>
 
             {/* CTA */}
@@ -49,8 +51,8 @@ export function HeroSection() {
               variants={staggerItem}
               className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
             >
-              <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
-                {HERO_CONTENT.ctaPrimary.label}
+              <Link href={heroContent.ctaPrimary.href} className="btn-primary">
+                {heroContent.ctaPrimary.label}
               </Link>
             </motion.div>
           </motion.div>
@@ -97,7 +99,7 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="text-display text-[var(--color-apple-dark)]"
               >
-                {HERO_CONTENT.headline}
+                {heroContent.headline}
               </motion.h1>
 
               {/* Subheadline */}
@@ -105,7 +107,7 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
               >
-                {HERO_CONTENT.subheadline}
+                {heroContent.subheadline}
               </motion.p>
 
               {/* CTA */}
@@ -113,8 +115,8 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="mt-10 flex flex-row gap-4"
               >
-                <Link href={HERO_CONTENT.ctaPrimary.href} className="btn-primary">
-                  {HERO_CONTENT.ctaPrimary.label}
+                <Link href={heroContent.ctaPrimary.href} className="btn-primary">
+                  {heroContent.ctaPrimary.label}
                 </Link>
               </motion.div>
 

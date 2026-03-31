@@ -9,6 +9,7 @@ import { appleTransition } from "@/lib/animations";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { ComparisonSection } from "@/components/sections/comparison-table";
 import { StatsSection } from "@/components/sections/stats-section";
+import { EditableSection } from "@/components/admin/editable-section";
 import { KONZEPT_PAGE } from "@/lib/constants";
 
 // Alle Posten-Schilder aus Köniz
@@ -73,6 +74,7 @@ export default function KonzeptPage() {
 
   return (
     <>
+      <EditableSection contentKey="KONZEPT_PAGE" label="Konzept-Seite">
       {/* Hero - Was wäre wenn - Split Layout */}
       {/* Mobile */}
       <section className="lg:hidden relative pt-24 pb-12 bg-white">
@@ -291,7 +293,9 @@ export default function KonzeptPage() {
       </section>
 
       {/* Was RubikONE auszeichnet */}
-      <ComparisonSection />
+      <EditableSection contentKey="COMPARISON_TABLE" label="Vergleichstabelle">
+        <ComparisonSection />
+      </EditableSection>
 
       {/* Beispiel-Posten - Slider */}
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
@@ -424,7 +428,9 @@ export default function KonzeptPage() {
       </section>
 
       {/* RubikONE funktioniert - Zahlen */}
-      <StatsSection />
+      <EditableSection contentKey="STATS_CONTENT" label="Statistiken">
+        <StatsSection />
+      </EditableSection>
 
       {/* Sicherheit */}
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
@@ -505,6 +511,8 @@ export default function KonzeptPage() {
           </motion.div>
         </div>
       </section>
+
+      </EditableSection>
 
       {/* Modal für Lerndimensionen */}
       <AnimatePresence>

@@ -6,8 +6,10 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { appleTransition } from "@/lib/animations";
 import { STATS_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 
 export function StatsSection() {
+  const statsContent = useContent("STATS_CONTENT", STATS_CONTENT);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -31,9 +33,9 @@ export function StatsSection() {
           viewport={{ once: true }}
           transition={appleTransition}
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{STATS_CONTENT.tagline}</p>
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{statsContent.tagline}</p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            {STATS_CONTENT.headline}
+            {statsContent.headline}
           </h2>
         </motion.div>
       </div>
@@ -47,7 +49,7 @@ export function StatsSection() {
         {/* Left spacer - aligns first card with container start */}
         <div className="slider-spacer" />
 
-        {STATS_CONTENT.slides.map((slide: any, index: number) => (
+        {statsContent.slides.map((slide: any, index: number) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}

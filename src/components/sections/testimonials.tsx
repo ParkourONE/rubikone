@@ -4,9 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 import { appleTransition } from "@/lib/animations";
 
 export function TestimonialsSection() {
+  const testimonials = useContent("TESTIMONIALS", TESTIMONIALS);
   return (
     <section className="section-spacing bg-white">
       <div className="container-content">
@@ -28,7 +30,7 @@ export function TestimonialsSection() {
 
         {/* Testimonials Grid - Compact Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {TESTIMONIALS.map((testimonial, index) => (
+          {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -76,7 +78,7 @@ export function TestimonialsSection() {
 
 // Single testimonial for featured placement
 export function SingleTestimonial({ index = 0 }: { index?: number }) {
-  const testimonial = index === 1 ? TESTIMONIALS[1] : TESTIMONIALS[0];
+  const testimonial = index === 1 ? (TESTIMONIALS as any)[1] : (TESTIMONIALS as any)[0];
 
   return (
     <motion.div

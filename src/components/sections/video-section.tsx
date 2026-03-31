@@ -6,13 +6,15 @@ import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { VIDEO_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 
 export function VideoSection() {
+  const videoContent = useContent("VIDEO_CONTENT", VIDEO_CONTENT);
   const [showVideo, setShowVideo] = useState(false);
 
   // Extract YouTube video ID from URL
-  const videoId = VIDEO_CONTENT.videoUrl.includes("v=")
-    ? VIDEO_CONTENT.videoUrl.split("v=")[1]?.split("&")[0]
+  const videoId = videoContent.videoUrl.includes("v=")
+    ? videoContent.videoUrl.split("v=")[1]?.split("&")[0]
     : "wGEUzjLv0Ac";
 
   return (
@@ -25,12 +27,12 @@ export function VideoSection() {
           transition={appleTransition}
           className="text-center mb-12"
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{VIDEO_CONTENT.tagline}</p>
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{videoContent.tagline}</p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            {VIDEO_CONTENT.headline}
+            {videoContent.headline}
           </h2>
           <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl mx-auto">
-            {VIDEO_CONTENT.description}
+            {videoContent.description}
           </p>
         </motion.div>
 
@@ -57,7 +59,7 @@ export function VideoSection() {
                 onClick={() => setShowVideo(true)}
               >
                 <Image
-                  src={VIDEO_CONTENT.fallbackImage}
+                  src={videoContent.fallbackImage}
                   alt="RubikONE Video"
                   fill
                   className="object-cover"

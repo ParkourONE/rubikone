@@ -4,6 +4,7 @@ import { MapPin, Mail, Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
 import { CONTACT_INFO, KONTAKT_PAGE } from "@/lib/constants";
+import { EditableSection } from "@/components/admin/editable-section";
 import { FadeUp } from "@/components/shared/fade-up";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function KontaktPage() {
   return (
     <>
+      <EditableSection contentKey="KONTAKT_PAGE" label="Kontakt-Seite">
       <PageHero
         title={KONTAKT_PAGE.hero.title}
         description={KONTAKT_PAGE.hero.description}
@@ -94,6 +96,7 @@ export default function KontaktPage() {
           className="object-cover"
         />
       </section>
+      </EditableSection>
     </>
   );
 }

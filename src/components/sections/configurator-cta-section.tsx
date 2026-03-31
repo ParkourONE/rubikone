@@ -5,8 +5,10 @@ import { Calculator } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { ConfiguratorTrigger } from "./configurator-overlay";
 import { CONFIGURATOR_CTA_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 
 export function ConfiguratorCTASection() {
+  const configCta = useContent("CONFIGURATOR_CTA_CONTENT", CONFIGURATOR_CTA_CONTENT);
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-br from-[var(--color-apple-blue)] via-[var(--color-apple-blue)] to-[var(--color-apple-blue)]/80">
       <div className="container-content">
@@ -22,11 +24,11 @@ export function ConfiguratorCTASection() {
           </div>
 
           <h2 className="text-title-1 text-white max-w-2xl mx-auto">
-            {CONFIGURATOR_CTA_CONTENT.headline}
+            {configCta.headline}
           </h2>
 
           <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-            {CONFIGURATOR_CTA_CONTENT.subheadline}
+            {configCta.subheadline}
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -37,7 +39,7 @@ export function ConfiguratorCTASection() {
           </div>
 
           <p className="mt-6 text-body-sm text-white/60">
-            {CONFIGURATOR_CTA_CONTENT.note}
+            {configCta.note}
           </p>
         </motion.div>
       </div>

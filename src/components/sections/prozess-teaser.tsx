@@ -5,8 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { PROZESS_TEASER_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
 
 export function ProzessTeaser() {
+  const prozessTeaser = useContent("PROZESS_TEASER_CONTENT", PROZESS_TEASER_CONTENT);
   return (
     <section className="py-16 lg:py-20 bg-[var(--color-apple-dark)]">
       <div className="container-content">
@@ -19,23 +21,23 @@ export function ProzessTeaser() {
         >
           <div>
             <p className="text-body-sm text-white/60 mb-2">
-              {PROZESS_TEASER_CONTENT.tagline}
+              {prozessTeaser.tagline}
             </p>
             <h2 className="text-title-2 text-white">
-              {PROZESS_TEASER_CONTENT.headline}
+              {prozessTeaser.headline}
             </h2>
             <p className="mt-4 text-body text-white/70 max-w-xl">
-              {PROZESS_TEASER_CONTENT.description1}
+              {prozessTeaser.description1}
             </p>
             <p className="mt-2 text-body text-white/70 max-w-xl">
-              {PROZESS_TEASER_CONTENT.description2}
+              {prozessTeaser.description2}
             </p>
           </div>
           <Link
-            href={PROZESS_TEASER_CONTENT.ctaHref}
+            href={prozessTeaser.ctaHref}
             className="btn-primary bg-white text-[var(--color-apple-dark)] hover:bg-white/90 inline-flex self-start md:self-center"
           >
-            {PROZESS_TEASER_CONTENT.ctaText}
+            {prozessTeaser.ctaText}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

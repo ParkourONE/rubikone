@@ -10,6 +10,7 @@ import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-
 import { SectionHeader } from "@/components/shared/section-header";
 import { ConfiguratorTrigger } from "@/components/sections/configurator-overlay";
 import { RAUMGESTALTUNG_PAGE, PROCESS_PHASES } from "@/lib/constants";
+import { EditableSection } from "@/components/admin/editable-section";
 
 const iconMap: Record<number, any> = {
   0: Building2,
@@ -62,6 +63,7 @@ export default function RaumgestaltungPage() {
 
   return (
     <>
+      <EditableSection contentKey="RAUMGESTALTUNG_PAGE" label="Raumgestaltung">
       {/* Hero */}
       <PageHero
         title={RAUMGESTALTUNG_PAGE.hero.title}
@@ -291,6 +293,7 @@ export default function RaumgestaltungPage() {
           </FadeUp>
         </div>
       </section>
+      </EditableSection>
     </>
   );
 }
