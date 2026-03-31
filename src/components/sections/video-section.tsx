@@ -5,9 +5,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
+import { VIDEO_CONTENT } from "@/lib/constants";
 
 export function VideoSection() {
   const [showVideo, setShowVideo] = useState(false);
+
+  // Extract YouTube video ID from URL
+  const videoId = VIDEO_CONTENT.videoUrl.includes("v=")
+    ? VIDEO_CONTENT.videoUrl.split("v=")[1]?.split("&")[0]
+    : "wGEUzjLv0Ac";
 
   return (
     <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
@@ -19,12 +25,12 @@ export function VideoSection() {
           transition={appleTransition}
           className="text-center mb-12"
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">Heute in Köniz</p>
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{VIDEO_CONTENT.tagline}</p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            RubikONE in Aktion
+            {VIDEO_CONTENT.headline}
           </h2>
           <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl mx-auto">
-            2024 eröffnete die Gemeinde Köniz den ersten RubikONE überhaupt. Die Erkenntnis nach 12 Monaten: Wartung Fr. 0.-. Akzeptanz & Dankbarkeit in der Nachbarschaft. Begeisterte Lehrpersonen.
+            {VIDEO_CONTENT.description}
           </p>
         </motion.div>
 
@@ -38,7 +44,7 @@ export function VideoSection() {
             {showVideo ? (
               <div className="aspect-video bg-black">
                 <iframe
-                  src="https://www.youtube.com/embed/wGEUzjLv0Ac?autoplay=1"
+                  src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                   title="RubikONE Video"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -51,7 +57,7 @@ export function VideoSection() {
                 onClick={() => setShowVideo(true)}
               >
                 <Image
-                  src="/images/hero/generationen-kraft.jpg"
+                  src={VIDEO_CONTENT.fallbackImage}
                   alt="RubikONE Video"
                   fill
                   className="object-cover"

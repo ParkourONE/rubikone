@@ -9,6 +9,7 @@ import { appleTransition } from "@/lib/animations";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { ComparisonSection } from "@/components/sections/comparison-table";
 import { StatsSection } from "@/components/sections/stats-section";
+import { KONZEPT_PAGE } from "@/lib/constants";
 
 // Alle Posten-Schilder aus Köniz
 const POSTEN_SCHILDER = [
@@ -23,94 +24,11 @@ const POSTEN_SCHILDER = [
   { nummer: "09", image: "/images/posten/schild-09.jpg" },
 ];
 
-// Die 5 Lerndimensionen mit Modal-Content
-const LERNDIMENSIONEN = [
-  {
-    id: "motorisch",
-    title: "Motorisch",
-    icon: "/images/lerndimensionen/motorisch.jpg",
-    shortDesc: "Körperliche Bewegung",
-    modalTitle: "Motorisches Lernen",
-    modalContent: `Die motorische Dimension umfasst alle körperlichen Bewegungsabläufe und deren Koordination.
-
-Bei RubikONE trainieren Teilnehmende:
-• Gleichgewicht und Balance
-• Koordination und Körperkontrolle
-• Kraft und Ausdauer
-• Beweglichkeit und Flexibilität
-• Räumliche Orientierung
-
-Jede Übung kann in drei Schwierigkeitsstufen ausgeführt werden, sodass vom Einsteiger bis zum Fortgeschrittenen alle eine passende Herausforderung finden.`,
-  },
-  {
-    id: "kognitiv",
-    title: "Kognitiv",
-    icon: "/images/lerndimensionen/kognitiv.jpg",
-    shortDesc: "Denken & Konzentration",
-    modalTitle: "Kognitives Lernen",
-    modalContent: `Die kognitive Dimension fördert geistige Prozesse wie Aufmerksamkeit, Konzentration und Problemlösung.
-
-Beispiel-Challenges auf den Posten:
-• "Zähle während der Übung rückwärts von 20"
-• "Atme bewusst ein und aus"
-• "Merke dir die Reihenfolge der Posten"
-
-Diese Aufgaben verbinden Bewegung mit Denkprozessen – ein Ansatz, der nachweislich die Gehirnleistung fördert und besonders für Kinder und ältere Menschen wertvoll ist.`,
-  },
-  {
-    id: "emotional",
-    title: "Emotional",
-    icon: "/images/lerndimensionen/emotional.jpg",
-    shortDesc: "Gefühle ausdrücken",
-    modalTitle: "Emotionales Lernen",
-    modalContent: `Die emotionale Dimension hilft, Gefühle wahrzunehmen und auszudrücken.
-
-Beispiel-Challenges auf den Posten:
-• "Lächle während jeder Übung"
-• "Singe dein Lieblingslied während du balancierst"
-• "Beschreibe mit zwei Adjektiven, wie du dich fühlst"
-
-Bewegung und Emotionen sind eng verknüpft. RubikONE nutzt diese Verbindung bewusst, um positive Gefühle zu fördern und Stress abzubauen.`,
-  },
-  {
-    id: "sozial",
-    title: "Sozial",
-    icon: "/images/lerndimensionen/sozial.jpg",
-    shortDesc: "Gemeinsam bewegen",
-    modalTitle: "Soziales Lernen",
-    modalContent: `Die soziale Dimension fördert Interaktion und Gemeinschaft.
-
-Beispiel-Challenges auf den Posten:
-• "Grüsse alle Personen, denen du begegnest"
-• "Führe die Übung zu zweit aus"
-• "Gib der nächsten Person ein High-Five"
-
-RubikONE ist bewusst im öffentlichen Raum platziert. Menschen begegnen sich, kommen ins Gespräch, trainieren zusammen. So entsteht Gemeinschaft – generationenübergreifend.`,
-  },
-  {
-    id: "sensorisch",
-    title: "Sensorisch",
-    icon: "/images/lerndimensionen/sensorisch.jpg",
-    shortDesc: "Sinne schärfen",
-    modalTitle: "Sensorisches Lernen",
-    modalContent: `Die sensorische Dimension schärft die Sinneswahrnehmung.
-
-Beispiel-Challenges auf den Posten:
-• "Schliesse während der Übung die Augen"
-• "Nimm die Geräusche in deiner Umgebung wahr"
-• "Laufe barfuss zum nächsten Posten"
-
-Durch bewusstes Wahrnehmen der Umgebung wird die Achtsamkeit gefördert. Die Teilnehmenden lernen, ihren Körper und ihre Umwelt intensiver zu spüren.`,
-  },
-];
-
-// Sicherheitsnormen
-const NORMEN = [
-  { code: "SN EN 16630:2015", name: "Fitnessgeräte" },
-  { code: "SN EN 1177:2020", name: "Spielplatzböden" },
-  { code: "SIA 358", name: "Geländer" },
-  { code: "bfu-Richtlinien", name: "Unfallverhütung" },
-];
+// Lerndimensionen from content with icon paths
+const LERNDIMENSIONEN = (KONZEPT_PAGE.lerndimensionen.dimensions as any[]).map((d: any) => ({
+  ...d,
+  icon: `/images/lerndimensionen/${d.id}.jpg`,
+}));
 
 export default function KonzeptPage() {
   const postenScrollRef = useRef<HTMLDivElement>(null);
@@ -166,18 +84,18 @@ export default function KonzeptPage() {
             className="max-w-xl"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-              Das Konzept
+              {KONZEPT_PAGE.hero.tagline}
             </p>
             <h1 className="text-hero text-[var(--color-apple-dark)] leading-tight">
-              Was wäre wenn...
+              {KONZEPT_PAGE.hero.headline}
             </h1>
             <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
-              ...eine Treppe zum Fitnessplatz wird?<br />
-              ...die Mauer zur Balancechallenge?<br />
-              ...Möglichkeiten zu Hindernissen werden?
+              {KONZEPT_PAGE.hero.questions.split("\n").map((line: string, i: number) => (
+                <span key={i}>{line}{i < KONZEPT_PAGE.hero.questions.split("\n").length - 1 && <br />}</span>
+              ))}
             </p>
             <p className="mt-6 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
-              RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.
+              {KONZEPT_PAGE.hero.description}
             </p>
           </motion.div>
 
@@ -189,7 +107,7 @@ export default function KonzeptPage() {
             className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
           >
             <Image
-              src="/images/hero/generationen-kraft.jpg"
+              src={KONZEPT_PAGE.hero.heroImage}
               alt="Generationen trainieren gemeinsam im urbanen Raum"
               fill
               className="object-cover"
@@ -211,18 +129,18 @@ export default function KonzeptPage() {
               className="max-w-xl"
             >
               <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-                Das Konzept
+                {KONZEPT_PAGE.hero.tagline}
               </p>
               <h1 className="text-display text-[var(--color-apple-dark)] leading-tight">
-                Was wäre wenn...
+                {KONZEPT_PAGE.hero.headline}
               </h1>
               <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
-                ...eine Treppe zum Fitnessplatz wird?<br />
-                ...die Mauer zur Balancechallenge?<br />
-                ...Möglichkeiten zu Hindernissen werden?
+                {KONZEPT_PAGE.hero.questions.split("\n").map((line: string, i: number) => (
+                  <span key={i}>{line}{i < KONZEPT_PAGE.hero.questions.split("\n").length - 1 && <br />}</span>
+                ))}
               </p>
               <p className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
-                RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.
+                {KONZEPT_PAGE.hero.description}
               </p>
 
               {/* Scroll Indicator */}
@@ -251,7 +169,7 @@ export default function KonzeptPage() {
           >
             <div className="relative w-full h-full rounded-2xl overflow-hidden">
               <Image
-                src="/images/hero/generationen-kraft.jpg"
+                src={KONZEPT_PAGE.hero.heroImage}
                 alt="Generationen trainieren gemeinsam im urbanen Raum"
                 fill
                 className="object-cover"
@@ -274,13 +192,13 @@ export default function KonzeptPage() {
             className="mb-12"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Das Prinzip
+              {KONZEPT_PAGE.prinzip.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Keine neuen Geräte. Nur ein neuer Blick.
+              {KONZEPT_PAGE.prinzip.headline}
             </h2>
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
-              RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar.
+              {KONZEPT_PAGE.prinzip.description}
             </p>
           </motion.div>
 
@@ -357,11 +275,7 @@ export default function KonzeptPage() {
             transition={{ ...appleTransition, delay: 0.2 }}
             className="mt-12 grid md:grid-cols-3 gap-6"
           >
-            {[
-              { title: "Beschilderung", desc: "Klare Schilder mit Übungen und QR-Codes für Video-Anleitungen" },
-              { title: "Farbmarkierungen", desc: "Farbige Markierungen zeigen, wo trainiert wird" },
-              { title: "Normenkonform", desc: "Entspricht allen relevanten Schweizer Sicherheitsnormen" },
-            ].map((item, index) => (
+            {(KONZEPT_PAGE.prinzip.elements as any[]).map((item: any, index: number) => (
               <div key={index} className="flex items-start gap-4 bg-[var(--color-apple-gray-100)] rounded-2xl p-6">
                 <div className="w-8 h-8 rounded-full bg-[var(--color-apple-blue)] flex items-center justify-center flex-shrink-0">
                   <Check className="h-4 w-4 text-white" />
@@ -390,13 +304,13 @@ export default function KonzeptPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Beispiele aus Köniz
+              {KONZEPT_PAGE.postenSlider.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Natürliche Bewegungen, klar erklärt.
+              {KONZEPT_PAGE.postenSlider.headline}
             </h2>
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
-              Jeder Posten zeigt Übungen mit Illustrationen und zusätzlichen Challenges für ganzheitliches Lernen.
+              {KONZEPT_PAGE.postenSlider.description}
             </p>
           </motion.div>
         </div>
@@ -463,13 +377,13 @@ export default function KonzeptPage() {
             className="mb-12"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              TRUST Education
+              {KONZEPT_PAGE.lerndimensionen.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-2xl">
-              Mehr als Bewegung. Ganzheitliches Lernen.
+              {KONZEPT_PAGE.lerndimensionen.headline}
             </h2>
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
-              Jeder Posten fördert fünf Lerndimensionen gleichzeitig – durch zusätzliche Challenges auf jedem Schild.
+              {KONZEPT_PAGE.lerndimensionen.description}
             </p>
           </motion.div>
 
@@ -524,18 +438,18 @@ export default function KonzeptPage() {
               transition={appleTransition}
             >
               <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                Normenkonform
+                {KONZEPT_PAGE.sicherheit.tagline}
               </p>
               <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                Sicherheit nach Schweizer Standards.
+                {KONZEPT_PAGE.sicherheit.headline}
               </h2>
               <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen für Fitnessgeräte im Aussenbereich.
+                {KONZEPT_PAGE.sicherheit.description}
               </p>
 
               {/* Normen */}
               <div className="mt-8 grid grid-cols-2 gap-4">
-                {NORMEN.map((norm, index) => (
+                {(KONZEPT_PAGE.sicherheit.normen as any[]).map((norm: any, index: number) => (
                   <div key={index} className="bg-white rounded-xl p-4 shadow-apple">
                     <p className="text-body-sm font-mono font-semibold text-[var(--color-apple-blue)]">{norm.code}</p>
                     <p className="text-caption text-[var(--color-apple-gray-600)] mt-1">{norm.name}</p>
@@ -553,7 +467,7 @@ export default function KonzeptPage() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/konzept/wegweiser.jpg"
+                  src={KONZEPT_PAGE.sicherheit.image}
                   alt="RubikONE Beschilderung"
                   fill
                   className="object-cover"
@@ -574,17 +488,17 @@ export default function KonzeptPage() {
             transition={appleTransition}
           >
             <h2 className="text-title-1 text-white">
-              Überzeugt? Erleben Sie es selbst.
+              {KONZEPT_PAGE.cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              In Köniz können Sie RubikONE live erleben. Oder buchen Sie einen Impulsworkshop für Ihre Gemeinde.
+              {KONZEPT_PAGE.cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/koeniz" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                Referenz Köniz
+              <Link href={KONZEPT_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {KONZEPT_PAGE.cta.ctaPrimary.label}
               </Link>
-              <Link href="/impulsworkshop" className="btn-secondary text-white hover:text-white/80">
-                Impulsworkshop anfragen
+              <Link href={KONZEPT_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {KONZEPT_PAGE.cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

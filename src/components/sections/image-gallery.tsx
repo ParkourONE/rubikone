@@ -5,50 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { appleTransition } from "@/lib/animations";
-
-// Gallery with benefits/comments
-const GALLERY_ITEMS = [
-  {
-    image: "/images/hero/oma-enkelin.jpg",
-    title: "Generationen verbinden",
-    comment: "Grosseltern und Enkel trainieren gemeinsam – natürlich und ungezwungen.",
-  },
-  {
-    image: "/images/hero/generationen-kraft.jpg",
-    title: "Kraft für alle",
-    comment: "Vom Teenager bis zur Seniorin: Jeder findet seine passende Herausforderung.",
-  },
-  {
-    image: "/images/koeniz/schulklasse.jpg",
-    title: "Schulen integrieren",
-    comment: "RubikONE wird zum Outdoor-Klassenzimmer für Bewegung und Spiel.",
-  },
-  {
-    image: "/images/koeniz/kinder-springen.jpg",
-    title: "Spielerisch lernen",
-    comment: "Kinder entdecken natürliche Bewegungen – ganz ohne Anleitung.",
-  },
-  {
-    image: "/images/workshop/frauen-balancieren.jpg",
-    title: "Gemeinschaft stärken",
-    comment: "Bewegung schafft Begegnung – über alle Altersgruppen hinweg.",
-  },
-  {
-    image: "/images/posten/balance-nahaufnahme.jpg",
-    title: "Koordination fördern",
-    comment: "Balancieren trainiert Körper und Geist gleichzeitig.",
-  },
-  {
-    image: "/images/konzept/wegweiser.jpg",
-    title: "Intuitiv verstehen",
-    comment: "Klare Beschilderung macht den Einstieg kinderleicht.",
-  },
-  {
-    image: "/images/koeniz/spass.jpg",
-    title: "Freude an Bewegung",
-    comment: "Das wichtigste Ergebnis: Menschen, die Spass an Bewegung haben.",
-  },
-];
+import { GALLERY_CONTENT } from "@/lib/constants";
 
 export function ImageGallery() {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -74,10 +31,10 @@ export function ImageGallery() {
           transition={appleTransition}
         >
           <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-            Eindrücke aus der Praxis
+            {GALLERY_CONTENT.tagline}
           </p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            Bewegung verbindet Generationen.
+            {GALLERY_CONTENT.headline}
           </h2>
         </motion.div>
       </div>
@@ -91,7 +48,7 @@ export function ImageGallery() {
         {/* Left spacer */}
         <div className="slider-spacer" />
 
-        {GALLERY_ITEMS.map((item, index) => (
+        {GALLERY_CONTENT.images.map((item: any, index: number) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}
@@ -104,7 +61,7 @@ export function ImageGallery() {
                 {/* Large Image - No overlay text */}
                 <div className="relative aspect-[4/3]">
                   <Image
-                    src={item.image}
+                    src={item.src}
                     alt={item.title}
                     fill
                     className="object-cover"

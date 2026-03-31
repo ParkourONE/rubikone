@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Calculator } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { ConfiguratorTrigger } from "./configurator-overlay";
+import { CONFIGURATOR_CTA_CONTENT } from "@/lib/constants";
 
 export function ConfiguratorCTASection() {
   return (
@@ -21,11 +22,11 @@ export function ConfiguratorCTASection() {
           </div>
 
           <h2 className="text-title-1 text-white max-w-2xl mx-auto">
-            Ihr individuelles Leistungspaket
+            {CONFIGURATOR_CTA_CONTENT.headline}
           </h2>
 
           <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-            Konfigurieren Sie Ihr Projekt und erhalten Sie eine persönliche Übersicht per E-Mail.
+            {CONFIGURATOR_CTA_CONTENT.subheadline}
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -36,7 +37,7 @@ export function ConfiguratorCTASection() {
           </div>
 
           <p className="mt-6 text-body-sm text-white/60">
-            Keine Registrierung nötig • Unverbindlich • Persönliche Übersicht per E-Mail
+            {CONFIGURATOR_CTA_CONTENT.note}
           </p>
         </motion.div>
       </div>

@@ -5,7 +5,7 @@ import { ArrowRight, Play } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { ParkourONEStoryFull } from "@/components/sections/parkourone-story";
 import { FadeUp } from "@/components/shared/fade-up";
-import { SectionHeader } from "@/components/shared/section-header";
+import { UEBER_UNS_PAGE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Über uns | RubikONE",
@@ -16,11 +16,11 @@ export default function UeberUnsPage() {
   return (
     <>
       <PageHero
-        title="Die Pioniere hinter RubikONE."
-        description="ParkourONE. Seit 2007 bringen wir Menschen in Bewegung. Jetzt bringen wir Bewegung zu den Menschen."
-        breadcrumb="Über uns"
-        image="/images/parkour/mann-parkour.jpg"
-        imageAlt="Parkour Athlet in Aktion"
+        title={UEBER_UNS_PAGE.hero.title}
+        description={UEBER_UNS_PAGE.hero.description}
+        breadcrumb={UEBER_UNS_PAGE.hero.breadcrumb}
+        image={UEBER_UNS_PAGE.hero.image}
+        imageAlt={UEBER_UNS_PAGE.hero.imageAlt}
       />
 
       <ParkourONEStoryFull />
@@ -32,14 +32,14 @@ export default function UeberUnsPage() {
             <FadeUp>
               <div className="relative aspect-video rounded-2xl overflow-hidden shadow-apple-lg">
                 <Image
-                  src="/images/about/srf-einstein.jpg"
+                  src={UEBER_UNS_PAGE.srfEinstein.image}
                   alt="SRF Einstein Reportage über ParkourONE"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                   <a
-                    href="https://www.srf.ch/play/tv/einstein/video/parkour---die-hohe-kunst-des-springens?urn=urn:srf:video:12345"
+                    href={UEBER_UNS_PAGE.srfEinstein.videoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
@@ -52,24 +52,24 @@ export default function UeberUnsPage() {
             <FadeUp delay={0.1}>
               <div>
                 <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                  Bekannt aus SRF Einstein
+                  {UEBER_UNS_PAGE.srfEinstein.tagline}
                 </p>
                 <h2 className="text-title-2 text-[var(--color-apple-dark)]">
-                  Ein Traum wird Realität.
+                  {UEBER_UNS_PAGE.srfEinstein.headline}
                 </h2>
                 <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
-                  Mit RubikONE geht ein Traum in Erfüllung: Parkour wird sichtbar und frei zugänglich – unabhängig von Alter und Fitnesslevel.
+                  {UEBER_UNS_PAGE.srfEinstein.description1}
                 </p>
                 <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">
-                  Das Schweizer Fernsehen besuchte uns in einem Training und zeigt, was damit gemeint ist.
+                  {UEBER_UNS_PAGE.srfEinstein.description2}
                 </p>
                 <a
-                  href="https://www.srf.ch/play/tv/einstein/video/parkour---die-hohe-kunst-des-springens?urn=urn:srf:video:12345"
+                  href={UEBER_UNS_PAGE.srfEinstein.videoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary mt-8 inline-flex"
                 >
-                  SRF Einstein Beitrag ansehen
+                  {UEBER_UNS_PAGE.srfEinstein.ctaText}
                   <ArrowRight className="h-4 w-4" />
                 </a>
               </div>
@@ -83,17 +83,17 @@ export default function UeberUnsPage() {
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              Lernen Sie uns kennen.
+              {UEBER_UNS_PAGE.cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              Buchen Sie einen Impulsworkshop und erleben Sie, was 20 Jahre Parkour-Expertise für Ihre Gemeinde bedeuten können.
+              {UEBER_UNS_PAGE.cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/impulsworkshop" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                Impulsworkshop anfragen
+              <Link href={UEBER_UNS_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {UEBER_UNS_PAGE.cta.ctaPrimary.label}
               </Link>
-              <Link href="/kontakt" className="btn-secondary text-white hover:text-white/80">
-                Kontakt aufnehmen
+              <Link href={UEBER_UNS_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {UEBER_UNS_PAGE.cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

@@ -8,9 +8,7 @@
 // CSS classes from globals.css (section-spacing, container-content,
 // text-hero, btn-primary, etc.)
 //
-// _HARDCODED_ content keys indicate sections whose text lives in
-// the React source code, not in content.json. They render with a
-// gray overlay + lock icon and the label "In Code definiert".
+// All blocks are now editable via content.json.
 // =============================================================
 
 interface BlockDef {
@@ -86,55 +84,55 @@ export const BLOCK_LIBRARY: BlockCategoryDef[] = [
     category: "Hero-Bloecke",
     blocks: [
       { type: "hero", label: "Hero", defaultKey: "HERO_CONTENT", icon: "sparkles" },
-      { type: "page-hero", label: "Seiten-Hero", defaultKey: "_HARDCODED_PAGE_HERO", icon: "layout" },
-      { type: "konzept-hero", label: "Konzept Hero", defaultKey: "_HARDCODED_KONZEPT_HERO", icon: "lightbulb" },
+      { type: "page-hero", label: "Seiten-Hero", defaultKey: "RAUMGESTALTUNG_PAGE", icon: "layout" },
+      { type: "konzept-hero", label: "Konzept Hero", defaultKey: "KONZEPT_PAGE", icon: "lightbulb" },
     ],
   },
   {
     category: "Inhalt",
     blocks: [
-      { type: "texthook", label: "Text-Hook", defaultKey: "_HARDCODED_TEXTHOOK", icon: "type" },
-      { type: "video", label: "Video", defaultKey: "_HARDCODED_VIDEO", icon: "play" },
-      { type: "vorher-nachher", label: "Vorher / Nachher", defaultKey: "_HARDCODED_VORHER_NACHHER", icon: "arrows" },
-      { type: "vorher-nachher-slider", label: "Vorher/Nachher Slider", defaultKey: "_HARDCODED_VORHER_NACHHER_SLIDER", icon: "sliders" },
+      { type: "texthook", label: "Text-Hook", defaultKey: "TEXTHOOK_CONTENT", icon: "type" },
+      { type: "video", label: "Video", defaultKey: "VIDEO_CONTENT", icon: "play" },
+      { type: "vorher-nachher", label: "Vorher / Nachher", defaultKey: "VORHER_NACHHER_CONTENT", icon: "arrows" },
+      { type: "vorher-nachher-slider", label: "Vorher/Nachher Slider", defaultKey: "KONZEPT_PAGE", icon: "sliders" },
       { type: "comparison", label: "Vergleich", defaultKey: "COMPARISON_TABLE", icon: "columns" },
-      { type: "lerndimensionen", label: "Lerndimensionen", defaultKey: "_HARDCODED_LERNDIMENSIONEN", icon: "brain" },
-      { type: "stats-slider", label: "Stats-Slider", defaultKey: "_HARDCODED_STATS_SLIDER", icon: "barchart" },
-      { type: "posten-slider", label: "Posten-Slider", defaultKey: "_HARDCODED_POSTEN_SLIDER", icon: "grid" },
+      { type: "lerndimensionen", label: "Lerndimensionen", defaultKey: "KONZEPT_PAGE", icon: "brain" },
+      { type: "stats-slider", label: "Stats-Slider", defaultKey: "STATS_CONTENT", icon: "barchart" },
+      { type: "posten-slider", label: "Posten-Slider", defaultKey: "KONZEPT_PAGE", icon: "grid" },
     ],
   },
   {
     category: "Social Proof",
     blocks: [
       { type: "testimonials", label: "Kundenstimmen", defaultKey: "TESTIMONIALS", icon: "quote" },
-      { type: "testimonial-single", label: "Einzelnes Testimonial", defaultKey: "_HARDCODED_TESTIMONIAL", icon: "user" },
-      { type: "offizielle-stimmen", label: "Offizielle Stimmen", defaultKey: "_HARDCODED_STIMMEN", icon: "megaphone" },
+      { type: "testimonial-single", label: "Einzelnes Testimonial", defaultKey: "RAUMGESTALTUNG_PAGE", icon: "user" },
+      { type: "offizielle-stimmen", label: "Offizielle Stimmen", defaultKey: "KOENIZ_DETAILS", icon: "megaphone" },
       { type: "workshop-feedback", label: "Workshop-Feedback", defaultKey: "KOENIZ_CASE_STUDY", icon: "message" },
-      { type: "statement-annina", label: "Statement", defaultKey: "_HARDCODED_ANNINA", icon: "usercheck" },
+      { type: "statement-annina", label: "Statement", defaultKey: "KOENIZ_PAGE", icon: "usercheck" },
     ],
   },
   {
     category: "Prozess",
     blocks: [
-      { type: "prozess-4-schritte", label: "4-Schritte", defaultKey: "PROCESS_PHASES", icon: "list" },
-      { type: "prozess-teaser", label: "Prozess-Teaser", defaultKey: "_HARDCODED_PROZESS_TEASER", icon: "rocket" },
+      { type: "prozess-4-schritte", label: "4-Schritte", defaultKey: "RAUMGESTALTUNG_PAGE", icon: "list" },
+      { type: "prozess-teaser", label: "Prozess-Teaser", defaultKey: "PROZESS_TEASER_CONTENT", icon: "rocket" },
       { type: "programm", label: "Programm", defaultKey: "IMPULSWORKSHOP", icon: "calendar" },
-      { type: "key-facts", label: "Key Facts", defaultKey: "WORKSHOP_DETAILS", icon: "info" },
+      { type: "key-facts", label: "Key Facts", defaultKey: "IMPULSWORKSHOP_PAGE", icon: "info" },
     ],
   },
   {
     category: "Call-to-Action",
     blocks: [
       { type: "cta-dark", label: "CTA (Dunkel)", defaultKey: "CTA_CONTENT", icon: "zap" },
-      { type: "cta-blue", label: "CTA (Blau)", defaultKey: "_HARDCODED_CTA", icon: "arrowright" },
-      { type: "configurator-cta", label: "Konfigurator-CTA", defaultKey: "_HARDCODED_CONFIGURATOR_CTA", icon: "settings" },
-      { type: "configurator-trigger", label: "Konfigurator-Trigger", defaultKey: "_HARDCODED_CONFIGURATOR_TRIGGER", icon: "sliders" },
+      { type: "cta-blue", label: "CTA (Blau)", defaultKey: "KONZEPT_PAGE", icon: "arrowright" },
+      { type: "configurator-cta", label: "Konfigurator-CTA", defaultKey: "CONFIGURATOR_CTA_CONTENT", icon: "settings" },
+      { type: "configurator-trigger", label: "Konfigurator-Trigger", defaultKey: "CONFIGURATOR_CTA_CONTENT", icon: "sliders" },
     ],
   },
   {
     category: "Kontakt",
     blocks: [
-      { type: "contact-form", label: "Kontaktformular", defaultKey: "_HARDCODED_CONTACT_FORM", icon: "mail" },
+      { type: "contact-form", label: "Kontaktformular", defaultKey: "KONTAKT_PAGE", icon: "mail" },
       { type: "contact-info", label: "Kontaktinfo", defaultKey: "CONTACT_INFO", icon: "mappin" },
       { type: "ansprechpartnerin", label: "Ansprechpartnerin", defaultKey: "CONTACT_PERSON", icon: "user" },
     ],
@@ -143,13 +141,13 @@ export const BLOCK_LIBRARY: BlockCategoryDef[] = [
     category: "Sonstiges",
     blocks: [
       { type: "faq", label: "FAQ", defaultKey: "FAQ_ITEMS", icon: "help" },
-      { type: "gallery", label: "Galerie", defaultKey: "_HARDCODED_GALLERY", icon: "image" },
-      { type: "gallery-koeniz", label: "Galerie Koeniz", defaultKey: "_HARDCODED_KOENIZ_GALLERY", icon: "image" },
+      { type: "gallery", label: "Galerie", defaultKey: "GALLERY_CONTENT", icon: "image" },
+      { type: "gallery-koeniz", label: "Galerie Koeniz", defaultKey: "KOENIZ_PAGE", icon: "image" },
       { type: "preis-box", label: "Preis-Box", defaultKey: "WORKSHOP_DETAILS", icon: "tag" },
       { type: "safety", label: "Sicherheit", defaultKey: "SAFETY_INFO", icon: "shield" },
-      { type: "workshop-images", label: "Workshop-Bilder", defaultKey: "_HARDCODED_WORKSHOP_IMAGES", icon: "camera" },
+      { type: "workshop-images", label: "Workshop-Bilder", defaultKey: "IMPULSWORKSHOP_PAGE", icon: "camera" },
       { type: "story", label: "Geschichte", defaultKey: "PARKOURONE_STORY", icon: "book" },
-      { type: "srf-einstein", label: "SRF Einstein", defaultKey: "_HARDCODED_SRF", icon: "tv" },
+      { type: "srf-einstein", label: "SRF Einstein", defaultKey: "UEBER_UNS_PAGE", icon: "tv" },
     ],
   },
 ];
@@ -159,22 +157,7 @@ export const AVAILABLE_BLOCK_TYPES = BLOCK_LIBRARY.flatMap((cat) =>
   cat.blocks.map((b) => ({ type: b.type, label: b.label, defaultKey: b.defaultKey }))
 );
 
-// =============================================================
-// Hardcoded overlay wrapper
-// =============================================================
-function HardcodedOverlay({ children, label }: { children: React.ReactNode; label?: string }) {
-  return (
-    <div className="relative">
-      {children}
-      <div className="absolute inset-0 bg-gray-100/60 z-[5] flex items-start justify-end p-4 pointer-events-none">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-500 shadow-sm border border-gray-200">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          {label || "In Code definiert"}
-        </span>
-      </div>
-    </div>
-  );
-}
+// HardcodedOverlay removed - all blocks are now editable via content.json
 
 // =============================================================
 // Main dispatcher
@@ -189,16 +172,8 @@ export function BlockPreview({
   content: unknown;
   block?: BlockDef;
 }) {
-  const isHardcoded = block?.contentKey?.startsWith("_HARDCODED_");
   const label = block?.label;
-
-  const preview = renderPreview(type, content, label);
-
-  if (isHardcoded) {
-    return <HardcodedOverlay label="In Code definiert">{preview}</HardcodedOverlay>;
-  }
-
-  return preview;
+  return renderPreview(type, content, label);
 }
 
 function renderPreview(type: string, content: unknown, label?: string) {

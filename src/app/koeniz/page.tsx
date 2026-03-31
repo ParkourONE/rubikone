@@ -6,18 +6,10 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCircle, X, Download } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
-import { KOENIZ_CASE_STUDY, KOENIZ_DETAILS } from "@/lib/constants";
+import { KOENIZ_CASE_STUDY, KOENIZ_DETAILS, KOENIZ_PAGE } from "@/lib/constants";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
-
-const GALLERY_IMAGES = [
-  { src: "/images/koeniz/schulklasse.jpg", alt: "Schulklasse beim RubikONE Training" },
-  { src: "/images/koeniz/kind-springt.jpg", alt: "Kind springt am Posten" },
-  { src: "/images/koeniz/kinder-springen.jpg", alt: "Kinder springen gemeinsam" },
-  { src: "/images/koeniz/spass.jpg", alt: "Spass beim Bewegen" },
-  { src: "/images/koeniz/schloss.jpg", alt: "Schlossareal Köniz" },
-];
 
 export default function KoenizPage() {
   const [activeInsight, setActiveInsight] = useState<number | null>(null);
@@ -47,11 +39,11 @@ export default function KoenizPage() {
   return (
     <>
       <PageHero
-        title="Köniz macht es vor."
-        description="Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation."
-        breadcrumb="Referenz Köniz"
-        image="/images/koeniz/luftbild.jpg"
-        imageAlt="Luftaufnahme RubikONE Köniz im Schlossareal"
+        title={KOENIZ_PAGE.hero.title}
+        description={KOENIZ_PAGE.hero.description}
+        breadcrumb={KOENIZ_PAGE.hero.breadcrumb}
+        image={KOENIZ_PAGE.hero.image}
+        imageAlt={KOENIZ_PAGE.hero.imageAlt}
       />
 
       {/* CTA: Selbst entdecken */}
@@ -80,22 +72,20 @@ export default function KoenizPage() {
             className="mb-12"
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              BASPO lab7x1
+              {KOENIZ_PAGE.lab7x1.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-3xl">
-              Ein Innovationsprojekt des Bundes.
+              {KOENIZ_PAGE.lab7x1.headline}
             </h2>
-            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl">
-              «Täglich eine Stunde, sieben Tage die Woche» – nach dieser Formel soll sich die Schweizer Bevölkerung bewegen. Das Bundesamt für Sport BASPO hat dafür das <strong>lab7x1</strong> aufgebaut: Ein Innovationslabor, das neue Ideen zur Bewegungsförderung testet und evaluiert.
-            </p>
+            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl" dangerouslySetInnerHTML={{ __html: KOENIZ_PAGE.lab7x1.description1 }} />
             <p className="mt-4 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl">
-              RubikONE wurde als Laborversuch finanziert und über zwei Jahre wissenschaftlich begleitet. Die Gemeinde Köniz stellte das Schlossareal zur Verfügung – ein anspruchsvoller Standort unter Denkmalschutz.
+              {KOENIZ_PAGE.lab7x1.description2}
             </p>
           </motion.div>
 
           {/* Timeline */}
           <StaggerContainer className="mt-16 max-w-3xl">
-            {KOENIZ_CASE_STUDY.timeline.map((item, index) => (
+            {KOENIZ_CASE_STUDY.timeline.map((item: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="flex gap-6 items-start pb-8 relative">
                   <div className="flex-shrink-0 w-32 text-right">
@@ -118,15 +108,15 @@ export default function KoenizPage() {
           {/* Download Evaluation Report */}
           <FadeUp className="mt-12">
             <a
-              href="/downloads/RubikONE-Evaluation-Koeniz.pdf"
+              href={KOENIZ_PAGE.lab7x1.downloadHref}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-6 py-4 bg-[var(--color-apple-gray-100)] rounded-xl hover:bg-[var(--color-apple-gray-200)] transition-colors group"
             >
               <Download className="h-5 w-5 text-[var(--color-apple-blue)]" />
               <div>
-                <p className="text-body font-medium text-[var(--color-apple-dark)]">Evaluationsbericht herunterladen</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">Vollständiger wissenschaftlicher Abschlussbericht (PDF)</p>
+                <p className="text-body font-medium text-[var(--color-apple-dark)]">{KOENIZ_PAGE.lab7x1.downloadLabel}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_PAGE.lab7x1.downloadDesc}</p>
               </div>
             </a>
           </FadeUp>
@@ -139,7 +129,6 @@ export default function KoenizPage() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             <FadeUp>
               <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
-                {/* Bild */}
                 <div className="relative aspect-[16/9]">
                   <Image
                     src={KOENIZ_CASE_STUDY.challenge.image}
@@ -148,13 +137,12 @@ export default function KoenizPage() {
                     className="object-cover"
                   />
                 </div>
-                {/* Content */}
                 <div className="p-8">
                   <h3 className="text-title-3 text-[var(--color-apple-dark)] mb-6">
                     {KOENIZ_CASE_STUDY.challenge.title}
                   </h3>
                   <ul className="space-y-4">
-                    {KOENIZ_CASE_STUDY.challenge.points.map((point, index) => (
+                    {KOENIZ_CASE_STUDY.challenge.points.map((point: string, index: number) => (
                       <li key={index} className="flex items-start gap-3">
                         <div className="w-2 h-2 rounded-full bg-[var(--color-apple-gray-400)] mt-2 flex-shrink-0" />
                         <span className="text-body text-[var(--color-apple-gray-700)]">{point}</span>
@@ -167,7 +155,6 @@ export default function KoenizPage() {
 
             <FadeUp delay={0.1}>
               <div className="bg-[var(--color-apple-blue)] rounded-2xl overflow-hidden text-white h-full">
-                {/* Bild */}
                 <div className="relative aspect-[16/9]">
                   <Image
                     src={KOENIZ_CASE_STUDY.solution.image}
@@ -176,13 +163,12 @@ export default function KoenizPage() {
                     className="object-cover"
                   />
                 </div>
-                {/* Content */}
                 <div className="p-8">
                   <h3 className="text-title-3 mb-6">
                     {KOENIZ_CASE_STUDY.solution.title}
                   </h3>
                   <ul className="space-y-4">
-                    {KOENIZ_CASE_STUDY.solution.points.map((point, index) => (
+                    {KOENIZ_CASE_STUDY.solution.points.map((point: string, index: number) => (
                       <li key={index} className="flex items-start gap-3">
                         <CheckCircle className="h-5 w-5 text-white/80 mt-0.5 flex-shrink-0" />
                         <span className="text-body">{point}</span>
@@ -202,7 +188,7 @@ export default function KoenizPage() {
           <FadeUp>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full mb-6">
-                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">Denkmalschutz? Wir haben Erfahrung.</span>
+                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">{KOENIZ_PAGE.denkmalschutzLabel}</span>
               </div>
               <p className="text-title-2 text-[var(--color-apple-dark)]">
                 {KOENIZ_CASE_STUDY.denkmalpflege}
@@ -222,10 +208,10 @@ export default function KoenizPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Wissenschaftlich evaluiert
+              {KOENIZ_PAGE.erkenntnisse.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Die Erkenntnisse.
+              {KOENIZ_PAGE.erkenntnisse.headline}
             </h2>
           </motion.div>
         </div>
@@ -238,7 +224,7 @@ export default function KoenizPage() {
         >
           <div className="slider-spacer" />
 
-          {KOENIZ_CASE_STUDY.insights.map((insight, index) => (
+          {KOENIZ_CASE_STUDY.insights.map((insight: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -333,10 +319,10 @@ export default function KoenizPage() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Workshop-Feedback
+              {KOENIZ_PAGE.workshopFeedback.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Das sagen die Teilnehmenden.
+              {KOENIZ_PAGE.workshopFeedback.headline}
             </h2>
           </motion.div>
         </div>
@@ -349,7 +335,7 @@ export default function KoenizPage() {
         >
           <div className="slider-spacer" />
 
-          {KOENIZ_CASE_STUDY.workshopFeedback.map((feedback, index) => (
+          {KOENIZ_CASE_STUDY.workshopFeedback.map((feedback: string, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -401,7 +387,7 @@ export default function KoenizPage() {
           />
 
           <StaggerContainer className="mt-12 grid lg:grid-cols-2 gap-6">
-            {KOENIZ_DETAILS.quotes.map((quote, index) => (
+            {KOENIZ_DETAILS.quotes.map((quote: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-white rounded-2xl p-6 shadow-apple">
                   <div className="flex gap-3 mb-4">
@@ -413,7 +399,7 @@ export default function KoenizPage() {
                   <div className="flex items-center gap-3 pt-4 border-t border-[var(--color-apple-gray-200)]">
                     <div className="w-10 h-10 rounded-full bg-[var(--color-apple-gray-200)] flex items-center justify-center">
                       <span className="text-body-sm font-semibold text-[var(--color-apple-gray-500)]">
-                        {quote.author.split(" ").map(n => n[0]).join("")}
+                        {quote.author.split(" ").map((n: string) => n[0]).join("")}
                       </span>
                     </div>
                     <div>
@@ -440,12 +426,12 @@ export default function KoenizPage() {
               <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
               <blockquote>
                 <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
-                  «Wir haben gelacht, geschwitzt, uns gegenseitig angefeuert und den Teamgeist gestärkt. Für mich ist das RubikONE die perfekte Möglichkeit, eine bewegte Mittagspause zu organisieren. Der Parcours funktioniert unabhängig vom individuellen Fitness-Niveau und bietet auch schöne Möglichkeiten für ein paar Minuten Achtsamkeit.»
+                  &laquo;{KOENIZ_PAGE.statementAnnina.quote}&raquo;
                 </p>
               </blockquote>
               <div className="mt-6">
-                <p className="text-body font-semibold text-[var(--color-apple-dark)]">Annina</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">Fachspezialistin Betriebliches Gesundheitsmanagement, Diversity & Inclusion</p>
+                <p className="text-body font-semibold text-[var(--color-apple-dark)]">{KOENIZ_PAGE.statementAnnina.name}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{KOENIZ_PAGE.statementAnnina.role}</p>
               </div>
             </div>
           </FadeUp>
@@ -461,7 +447,7 @@ export default function KoenizPage() {
           />
 
           <StaggerContainer className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {GALLERY_IMAGES.map((image, index) => (
+            {(KOENIZ_PAGE.galleryImages as any[]).map((image: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="aspect-square rounded-xl overflow-hidden relative group">
                   <Image
@@ -566,17 +552,17 @@ export default function KoenizPage() {
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              Köniz war der Anfang.
+              {KOENIZ_PAGE.cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              Jetzt ist Ihre Gemeinde dran. Starten Sie mit einem Impulsworkshop und entdecken Sie, welches Potenzial in Ihrer Umgebung steckt.
+              {KOENIZ_PAGE.cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/impulsworkshop" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                Impulsworkshop anfragen
+              <Link href={KOENIZ_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {KOENIZ_PAGE.cta.ctaPrimary.label}
               </Link>
-              <Link href="/kontakt" className="btn-secondary text-white hover:text-white/80">
-                Beratungsgespräch
+              <Link href={KOENIZ_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {KOENIZ_PAGE.cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

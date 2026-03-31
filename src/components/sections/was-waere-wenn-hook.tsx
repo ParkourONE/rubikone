@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { appleTransition } from "@/lib/animations";
+import { TEXTHOOK_CONTENT } from "@/lib/constants";
 
 export function WasWaereWennHook() {
   return (
@@ -15,11 +16,10 @@ export function WasWaereWennHook() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="text-title-1 lg:text-display text-[var(--color-apple-dark)] leading-tight">
-            Raum und Gesundheit kombiniert
+            {TEXTHOOK_CONTENT.headline}
           </h2>
           <p className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl mx-auto">
-            RubikONE steht für den Moment der Entscheidung. Raus aus dem Abwägen, rein in die Bewegung.
-            Der Fitnessparkour verbindet den öffentlichen Raum mit Gesundheitsförderung – niederschwellig, ohne Umweg und direkt vor der Haustür.
+            {TEXTHOOK_CONTENT.description}
           </p>
         </motion.div>
       </div>

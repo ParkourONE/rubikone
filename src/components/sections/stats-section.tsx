@@ -5,34 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef } from "react";
 import { appleTransition } from "@/lib/animations";
-
-// Stats Slide Cards Data
-const STATS_SLIDES = [
-  {
-    value: "Akzeptanz",
-    title: "Die Nachbarschaft an Bord",
-    description: "Mitten im Quartier und Ortszentrum wird RubikONE toleriert und findet bei Jung bis Alt Anklang. Referenz Köniz.",
-    image: "/images/hero/oma-enkelin.jpg",
-  },
-  {
-    value: "Infrastruktur",
-    title: "Erweitertes Schulareal",
-    description: "Lehrpersonen nutzen RubikONE als Erweiterung der Sporthalle. Ohne Belegungsplan. Jederzeit zugänglich.",
-    image: "/images/koeniz/schulklasse.jpg",
-  },
-  {
-    value: "Nutzung",
-    title: "Alltagstauglich",
-    description: "Die Niederschwelligkeit erlaubt Aktivitäten in Alltags- oder Sportkleidung. Familien finden spielerische Challenges auf dem Sonntagsspaziergang. Firmen gönnen sich am Mittag eine bewegte Pause.",
-    image: "/images/hero/generationen-kraft.jpg",
-  },
-];
+import { STATS_CONTENT } from "@/lib/constants";
 
 export function StatsSection() {
   const scrollRef = useRef<HTMLDivElement>(null);
-
-  // No need to set scrollLeft - the spacer positions the first card correctly
-  // scrollLeft = 0 means spacer is visible, pushing card to align with title
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -55,9 +31,9 @@ export function StatsSection() {
           viewport={{ once: true }}
           transition={appleTransition}
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">Mehrwert schaffen</p>
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{STATS_CONTENT.tagline}</p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            RubikONE funktioniert.
+            {STATS_CONTENT.headline}
           </h2>
         </motion.div>
       </div>
@@ -71,7 +47,7 @@ export function StatsSection() {
         {/* Left spacer - aligns first card with container start */}
         <div className="slider-spacer" />
 
-        {STATS_SLIDES.map((slide, index) => (
+        {STATS_CONTENT.slides.map((slide: any, index: number) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 20 }}

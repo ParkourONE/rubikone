@@ -3,7 +3,7 @@ import Image from "next/image";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
-import { CONTACT_INFO } from "@/lib/constants";
+import { CONTACT_INFO, KONTAKT_PAGE } from "@/lib/constants";
 import { FadeUp } from "@/components/shared/fade-up";
 
 export const metadata: Metadata = {
@@ -15,11 +15,11 @@ export default function KontaktPage() {
   return (
     <>
       <PageHero
-        title="Sprechen wir darüber."
-        description="Ob Impulsworkshop, Beratungsgespräch oder allgemeine Fragen – wir freuen uns auf Ihre Anfrage."
-        breadcrumb="Kontakt"
-        image="/images/parkour/training.jpg"
-        imageAlt="Parkour Training"
+        title={KONTAKT_PAGE.hero.title}
+        description={KONTAKT_PAGE.hero.description}
+        breadcrumb={KONTAKT_PAGE.hero.breadcrumb}
+        image={KONTAKT_PAGE.hero.image}
+        imageAlt={KONTAKT_PAGE.hero.imageAlt}
       />
 
       {/* Contact Info */}
@@ -72,7 +72,7 @@ export default function KontaktPage() {
                   </a>
                 </p>
                 <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                  Mo, Di & Do, 09:00–12:00 & 13:30–16:00 Uhr
+                  {KONTAKT_PAGE.phoneHours}
                 </p>
               </div>
             </FadeUp>
@@ -81,14 +81,14 @@ export default function KontaktPage() {
       </section>
 
       <ContactForm
-        title="Schreiben Sie uns"
-        subtitle="Kontaktformular"
+        title={KONTAKT_PAGE.contactFormTitle}
+        subtitle={KONTAKT_PAGE.contactFormSubtitle}
       />
 
       {/* Image Section */}
       <section className="relative h-[40vh] min-h-[300px]">
         <Image
-          src="/images/parkour/sprung-hoch.jpg"
+          src={KONTAKT_PAGE.footerImage}
           alt="Parkour in Aktion"
           fill
           className="object-cover"

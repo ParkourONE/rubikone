@@ -1,9 +1,9 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Users, MapPin, Cloud, CheckCircle, ArrowRight, HelpCircle, ChevronDown } from "lucide-react";
+import { Clock, Users, MapPin, Cloud, CheckCircle, ArrowRight, HelpCircle } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
-import { WORKSHOP_DETAILS, CONTACT_PERSON } from "@/lib/constants";
+import { WORKSHOP_DETAILS, CONTACT_PERSON, IMPULSWORKSHOP_PAGE } from "@/lib/constants";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 
@@ -12,35 +12,35 @@ export const metadata: Metadata = {
   description: "Der einfachste Weg zu starten. Ein 120-minütiger Workshop vor Ort in Ihrer Gemeinde. Nach dem Workshop sehen Sie Ihre Umgebung mit anderen Augen.",
 };
 
+const KEY_FACT_ICONS = [Clock, Users, MapPin, Cloud];
+
 export default function ImpulsworkshopPage() {
   return (
     <>
       <PageHero
-        title="Der einfachste Weg zu starten."
-        description="Ein Workshop vor Ort. 120 Minuten. Danach sehen Sie Ihre Gemeinde mit anderen Augen."
-        breadcrumb="Impulsworkshop"
-        image="/images/workshop/frauen-balancieren.jpg"
-        imageAlt="Workshop-Teilnehmerinnen beim Balancieren"
+        title={IMPULSWORKSHOP_PAGE.hero.title}
+        description={IMPULSWORKSHOP_PAGE.hero.description}
+        breadcrumb={IMPULSWORKSHOP_PAGE.hero.breadcrumb}
+        image={IMPULSWORKSHOP_PAGE.hero.image}
+        imageAlt={IMPULSWORKSHOP_PAGE.hero.imageAlt}
       />
 
       {/* Key Facts */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="container-wide">
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
-            {[
-              { icon: Clock, value: WORKSHOP_DETAILS.duration, label: "Workshop-Dauer" },
-              { icon: Users, value: WORKSHOP_DETAILS.participants, label: "Teilnehmende" },
-              { icon: MapPin, value: "Vor Ort", label: "Bei Ihnen" },
-              { icon: Cloud, value: "Jedes Wetter", label: "Draussen" },
-            ].map((item, index) => (
-              <StaggerItem key={index}>
-                <div className="text-center">
-                  <item.icon className="h-8 w-8 mx-auto text-[var(--color-apple-blue)] mb-3" />
-                  <p className="text-title-3 text-[var(--color-apple-dark)]">{item.value}</p>
-                  <p className="text-body-sm text-[var(--color-apple-gray-600)] mt-1">{item.label}</p>
-                </div>
-              </StaggerItem>
-            ))}
+            {(IMPULSWORKSHOP_PAGE.keyFacts as any[]).map((item: any, index: number) => {
+              const Icon = KEY_FACT_ICONS[index] || Clock;
+              return (
+                <StaggerItem key={index}>
+                  <div className="text-center">
+                    <Icon className="h-8 w-8 mx-auto text-[var(--color-apple-blue)] mb-3" />
+                    <p className="text-title-3 text-[var(--color-apple-dark)]">{item.value}</p>
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] mt-1">{item.label}</p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </div>
       </section>
@@ -62,7 +62,7 @@ export default function ImpulsworkshopPage() {
 
             {/* Programm Timeline */}
             <StaggerContainer className="mt-12 grid md:grid-cols-4 gap-6">
-              {WORKSHOP_DETAILS.program.map((item, index) => (
+              {WORKSHOP_DETAILS.program.map((item: any, index: number) => (
                 <StaggerItem key={index}>
                   <div className="bg-white rounded-2xl p-6 shadow-apple h-full">
                     <div className="w-10 h-10 rounded-full bg-[var(--color-apple-blue)] text-white flex items-center justify-center font-semibold mb-4">
@@ -87,32 +87,16 @@ export default function ImpulsworkshopPage() {
         <div className="container-wide">
           <FadeUp>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden md:col-span-2">
-                <Image
-                  src="/images/workshop/frauen-balancieren.jpg"
-                  alt="Frauen balancieren beim Workshop"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="grid gap-4">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              {(IMPULSWORKSHOP_PAGE.workshopImages.images as any[]).map((img: any, index: number) => (
+                <div key={index} className={`relative aspect-[4/3] rounded-2xl overflow-hidden ${index === 0 ? "md:col-span-2" : ""}`}>
                   <Image
-                    src="/images/workshop/balancieren-helfen.jpg"
-                    alt="Gegenseitige Hilfe beim Balancieren"
+                    src={img.src}
+                    alt={img.alt}
                     fill
                     className="object-cover"
                   />
                 </div>
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                  <Image
-                    src="/images/workshop/quadrupedie.jpg"
-                    alt="Quadrupedie-Übung auf der Linie"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
+              ))}
             </div>
           </FadeUp>
         </div>
@@ -122,13 +106,13 @@ export default function ImpulsworkshopPage() {
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
         <div className="container-content">
           <SectionHeader
-            title="Was Sie mitnehmen"
-            subtitle="Nach 120 Minuten"
+            title={IMPULSWORKSHOP_PAGE.mitnehmen.title}
+            subtitle={IMPULSWORKSHOP_PAGE.mitnehmen.subtitle}
             className="[&_h2]:text-white [&_p]:text-white/70"
           />
 
           <StaggerContainer className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WORKSHOP_DETAILS.whatYouGet.map((item, index) => (
+            {WORKSHOP_DETAILS.whatYouGet.map((item: string, index: number) => (
               <StaggerItem key={index}>
                 <div className="flex items-start gap-4">
                   <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue-light)] flex-shrink-0 mt-0.5" />
@@ -149,14 +133,14 @@ export default function ImpulsworkshopPage() {
           />
 
           <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-8">
-            {WORKSHOP_DETAILS.forWhom.groups.map((group, index) => (
+            {WORKSHOP_DETAILS.forWhom.groups.map((group: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full">
                   <h3 className="text-headline text-[var(--color-apple-dark)] mb-4">
                     {group.title}
                   </h3>
                   <ul className="space-y-2">
-                    {group.roles.map((role, roleIndex) => (
+                    {group.roles.map((role: string, roleIndex: number) => (
                       <li key={roleIndex} className="flex items-center gap-2 text-body text-[var(--color-apple-gray-700)]">
                         <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-apple-blue)]" />
                         {role}
@@ -170,7 +154,7 @@ export default function ImpulsworkshopPage() {
 
           <FadeUp delay={0.2}>
             <p className="mt-8 text-center text-body text-[var(--color-apple-gray-600)]">
-              Ideal: 6-12 Teilnehmende aus verschiedenen Abteilungen. So entsteht ein gemeinsames Verständnis.
+              {IMPULSWORKSHOP_PAGE.idealNote}
             </p>
           </FadeUp>
         </div>
@@ -201,7 +185,7 @@ export default function ImpulsworkshopPage() {
                   </div>
                   <div>
                     <p className="text-caption text-[var(--color-apple-gray-500)]">Wetter</p>
-                    <p className="text-body font-medium text-[var(--color-apple-dark)]">Draussen, bei jedem Wetter</p>
+                    <p className="text-body font-medium text-[var(--color-apple-dark)]">{IMPULSWORKSHOP_PAGE.preisWetter}</p>
                   </div>
                 </div>
               </div>
@@ -223,7 +207,7 @@ export default function ImpulsworkshopPage() {
           />
 
           <StaggerContainer className="mt-12 max-w-3xl mx-auto space-y-4">
-            {WORKSHOP_DETAILS.faq.map((item, index) => (
+            {WORKSHOP_DETAILS.faq.map((item: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-[var(--color-apple-gray-100)] rounded-xl p-6">
                   <div className="flex items-start gap-4">
@@ -275,17 +259,17 @@ export default function ImpulsworkshopPage() {
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              Bereit für den neuen Blick?
+              {IMPULSWORKSHOP_PAGE.cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              In 120 Minuten zeigen wir Ihnen, was in Ihrer Gemeinde möglich ist. Ohne Verpflichtung, mit konkreten Ideen.
+              {IMPULSWORKSHOP_PAGE.cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/kontakt" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                Workshop anfragen
+              <Link href={IMPULSWORKSHOP_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {IMPULSWORKSHOP_PAGE.cta.ctaPrimary.label}
               </Link>
-              <Link href="/koeniz" className="btn-secondary text-white hover:text-white/80">
-                Referenz ansehen
+              <Link href={IMPULSWORKSHOP_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {IMPULSWORKSHOP_PAGE.cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

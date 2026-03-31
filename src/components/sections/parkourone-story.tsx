@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowLeft, Quote, Users, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PARKOURONE_STORY } from "@/lib/constants";
+import { PARKOURONE_STORY, UEBER_UNS_PAGE } from "@/lib/constants";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
@@ -18,25 +18,6 @@ const TIMELINE_IMAGES: Record<string, string> = {
   "2012": "/images/parkour/geschichte/tracespace_ruhleben2.jpg",
   "2024": "/images/parkour/parkour-pro-bild.jpg",
 };
-
-// Three themes with images
-const THREE_THEMES = [
-  {
-    title: "Stark",
-    description: "Körperliche und mentale Stärke durch Bewegung entwickeln.",
-    image: "/images/parkour/sprung-hoch.jpg",
-  },
-  {
-    title: "Sinnvoll",
-    description: "Bewegung in den Alltag integrieren, nicht davon trennen.",
-    image: "/images/parkour/parkourhelfen.jpg",
-  },
-  {
-    title: "Nachhaltig",
-    description: "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen.",
-    image: "/images/parkour/geschichte/schueler-bewegen.jpg",
-  },
-];
 
 // Full ParkourONE Story Section for dedicated page
 export function ParkourONEStoryFull() {
@@ -62,23 +43,23 @@ export function ParkourONEStoryFull() {
             <FadeUp>
               <div>
                 <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-                  Die Pioniere
+                  {UEBER_UNS_PAGE.storyIntro.tagline}
                 </p>
                 <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-                  Entwickelt von Pionieren.
+                  {UEBER_UNS_PAGE.storyIntro.headline}
                 </h2>
                 <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-                  Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist die logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.
+                  {UEBER_UNS_PAGE.storyIntro.description1}
                 </p>
                 <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">
-                  Was 2000 mit einer Handvoll Traceure begann, ist heute die grösste Parkourschule der Deutschschweiz. Über 20 Jahre Erfahrung, tausende Schüler:innen und ein klares Ziel: Menschen in Bewegung bringen.
+                  {UEBER_UNS_PAGE.storyIntro.description2}
                 </p>
               </div>
             </FadeUp>
             <FadeUp delay={0.1}>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/parkour/training.jpg"
+                  src={UEBER_UNS_PAGE.storyIntro.image}
                   alt="Parkour Training"
                   fill
                   className="object-cover"
@@ -99,7 +80,7 @@ export function ParkourONEStoryFull() {
             transition={appleTransition}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Von den Anfängen bis heute
+              {UEBER_UNS_PAGE.timelineTagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
               {PARKOURONE_STORY.history.headline}
@@ -275,7 +256,7 @@ export function ParkourONEStoryFull() {
             <div>
               <FadeUp delay={0.1}>
                 <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-                  Was uns auszeichnet
+                  {UEBER_UNS_PAGE.expertiseTagline}
                 </p>
                 <h2 className="text-title-1 text-[var(--color-apple-dark)]">
                   {PARKOURONE_STORY.expertise.headline}
@@ -300,12 +281,12 @@ export function ParkourONEStoryFull() {
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
-            title="Wofür wir stehen"
-            subtitle="Drei Grundsätze"
+            title={UEBER_UNS_PAGE.threeThemes.title}
+            subtitle={UEBER_UNS_PAGE.threeThemes.subtitle}
           />
 
           <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-6">
-            {THREE_THEMES.map((theme, index) => (
+            {UEBER_UNS_PAGE.threeThemes.themes.map((theme: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
                   <div className="relative aspect-[4/3]">
@@ -339,7 +320,7 @@ export function ParkourONEStoryFull() {
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
           <div className="container-content">
             <p className="text-title-2 text-white max-w-2xl">
-              Bewegung ist mehr als Sport. Es ist eine Art, die Welt zu sehen.
+              {UEBER_UNS_PAGE.fullWidthQuote}
             </p>
           </div>
         </div>
@@ -362,13 +343,13 @@ export function ParkourONEStoryCompact() {
           className="text-center mb-12"
         >
           <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-            Die Pioniere
+            {UEBER_UNS_PAGE.compactIntro.tagline}
           </p>
           <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            Entwickelt von Pionieren.
+            {UEBER_UNS_PAGE.compactIntro.headline}
           </h2>
           <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-3xl mx-auto">
-            Seit Jahrzehnten bewegen wir uns im öffentlichen Raum. RubikONE ist unsere logische Weiterentwicklung dessen, was wir tagtäglich tun: Den öffentlichen Raum nutzen als Fitnesscenter.
+            {UEBER_UNS_PAGE.compactIntro.description}
           </p>
         </motion.div>
 
@@ -381,12 +362,12 @@ export function ParkourONEStoryCompact() {
           className="flex flex-wrap justify-center gap-12 lg:gap-20 mb-12"
         >
           <div className="text-center">
-            <p className="text-display text-[var(--color-apple-blue)]">20+</p>
-            <p className="text-body text-[var(--color-apple-gray-600)]">Jahre Blickwinkel</p>
+            <p className="text-display text-[var(--color-apple-blue)]">{UEBER_UNS_PAGE.compactIntro.stat1.value}</p>
+            <p className="text-body text-[var(--color-apple-gray-600)]">{UEBER_UNS_PAGE.compactIntro.stat1.label}</p>
           </div>
           <div className="text-center">
-            <p className="text-display text-[var(--color-apple-blue)]">1'500+</p>
-            <p className="text-body text-[var(--color-apple-gray-600)]">Schüler:innen</p>
+            <p className="text-display text-[var(--color-apple-blue)]">{UEBER_UNS_PAGE.compactIntro.stat2.value}</p>
+            <p className="text-body text-[var(--color-apple-gray-600)]">{UEBER_UNS_PAGE.compactIntro.stat2.label}</p>
           </div>
         </motion.div>
 
@@ -398,8 +379,8 @@ export function ParkourONEStoryCompact() {
           transition={{ ...appleTransition, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <Link href="/ueber-uns" className="btn-secondary inline-flex">
-            Mehr über ParkourONE
+          <Link href={UEBER_UNS_PAGE.compactIntro.ctaHref} className="btn-secondary inline-flex">
+            {UEBER_UNS_PAGE.compactIntro.ctaText}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

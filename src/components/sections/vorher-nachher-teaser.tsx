@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { VorherNachherSlider } from "@/components/shared/vorher-nachher-slider";
+import { VORHER_NACHHER_CONTENT } from "@/lib/constants";
 
 export function VorherNachherTeaser() {
   return (
@@ -13,8 +14,8 @@ export function VorherNachherTeaser() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Interaktiver Slider */}
           <VorherNachherSlider
-            vorherSrc="/images/konzept/vorher.jpg"
-            nachherSrc="/images/konzept/nachher.jpg"
+            vorherSrc={VORHER_NACHHER_CONTENT.vorherImage}
+            nachherSrc={VORHER_NACHHER_CONTENT.nachherImage}
           />
 
           {/* Content */}
@@ -25,17 +26,17 @@ export function VorherNachherTeaser() {
             transition={{ ...appleTransition, delay: 0.2 }}
           >
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
-              Das Prinzip
+              {VORHER_NACHHER_CONTENT.tagline}
             </p>
             <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-              Keine neuen Geräte. Nur ein neuer Blick.
+              {VORHER_NACHHER_CONTENT.headline}
             </h2>
             <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
-              RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar – normenkonform und reversibel.
+              {VORHER_NACHHER_CONTENT.description}
             </p>
             <div className="mt-8">
-              <Link href="/konzept" className="btn-secondary inline-flex">
-                Das Konzept entdecken
+              <Link href={VORHER_NACHHER_CONTENT.ctaHref} className="btn-secondary inline-flex">
+                {VORHER_NACHHER_CONTENT.ctaText}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

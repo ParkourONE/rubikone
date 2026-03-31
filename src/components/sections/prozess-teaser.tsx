@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
+import { PROZESS_TEASER_CONTENT } from "@/lib/constants";
 
 export function ProzessTeaser() {
   return (
@@ -18,23 +19,23 @@ export function ProzessTeaser() {
         >
           <div>
             <p className="text-body-sm text-white/60 mb-2">
-              Individuell angepasst
+              {PROZESS_TEASER_CONTENT.tagline}
             </p>
             <h2 className="text-title-2 text-white">
-              Wir gestalten mit Ihnen.
+              {PROZESS_TEASER_CONTENT.headline}
             </h2>
             <p className="mt-4 text-body text-white/70 max-w-xl">
-              Es geht darum sich draussen zu bewegen, Neues auszuprobieren, sich aus der Komfortzone zu locken und Erfolgserlebnisse zu sammeln. Mit welchen Bewegungsaufforderungen gelingt das in Ihrer Ortschaft?
+              {PROZESS_TEASER_CONTENT.description1}
             </p>
             <p className="mt-2 text-body text-white/70 max-w-xl">
-              Wir helfen Ihnen dabei, aus dem Raumpotenzial gesellschaftlichen Mehrwert zu schöpfen.
+              {PROZESS_TEASER_CONTENT.description2}
             </p>
           </div>
           <Link
-            href="/raumgestaltung"
+            href={PROZESS_TEASER_CONTENT.ctaHref}
             className="btn-primary bg-white text-[var(--color-apple-dark)] hover:bg-white/90 inline-flex self-start md:self-center"
           >
-            Gestalten Sie Ihren Parkour- & Bewegungsraum
+            {PROZESS_TEASER_CONTENT.ctaText}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

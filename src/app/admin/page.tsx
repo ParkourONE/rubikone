@@ -486,8 +486,7 @@ export default function AdminPage() {
             />
 
             {blocks.map((block, index) => {
-              const isHardcoded = block.contentKey?.startsWith("_HARDCODED_");
-              const blockContent = isHardcoded ? null : content[block.contentKey];
+              const blockContent = content[block.contentKey] || null;
               const isEditing = editingBlock?.index === index;
 
               return (
@@ -546,28 +545,21 @@ export default function AdminPage() {
                         {/* Separator */}
                         <div className="w-px h-5 bg-gray-200 mx-1" />
 
-                        {/* Edit button (only for non-hardcoded) */}
-                        {!isHardcoded ? (
-                          <button
-                            onClick={() =>
-                              isEditing
-                                ? setEditingBlock(null)
-                                : setEditingBlock({ index, block })
-                            }
-                            className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
-                              isEditing
-                                ? "bg-gray-900 text-white"
-                                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                            }`}
-                          >
-                            {isEditing ? "Schliessen" : "Bearbeiten"}
-                          </button>
-                        ) : (
-                          <span className="px-3 py-1 text-xs font-medium text-gray-400 bg-gray-50 rounded flex items-center gap-1">
-                            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                            In Code
-                          </span>
-                        )}
+                        {/* Edit button */}
+                        <button
+                          onClick={() =>
+                            isEditing
+                              ? setEditingBlock(null)
+                              : setEditingBlock({ index, block })
+                          }
+                          className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
+                            isEditing
+                              ? "bg-gray-900 text-white"
+                              : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                          }`}
+                        >
+                          {isEditing ? "Schliessen" : "Bearbeiten"}
+                        </button>
                       </div>
                     </div>
 

@@ -151,6 +151,23 @@ export const PARKOURONE_STORY = {
   })),
 };
 
+// Homepage sections (previously hardcoded)
+export const TEXTHOOK_CONTENT = content.TEXTHOOK_CONTENT;
+export const VIDEO_CONTENT = content.VIDEO_CONTENT;
+export const VORHER_NACHHER_CONTENT = content.VORHER_NACHHER_CONTENT;
+export const GALLERY_CONTENT = content.GALLERY_CONTENT;
+export const PROZESS_TEASER_CONTENT = content.PROZESS_TEASER_CONTENT;
+export const CONFIGURATOR_CTA_CONTENT = content.CONFIGURATOR_CTA_CONTENT;
+export const STATS_CONTENT = content.STATS_CONTENT;
+
+// Page-specific content (previously hardcoded)
+export const KONZEPT_PAGE = content.KONZEPT_PAGE;
+export const RAUMGESTALTUNG_PAGE = content.RAUMGESTALTUNG_PAGE;
+export const KOENIZ_PAGE = content.KOENIZ_PAGE;
+export const IMPULSWORKSHOP_PAGE = content.IMPULSWORKSHOP_PAGE;
+export const KONTAKT_PAGE = content.KONTAKT_PAGE;
+export const UEBER_UNS_PAGE = content.UEBER_UNS_PAGE;
+
 // Emotionale Bildkonzepte
 export const IMAGE_CONCEPTS = content.IMAGE_CONCEPTS;
 

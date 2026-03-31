@@ -9,88 +9,13 @@ import { PageHero } from "@/components/sections/hero-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { ConfiguratorTrigger } from "@/components/sections/configurator-overlay";
+import { RAUMGESTALTUNG_PAGE, PROCESS_PHASES } from "@/lib/constants";
 
-const stakeholderBenefits = [
-  {
-    icon: Building2,
-    title: "Städte & Gemeinden",
-    benefits: [
-      "Nachhaltige Raumentwicklung ohne zusätzlichen Platzanspruch",
-      "Innovative Gesundheitsförderung vor der Haustür",
-      "Stärkung der lokalen Gemeinschaft",
-      "Minimaler Ressourceneinsatz",
-    ],
-  },
-  {
-    icon: GraduationCap,
-    title: "Bildung & Kultur",
-    benefits: [
-      "Erweitertes Klassenzimmer & Alternative zur Sporthalle",
-      "Kreative Bewegungspausen & Lernmöglichkeiten",
-      "Förderung von Teamwork",
-      "Vielfältige Bewegungspausen",
-    ],
-  },
-  {
-    icon: Users,
-    title: "Bevölkerung",
-    benefits: [
-      "Jederzeit & kostenfrei zugänglich",
-      "Für alle Altersgruppen & Fitnesslevel",
-      "Leicht verständlich dank Bilder & Symbolen",
-      "Fördert einen aktiven Lebensstil",
-    ],
-  },
-];
-
-const prozessSchritte = [
-  { nummer: "1", titel: "Analyse", beschreibung: "Impulsworkshop und Ausgangslage klären", image: "/images/gemeinden/prozess-1.jpg" },
-  { nummer: "2", titel: "Planung", beschreibung: "RubikONE auf Ihre Gemeinde anpassen", image: "/images/gemeinden/prozess-2.jpg" },
-  { nummer: "3", titel: "Umsetzung", beschreibung: "Produktion und Installation von RubikONE", image: "/images/gemeinden/prozess-3.jpg" },
-  { nummer: "4", titel: "Nutzung", beschreibung: "Eröffnung und Workshops", image: "/images/gemeinden/prozess-4.jpg" },
-];
-
-const uspItemsCompact = [
-  {
-    title: "Einfache Integration",
-    description: "Nutzt vorhandene Strukturen",
-  },
-  {
-    title: "Nachhaltigkeit",
-    description: "Langlebiges Material",
-  },
-  {
-    title: "Lebensqualität",
-    description: "Fördert ganzheitliche Gesundheit",
-  },
-];
-
-const faqItems = [
-  {
-    question: "Wie trägt RubikONE zur Gesundheitsförderung bei?",
-    answer: "RubikONE lädt zu täglicher Bewegung ein und motiviert Menschen, sich physisch und mental aus der Komfortzone zu locken. Sportmotorische wie auch sensorische und emotionale Challenges haben das Potenzial, die Gesundheit auf allen Ebenen zu steigern.",
-  },
-  {
-    question: "Warum ist RubikONE eine nachhaltige Lösung?",
-    answer: "Das verwendete Material ist langlebig und wartungsarm. Es werden keine neuen Geräte oder Anlagen gebaut – nur bestehende Elemente werden sichtbar gemacht. In 8 Monaten Testbetrieb in Köniz sind keine Wartungskosten angefallen.",
-  },
-  {
-    question: "Wie schnell kann RubikONE umgesetzt werden?",
-    answer: "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate). Die physische Installation dauert nur wenige Tage.",
-  },
-  {
-    question: "Braucht es ein Baugesuch?",
-    answer: "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen.",
-  },
-  {
-    question: "Was ist mit Haftung und Sicherheit?",
-    answer: "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards. Die Haftungsfrage ist klar geregelt.",
-  },
-  {
-    question: "Gibt es spezielle Angebote für Schulen?",
-    answer: "Ja! RubikONE eignet sich ideal für Schulareale. Wir bieten spezielle Pakete für Schulen an, inklusive pädagogischem Begleitmaterial und Einführungsworkshops für Lehrpersonen.",
-  },
-];
+const iconMap: Record<number, any> = {
+  0: Building2,
+  1: GraduationCap,
+  2: Users,
+};
 
 function FAQItem({ question, answer, isOpen, onToggle }: {
   question: string;
@@ -139,46 +64,49 @@ export default function RaumgestaltungPage() {
     <>
       {/* Hero */}
       <PageHero
-        title="Gewohntes neu entdecken"
-        description="RubikONE oder Ihre individuelle Lösung transformiert die bekannte Umgebung in einen Parkour- & Bewegungsraum."
-        breadcrumb="Die Multiperspektive"
-        image="/images/koeniz/kind-springt.jpg"
-        imageAlt="Kind springt bei RubikONE"
+        title={RAUMGESTALTUNG_PAGE.hero.title}
+        description={RAUMGESTALTUNG_PAGE.hero.description}
+        breadcrumb={RAUMGESTALTUNG_PAGE.hero.breadcrumb}
+        image={RAUMGESTALTUNG_PAGE.hero.image}
+        imageAlt={RAUMGESTALTUNG_PAGE.hero.imageAlt}
       />
 
       {/* Mehrwert für alle - 3 Columns */}
       <section className="section-spacing">
         <div className="container-content">
           <SectionHeader
-            title="Mehrwert für alle"
-            subtitle="Aufenthaltsqualität steigern"
-            description="Mit RubikONE wird die Gemeinde, das Quartier oder das Schulareal zum vielseitigen Bewegungsraum."
+            title={RAUMGESTALTUNG_PAGE.mehrwert.title}
+            subtitle={RAUMGESTALTUNG_PAGE.mehrwert.subtitle}
+            description={RAUMGESTALTUNG_PAGE.mehrwert.description}
             className="mb-12"
           />
 
           <StaggerContainer className="grid md:grid-cols-3 gap-8">
-            {stakeholderBenefits.map((stakeholder, index) => (
-              <StaggerItem key={index}>
-                <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[var(--color-apple-blue)] text-white mb-6">
-                    <stakeholder.icon className="h-7 w-7" strokeWidth={1.5} />
+            {(RAUMGESTALTUNG_PAGE.mehrwert.stakeholders as any[]).map((stakeholder: any, index: number) => {
+              const Icon = iconMap[index] || Users;
+              return (
+                <StaggerItem key={index}>
+                  <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full">
+                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[var(--color-apple-blue)] text-white mb-6">
+                      <Icon className="h-7 w-7" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="text-headline text-[var(--color-apple-dark)] mb-4">
+                      {stakeholder.title}
+                    </h3>
+                    <ul className="space-y-3">
+                      {stakeholder.benefits.map((benefit: string, benefitIndex: number) => (
+                        <li key={benefitIndex} className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
+                          <span className="text-body-sm text-[var(--color-apple-gray-700)]">
+                            {benefit}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <h3 className="text-headline text-[var(--color-apple-dark)] mb-4">
-                    {stakeholder.title}
-                  </h3>
-                  <ul className="space-y-3">
-                    {stakeholder.benefits.map((benefit, benefitIndex) => (
-                      <li key={benefitIndex} className="flex items-start gap-2">
-                        <CheckCircle className="h-5 w-5 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
-                        <span className="text-body-sm text-[var(--color-apple-gray-700)]">
-                          {benefit}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </StaggerItem>
-            ))}
+                </StaggerItem>
+              );
+            })}
           </StaggerContainer>
         </div>
       </section>
@@ -188,7 +116,7 @@ export default function RaumgestaltungPage() {
         <div className="container-content">
           <FadeUp>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-              {uspItemsCompact.map((item, index) => (
+              {(RAUMGESTALTUNG_PAGE.uspKompakt as any[]).map((item: any, index: number) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" />
                   <div>
@@ -213,7 +141,7 @@ export default function RaumgestaltungPage() {
             <FadeUp>
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/gemeinden/bernadette.jpg"
+                  src={RAUMGESTALTUNG_PAGE.testimonialBernadette.image}
                   alt="Bernadette bei RubikONE"
                   fill
                   className="object-cover"
@@ -225,12 +153,12 @@ export default function RaumgestaltungPage() {
                 <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
                 <blockquote>
                   <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
-                    «Als Seniorin und Grossmutter war ich anfangs skeptisch, ob RubikONE auch für mich geeignet ist. Die klaren Anleitungen und die Möglichkeit, alles mit der Familie zu machen, haben mich überzeugt.»
+                    &laquo;{RAUMGESTALTUNG_PAGE.testimonialBernadette.quote}&raquo;
                   </p>
                 </blockquote>
                 <div className="mt-6">
-                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">Bernadette</p>
-                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">66 Jahre, Köniz</p>
+                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">{RAUMGESTALTUNG_PAGE.testimonialBernadette.name}</p>
+                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">{RAUMGESTALTUNG_PAGE.testimonialBernadette.detail}</p>
                 </div>
               </div>
             </FadeUp>
@@ -242,14 +170,14 @@ export default function RaumgestaltungPage() {
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
         <div className="container-content">
           <SectionHeader
-            title="In vier Schritten zu Ihrem RubikONE"
-            subtitle="Das Vorgehen"
-            description="Wir begleiten Sie von A bis Z und übernehmen die fachliche Leitung im gesamten Prozess."
+            title={RAUMGESTALTUNG_PAGE.prozess.title}
+            subtitle={RAUMGESTALTUNG_PAGE.prozess.subtitle}
+            description={RAUMGESTALTUNG_PAGE.prozess.description}
             className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
           />
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {prozessSchritte.map((schritt, index) => (
+            {(RAUMGESTALTUNG_PAGE.prozess.schritte as any[]).map((schritt: any, index: number) => (
               <StaggerItem key={index}>
                 <div className="bg-white/5 rounded-[var(--radius-apple-lg)] overflow-hidden">
                   <div className="relative aspect-[4/3]">
@@ -283,23 +211,23 @@ export default function RaumgestaltungPage() {
             <div className="flex flex-col md:flex-row items-center gap-8 p-8 bg-[var(--color-apple-gray-100)] rounded-2xl">
               <div className="relative w-full md:w-48 aspect-[4/3] md:aspect-square rounded-xl overflow-hidden flex-shrink-0">
                 <Image
-                  src="/images/gemeinden/koeniz-ref.jpg"
+                  src={RAUMGESTALTUNG_PAGE.referenzKoeniz.image}
                   alt="RubikONE Köniz"
                   fill
                   className="object-cover"
                 />
               </div>
               <div className="flex-grow text-center md:text-left">
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1">Referenz</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1">{RAUMGESTALTUNG_PAGE.referenzKoeniz.tagline}</p>
                 <h3 className="text-headline text-[var(--color-apple-dark)]">
-                  Köniz war die erste Gemeinde.
+                  {RAUMGESTALTUNG_PAGE.referenzKoeniz.headline}
                 </h3>
                 <p className="mt-2 text-body text-[var(--color-apple-gray-600)]">
-                  Im August 2024 eröffnete der erste RubikONE mit 9 Posten im Schlossareal Köniz – bewilligt im Denkmalschutz.
+                  {RAUMGESTALTUNG_PAGE.referenzKoeniz.description}
                 </p>
               </div>
-              <Link href="/koeniz" className="btn-secondary flex-shrink-0">
-                Mehr erfahren
+              <Link href={RAUMGESTALTUNG_PAGE.referenzKoeniz.ctaHref} className="btn-secondary flex-shrink-0">
+                {RAUMGESTALTUNG_PAGE.referenzKoeniz.ctaText}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -318,7 +246,7 @@ export default function RaumgestaltungPage() {
 
           <FadeUp>
             <div className="max-w-3xl mx-auto">
-              {faqItems.map((item, index) => (
+              {(RAUMGESTALTUNG_PAGE.faq as any[]).map((item: any, index: number) => (
                 <FAQItem
                   key={index}
                   question={item.question}
@@ -346,17 +274,17 @@ export default function RaumgestaltungPage() {
         <div className="container-content text-center">
           <FadeUp>
             <h2 className="text-title-1 text-white">
-              Bereit für den nächsten Schritt?
+              {RAUMGESTALTUNG_PAGE.cta.headline}
             </h2>
             <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
-              Erleben Sie, wie RubikONE auch in Ihrer Gemeinde Bewegung neu definiert. Nutzen Sie den öffentlichen Raum clever, nachhaltig und innovativ.
+              {RAUMGESTALTUNG_PAGE.cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/impulsworkshop" className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
-                Impulsworkshop buchen
+              <Link href={RAUMGESTALTUNG_PAGE.cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+                {RAUMGESTALTUNG_PAGE.cta.ctaPrimary.label}
               </Link>
-              <Link href="/kontakt" className="btn-secondary text-white hover:text-white/80">
-                Beratungsgespräch vereinbaren
+              <Link href={RAUMGESTALTUNG_PAGE.cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+                {RAUMGESTALTUNG_PAGE.cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
