@@ -9,6 +9,11 @@ import {
   useRef,
 } from "react";
 
+interface RegisteredSection {
+  key: string;
+  label: string;
+}
+
 interface AdminContextType {
   isAdmin: boolean;
   content: Record<string, any> | null;
@@ -20,6 +25,11 @@ interface AdminContextType {
   saving: boolean;
   hasChanges: boolean;
   logout: () => Promise<void>;
+  registeredSections: RegisteredSection[];
+  registerSection: (key: string, label: string) => void;
+  unregisterSection: (key: string) => void;
+  sidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
 }
 
 const AdminContext = createContext<AdminContextType>({
@@ -33,6 +43,11 @@ const AdminContext = createContext<AdminContextType>({
   saving: false,
   hasChanges: false,
   logout: async () => {},
+  registeredSections: [],
+  registerSection: () => {},
+  unregisterSection: () => {},
+  sidebarOpen: false,
+  setSidebarOpen: () => {},
 });
 
 function setNestedValue(obj: any, path: string, value: unknown): any {
@@ -79,6 +94,8 @@ function AdminProviderInner({
   const [editingSectionLabel, setEditingSectionLabel] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [hasChanges, setHasChanges] = useState(false);
+  const [registeredSections, setRegisteredSections] = useState<RegisteredSection[]>([]);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const originalContentRef = useRef<string>("");
 
   // Load content from API
@@ -119,6 +136,17 @@ function AdminProviderInner({
     },
     []
   );
+
+  const registerSection = useCallback((key: string, label: string) => {
+    setRegisteredSections((prev) => {
+      if (prev.some((s) => s.key === key)) return prev;
+      return [...prev, { key, label }];
+    });
+  }, []);
+
+  const unregisterSection = useCallback((key: string) => {
+    setRegisteredSections((prev) => prev.filter((s) => s.key !== key));
+  }, []);
 
   const saveContent = useCallback(async () => {
     if (!content || !sha) return;
@@ -178,6 +206,11 @@ function AdminProviderInner({
         saving,
         hasChanges,
         logout,
+        registeredSections,
+        registerSection,
+        unregisterSection,
+        sidebarOpen,
+        setSidebarOpen,
       }}
     >
       {children}

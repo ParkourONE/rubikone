@@ -578,3 +578,27 @@ html {
     display: none;
   }
 }
+
+/* ============================================
+   ADMIN INLINE TEXT EDITING
+   ============================================ */
+
+.admin-inline-text {
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+  border-bottom: 1px dashed transparent;
+}
+
+.admin-inline-text:hover:not(.admin-inline-text--editing) {
+  border-bottom-color: rgba(0, 168, 171, 0.3);
+}
+
+.admin-inline-text--editing {
+  border-bottom-color: transparent;
+  cursor: text;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

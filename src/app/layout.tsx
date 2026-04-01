@@ -9,6 +9,8 @@ import { LenisProvider } from "@/providers/lenis-provider";
 import { ConsentProvider } from "@/providers/consent-provider";
 import { AdminProvider } from "@/providers/admin-provider";
 import { AdminToolbar } from "@/components/admin/admin-toolbar";
+import { AdminSidebar } from "@/components/admin/admin-sidebar";
+import { AdminContentWrapper } from "@/components/admin/admin-content-wrapper";
 import { EditPanel } from "@/components/admin/edit-panel";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ConditionalAnalytics } from "@/components/analytics";
@@ -100,13 +102,16 @@ export default async function RootLayout({
       <body className={`${inter.variable} font-sans antialiased`}>
         <AdminProvider isAdmin={isAdmin}>
           <ConsentProvider>
-            <LenisProvider>
-              <Navigation />
-              <main>{children}</main>
-              <Footer />
-              <CookieBanner />
-              <FloatingConfigurator />
-            </LenisProvider>
+            <AdminSidebar />
+            <AdminContentWrapper isAdmin={isAdmin}>
+              <LenisProvider>
+                <Navigation />
+                <main>{children}</main>
+                <Footer />
+                <CookieBanner />
+                <FloatingConfigurator />
+              </LenisProvider>
+            </AdminContentWrapper>
             <ConditionalAnalytics />
           </ConsentProvider>
           <AdminToolbar />

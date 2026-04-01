@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { useAdmin } from "@/providers/admin-provider";
 
 interface EditableSectionProps {
@@ -13,15 +14,32 @@ export function EditableSection({
   label,
   children,
 }: EditableSectionProps) {
-  const { isAdmin, setEditingSection } = useAdmin();
+  const { isAdmin, editingSection, setEditingSection, registerSection, unregisterSection } = useAdmin();
+
+  useEffect(() => {
+    if (!isAdmin) return;
+    registerSection(contentKey, label);
+    return () => unregisterSection(contentKey);
+  }, [isAdmin, contentKey, label, registerSection, unregisterSection]);
 
   if (!isAdmin) return <>{children}</>;
 
+  const isActive = editingSection === contentKey;
+
   return (
-    <div className="relative group/edit">
+    <div
+      id={`section-${contentKey}`}
+      className="relative group/edit"
+    >
       {children}
       {/* Hover overlay */}
-      <div className="absolute inset-0 opacity-0 group-hover/edit:opacity-100 pointer-events-none transition-opacity duration-200 border-2 border-dashed border-blue-400 rounded-lg z-40" />
+      <div
+        className={`absolute inset-0 pointer-events-none transition-opacity duration-200 border-2 border-dashed rounded-lg z-40 ${
+          isActive
+            ? "opacity-100 border-[#00a8ab]"
+            : "opacity-0 group-hover/edit:opacity-100 border-blue-400"
+        }`}
+      />
       {/* Edit button */}
       <button
         onClick={() => setEditingSection(contentKey, label)}
