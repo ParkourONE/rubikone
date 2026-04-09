@@ -38,6 +38,7 @@ export function HeroSection() {
             <motion.h1
               variants={staggerItem}
               className="text-hero text-[var(--color-apple-dark)]"
+              {...headlineEdit}
             >
               {heroContent.headline}
             </motion.h1>
@@ -46,6 +47,7 @@ export function HeroSection() {
             <motion.p
               variants={staggerItem}
               className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
+              {...subheadlineEdit}
             >
               {heroContent.subheadline}
             </motion.p>
@@ -102,6 +104,7 @@ export function HeroSection() {
               <motion.h1
                 variants={staggerItem}
                 className="text-display text-[var(--color-apple-dark)]"
+                {...headlineEdit}
               >
                 {heroContent.headline}
               </motion.h1>
@@ -110,6 +113,7 @@ export function HeroSection() {
               <motion.p
                 variants={staggerItem}
                 className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
+                {...subheadlineEdit}
               >
                 {heroContent.subheadline}
               </motion.p>
@@ -119,7 +123,7 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="mt-10 flex flex-row gap-4"
               >
-                <Link href={heroContent.ctaPrimary.href} className="btn-primary">
+                <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
                   {heroContent.ctaPrimary.label}
                 </Link>
               </motion.div>
