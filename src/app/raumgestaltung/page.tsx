@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/shared/section-header";
 import { ConfiguratorTrigger } from "@/components/sections/configurator-overlay";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 import {
   RAUMGESTALTUNG_HERO,
   RAUMGESTALTUNG_MEHRWERT,
@@ -29,20 +30,100 @@ const iconMap: Record<number, any> = {
   2: Users,
 };
 
-function FAQItem({ question, answer, isOpen, onToggle }: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onToggle: () => void;
-}) {
+function StakeholderCard({ stakeholder, index }: { stakeholder: any; index: number }) {
+  const path = `RAUMGESTALTUNG_MEHRWERT.stakeholders[${index}]`;
+  const itemEdit = useEditPath(path);
+  const titleEdit = useEditPath(`${path}.title`);
+  const Icon = iconMap[index] || Users;
   return (
-    <div className="border-b border-[var(--color-apple-gray-200)]">
+    <StaggerItem>
+      <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full" {...itemEdit}>
+        <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[var(--color-apple-blue)] text-white mb-6">
+          <Icon className="h-7 w-7" strokeWidth={1.5} />
+        </div>
+        <h3 className="text-headline text-[var(--color-apple-dark)] mb-4" {...titleEdit}>
+          {stakeholder.title}
+        </h3>
+        <ul className="space-y-3">
+          {stakeholder.benefits.map((benefit: string, benefitIndex: number) => (
+            <li key={benefitIndex} className="flex items-start gap-2">
+              <CheckCircle className="h-5 w-5 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
+              <span className="text-body-sm text-[var(--color-apple-gray-700)]">
+                {benefit}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </StaggerItem>
+  );
+}
+
+function UspItem({ item, index }: { item: any; index: number }) {
+  const path = `RAUMGESTALTUNG_USP[${index}]`;
+  const itemEdit = useEditPath(path);
+  const titleEdit = useEditPath(`${path}.title`);
+  const descEdit = useEditPath(`${path}.description`);
+  return (
+    <div className="flex items-center gap-3" {...itemEdit}>
+      <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" />
+      <div>
+        <p className="text-body font-semibold text-[var(--color-apple-dark)]" {...titleEdit}>
+          {item.title}
+        </p>
+        <p className="text-body-sm text-[var(--color-apple-gray-600)]" {...descEdit}>
+          {item.description}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ProzessSchrittCard({ schritt, index }: { schritt: any; index: number }) {
+  const path = `RAUMGESTALTUNG_PROZESS.schritte[${index}]`;
+  const itemEdit = useEditPath(path);
+  const nummerEdit = useEditPath(`${path}.nummer`);
+  const titelEdit = useEditPath(`${path}.titel`);
+  const beschrEdit = useEditPath(`${path}.beschreibung`);
+  const imageEdit = useEditPath(`${path}.image`);
+  return (
+    <StaggerItem>
+      <div className="bg-white/5 rounded-[var(--radius-apple-lg)] overflow-hidden" {...itemEdit}>
+        <div className="relative aspect-[4/3]" {...imageEdit}>
+          <Image
+            src={schritt.image}
+            alt={schritt.titel}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-[var(--color-apple-blue)] flex items-center justify-center text-white font-bold" {...nummerEdit}>
+            {schritt.nummer}
+          </div>
+        </div>
+        <div className="p-5">
+          <h3 className="text-headline" {...titelEdit}>{schritt.titel}</h3>
+          <p className="mt-2 text-body-sm text-white/70" {...beschrEdit}>
+            {schritt.beschreibung}
+          </p>
+        </div>
+      </div>
+    </StaggerItem>
+  );
+}
+
+function FAQItemCard({ item, index, isOpen, onToggle }: { item: any; index: number; isOpen: boolean; onToggle: () => void }) {
+  const path = `RAUMGESTALTUNG_FAQ[${index}]`;
+  const itemEdit = useEditPath(path);
+  const qEdit = useEditPath(`${path}.question`);
+  const aEdit = useEditPath(`${path}.answer`);
+  return (
+    <div className="border-b border-[var(--color-apple-gray-200)]" {...itemEdit}>
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between py-5 text-left"
       >
-        <span className="text-body font-semibold text-[var(--color-apple-dark)] pr-4">
-          {question}
+        <span className="text-body font-semibold text-[var(--color-apple-dark)] pr-4" {...qEdit}>
+          {item.question}
         </span>
         {isOpen ? (
           <ChevronUp className="h-5 w-5 text-[var(--color-apple-gray-500)] flex-shrink-0" />
@@ -59,8 +140,8 @@ function FAQItem({ question, answer, isOpen, onToggle }: {
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <p className="text-body text-[var(--color-apple-gray-600)] pb-5">
-              {answer}
+            <p className="text-body text-[var(--color-apple-gray-600)] pb-5" {...aEdit}>
+              {item.answer}
             </p>
           </motion.div>
         )}
@@ -81,6 +162,26 @@ export default function RaumgestaltungPage() {
   const faq = useContent("RAUMGESTALTUNG_FAQ", RAUMGESTALTUNG_FAQ) as any;
   const cta = useContent("RAUMGESTALTUNG_CTA", RAUMGESTALTUNG_CTA) as any;
 
+  const mehrwertTitleEdit = useEditPath("RAUMGESTALTUNG_MEHRWERT.title");
+  const mehrwertSubtitleEdit = useEditPath("RAUMGESTALTUNG_MEHRWERT.subtitle");
+  const mehrwertDescEdit = useEditPath("RAUMGESTALTUNG_MEHRWERT.description");
+  const testimonialQuoteEdit = useEditPath("RAUMGESTALTUNG_TESTIMONIAL.quote");
+  const testimonialNameEdit = useEditPath("RAUMGESTALTUNG_TESTIMONIAL.name");
+  const testimonialDetailEdit = useEditPath("RAUMGESTALTUNG_TESTIMONIAL.detail");
+  const testimonialImageEdit = useEditPath("RAUMGESTALTUNG_TESTIMONIAL.image");
+  const prozessTitleEdit = useEditPath("RAUMGESTALTUNG_PROZESS.title");
+  const prozessSubtitleEdit = useEditPath("RAUMGESTALTUNG_PROZESS.subtitle");
+  const prozessDescEdit = useEditPath("RAUMGESTALTUNG_PROZESS.description");
+  const referenzTaglineEdit = useEditPath("RAUMGESTALTUNG_REFERENZ.tagline");
+  const referenzHeadlineEdit = useEditPath("RAUMGESTALTUNG_REFERENZ.headline");
+  const referenzDescEdit = useEditPath("RAUMGESTALTUNG_REFERENZ.description");
+  const referenzImageEdit = useEditPath("RAUMGESTALTUNG_REFERENZ.image");
+  const referenzCtaEdit = useEditPath("RAUMGESTALTUNG_REFERENZ.ctaText");
+  const ctaHeadlineEdit = useEditPath("RAUMGESTALTUNG_CTA.headline");
+  const ctaDescEdit = useEditPath("RAUMGESTALTUNG_CTA.description");
+  const ctaPrimaryEdit = useEditPath("RAUMGESTALTUNG_CTA.ctaPrimary");
+  const ctaSecondaryEdit = useEditPath("RAUMGESTALTUNG_CTA.ctaSecondary");
+
   return (
     <>
       {/* Hero */}
@@ -91,6 +192,10 @@ export default function RaumgestaltungPage() {
         breadcrumb={hero.breadcrumb}
         image={hero.image}
         imageAlt={hero.imageAlt}
+        titleEditPath="RAUMGESTALTUNG_HERO.title"
+        descriptionEditPath="RAUMGESTALTUNG_HERO.description"
+        breadcrumbEditPath="RAUMGESTALTUNG_HERO.breadcrumb"
+        imageEditPath="RAUMGESTALTUNG_HERO.image"
       />
       </EditableSection>
 
@@ -103,34 +208,15 @@ export default function RaumgestaltungPage() {
             subtitle={mehrwert.subtitle}
             description={mehrwert.description}
             className="mb-12"
+            titleProps={mehrwertTitleEdit}
+            subtitleProps={mehrwertSubtitleEdit}
+            descriptionProps={mehrwertDescEdit}
           />
 
           <StaggerContainer className="grid md:grid-cols-3 gap-8">
-            {(mehrwert.stakeholders as any[]).map((stakeholder: any, index: number) => {
-              const Icon = iconMap[index] || Users;
-              return (
-                <StaggerItem key={index}>
-                  <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-8 h-full">
-                    <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[var(--color-apple-blue)] text-white mb-6">
-                      <Icon className="h-7 w-7" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="text-headline text-[var(--color-apple-dark)] mb-4">
-                      {stakeholder.title}
-                    </h3>
-                    <ul className="space-y-3">
-                      {stakeholder.benefits.map((benefit: string, benefitIndex: number) => (
-                        <li key={benefitIndex} className="flex items-start gap-2">
-                          <CheckCircle className="h-5 w-5 text-[var(--color-apple-blue)] flex-shrink-0 mt-0.5" />
-                          <span className="text-body-sm text-[var(--color-apple-gray-700)]">
-                            {benefit}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </StaggerItem>
-              );
-            })}
+            {(mehrwert.stakeholders as any[]).map((stakeholder: any, index: number) => (
+              <StakeholderCard key={index} stakeholder={stakeholder} index={index} />
+            ))}
           </StaggerContainer>
         </div>
       </section>
@@ -143,17 +229,7 @@ export default function RaumgestaltungPage() {
           <FadeUp>
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
               {(uspKompakt as any[]).map((item: any, index: number) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" />
-                  <div>
-                    <p className="text-body font-semibold text-[var(--color-apple-dark)]">
-                      {item.title}
-                    </p>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
+                <UspItem key={index} item={item} index={index} />
               ))}
             </div>
           </FadeUp>
@@ -167,7 +243,7 @@ export default function RaumgestaltungPage() {
         <div className="container-content">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeUp>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden" {...testimonialImageEdit}>
                 <Image
                   src={testimonial.image}
                   alt="Bernadette bei RubikONE"
@@ -180,13 +256,13 @@ export default function RaumgestaltungPage() {
               <div>
                 <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
                 <blockquote>
-                  <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
+                  <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed" {...testimonialQuoteEdit}>
                     &laquo;{testimonial.quote}&raquo;
                   </p>
                 </blockquote>
                 <div className="mt-6">
-                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">{testimonial.name}</p>
-                  <p className="text-body-sm text-[var(--color-apple-gray-600)]">{testimonial.detail}</p>
+                  <p className="text-body font-semibold text-[var(--color-apple-dark)]" {...testimonialNameEdit}>{testimonial.name}</p>
+                  <p className="text-body-sm text-[var(--color-apple-gray-600)]" {...testimonialDetailEdit}>{testimonial.detail}</p>
                 </div>
               </div>
             </FadeUp>
@@ -204,31 +280,14 @@ export default function RaumgestaltungPage() {
             subtitle={prozess.subtitle}
             description={prozess.description}
             className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
+            titleProps={prozessTitleEdit}
+            subtitleProps={prozessSubtitleEdit}
+            descriptionProps={prozessDescEdit}
           />
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {(prozess.schritte as any[]).map((schritt: any, index: number) => (
-              <StaggerItem key={index}>
-                <div className="bg-white/5 rounded-[var(--radius-apple-lg)] overflow-hidden">
-                  <div className="relative aspect-[4/3]">
-                    <Image
-                      src={schritt.image}
-                      alt={schritt.titel}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute top-3 left-3 w-10 h-10 rounded-full bg-[var(--color-apple-blue)] flex items-center justify-center text-white font-bold">
-                      {schritt.nummer}
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-headline">{schritt.titel}</h3>
-                    <p className="mt-2 text-body-sm text-white/70">
-                      {schritt.beschreibung}
-                    </p>
-                  </div>
-                </div>
-              </StaggerItem>
+              <ProzessSchrittCard key={index} schritt={schritt} index={index} />
             ))}
           </StaggerContainer>
         </div>
@@ -241,7 +300,7 @@ export default function RaumgestaltungPage() {
         <div className="container-content">
           <FadeUp>
             <div className="flex flex-col md:flex-row items-center gap-8 p-8 bg-[var(--color-apple-gray-100)] rounded-2xl">
-              <div className="relative w-full md:w-48 aspect-[4/3] md:aspect-square rounded-xl overflow-hidden flex-shrink-0">
+              <div className="relative w-full md:w-48 aspect-[4/3] md:aspect-square rounded-xl overflow-hidden flex-shrink-0" {...referenzImageEdit}>
                 <Image
                   src={referenz.image}
                   alt="RubikONE Köniz"
@@ -250,15 +309,15 @@ export default function RaumgestaltungPage() {
                 />
               </div>
               <div className="flex-grow text-center md:text-left">
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1">{referenz.tagline}</p>
-                <h3 className="text-headline text-[var(--color-apple-dark)]">
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-1" {...referenzTaglineEdit}>{referenz.tagline}</p>
+                <h3 className="text-headline text-[var(--color-apple-dark)]" {...referenzHeadlineEdit}>
                   {referenz.headline}
                 </h3>
-                <p className="mt-2 text-body text-[var(--color-apple-gray-600)]">
+                <p className="mt-2 text-body text-[var(--color-apple-gray-600)]" {...referenzDescEdit}>
                   {referenz.description}
                 </p>
               </div>
-              <Link href={referenz.ctaHref} className="btn-secondary flex-shrink-0">
+              <Link href={referenz.ctaHref} className="btn-secondary flex-shrink-0" {...referenzCtaEdit}>
                 {referenz.ctaText}
                 <ArrowRight className="h-4 w-4" />
               </Link>
@@ -281,10 +340,10 @@ export default function RaumgestaltungPage() {
           <FadeUp>
             <div className="max-w-3xl mx-auto">
               {(faq as any[]).map((item: any, index: number) => (
-                <FAQItem
+                <FAQItemCard
                   key={index}
-                  question={item.question}
-                  answer={item.answer}
+                  item={item}
+                  index={index}
                   isOpen={openFAQ === index}
                   onToggle={() => setOpenFAQ(openFAQ === index ? null : index)}
                 />
@@ -309,17 +368,17 @@ export default function RaumgestaltungPage() {
       <section className="section-spacing bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
-            <h2 className="text-title-1 text-white">
+            <h2 className="text-title-1 text-white" {...ctaHeadlineEdit}>
               {cta.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
+            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto" {...ctaDescEdit}>
               {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90" {...ctaPrimaryEdit}>
                 {cta.ctaPrimary.label}
               </Link>
-              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80" {...ctaSecondaryEdit}>
                 {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>

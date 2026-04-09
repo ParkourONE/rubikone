@@ -189,9 +189,17 @@ interface PageHeroProps {
   breadcrumb?: string;
   image?: string;
   imageAlt?: string;
+  titleEditPath?: string;
+  descriptionEditPath?: string;
+  breadcrumbEditPath?: string;
+  imageEditPath?: string;
 }
 
-export function PageHero({ title, description, breadcrumb, image, imageAlt }: PageHeroProps) {
+export function PageHero({ title, description, breadcrumb, image, imageAlt, titleEditPath, descriptionEditPath, breadcrumbEditPath, imageEditPath }: PageHeroProps) {
+  const titleAttrs = titleEditPath ? { "data-edit-path": titleEditPath } : {};
+  const descAttrs = descriptionEditPath ? { "data-edit-path": descriptionEditPath } : {};
+  const breadcrumbAttrs = breadcrumbEditPath ? { "data-edit-path": breadcrumbEditPath } : {};
+  const imageAttrs = imageEditPath ? { "data-edit-path": imageEditPath } : {};
   // Hero with image - Split Layout
   if (image) {
     return (
@@ -209,17 +217,19 @@ export function PageHero({ title, description, breadcrumb, image, imageAlt }: Pa
                 <motion.p
                   variants={staggerItem}
                   className="text-body-sm text-[var(--color-apple-gray-600)] mb-3"
+                  {...breadcrumbAttrs}
                 >
                   {breadcrumb}
                 </motion.p>
               )}
-              <motion.h1 variants={staggerItem} className="text-hero text-[var(--color-apple-dark)]">
+              <motion.h1 variants={staggerItem} className="text-hero text-[var(--color-apple-dark)]" {...titleAttrs}>
                 {title}
               </motion.h1>
               {description && (
                 <motion.p
                   variants={staggerItem}
                   className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]"
+                  {...descAttrs}
                 >
                   {description}
                 </motion.p>
@@ -232,6 +242,7 @@ export function PageHero({ title, description, breadcrumb, image, imageAlt }: Pa
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...appleTransition, delay: 0.3 }}
               className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
+              {...imageAttrs}
             >
               <Image
                 src={image}
@@ -259,17 +270,19 @@ export function PageHero({ title, description, breadcrumb, image, imageAlt }: Pa
                   <motion.p
                     variants={staggerItem}
                     className="text-body-sm text-[var(--color-apple-gray-600)] mb-3"
+                    {...breadcrumbAttrs}
                   >
                     {breadcrumb}
                   </motion.p>
                 )}
-                <motion.h1 variants={staggerItem} className="text-display text-[var(--color-apple-dark)]">
+                <motion.h1 variants={staggerItem} className="text-display text-[var(--color-apple-dark)]" {...titleAttrs}>
                   {title}
                 </motion.h1>
                 {description && (
                   <motion.p
                     variants={staggerItem}
                     className="mt-6 text-body-lg text-[var(--color-apple-gray-600)]"
+                    {...descAttrs}
                   >
                     {description}
                   </motion.p>
@@ -298,6 +311,7 @@ export function PageHero({ title, description, breadcrumb, image, imageAlt }: Pa
               animate={{ opacity: 1 }}
               transition={{ ...appleTransition, delay: 0.3 }}
               className="flex items-center pt-24 px-8 pb-8"
+              {...imageAttrs}
             >
               <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
@@ -330,17 +344,19 @@ export function PageHero({ title, description, breadcrumb, image, imageAlt }: Pa
             <motion.p
               variants={staggerItem}
               className="text-body-sm text-[var(--color-apple-gray-600)] mb-3"
+              {...breadcrumbAttrs}
             >
               {breadcrumb}
             </motion.p>
           )}
-          <motion.h1 variants={staggerItem} className="text-display">
+          <motion.h1 variants={staggerItem} className="text-display" {...titleAttrs}>
             {title}
           </motion.h1>
           {description && (
             <motion.p
               variants={staggerItem}
               className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]"
+              {...descAttrs}
             >
               {description}
             </motion.p>
