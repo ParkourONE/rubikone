@@ -10,6 +10,7 @@ import { useContent } from "@/hooks/useContent";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
+import { useEditPath } from "@/components/cms/primitives";
 
 // Timeline images mapped to milestones
 const TIMELINE_IMAGES: Record<string, string> = {
@@ -26,6 +27,21 @@ export function ParkourONEStoryFull() {
   const ueberUnsPage = useContent("UEBER_UNS_STORY", UEBER_UNS_STORY);
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   const timelineScrollRef = useRef<HTMLDivElement>(null);
+  const storyIntroTaglineEdit = useEditPath("UEBER_UNS_STORY.storyIntro.tagline");
+  const storyIntroHeadlineEdit = useEditPath("UEBER_UNS_STORY.storyIntro.headline");
+  const storyIntroDesc1Edit = useEditPath("UEBER_UNS_STORY.storyIntro.description1");
+  const storyIntroDesc2Edit = useEditPath("UEBER_UNS_STORY.storyIntro.description2");
+  const storyIntroImageEdit = useEditPath("UEBER_UNS_STORY.storyIntro.image");
+  const timelineTaglineEdit = useEditPath("UEBER_UNS_STORY.timelineTagline");
+  const historyHeadlineEdit = useEditPath("PARKOURONE_STORY.history.headline");
+  const quoteTextEdit = useEditPath("PARKOURONE_STORY.quote.text");
+  const quoteAuthorEdit = useEditPath("PARKOURONE_STORY.quote.author");
+  const quoteRoleEdit = useEditPath("PARKOURONE_STORY.quote.role");
+  const expertiseTaglineEdit = useEditPath("UEBER_UNS_STORY.expertiseTagline");
+  const expertiseHeadlineEdit = useEditPath("PARKOURONE_STORY.expertise.headline");
+  const threeThemesTitleEdit = useEditPath("UEBER_UNS_STORY.threeThemes.title");
+  const threeThemesSubtitleEdit = useEditPath("UEBER_UNS_STORY.threeThemes.subtitle");
+  const fullWidthQuoteEdit = useEditPath("UEBER_UNS_STORY.fullWidthQuote");
 
   const scrollTimeline = (direction: "left" | "right") => {
     if (timelineScrollRef.current) {
@@ -45,22 +61,22 @@ export function ParkourONEStoryFull() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <FadeUp>
               <div>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4" {...storyIntroTaglineEdit}>
                   {ueberUnsPage.storyIntro.tagline}
                 </p>
-                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+                <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...storyIntroHeadlineEdit}>
                   {ueberUnsPage.storyIntro.headline}
                 </h2>
-                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
+                <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]" {...storyIntroDesc1Edit}>
                   {ueberUnsPage.storyIntro.description1}
                 </p>
-                <p className="mt-4 text-body text-[var(--color-apple-gray-600)]">
+                <p className="mt-4 text-body text-[var(--color-apple-gray-600)]" {...storyIntroDesc2Edit}>
                   {ueberUnsPage.storyIntro.description2}
                 </p>
               </div>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden" {...storyIntroImageEdit}>
                 <Image
                   src={ueberUnsPage.storyIntro.image}
                   alt="Parkour Training"
@@ -82,10 +98,10 @@ export function ParkourONEStoryFull() {
             viewport={{ once: true }}
             transition={appleTransition}
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...timelineTaglineEdit}>
               {ueberUnsPage.timelineTagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...historyHeadlineEdit}>
               {parkourStory.history.headline}
             </h2>
           </motion.div>
@@ -229,13 +245,13 @@ export function ParkourONEStoryFull() {
             <div className="max-w-4xl mx-auto text-center">
               <Quote className="h-12 w-12 text-white/30 mx-auto mb-6" strokeWidth={1} />
               <blockquote>
-                <p className="text-title-2 text-white leading-relaxed">
+                <p className="text-title-2 text-white leading-relaxed" {...quoteTextEdit}>
                   &ldquo;{parkourStory.quote.text}&rdquo;
                 </p>
               </blockquote>
               <div className="mt-8">
-                <p className="text-body font-semibold text-white">{parkourStory.quote.author}</p>
-                <p className="text-body-sm text-white/60">{parkourStory.quote.role}</p>
+                <p className="text-body font-semibold text-white" {...quoteAuthorEdit}>{parkourStory.quote.author}</p>
+                <p className="text-body-sm text-white/60" {...quoteRoleEdit}>{parkourStory.quote.role}</p>
               </div>
             </div>
           </FadeUp>
@@ -258,10 +274,10 @@ export function ParkourONEStoryFull() {
             </FadeUp>
             <div>
               <FadeUp delay={0.1}>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...expertiseTaglineEdit}>
                   {ueberUnsPage.expertiseTagline}
                 </p>
-                <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+                <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...expertiseHeadlineEdit}>
                   {parkourStory.expertise.headline}
                 </h2>
               </FadeUp>
@@ -286,6 +302,8 @@ export function ParkourONEStoryFull() {
           <SectionHeader
             title={ueberUnsPage.threeThemes.title}
             subtitle={ueberUnsPage.threeThemes.subtitle}
+            titleProps={threeThemesTitleEdit}
+            subtitleProps={threeThemesSubtitleEdit}
           />
 
           <StaggerContainer className="mt-12 grid md:grid-cols-3 gap-6">
@@ -322,7 +340,7 @@ export function ParkourONEStoryFull() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
           <div className="container-content">
-            <p className="text-title-2 text-white max-w-2xl">
+            <p className="text-title-2 text-white max-w-2xl" {...fullWidthQuoteEdit}>
               {ueberUnsPage.fullWidthQuote}
             </p>
           </div>
@@ -336,6 +354,17 @@ export function ParkourONEStoryFull() {
 export function ParkourONEStoryCompact() {
   const parkourStory = useContent("PARKOURONE_STORY", PARKOURONE_STORY);
   const ueberUnsPage = useContent("UEBER_UNS_STORY", UEBER_UNS_STORY);
+  const compactTaglineEdit = useEditPath("UEBER_UNS_STORY.compactIntro.tagline");
+  const compactHeadlineEdit = useEditPath("UEBER_UNS_STORY.compactIntro.headline");
+  const compactDescEdit = useEditPath("UEBER_UNS_STORY.compactIntro.description");
+  const compactCtaEdit = useEditPath("UEBER_UNS_STORY.compactIntro.ctaText");
+  const compactStat1ValueEdit = useEditPath("UEBER_UNS_STORY.compactIntro.stat1.value");
+  const compactStat1LabelEdit = useEditPath("UEBER_UNS_STORY.compactIntro.stat1.label");
+  const compactStat2ValueEdit = useEditPath("UEBER_UNS_STORY.compactIntro.stat2.value");
+  const compactStat2LabelEdit = useEditPath("UEBER_UNS_STORY.compactIntro.stat2.label");
+  const compactQuoteTextEdit = useEditPath("PARKOURONE_STORY.quote.text");
+  const compactQuoteAuthorEdit = useEditPath("PARKOURONE_STORY.quote.author");
+  const compactQuoteRoleEdit = useEditPath("PARKOURONE_STORY.quote.role");
   return (
     <section className="section-spacing bg-white">
       <div className="container-content">
@@ -347,13 +376,13 @@ export function ParkourONEStoryCompact() {
           transition={appleTransition}
           className="text-center mb-12"
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...compactTaglineEdit}>
             {ueberUnsPage.compactIntro.tagline}
           </p>
-          <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+          <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...compactHeadlineEdit}>
             {ueberUnsPage.compactIntro.headline}
           </h2>
-          <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-3xl mx-auto">
+          <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-3xl mx-auto" {...compactDescEdit}>
             {ueberUnsPage.compactIntro.description}
           </p>
         </motion.div>
@@ -367,12 +396,12 @@ export function ParkourONEStoryCompact() {
           className="flex flex-wrap justify-center gap-12 lg:gap-20 mb-12"
         >
           <div className="text-center">
-            <p className="text-display text-[var(--color-apple-blue)]">{ueberUnsPage.compactIntro.stat1.value}</p>
-            <p className="text-body text-[var(--color-apple-gray-600)]">{ueberUnsPage.compactIntro.stat1.label}</p>
+            <p className="text-display text-[var(--color-apple-blue)]" {...compactStat1ValueEdit}>{ueberUnsPage.compactIntro.stat1.value}</p>
+            <p className="text-body text-[var(--color-apple-gray-600)]" {...compactStat1LabelEdit}>{ueberUnsPage.compactIntro.stat1.label}</p>
           </div>
           <div className="text-center">
-            <p className="text-display text-[var(--color-apple-blue)]">{ueberUnsPage.compactIntro.stat2.value}</p>
-            <p className="text-body text-[var(--color-apple-gray-600)]">{ueberUnsPage.compactIntro.stat2.label}</p>
+            <p className="text-display text-[var(--color-apple-blue)]" {...compactStat2ValueEdit}>{ueberUnsPage.compactIntro.stat2.value}</p>
+            <p className="text-body text-[var(--color-apple-gray-600)]" {...compactStat2LabelEdit}>{ueberUnsPage.compactIntro.stat2.label}</p>
           </div>
         </motion.div>
 
@@ -384,7 +413,7 @@ export function ParkourONEStoryCompact() {
           transition={{ ...appleTransition, delay: 0.2 }}
           className="text-center mb-16"
         >
-          <Link href={ueberUnsPage.compactIntro.ctaHref} className="btn-secondary inline-flex">
+          <Link href={ueberUnsPage.compactIntro.ctaHref} className="btn-secondary inline-flex" {...compactCtaEdit}>
             {ueberUnsPage.compactIntro.ctaText}
             <ArrowRight className="h-4 w-4" />
           </Link>
@@ -401,7 +430,7 @@ export function ParkourONEStoryCompact() {
           <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6">
             <div className="flex gap-3 mb-4">
               <Quote className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" strokeWidth={1.5} />
-              <p className="text-body text-[var(--color-apple-dark)] leading-relaxed">
+              <p className="text-body text-[var(--color-apple-dark)] leading-relaxed" {...compactQuoteTextEdit}>
                 &ldquo;{parkourStory.quote.text}&rdquo;
               </p>
             </div>
@@ -410,10 +439,10 @@ export function ParkourONEStoryCompact() {
                 <Users className="h-5 w-5 text-[var(--color-apple-gray-500)]" />
               </div>
               <div>
-                <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
+                <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]" {...compactQuoteAuthorEdit}>
                   {parkourStory.quote.author}
                 </p>
-                <p className="text-caption text-[var(--color-apple-gray-600)]">
+                <p className="text-caption text-[var(--color-apple-gray-600)]" {...compactQuoteRoleEdit}>
                   {parkourStory.quote.role}
                 </p>
               </div>

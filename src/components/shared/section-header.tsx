@@ -9,6 +9,9 @@ interface SectionHeaderProps {
   className?: string;
   titleClassName?: string;
   animated?: boolean;
+  titleProps?: Record<string, string>;
+  subtitleProps?: Record<string, string>;
+  descriptionProps?: Record<string, string>;
 }
 
 export function SectionHeader({
@@ -19,6 +22,9 @@ export function SectionHeader({
   className,
   titleClassName,
   animated = true,
+  titleProps,
+  subtitleProps,
+  descriptionProps,
 }: SectionHeaderProps) {
   const content = (
     <div
@@ -28,15 +34,21 @@ export function SectionHeader({
       )}
     >
       {subtitle && (
-        <p className="text-body-sm font-medium uppercase tracking-wider text-[var(--color-apple-blue)] mb-3">
+        <p
+          className="text-body-sm font-medium uppercase tracking-wider text-[var(--color-apple-blue)] mb-3"
+          {...subtitleProps}
+        >
           {subtitle}
         </p>
       )}
-      <h2 className={cn("text-title-1", titleClassName)}>
+      <h2 className={cn("text-title-1", titleClassName)} {...titleProps}>
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
+        <p
+          className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]"
+          {...descriptionProps}
+        >
           {description}
         </p>
       )}

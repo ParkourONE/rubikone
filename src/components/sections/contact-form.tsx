@@ -12,11 +12,15 @@ import { SectionHeader } from "@/components/shared/section-header";
 interface ContactFormProps {
   title?: string;
   subtitle?: string;
+  titleEditPath?: string;
+  subtitleEditPath?: string;
 }
 
 export function ContactForm({
   title = "Kontaktieren Sie uns",
   subtitle = "Kontakt",
+  titleEditPath,
+  subtitleEditPath,
 }: ContactFormProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -76,7 +80,13 @@ export function ContactForm({
   return (
     <section className="section-spacing">
       <div className="container-content">
-        <SectionHeader title={title} subtitle={subtitle} className="mb-12" />
+        <SectionHeader
+          title={title}
+          subtitle={subtitle}
+          className="mb-12"
+          titleProps={titleEditPath ? { "data-edit-path": titleEditPath } : undefined}
+          subtitleProps={subtitleEditPath ? { "data-edit-path": subtitleEditPath } : undefined}
+        />
 
         <FadeUp>
           <form onSubmit={handleSubmit} className="space-y-6 max-w-xl mx-auto">

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { ChevronDown, ChevronUp, ArrowLeft, ArrowRight, Lightbulb, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeUp } from "@/components/shared/fade-up";
+import { useEditPath } from "@/components/cms/primitives";
 
 interface Exercise {
   title: string;
@@ -33,6 +34,7 @@ interface PostenPageProps {
   heroImage?: string;
   prevPosten?: { slug: string; title: string };
   nextPosten?: { slug: string; title: string };
+  editPathPrefix?: string;
 }
 
 export function PostenPage({
@@ -46,8 +48,16 @@ export function PostenPage({
   heroImage,
   prevPosten,
   nextPosten,
+  editPathPrefix,
 }: PostenPageProps) {
   const [showFurtherExercises, setShowFurtherExercises] = useState(false);
+  const p = editPathPrefix;
+  const numberEdit = useEditPath(p ? `${p}.number` : undefined);
+  const titleEdit = useEditPath(p ? `${p}.title` : undefined);
+  const introEdit = useEditPath(p ? `${p}.intro` : undefined);
+  const tagescheckEdit = useEditPath(p ? `${p}.tagescheck` : undefined);
+  const potenzialTitleEdit = useEditPath(p ? `${p}.potenzial.title` : undefined);
+  const potenzialContentEdit = useEditPath(p ? `${p}.potenzial.content` : undefined);
 
   return (
     <>
@@ -66,10 +76,10 @@ export function PostenPage({
         )}
         <div className="container-content relative z-10 py-20">
           <FadeUp>
-            <p className="text-body-lg text-[var(--color-apple-blue)] font-semibold mb-2">
+            <p className="text-body-lg text-[var(--color-apple-blue)] font-semibold mb-2" {...numberEdit}>
               {number}
             </p>
-            <h1 className="text-display text-white uppercase tracking-wide">
+            <h1 className="text-display text-white uppercase tracking-wide" {...titleEdit}>
               {title}
             </h1>
           </FadeUp>
@@ -80,7 +90,7 @@ export function PostenPage({
       <section className="section-spacing bg-white">
         <div className="container-content max-w-3xl">
           <FadeUp>
-            <p className="text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed">
+            <p className="text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed" {...introEdit}>
               {intro}
             </p>
           </FadeUp>
@@ -183,7 +193,7 @@ export function PostenPage({
                   <p className="text-caption font-semibold text-[var(--color-apple-blue)] uppercase tracking-wider mb-2">
                     Tagescheck
                   </p>
-                  <p className="text-body-lg text-[var(--color-apple-dark)] font-medium">
+                  <p className="text-body-lg text-[var(--color-apple-dark)] font-medium" {...tagescheckEdit}>
                     {tagescheck}
                   </p>
                 </div>
@@ -205,7 +215,7 @@ export function PostenPage({
                 <p className="text-caption font-semibold text-[var(--color-apple-gray-600)] uppercase tracking-wider mb-1">
                   Potenzial
                 </p>
-                <h2 className="text-title-2 text-[var(--color-apple-dark)]">
+                <h2 className="text-title-2 text-[var(--color-apple-dark)]" {...potenzialTitleEdit}>
                   {potenzial.title}
                 </h2>
               </div>
@@ -213,6 +223,7 @@ export function PostenPage({
             <div
               className="prose prose-lg max-w-none text-[var(--color-apple-gray-700)]"
               dangerouslySetInnerHTML={{ __html: potenzial.content }}
+              {...potenzialContentEdit}
             />
           </FadeUp>
         </div>
