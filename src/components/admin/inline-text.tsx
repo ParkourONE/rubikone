@@ -1,7 +1,13 @@
 "use client";
 
-import { useRef, useState, useCallback, useEffect } from "react";
+/**
+ * Compat shim preserving the old `<InlineText contentKey field>` API.
+ * Delegates to the new primitive at `src/components/cms/InlineText.tsx`.
+ * Kept so any existing imports continue to work — no behaviour change
+ * in public mode, and the same contentEditable flow in admin mode.
+ */
 import { useAdmin } from "@/providers/admin-provider";
+import { InlineText as CmsInlineText } from "@/components/cms/InlineText";
 
 interface InlineTextProps {
   contentKey: string;
@@ -11,25 +17,24 @@ interface InlineTextProps {
   className?: string;
 }
 
-function getNestedValue(obj: any, path: string): string | undefined {
+function getNestedValue(obj: unknown, path: string): string | undefined {
   const parts: string[] = [];
   const regex = /([^.\[\]]+)|\[(\d+)\]/g;
-  let match;
+  let match: RegExpExecArray | null;
   while ((match = regex.exec(path)) !== null) {
-    parts.push(match[1] ?? match[2]);
+    parts.push((match[1] ?? match[2]) as string);
   }
-
-  let current = obj;
+  let current: unknown = obj;
   for (const part of parts) {
-    if (current == null) return undefined;
+    if (current == null || typeof current !== "object") return undefined;
+    const asArray = current as Record<string, unknown> & unknown[];
     const index = Number(part);
     if (!isNaN(index) && Array.isArray(current)) {
-      current = current[index];
+      current = asArray[index];
     } else {
-      current = current[part];
+      current = (current as Record<string, unknown>)[part];
     }
   }
-
   return typeof current === "string" ? current : undefined;
 }
 
@@ -37,100 +42,29 @@ export function InlineText({
   contentKey,
   field,
   children,
-  as: Tag = "span",
+  as = "span",
   className,
 }: InlineTextProps) {
   const { isAdmin, content, updateContent } = useAdmin();
-  const [isEditing, setIsEditing] = useState(false);
-  const ref = useRef<HTMLElement>(null);
-
-  // Get the current value from content
   const fullPath = `${contentKey}.${field}`;
-  const currentValue =
+  const liveValue =
     isAdmin && content ? getNestedValue(content, fullPath) : undefined;
 
-  const handleBlur = useCallback(() => {
-    setIsEditing(false);
-    if (ref.current) {
-      const newValue = ref.current.textContent || "";
-      if (newValue !== currentValue) {
-        updateContent(fullPath, newValue);
-      }
-    }
-  }, [currentValue, fullPath, updateContent]);
-
-  const handleKeyDown = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setIsEditing(false);
-        // Restore original value
-        if (ref.current && currentValue !== undefined) {
-          ref.current.textContent = currentValue;
-        }
-        ref.current?.blur();
-      }
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        ref.current?.blur();
-      }
-    },
-    [currentValue]
-  );
-
-  // Sync content value to DOM when content changes externally
-  useEffect(() => {
-    if (!isEditing && ref.current && currentValue !== undefined) {
-      if (ref.current.textContent !== currentValue) {
-        ref.current.textContent = currentValue;
-      }
-    }
-  }, [currentValue, isEditing]);
-
-  // Non-admin: zero overhead
   if (!isAdmin) {
+    const Tag = as as unknown as React.ElementType;
     return <Tag className={className}>{children}</Tag>;
   }
 
-  const handleClick = () => {
-    setIsEditing(true);
-    // Focus happens after render via the effect below
-    requestAnimationFrame(() => {
-      if (ref.current) {
-        ref.current.focus();
-        // Move cursor to end
-        const selection = window.getSelection();
-        const range = document.createRange();
-        range.selectNodeContents(ref.current);
-        range.collapse(false);
-        selection?.removeAllRanges();
-        selection?.addRange(range);
-      }
-    });
-  };
+  const displayValue =
+    liveValue ?? (typeof children === "string" ? children : "");
 
   return (
-    <Tag
-      ref={ref as any}
-      className={`${className || ""} admin-inline-text ${
-        isEditing ? "admin-inline-text--editing" : ""
-      }`}
-      contentEditable={isEditing}
-      suppressContentEditableWarning
-      onClick={handleClick}
-      onBlur={handleBlur}
-      onKeyDown={handleKeyDown}
-      style={
-        isEditing
-          ? {
-              outline: "2px solid var(--color-apple-blue, #007AFF)",
-              outlineOffset: "4px",
-              borderRadius: "4px",
-              cursor: "text",
-            }
-          : undefined
-      }
-    >
-      {currentValue !== undefined ? currentValue : children}
-    </Tag>
+    <CmsInlineText
+      as={as}
+      className={className}
+      value={displayValue}
+      editable
+      onChange={(next) => updateContent(fullPath, next)}
+    />
   );
 }
