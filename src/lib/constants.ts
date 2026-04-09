@@ -31,21 +31,9 @@ export const PROBLEM_CONTENT = content.PROBLEM_CONTENT;
 // Solution Section
 export const SOLUTION_CONTENT = content.SOLUTION_CONTENT;
 
-// Die 9 Posten (images bleiben hier, Texte aus JSON)
-export const NINE_MOVEMENTS = content.NINE_MOVEMENTS.map((m, i) => ({
-  ...m,
-  image: [
-    "/images/posten/greifen.jpg",
-    "/images/posten/hangeln.jpg",
-    "/images/posten/stuetzen.jpg",
-    "/images/posten/springen.jpg",
-    "/images/posten/balancieren.jpg",
-    "/images/posten/landen.jpg",
-    "/images/posten/klettern.jpg",
-    "/images/posten/rollen.jpg",
-    "/images/posten/laufen.jpg",
-  ][i],
-}));
+// Die 9 Posten — Bilder leben seit Schema v2 im content-Eintrag selbst,
+// entkoppelt vom positionalen Zip (MAN-05). Reorder/delete ist jetzt safe.
+export const NINE_MOVEMENTS = content.NINE_MOVEMENTS;
 
 // Schwierigkeitsgrade (nicht editierbar - Farb-Codes)
 export const DIFFICULTY_LEVELS = {

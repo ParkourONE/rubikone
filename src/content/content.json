@@ -1,5 +1,5 @@
 {
-  "__schemaVersion": 1,
+  "__schemaVersion": 2,
   "SITE_CONFIG": {
     "name": "RubikONE",
     "tagline": "Die Stadt wird zum Bewegungsraum",
@@ -100,55 +100,64 @@
       "id": "greifen",
       "name": "Greifen",
       "description": "Hände aktivieren, Griffkraft stärken",
-      "_id": "LEtqNnrU6_"
+      "_id": "LEtqNnrU6_",
+      "image": "/images/posten/greifen.jpg"
     },
     {
       "id": "hangeln",
       "name": "Hangeln",
       "description": "Am Geländer entlanghangeln",
-      "_id": "07G359QqOZ"
+      "_id": "07G359QqOZ",
+      "image": "/images/posten/hangeln.jpg"
     },
     {
       "id": "stuetzen",
       "name": "Stützen",
       "description": "Körpergewicht auf den Händen tragen",
-      "_id": "H-xrBy7X2Y"
+      "_id": "H-xrBy7X2Y",
+      "image": "/images/posten/stuetzen.jpg"
     },
     {
       "id": "springen",
       "name": "Springen",
       "description": "Von Punkt zu Punkt springen",
-      "_id": "ravRlj3O94"
+      "_id": "ravRlj3O94",
+      "image": "/images/posten/springen.jpg"
     },
     {
       "id": "balancieren",
       "name": "Balancieren",
       "description": "Auf Mauern und Linien balancieren",
-      "_id": "urHylf-xRj"
+      "_id": "urHylf-xRj",
+      "image": "/images/posten/balancieren.jpg"
     },
     {
       "id": "landen",
       "name": "Landen",
       "description": "Sicher und kontrolliert landen",
-      "_id": "JAKTeBloat"
+      "_id": "JAKTeBloat",
+      "image": "/images/posten/landen.jpg"
     },
     {
       "id": "klettern",
       "name": "Klettern",
       "description": "Hindernisse überwinden",
-      "_id": "RyG5D_LAJz"
+      "_id": "RyG5D_LAJz",
+      "image": "/images/posten/klettern.jpg"
     },
     {
       "id": "rollen",
       "name": "Rollen",
       "description": "Abrollen und Aufstehen",
-      "_id": "6mgxE2WhDD"
+      "_id": "6mgxE2WhDD",
+      "image": "/images/posten/rollen.jpg"
     },
     {
       "id": "laufen",
       "name": "Laufen",
       "description": "Die Route verbindet alle Posten",
-      "_id": "XZmSxsjFKp"
+      "_id": "XZmSxsjFKp",
+      "image": "/images/posten/laufen.jpg"
     }
   ],
   "COMPARISON_TABLE": {
