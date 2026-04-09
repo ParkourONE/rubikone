@@ -98,7 +98,55 @@
 
 ## Traceability
 
-Wird beim Roadmap-Step befüllt.
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| SEC-01 | Phase 1 | Pending |
+| SEC-02 | Phase 1 | Pending |
+| SEC-03 | Phase 1 | Pending |
+| SEC-04 | Phase 1 | Pending |
+| SEC-05 | Phase 1 | Pending |
+| FND-01 | Phase 1 | Pending |
+| FND-02 | Phase 1 | Pending |
+| FND-03 | Phase 1 | Pending |
+| FND-04 | Phase 1 | Pending |
+| FND-05 | Phase 1 | Pending |
+| MAN-01 | Phase 2 | Pending |
+| MAN-02 | Phase 2 | Pending |
+| MAN-03 | Phase 2 | Pending |
+| MAN-04 | Phase 2 | Pending |
+| MAN-05 | Phase 2 | Pending |
+| PRIM-01 | Phase 3 | Pending |
+| PRIM-02 | Phase 3 | Pending |
+| PRIM-03 | Phase 3 | Pending |
+| PRIM-04 | Phase 3 | Pending |
+| PRIM-05 | Phase 3 | Pending |
+| PRIM-06 | Phase 3 | Pending |
+| EDIT-01 | Phase 4 | Pending |
+| EDIT-02 | Phase 4 | Pending |
+| EDIT-03 | Phase 4 | Pending |
+| EDIT-04 | Phase 4 | Pending |
+| EDIT-05 | Phase 4 | Pending |
+| EDIT-06 | Phase 4 | Pending |
+| EDIT-07 | Phase 4 | Pending |
+| EDIT-08 | Phase 4 | Pending |
+| EDIT-09 | Phase 4 | Pending |
+| EDIT-10 | Phase 4 | Pending |
+| EDIT-11 | Phase 4 | Pending |
+| EDIT-12 | Phase 4 | Pending |
+| EDIT-13 | Phase 4 | Pending |
+| PERS-01 | Phase 4 | Pending |
+| PERS-02 | Phase 4 | Pending |
+| PERS-03 | Phase 4 | Pending |
+| PERS-04 | Phase 4 | Pending |
+| PERS-05 | Phase 4 | Pending |
+| PERS-06 | Phase 4 | Pending |
+| PERS-07 | Phase 4 | Pending |
+| UX-01 | Phase 4 | Pending |
+| UX-02 | Phase 4 | Pending |
+| UX-03 | Phase 5 | Pending |
+| UX-04 | Phase 5 | Pending |
+
+**Coverage:** 45/45 v1 requirements mapped.
 
 ---
-*Requirements defined: 2026-04-09*
+*Requirements defined: 2026-04-09; traceability added 2026-04-09*
