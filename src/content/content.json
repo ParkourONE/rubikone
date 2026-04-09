@@ -1,4 +1,5 @@
 {
+  "__schemaVersion": 1,
   "SITE_CONFIG": {
     "name": "RubikONE",
     "tagline": "Die Stadt wird zum Bewegungsraum",
@@ -8,23 +9,28 @@
   "NAVIGATION_ITEMS": [
     {
       "label": "Konzept",
-      "href": "/konzept"
+      "href": "/konzept",
+      "_id": "_98T-mTq4r"
     },
     {
       "label": "Raumgestaltung",
-      "href": "/raumgestaltung"
+      "href": "/raumgestaltung",
+      "_id": "4MHBn3GiWk"
     },
     {
       "label": "Referenz Köniz",
-      "href": "/koeniz"
+      "href": "/koeniz",
+      "_id": "0N2vD0g_7l"
     },
     {
       "label": "Impulsworkshop",
-      "href": "/impulsworkshop"
+      "href": "/impulsworkshop",
+      "_id": "ePsxZinlRI"
     },
     {
       "label": "Über uns",
-      "href": "/ueber-uns"
+      "href": "/ueber-uns",
+      "_id": "BRiZpKumt2"
     }
   ],
   "HERO_CONTENT": {
@@ -45,27 +51,32 @@
     {
       "value": "531",
       "label": "Teilnehmende",
-      "sublabel": "in Köniz"
+      "sublabel": "in Köniz",
+      "_id": "wKwlZFSwLA"
     },
     {
       "value": "94%",
       "label": "verstehen's",
-      "sublabel": "sofort"
+      "sublabel": "sofort",
+      "_id": "As11dcowBv"
     },
     {
       "value": "84%",
       "label": "schätzen den",
-      "sublabel": "Gratiszugang"
+      "sublabel": "Gratiszugang",
+      "_id": "5wUNI4-IbQ"
     },
     {
       "value": "0 CHF",
       "label": "Wartung",
-      "sublabel": "in 8 Monaten"
+      "sublabel": "in 8 Monaten",
+      "_id": "C_XFMDEDRz"
     },
     {
       "value": "BASPO",
       "label": "lab7x1",
-      "sublabel": "evaluiert"
+      "sublabel": "evaluiert",
+      "_id": "kkOgK0Tv4V"
     }
   ],
   "PROBLEM_CONTENT": {
@@ -88,47 +99,56 @@
     {
       "id": "greifen",
       "name": "Greifen",
-      "description": "Hände aktivieren, Griffkraft stärken"
+      "description": "Hände aktivieren, Griffkraft stärken",
+      "_id": "LEtqNnrU6_"
     },
     {
       "id": "hangeln",
       "name": "Hangeln",
-      "description": "Am Geländer entlanghangeln"
+      "description": "Am Geländer entlanghangeln",
+      "_id": "07G359QqOZ"
     },
     {
       "id": "stuetzen",
       "name": "Stützen",
-      "description": "Körpergewicht auf den Händen tragen"
+      "description": "Körpergewicht auf den Händen tragen",
+      "_id": "H-xrBy7X2Y"
     },
     {
       "id": "springen",
       "name": "Springen",
-      "description": "Von Punkt zu Punkt springen"
+      "description": "Von Punkt zu Punkt springen",
+      "_id": "ravRlj3O94"
     },
     {
       "id": "balancieren",
       "name": "Balancieren",
-      "description": "Auf Mauern und Linien balancieren"
+      "description": "Auf Mauern und Linien balancieren",
+      "_id": "urHylf-xRj"
     },
     {
       "id": "landen",
       "name": "Landen",
-      "description": "Sicher und kontrolliert landen"
+      "description": "Sicher und kontrolliert landen",
+      "_id": "JAKTeBloat"
     },
     {
       "id": "klettern",
       "name": "Klettern",
-      "description": "Hindernisse überwinden"
+      "description": "Hindernisse überwinden",
+      "_id": "RyG5D_LAJz"
     },
     {
       "id": "rollen",
       "name": "Rollen",
-      "description": "Abrollen und Aufstehen"
+      "description": "Abrollen und Aufstehen",
+      "_id": "6mgxE2WhDD"
     },
     {
       "id": "laufen",
       "name": "Laufen",
-      "description": "Die Route verbindet alle Posten"
+      "description": "Die Route verbindet alle Posten",
+      "_id": "XZmSxsjFKp"
     }
   ],
   "COMPARISON_TABLE": {
@@ -137,27 +157,33 @@
     "features": [
       {
         "label": "Keine neue Fläche nötig",
-        "description": "RubikONE nutzt bestehende Infrastruktur – Treppen, Mauern, Geländer werden zu Bewegungsposten."
+        "description": "RubikONE nutzt bestehende Infrastruktur – Treppen, Mauern, Geländer werden zu Bewegungsposten.",
+        "_id": "3sjK_Bh7Ao"
       },
       {
         "label": "Minimaler baulicher Eingriff",
-        "description": "Kein Tiefbau, nur kleine Fundamente für die Schilder. Denkmalschutz-kompatibel bewiesen in Köniz."
+        "description": "Kein Tiefbau, nur kleine Fundamente für die Schilder. Denkmalschutz-kompatibel bewiesen in Köniz.",
+        "_id": "72a3R23UO3"
       },
       {
         "label": "Für alle Generationen",
-        "description": "Von 6 bis 96 – RubikONE spricht alle an. Fünf Lerndimensionen machen Bewegung für alle zugänglich."
+        "description": "Von 6 bis 96 – RubikONE spricht alle an. Fünf Lerndimensionen machen Bewegung für alle zugänglich.",
+        "_id": "jeS3c6WgBW"
       },
       {
         "label": "Wissenschaftlich evaluiert",
-        "description": "Im Rahmen des BASPO lab7x1 über zwei Jahre begleitet und durch Affective Advisory evaluiert."
+        "description": "Im Rahmen des BASPO lab7x1 über zwei Jahre begleitet und durch Affective Advisory evaluiert.",
+        "_id": "CqdrdUlrhm"
       },
       {
         "label": "Wartungsarm",
-        "description": "8 Monate Betrieb in Köniz: CHF 0 Wartungskosten, 0 Vandalismusfälle."
+        "description": "8 Monate Betrieb in Köniz: CHF 0 Wartungskosten, 0 Vandalismusfälle.",
+        "_id": "Ovfkysh1xh"
       },
       {
         "label": "Modulare Umsetzung",
-        "description": "Sie entscheiden, welche Leistungen Sie selbst übernehmen und wo Sie unsere Expertise nutzen."
+        "description": "Sie entscheiden, welche Leistungen Sie selbst übernehmen und wo Sie unsere Expertise nutzen.",
+        "_id": "18f0YajvKX"
       }
     ]
   },
@@ -165,12 +191,14 @@
     {
       "quote": "Das Potenzial für Bewegung, für Wohlbefinden und Leistungsfähigkeit ist elementar. Hauptsache Menschen bewegen sich – und im Idealfall draussen. RubikONE macht genau das möglich.",
       "author": "Christoph Conz",
-      "role": "Bundesamt für Sport BASPO, lab7x1"
+      "role": "Bundesamt für Sport BASPO, lab7x1",
+      "_id": "8ywabnHIUX"
     },
     {
       "quote": "RubikONE bedeutet für uns ein niederschwelliges Angebot, das die Bevölkerung zu Bewegung einlädt – und zwar mit Sachen, die schon vorhanden sind. Als Roger das Projekt vorstellte, war sofort klar: Das ist innovativ.",
       "author": "Stephan Baeriswyl",
-      "role": "Fachstelle Sport, Gemeinde Köniz"
+      "role": "Fachstelle Sport, Gemeinde Köniz",
+      "_id": "6WDHKsGVrl"
     }
   ],
   "PROCESS_PHASES": [
@@ -184,7 +212,8 @@
         "CHF 1'990.–",
         "Bis 12 Personen"
       ],
-      "duration": "1 Tag"
+      "duration": "1 Tag",
+      "_id": "ojjHruBp8E"
     },
     {
       "number": "2",
@@ -196,7 +225,8 @@
         "Eigentümer klären",
         "Sicherheitsprüfung"
       ],
-      "duration": "4–6 Wochen"
+      "duration": "4–6 Wochen",
+      "_id": "ZuLRojyLRa"
     },
     {
       "number": "3",
@@ -208,7 +238,8 @@
         "Produktion",
         "Installation"
       ],
-      "duration": "3–4 Monate"
+      "duration": "3–4 Monate",
+      "_id": "uQgMuttT85"
     },
     {
       "number": "4",
@@ -220,7 +251,8 @@
         "Workshops",
         "Übergabe"
       ],
-      "duration": "1 Tag"
+      "duration": "1 Tag",
+      "_id": "yoooFgkDJU"
     }
   ],
   "PRICING_PACKAGES": [
@@ -232,38 +264,47 @@
       "features": [
         {
           "name": "Standortanalyse",
-          "included": true
+          "included": true,
+          "_id": "Ll95THWzBC"
         },
         {
           "name": "Konzeption & Design",
-          "included": true
+          "included": true,
+          "_id": "SusCakscRu"
         },
         {
           "name": "Safety Check",
-          "included": true
+          "included": true,
+          "_id": "E1ud0DOifL"
         },
         {
           "name": "Beschilderung",
-          "included": true
+          "included": true,
+          "_id": "SrhKXaCMZh"
         },
         {
           "name": "Farbmarkierungen",
-          "included": true
+          "included": true,
+          "_id": "ln6jLy5yxv"
         },
         {
           "name": "QR-Code System",
-          "included": true
+          "included": true,
+          "_id": "2PCACn7tv2"
         },
         {
           "name": "Eröffnungsevent",
-          "included": false
+          "included": false,
+          "_id": "9XK101e1y0"
         },
         {
           "name": "Impulsworkshops",
-          "included": false
+          "included": false,
+          "_id": "Tz1W0IaSIr"
         }
       ],
-      "highlighted": false
+      "highlighted": false,
+      "_id": "zX4TWYp_wi"
     },
     {
       "name": "Standard",
@@ -273,39 +314,48 @@
       "features": [
         {
           "name": "Standortanalyse",
-          "included": true
+          "included": true,
+          "_id": "paNJslJQby"
         },
         {
           "name": "Konzeption & Design",
-          "included": true
+          "included": true,
+          "_id": "H0CKoAAax4"
         },
         {
           "name": "Safety Check",
-          "included": true
+          "included": true,
+          "_id": "NX_RvNybVS"
         },
         {
           "name": "Beschilderung",
-          "included": true
+          "included": true,
+          "_id": "-EeHm4IE43"
         },
         {
           "name": "Farbmarkierungen",
-          "included": true
+          "included": true,
+          "_id": "O3zd1JnYez"
         },
         {
           "name": "QR-Code System",
-          "included": true
+          "included": true,
+          "_id": "Z_bTrmbpjO"
         },
         {
           "name": "Eröffnungsevent",
-          "included": true
+          "included": true,
+          "_id": "6po7XkGG3b"
         },
         {
           "name": "1× Impulsworkshop",
-          "included": true
+          "included": true,
+          "_id": "v88KGtpWSj"
         }
       ],
       "highlighted": true,
-      "badge": "Beliebt"
+      "badge": "Beliebt",
+      "_id": "GtpH565uUY"
     },
     {
       "name": "Premium",
@@ -315,38 +365,47 @@
       "features": [
         {
           "name": "Standortanalyse",
-          "included": true
+          "included": true,
+          "_id": "eFdI14YZEv"
         },
         {
           "name": "Konzeption & Design",
-          "included": true
+          "included": true,
+          "_id": "5ISRRhaerQ"
         },
         {
           "name": "Safety Check",
-          "included": true
+          "included": true,
+          "_id": "ybj73nCQBC"
         },
         {
           "name": "Beschilderung",
-          "included": true
+          "included": true,
+          "_id": "K-OlqlxJIR"
         },
         {
           "name": "Farbmarkierungen",
-          "included": true
+          "included": true,
+          "_id": "8Fc9-TInNO"
         },
         {
           "name": "QR-Code System",
-          "included": true
+          "included": true,
+          "_id": "00Td0cKG9c"
         },
         {
           "name": "Eröffnungsevent",
-          "included": true
+          "included": true,
+          "_id": "w7aTNhcY5i"
         },
         {
           "name": "3× Impulsworkshops",
-          "included": true
+          "included": true,
+          "_id": "cTz60GALu2"
         }
       ],
-      "highlighted": false
+      "highlighted": false,
+      "_id": "JB8fRzKL90"
     }
   ],
   "IMPULSWORKSHOP": {
@@ -363,19 +422,23 @@
     "program": [
       {
         "title": "Begrüssung",
-        "description": "Ziel und Absicht des Workshops"
+        "description": "Ziel und Absicht des Workshops",
+        "_id": "X4ZwE9mTZV"
       },
       {
         "title": "Einführung",
-        "description": "Was ist Parkour und weshalb braucht es das?"
+        "description": "Was ist Parkour und weshalb braucht es das?",
+        "_id": "G3MrHLDsE4"
       },
       {
         "title": "Hauptteil",
-        "description": "Umgebung neu interpretieren, Beispiele testen"
+        "description": "Umgebung neu interpretieren, Beispiele testen",
+        "_id": "lmkgVKPF_5"
       },
       {
         "title": "Abschluss",
-        "description": "Potenzial erkennen, nächste Schritte"
+        "description": "Potenzial erkennen, nächste Schritte",
+        "_id": "RTaldJxM8c"
       }
     ],
     "outcomes": [
@@ -409,54 +472,65 @@
       {
         "title": "Sofort verstanden",
         "shortDesc": "RubikONE ist selbsterklärend und spricht eine simple Farb- und Formsprache.",
-        "fullDesc": "94% der Befragten verstehen auf Anhieb, wie sie RubikONE nutzen können. Die Farbmarkierungen und Postenschilder erleichtern den Einstieg – ohne zusätzlichen Coach."
+        "fullDesc": "94% der Befragten verstehen auf Anhieb, wie sie RubikONE nutzen können. Die Farbmarkierungen und Postenschilder erleichtern den Einstieg – ohne zusätzlichen Coach.",
+        "_id": "pzuJOSPBbV"
       },
       {
         "title": "Gemeinsame Freude",
         "shortDesc": "Alleine oder als Team – die Spielfreude wird geweckt",
-        "fullDesc": "75% der befragten Nutzenden sagen: RubikONE macht Spass, besonders gemeinsam mit Gleichgesinnten."
+        "fullDesc": "75% der befragten Nutzenden sagen: RubikONE macht Spass, besonders gemeinsam mit Gleichgesinnten.",
+        "_id": "n34d78Ds9T"
       },
       {
         "title": "Spontan genutzt",
         "shortDesc": "Menschen integrieren RubikONE in ihren Alltag",
-        "fullDesc": "Beobachtungen und Berichte aus der Nachbarschaft zeigen, dass zentral gelegene Posten regelmässig von Sporttreibenden als Trainingsort, sowie von Familien und Kindern als Spielaktivität genutzt werden."
+        "fullDesc": "Beobachtungen und Berichte aus der Nachbarschaft zeigen, dass zentral gelegene Posten regelmässig von Sporttreibenden als Trainingsort, sowie von Familien und Kindern als Spielaktivität genutzt werden.",
+        "_id": "ka0WdGtI2u"
       },
       {
         "title": "Qualität überzeugt",
         "shortDesc": "Politische Hürden sind überwindbar",
-        "fullDesc": "Aus Bedenken wurde Überzeugung: Kein Vandalismus, keine Unfälle. 84% schätzen den kostenfreien Zugang zu jeder Zeit und direkt vor der Haustür."
+        "fullDesc": "Aus Bedenken wurde Überzeugung: Kein Vandalismus, keine Unfälle. 84% schätzen den kostenfreien Zugang zu jeder Zeit und direkt vor der Haustür.",
+        "_id": "kil-Zcl0aZ"
       },
       {
         "title": "Workshops ergänzen",
         "shortDesc": "Lehrpersonen entdecken eine Alternative zur Sporthalle",
-        "fullDesc": "29 Schulklassen waren mit einem Parkourcoach auf dem RubikONE. Die Lehrpersonen können sich vorstellen den Fitnessparkour in den Sportunterricht einzubauen."
+        "fullDesc": "29 Schulklassen waren mit einem Parkourcoach auf dem RubikONE. Die Lehrpersonen können sich vorstellen den Fitnessparkour in den Sportunterricht einzubauen.",
+        "_id": "To3QoZ13Xw"
       },
       {
         "title": "Effektive Kommunikation",
         "shortDesc": "RubikONE verbindet Ideen und Fachdisziplinen",
-        "fullDesc": "Als ersten Schritt der Zusammenarbeit einen Impulsworkshop (120 Minuten, bis 12 Personen) durchzuführen, hat sich bewährt. Die wichtigsten Verwaltungsabteilungen erlebten vor Ort, wie RubikONE aussehen kann und was es dazu braucht."
+        "fullDesc": "Als ersten Schritt der Zusammenarbeit einen Impulsworkshop (120 Minuten, bis 12 Personen) durchzuführen, hat sich bewährt. Die wichtigsten Verwaltungsabteilungen erlebten vor Ort, wie RubikONE aussehen kann und was es dazu braucht.",
+        "_id": "Ez2nNO9mBA"
       }
     ],
     "timeline": [
       {
         "date": "März 2023",
-        "event": "Standortanalyse und erste Gespräche mit Köniz"
+        "event": "Standortanalyse und erste Gespräche mit Köniz",
+        "_id": "lB-FkonNOF"
       },
       {
         "date": "Januar 2024",
-        "event": "Testtrainings mit der Bevölkerung"
+        "event": "Testtrainings mit der Bevölkerung",
+        "_id": "I7U-jfmGSm"
       },
       {
         "date": "Oktober 2024",
-        "event": "Installation der Posten und Markierungen"
+        "event": "Installation der Posten und Markierungen",
+        "_id": "pviWWbHTVg"
       },
       {
         "date": "9. November 2024",
-        "event": "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO"
+        "event": "Offizielle Eröffnung mit Grusswort von Gemeinde und BASPO",
+        "_id": "dqXA5vrClZ"
       },
       {
         "date": "Juli 2025",
-        "event": "Abschluss der wissenschaftlichen Evaluation"
+        "event": "Abschluss der wissenschaftlichen Evaluation",
+        "_id": "FTN-uODkcR"
       }
     ],
     "denkmalpflege": "Das Schlossareal Köniz ist als Kulturgut von nationaler Bedeutung eingestuft. Zum Erstaunen aller Beteiligten wurde die Farbmarkierung von der Denkmalpflege auf Anhieb als bewilligungsfähig beurteilt – weil die Installation reversibel ist.",
@@ -477,12 +551,14 @@
     {
       "name": "BASPO",
       "description": "Unterstützt durch lab 7×1 des Bundesamts für Sport BASPO",
-      "url": "https://www.baspo.admin.ch"
+      "url": "https://www.baspo.admin.ch",
+      "_id": "CnOZN0tn0k"
     },
     {
       "name": "Gemeinde Köniz",
       "description": "Pilotgemeinde",
-      "url": "https://www.koeniz.ch"
+      "url": "https://www.koeniz.ch",
+      "_id": "Ymqe5eQSW5"
     }
   ],
   "CONTACT_PERSON": {
@@ -502,75 +578,91 @@
     "hauptseiten": [
       {
         "label": "Konzept",
-        "href": "/konzept"
+        "href": "/konzept",
+        "_id": "dWDKfxhGZk"
       },
       {
         "label": "Raumgestaltung",
-        "href": "/raumgestaltung"
+        "href": "/raumgestaltung",
+        "_id": "mWeSiogv17"
       },
       {
         "label": "Referenz Köniz",
-        "href": "/koeniz"
+        "href": "/koeniz",
+        "_id": "gTrWY1JR9K"
       },
       {
         "label": "Über uns",
-        "href": "/ueber-uns"
+        "href": "/ueber-uns",
+        "_id": "aP2p2MJsSx"
       },
       {
         "label": "Impulsworkshop",
-        "href": "/impulsworkshop"
+        "href": "/impulsworkshop",
+        "_id": "xnvxaJTVKM"
       }
     ],
     "rechtliches": [
       {
         "label": "Impressum",
-        "href": "/impressum"
+        "href": "/impressum",
+        "_id": "avzGP_HMc-"
       },
       {
         "label": "Datenschutz",
-        "href": "/datenschutz"
+        "href": "/datenschutz",
+        "_id": "fy2w5ABnyC"
       }
     ],
     "partner": [
       {
         "label": "BASPO (Innovationslabor lab7x1)",
         "href": "https://www.baspo.admin.ch/de/das-innovationslabor-lab7x1",
-        "logo": "/images/logos/baspo-logo.gif"
+        "logo": "/images/logos/baspo-logo.gif",
+        "_id": "x-mmMZQ6Vb"
       }
     ]
   },
   "FAQ_ITEMS": [
     {
       "question": "Was genau ist RubikONE?",
-      "answer": "RubikONE ist ein Bewegungsparcours im öffentlichen Raum, der bestehende urbane Elemente (Treppen, Mauern, Geländer) durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar macht. Keine neuen Geräte – nur ein neuer Blick auf das, was schon da ist."
+      "answer": "RubikONE ist ein Bewegungsparcours im öffentlichen Raum, der bestehende urbane Elemente (Treppen, Mauern, Geländer) durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar macht. Keine neuen Geräte – nur ein neuer Blick auf das, was schon da ist.",
+      "_id": "Nga3eOF2MC"
     },
     {
       "question": "Braucht es ein Baugesuch?",
-      "answer": "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen. In Köniz dauerte das Verfahren etwa 3–4 Monate."
+      "answer": "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen. In Köniz dauerte das Verfahren etwa 3–4 Monate.",
+      "_id": "doqrh-xHDZ"
     },
     {
       "question": "Funktioniert das auch im Denkmalschutz?",
-      "answer": "Ja! In Köniz wurde RubikONE im denkmalgeschützten Schlossareal bewilligt. Die Installation ist reversibel und beeinträchtigt das Ortsbild nicht."
+      "answer": "Ja! In Köniz wurde RubikONE im denkmalgeschützten Schlossareal bewilligt. Die Installation ist reversibel und beeinträchtigt das Ortsbild nicht.",
+      "_id": "CJ5_yBM53F"
     },
     {
       "question": "Wie lange dauert die Umsetzung?",
-      "answer": "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate)."
+      "answer": "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate).",
+      "_id": "_-qKurUaBs"
     },
     {
       "question": "Wer kümmert sich um die Eigentümer?",
-      "answer": "Das können Sie selbst übernehmen oder wir machen es für Sie. Als Gemeinde haben Sie oft kürzere Wege. Die Aufgabenverteilung beeinflusst den Preis – Sie können also Kosten sparen."
+      "answer": "Das können Sie selbst übernehmen oder wir machen es für Sie. Als Gemeinde haben Sie oft kürzere Wege. Die Aufgabenverteilung beeinflusst den Preis – Sie können also Kosten sparen.",
+      "_id": "RypXChWHzW"
     },
     {
       "question": "Was ist mit Haftung und Sicherheit?",
-      "answer": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards."
+      "answer": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards.",
+      "_id": "NioQqL2bLm"
     },
     {
       "question": "Gibt es Fördermöglichkeiten?",
-      "answer": "Viele Kantone fördern Bewegungsinfrastruktur über Sportfonds und Lotteriefonds. Wir unterstützen Sie bei der Antragstellung."
+      "answer": "Viele Kantone fördern Bewegungsinfrastruktur über Sportfonds und Lotteriefonds. Wir unterstützen Sie bei der Antragstellung.",
+      "_id": "ioy77CBhDy"
     },
     {
       "question": "Was kostet der Unterhalt?",
-      "answer": "Praktisch nichts. In Köniz sind in 8 Monaten Testbetrieb keine Wartungskosten angefallen. Es gab auch keine Vandalismus-Vorfälle."
+      "answer": "Praktisch nichts. In Köniz sind in 8 Monaten Testbetrieb keine Wartungskosten angefallen. Es gab auch keine Vandalismus-Vorfälle.",
+      "_id": "rDoIHKCeXC"
     }
   ],
   "CTA_CONTENT": {
@@ -587,7 +679,8 @@
     "downloads": [
       {
         "label": "Verkaufsbroschüre RubikONE (PDF)",
-        "href": "/downloads/rubikone-verkaufsbroschuere.pdf"
+        "href": "/downloads/rubikone-verkaufsbroschuere.pdf",
+        "_id": "IUlQvjWBcp"
       }
     ]
   },
@@ -626,19 +719,23 @@
     "norms": [
       {
         "code": "SN EN 16630:2015",
-        "name": "Fitnessgeräte im Aussenbereich"
+        "name": "Fitnessgeräte im Aussenbereich",
+        "_id": "YHwa8qEQ-V"
       },
       {
         "code": "SN EN 1177:2020",
-        "name": "Stossdämpfende Spielplatzböden"
+        "name": "Stossdämpfende Spielplatzböden",
+        "_id": "iZoQTB_zI4"
       },
       {
         "code": "SIA 358",
-        "name": "Geländer und Brüstungen"
+        "name": "Geländer und Brüstungen",
+        "_id": "2bfIc2RYGo"
       },
       {
         "code": "bfu-Richtlinien",
-        "name": "Beratungsstelle für Unfallverhütung"
+        "name": "Beratungsstelle für Unfallverhütung",
+        "_id": "hfnH3bnVv2"
       }
     ]
   },
@@ -661,27 +758,32 @@
         {
           "year": "2000",
           "title": "Die Anfänge",
-          "description": "Roger Widmer beginnt als einer der ersten Traceure ausserhalb Frankreichs mit Parkour. Reisen nach Lisses und Evry zu David Belle und den Yamakasi."
+          "description": "Roger Widmer beginnt als einer der ersten Traceure ausserhalb Frankreichs mit Parkour. Reisen nach Lisses und Evry zu David Belle und den Yamakasi.",
+          "_id": "l-g0RNEfUT"
         },
         {
           "year": "2006",
           "title": "Weltweit erste Parkour-Klasse",
-          "description": "In Münsingen starten wir das weltweit erste organisierte Parkour-Training. Gleichzeitig bauen wir den ersten mobilen Parkour-Park."
+          "description": "In Münsingen starten wir das weltweit erste organisierte Parkour-Training. Gleichzeitig bauen wir den ersten mobilen Parkour-Park.",
+          "_id": "weqcVLSJ5f"
         },
         {
           "year": "2008",
           "title": "ParkourONE gegründet",
-          "description": "Roger Widmer, Felix Stöckli und Steven Käser gründen ParkourONE – im Einvernehmen mit David Belle."
+          "description": "Roger Widmer, Felix Stöckli und Steven Käser gründen ParkourONE – im Einvernehmen mit David Belle.",
+          "_id": "O9PYT4RW3V"
         },
         {
           "year": "2012",
           "title": "TraceSpace",
-          "description": "Launch des Labels für Parkourlandschaften. Wir beginnen, den öffentlichen Raum systematisch für Bewegung zu gestalten."
+          "description": "Launch des Labels für Parkourlandschaften. Wir beginnen, den öffentlichen Raum systematisch für Bewegung zu gestalten.",
+          "_id": "qwwXSgRCQh"
         },
         {
           "year": "2024",
           "title": "RubikONE",
-          "description": "Die konsequente Weiterentwicklung: Keine neuen Anlagen bauen, sondern bestehende Räume aktivieren."
+          "description": "Die konsequente Weiterentwicklung: Keine neuen Anlagen bauen, sondern bestehende Räume aktivieren.",
+          "_id": "JlU7JpUV-H"
         }
       ]
     },
@@ -690,19 +792,23 @@
       "points": [
         {
           "title": "Pioniere seit 2000",
-          "description": "Roger Widmer trainierte als einer der ersten Traceure ausserhalb Frankreichs direkt mit David Belle und den Yamakasi in Lisses und Evry."
+          "description": "Roger Widmer trainierte als einer der ersten Traceure ausserhalb Frankreichs direkt mit David Belle und den Yamakasi in Lisses und Evry.",
+          "_id": "RVsTRfB3vh"
         },
         {
           "title": "1'500+ Schüler:innen",
-          "description": "Die grösste Parkourschule der Deutschschweiz – seit 2006 mit dem weltweit ersten organisierten Parkour-Training."
+          "description": "Die grösste Parkourschule der Deutschschweiz – seit 2006 mit dem weltweit ersten organisierten Parkour-Training.",
+          "_id": "PzDG96cP2R"
         },
         {
           "title": "Wissenschaftlich evaluiert",
-          "description": "RubikONE wurde im Rahmen eines BASPO lab7x1-Projekts wissenschaftlich begleitet und evaluiert durch Affective Advisory."
+          "description": "RubikONE wurde im Rahmen eines BASPO lab7x1-Projekts wissenschaftlich begleitet und evaluiert durch Affective Advisory.",
+          "_id": "E6D0QOJIck"
         },
         {
           "title": "Ganzheitlicher Ansatz",
-          "description": "Parkour ist mehr als Bewegung – es verbindet Motorik, Emotion, Sensorik, Kognition und Soziales."
+          "description": "Parkour ist mehr als Bewegung – es verbindet Motorik, Emotion, Sensorik, Kognition und Soziales.",
+          "_id": "JUjTu5IJPW"
         }
       ]
     },
@@ -710,12 +816,14 @@
       {
         "name": "Roger Widmer",
         "role": "Gründer & Konzeption",
-        "description": "Traceur seit 2000. Diplomstudium Art Education (ZHdK), Erwachsenenbildner SVEB II. Kreativer Kopf hinter TRuST Education."
+        "description": "Traceur seit 2000. Diplomstudium Art Education (ZHdK), Erwachsenenbildner SVEB II. Kreativer Kopf hinter TRuST Education.",
+        "_id": "EuDcnu2DbP"
       },
       {
         "name": "Michèle Lütolf",
         "role": "Projektleitung RubikONE",
-        "description": "Ihre Ansprechpartnerin für alle Fragen rund um RubikONE."
+        "description": "Ihre Ansprechpartnerin für alle Fragen rund um RubikONE.",
+        "_id": "kxTKAwEpEi"
       }
     ],
     "quote": {
@@ -726,15 +834,18 @@
     "values": [
       {
         "title": "Stark",
-        "description": "Körperliche und mentale Stärke durch Bewegung entwickeln."
+        "description": "Körperliche und mentale Stärke durch Bewegung entwickeln.",
+        "_id": "veoylnns5r"
       },
       {
         "title": "Sinnvoll",
-        "description": "Bewegung in den Alltag integrieren, nicht davon trennen."
+        "description": "Bewegung in den Alltag integrieren, nicht davon trennen.",
+        "_id": "KSrZ-8P6pB"
       },
       {
         "title": "Nachhaltig",
-        "description": "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen."
+        "description": "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen.",
+        "_id": "ryBbDcqZZZ"
       }
     ]
   },
@@ -759,12 +870,14 @@
       {
         "text": "Nach einem halben Jahr Arbeit mit verschiedenen Abteilungen und dem Kanton hat es geklappt. RubikONE ist bewilligt – mitten im denkmalgeschützten Schlossareal.",
         "author": "Stephan Baeriswyl",
-        "role": "Fachstelle Sport, Gemeinde Köniz"
+        "role": "Fachstelle Sport, Gemeinde Köniz",
+        "_id": "tcGMkT2pay"
       },
       {
         "text": "Ich habe heute das erste Mal den RubikONE erlebt. Es ist perfekt. Was super wäre: Wenn er noch 100 Jahre bestehen bleibt und viel genutzt wird.",
         "author": "Christoph Conz",
-        "role": "BASPO lab7x1"
+        "role": "BASPO lab7x1",
+        "_id": "1bV5xGpQTa"
       }
     ]
   },
@@ -779,7 +892,8 @@
             "Raumplanung",
             "Tiefbau",
             "Gesundheitsförderung"
-          ]
+          ],
+          "_id": "UYGjuHDLRW"
         },
         {
           "title": "Bildungsverantwortliche",
@@ -787,7 +901,8 @@
             "Schulleitung",
             "Sportlehrpersonen",
             "Jugendarbeit"
-          ]
+          ],
+          "_id": "mTrnTeUucg"
         },
         {
           "title": "Weitere Stakeholder",
@@ -795,7 +910,8 @@
             "Quartiervereine",
             "Seniorenvertretung",
             "Gesundheitsligen"
-          ]
+          ],
+          "_id": "v8Kw8gVEES"
         }
       ]
     },
@@ -809,15 +925,18 @@
     "faq": [
       {
         "question": "Muss ich sportlich sein?",
-        "answer": "Nein! Der Workshop ist für alle Fitnesslevel geeignet. Wir zeigen Übungen von einfach bis fortgeschritten."
+        "answer": "Nein! Der Workshop ist für alle Fitnesslevel geeignet. Wir zeigen Übungen von einfach bis fortgeschritten.",
+        "_id": "IVHL483qb1"
       },
       {
         "question": "Was, wenn es regnet?",
-        "answer": "Der Workshop findet bei jedem Wetter draussen statt. Das gehört dazu – RubikONE funktioniert auch bei Regen."
+        "answer": "Der Workshop findet bei jedem Wetter draussen statt. Das gehört dazu – RubikONE funktioniert auch bei Regen.",
+        "_id": "Fn4aUwDGvo"
       },
       {
         "question": "Wie viele Personen können teilnehmen?",
-        "answer": "Idealerweise 6-12 Personen. Bei mehr Teilnehmenden empfehlen wir zwei Workshops."
+        "answer": "Idealerweise 6-12 Personen. Bei mehr Teilnehmenden empfehlen wir zwei Workshops.",
+        "_id": "bXOvF2cyMm"
       }
     ]
   },
@@ -830,7 +949,8 @@
         "name": "RubikONE",
         "posts": 6,
         "basePrice": 35000,
-        "description": "Ideal für Schulareale und kleine Gemeinden"
+        "description": "Ideal für Schulareale und kleine Gemeinden",
+        "_id": "eouvyVo2dJ"
       },
       {
         "id": "standard",
@@ -838,28 +958,33 @@
         "posts": 9,
         "basePrice": 60000,
         "description": "Für Gemeinden und Städte bis 20'000 Einwohner",
-        "recommended": true
+        "recommended": true,
+        "_id": "_-Ce_oI9le"
       },
       {
         "id": "premium",
         "name": "RubikONE",
         "posts": 12,
         "basePrice": 95000,
-        "description": "Für Städte und grosse Areale"
+        "description": "Für Städte und grosse Areale",
+        "_id": "Xgjxj7I-qj"
       }
     ],
     "coreServices": [
       {
         "name": "Konzeption & Design",
-        "info": "Entwicklung des Postenkonzepts und Design"
+        "info": "Entwicklung des Postenkonzepts und Design",
+        "_id": "vkzqJgVCmZ"
       },
       {
         "name": "Standortanalyse",
-        "info": "inkl. Route und Safety Check"
+        "info": "inkl. Route und Safety Check",
+        "_id": "HE8WMo_jwg"
       },
       {
         "name": "Material",
-        "info": "Schild, Wegweiser, Markierung"
+        "info": "Schild, Wegweiser, Markierung",
+        "_id": "_ck9zefRXK"
       }
     ],
     "additionalServices": [
@@ -873,7 +998,8 @@
           "standard": 1990,
           "premium": 1990
         },
-        "note": "zzgl. Spesen"
+        "note": "zzgl. Spesen",
+        "_id": "wWP-wjG5a1"
       },
       {
         "id": "vorprojekt",
@@ -884,7 +1010,8 @@
           "kompakt": 1800,
           "standard": 1800,
           "premium": 1800
-        }
+        },
+        "_id": "5gsfQoUGHF"
       },
       {
         "id": "baugesuch",
@@ -895,7 +1022,8 @@
           "kompakt": 27000,
           "standard": 27000,
           "premium": 27000
-        }
+        },
+        "_id": "UEAYKjCEJU"
       },
       {
         "id": "eroeffnungsevent",
@@ -907,7 +1035,8 @@
           "standard": 0,
           "premium": 0
         },
-        "priceLabel": "auf Anfrage"
+        "priceLabel": "auf Anfrage",
+        "_id": "_UjoDYlhr0"
       }
     ],
     "optionalServices": [
@@ -916,14 +1045,16 @@
         "name": "Impulsworkshop",
         "description": "2-stündiger Workshop vor Projektstart – ideal zum Kennenlernen des Konzepts",
         "price": 1990,
-        "note": "zzgl. Spesen"
+        "note": "zzgl. Spesen",
+        "_id": "4TUk0V-5_R"
       },
       {
         "id": "eroeffnung",
         "name": "Eröffnungsworkshop",
         "description": "Geführte Eröffnungsveranstaltung mit Coach für die Bevölkerung",
         "price": 1500,
-        "note": "Preis auf Anfrage"
+        "note": "Preis auf Anfrage",
+        "_id": "kLKr_NAQlg"
       }
     ]
   },
@@ -954,42 +1085,50 @@
       {
         "src": "/images/hero/oma-enkelin.jpg",
         "title": "Generationen verbinden",
-        "comment": "Grosseltern und Enkel trainieren gemeinsam – natürlich und ungezwungen."
+        "comment": "Grosseltern und Enkel trainieren gemeinsam – natürlich und ungezwungen.",
+        "_id": "vs5cTNQHNx"
       },
       {
         "src": "/images/hero/generationen-kraft.jpg",
         "title": "Kraft für alle",
-        "comment": "Vom Teenager bis zur Seniorin: Jeder findet seine passende Herausforderung."
+        "comment": "Vom Teenager bis zur Seniorin: Jeder findet seine passende Herausforderung.",
+        "_id": "hbNoKk4zjW"
       },
       {
         "src": "/images/koeniz/schulklasse.jpg",
         "title": "Schulen integrieren",
-        "comment": "RubikONE wird zum Outdoor-Klassenzimmer für Bewegung und Spiel."
+        "comment": "RubikONE wird zum Outdoor-Klassenzimmer für Bewegung und Spiel.",
+        "_id": "CYOIC3vQ5h"
       },
       {
         "src": "/images/koeniz/kinder-springen.jpg",
         "title": "Spielerisch lernen",
-        "comment": "Kinder entdecken natürliche Bewegungen – ganz ohne Anleitung."
+        "comment": "Kinder entdecken natürliche Bewegungen – ganz ohne Anleitung.",
+        "_id": "IDJu1nzZyO"
       },
       {
         "src": "/images/workshop/frauen-balancieren.jpg",
         "title": "Gemeinschaft stärken",
-        "comment": "Bewegung schafft Begegnung – über alle Altersgruppen hinweg."
+        "comment": "Bewegung schafft Begegnung – über alle Altersgruppen hinweg.",
+        "_id": "FoptuL9XXf"
       },
       {
         "src": "/images/posten/balance-nahaufnahme.jpg",
         "title": "Koordination fördern",
-        "comment": "Balancieren trainiert Körper und Geist gleichzeitig."
+        "comment": "Balancieren trainiert Körper und Geist gleichzeitig.",
+        "_id": "DRf055o9T2"
       },
       {
         "src": "/images/konzept/wegweiser.jpg",
         "title": "Intuitiv verstehen",
-        "comment": "Klare Beschilderung macht den Einstieg kinderleicht."
+        "comment": "Klare Beschilderung macht den Einstieg kinderleicht.",
+        "_id": "XqhPenobJO"
       },
       {
         "src": "/images/koeniz/spass.jpg",
         "title": "Freude an Bewegung",
-        "comment": "Das wichtigste Ergebnis: Menschen, die Spass an Bewegung haben."
+        "comment": "Das wichtigste Ergebnis: Menschen, die Spass an Bewegung haben.",
+        "_id": "98klSwa2vy"
       }
     ]
   },
@@ -1014,19 +1153,22 @@
         "value": "Akzeptanz",
         "title": "Die Nachbarschaft an Bord",
         "description": "Mitten im Quartier und Ortszentrum wird RubikONE toleriert und findet bei Jung bis Alt Anklang. Referenz Köniz.",
-        "image": "/images/hero/oma-enkelin.jpg"
+        "image": "/images/hero/oma-enkelin.jpg",
+        "_id": "X8WxuMif4s"
       },
       {
         "value": "Infrastruktur",
         "title": "Erweitertes Schulareal",
         "description": "Lehrpersonen nutzen RubikONE als Erweiterung der Sporthalle. Ohne Belegungsplan. Jederzeit zugänglich.",
-        "image": "/images/koeniz/schulklasse.jpg"
+        "image": "/images/koeniz/schulklasse.jpg",
+        "_id": "uDhr-QeIul"
       },
       {
         "value": "Nutzung",
         "title": "Alltagstauglich",
         "description": "Die Niederschwelligkeit erlaubt Aktivitäten in Alltags- oder Sportkleidung. Familien finden spielerische Challenges auf dem Sonntagsspaziergang. Firmen gönnen sich am Mittag eine bewegte Pause.",
-        "image": "/images/hero/generationen-kraft.jpg"
+        "image": "/images/hero/generationen-kraft.jpg",
+        "_id": "eV5VKYP5bm"
       }
     ]
   },
@@ -1061,316 +1203,376 @@
       {
         "type": "hero",
         "contentKey": "HERO_CONTENT",
-        "label": "Hero"
+        "label": "Hero",
+        "_id": "mEb4-tepqp"
       },
       {
         "type": "texthook",
         "contentKey": "TEXTHOOK_CONTENT",
-        "label": "Raum und Gesundheit kombiniert"
+        "label": "Raum und Gesundheit kombiniert",
+        "_id": "OAiEN96mAL"
       },
       {
         "type": "video",
         "contentKey": "VIDEO_CONTENT",
-        "label": "RubikONE in Aktion"
+        "label": "RubikONE in Aktion",
+        "_id": "W86berRrrn"
       },
       {
         "type": "vorher-nachher",
         "contentKey": "VORHER_NACHHER_CONTENT",
-        "label": "Keine neuen Geräte. Nur ein neuer Blick."
+        "label": "Keine neuen Geräte. Nur ein neuer Blick.",
+        "_id": "7aSojhq_fd"
       },
       {
         "type": "testimonials",
         "contentKey": "TESTIMONIALS",
-        "label": "Kundenstimmen"
+        "label": "Kundenstimmen",
+        "_id": "wSD3kkjuKc"
       },
       {
         "type": "gallery",
         "contentKey": "GALLERY_CONTENT",
-        "label": "Bewegung verbindet Generationen"
+        "label": "Bewegung verbindet Generationen",
+        "_id": "vWE52DTu1o"
       },
       {
         "type": "prozess-teaser",
         "contentKey": "PROZESS_TEASER_CONTENT",
-        "label": "Wir gestalten mit Ihnen"
+        "label": "Wir gestalten mit Ihnen",
+        "_id": "5duT6M9XvV"
       },
       {
         "type": "configurator-cta",
         "contentKey": "CONFIGURATOR_CTA_CONTENT",
-        "label": "Ihr individuelles Leistungspaket"
+        "label": "Ihr individuelles Leistungspaket",
+        "_id": "e2nY0Wrwz-"
       },
       {
         "type": "cta-dark",
         "contentKey": "CTA_CONTENT",
-        "label": "Call-to-Action"
+        "label": "Call-to-Action",
+        "_id": "XYItJZXYF7"
       }
     ],
     "konzept": [
       {
         "type": "konzept-hero",
         "contentKey": "KONZEPT_HERO",
-        "label": "Was wäre wenn..."
+        "label": "Was wäre wenn...",
+        "_id": "j2Tezywzqg"
       },
       {
         "type": "vorher-nachher-slider",
         "contentKey": "KONZEPT_PRINZIP",
-        "label": "Keine neuen Geräte. Nur ein neuer Blick."
+        "label": "Keine neuen Geräte. Nur ein neuer Blick.",
+        "_id": "r_6rA-f2iz"
       },
       {
         "type": "comparison",
         "contentKey": "COMPARISON_TABLE",
-        "label": "Was RubikONE auszeichnet"
+        "label": "Was RubikONE auszeichnet",
+        "_id": "QOFmLeCfXB"
       },
       {
         "type": "posten-slider",
         "contentKey": "KONZEPT_POSTEN_SLIDER",
-        "label": "Natürliche Bewegungen, klar erklärt"
+        "label": "Natürliche Bewegungen, klar erklärt",
+        "_id": "Vocl1QwrGn"
       },
       {
         "type": "lerndimensionen",
         "contentKey": "KONZEPT_LERNDIMENSIONEN",
-        "label": "Mehr als Bewegung. Ganzheitliches Lernen."
+        "label": "Mehr als Bewegung. Ganzheitliches Lernen.",
+        "_id": "CAnY22Flot"
       },
       {
         "type": "stats-slider",
         "contentKey": "STATS_CONTENT",
-        "label": "RubikONE funktioniert"
+        "label": "RubikONE funktioniert",
+        "_id": "4BVVwbLYyD"
       },
       {
         "type": "safety",
         "contentKey": "KONZEPT_SICHERHEIT",
-        "label": "Sicherheit nach Schweizer Standards"
+        "label": "Sicherheit nach Schweizer Standards",
+        "_id": "hL-BQxFq_C"
       },
       {
         "type": "cta-blue",
         "contentKey": "KONZEPT_CTA",
-        "label": "Überzeugt? Erleben Sie es selbst."
+        "label": "Überzeugt? Erleben Sie es selbst.",
+        "_id": "cLiXu6B437"
       }
     ],
     "raumgestaltung": [
       {
         "type": "page-hero",
         "contentKey": "RAUMGESTALTUNG_HERO",
-        "label": "Gewohntes neu entdecken"
+        "label": "Gewohntes neu entdecken",
+        "_id": "URMEvI-XN0"
       },
       {
         "type": "stakeholder",
         "contentKey": "RAUMGESTALTUNG_MEHRWERT",
-        "label": "Mehrwert für alle"
+        "label": "Mehrwert für alle",
+        "_id": "sEXdrtuN-e"
       },
       {
         "type": "usp-kompakt",
         "contentKey": "RAUMGESTALTUNG_USP",
-        "label": "Das macht RubikONE einzigartig"
+        "label": "Das macht RubikONE einzigartig",
+        "_id": "fsOinBRPEm"
       },
       {
         "type": "testimonial-single",
         "contentKey": "RAUMGESTALTUNG_TESTIMONIAL",
-        "label": "Testimonial Bernadette"
+        "label": "Testimonial Bernadette",
+        "_id": "tFEz0oVqBb"
       },
       {
         "type": "prozess-4-schritte",
         "contentKey": "RAUMGESTALTUNG_PROZESS",
-        "label": "In vier Schritten zu Ihrem RubikONE"
+        "label": "In vier Schritten zu Ihrem RubikONE",
+        "_id": "YohaQ5OBvU"
       },
       {
         "type": "referenz-koeniz",
         "contentKey": "RAUMGESTALTUNG_REFERENZ",
-        "label": "Köniz war die erste Gemeinde"
+        "label": "Köniz war die erste Gemeinde",
+        "_id": "4RZCoRV0st"
       },
       {
         "type": "faq",
         "contentKey": "RAUMGESTALTUNG_FAQ",
-        "label": "Häufig gestellte Fragen"
+        "label": "Häufig gestellte Fragen",
+        "_id": "jYOLDLtEC4"
       },
       {
         "type": "configurator-trigger",
         "contentKey": "CONFIGURATOR_CTA_CONTENT",
-        "label": "Konfigurator"
+        "label": "Konfigurator",
+        "_id": "iTQPosC-3i"
       },
       {
         "type": "cta-blue",
         "contentKey": "RAUMGESTALTUNG_CTA",
-        "label": "Bereit für den nächsten Schritt?"
+        "label": "Bereit für den nächsten Schritt?",
+        "_id": "bOkfkE__BV"
       }
     ],
     "koeniz": [
       {
         "type": "page-hero",
         "contentKey": "KOENIZ_HERO",
-        "label": "Köniz macht es vor."
+        "label": "Köniz macht es vor.",
+        "_id": "SXFo4mjyID"
       },
       {
         "type": "lab7x1",
         "contentKey": "KOENIZ_LAB7X1",
-        "label": "Ein Innovationsprojekt des Bundes"
+        "label": "Ein Innovationsprojekt des Bundes",
+        "_id": "WMbahYYHWe"
       },
       {
         "type": "challenge-solution",
         "contentKey": "KOENIZ_CASE_STUDY",
-        "label": "Herausforderung & Lösung"
+        "label": "Herausforderung & Lösung",
+        "_id": "dzG6c69bkg"
       },
       {
         "type": "denkmalschutz",
         "contentKey": "KOENIZ_DENKMALSCHUTZ",
-        "label": "Denkmalschutz"
+        "label": "Denkmalschutz",
+        "_id": "g-ImYZszoA"
       },
       {
         "type": "erkenntnisse",
         "contentKey": "KOENIZ_ERKENNTNISSE",
-        "label": "Die Erkenntnisse"
+        "label": "Die Erkenntnisse",
+        "_id": "hs_PtoK6nD"
       },
       {
         "type": "workshop-feedback",
         "contentKey": "KOENIZ_FEEDBACK",
-        "label": "Workshop-Feedback"
+        "label": "Workshop-Feedback",
+        "_id": "MfzCvO52q3"
       },
       {
         "type": "offizielle-stimmen",
         "contentKey": "KOENIZ_DETAILS",
-        "label": "Stimmen zum Projekt"
+        "label": "Stimmen zum Projekt",
+        "_id": "g4IigA7XAm"
       },
       {
         "type": "statement-annina",
         "contentKey": "KOENIZ_ANNINA",
-        "label": "Statement Annina"
+        "label": "Statement Annina",
+        "_id": "Ry61sBydPz"
       },
       {
         "type": "gallery-koeniz",
         "contentKey": "KOENIZ_GALLERY",
-        "label": "Impressionen"
+        "label": "Impressionen",
+        "_id": "ZDDODPkdAs"
       },
       {
         "type": "selbst-erleben",
         "contentKey": "KOENIZ_DETAILS",
-        "label": "Selbst erleben"
+        "label": "Selbst erleben",
+        "_id": "oy4o8PWnSR"
       },
       {
         "type": "cta-blue",
         "contentKey": "KOENIZ_CTA",
-        "label": "Köniz war der Anfang"
+        "label": "Köniz war der Anfang",
+        "_id": "20amzKfOYL"
       }
     ],
     "impulsworkshop": [
       {
         "type": "page-hero",
         "contentKey": "WORKSHOP_HERO",
-        "label": "Der einfachste Weg zu starten"
+        "label": "Der einfachste Weg zu starten",
+        "_id": "pHpcIoIbkT"
       },
       {
         "type": "key-facts",
         "contentKey": "WORKSHOP_KEY_FACTS",
-        "label": "Key Facts"
+        "label": "Key Facts",
+        "_id": "s8gqHVnb4b"
       },
       {
         "type": "programm",
         "contentKey": "IMPULSWORKSHOP",
-        "label": "Was Sie erwartet"
+        "label": "Was Sie erwartet",
+        "_id": "DUfJfHqlun"
       },
       {
         "type": "workshop-images",
         "contentKey": "WORKSHOP_IMAGES",
-        "label": "Workshop-Bilder"
+        "label": "Workshop-Bilder",
+        "_id": "gwjevs0wsh"
       },
       {
         "type": "mitnehmen",
         "contentKey": "WORKSHOP_MITNEHMEN",
-        "label": "Was Sie mitnehmen"
+        "label": "Was Sie mitnehmen",
+        "_id": "-YTpQQdneg"
       },
       {
         "type": "fuer-wen",
         "contentKey": "WORKSHOP_FUER_WEN",
-        "label": "Für wen ist der Workshop?"
+        "label": "Für wen ist der Workshop?",
+        "_id": "PI_GkrY2OK"
       },
       {
         "type": "preis-box",
         "contentKey": "WORKSHOP_PREIS",
-        "label": "Preis"
+        "label": "Preis",
+        "_id": "hw9mkHh4cO"
       },
       {
         "type": "workshop-faq",
         "contentKey": "WORKSHOP_DETAILS",
-        "label": "Häufige Fragen"
+        "label": "Häufige Fragen",
+        "_id": "7juxExRGrI"
       },
       {
         "type": "ansprechpartnerin",
         "contentKey": "CONTACT_PERSON",
-        "label": "Ihre Ansprechpartnerin"
+        "label": "Ihre Ansprechpartnerin",
+        "_id": "rwbBZ6ZsxN"
       },
       {
         "type": "cta-blue",
         "contentKey": "WORKSHOP_CTA",
-        "label": "Bereit für den neuen Blick?"
+        "label": "Bereit für den neuen Blick?",
+        "_id": "zpfHq2q0QI"
       }
     ],
     "kontakt": [
       {
         "type": "page-hero",
         "contentKey": "KONTAKT_HERO",
-        "label": "Sprechen wir darüber"
+        "label": "Sprechen wir darüber",
+        "_id": "TY4oift10P"
       },
       {
         "type": "contact-info",
         "contentKey": "CONTACT_INFO",
-        "label": "Kontaktinformationen"
+        "label": "Kontaktinformationen",
+        "_id": "iGbEmUCDBs"
       },
       {
         "type": "contact-form",
         "contentKey": "KONTAKT_FORM",
-        "label": "Kontaktformular"
+        "label": "Kontaktformular",
+        "_id": "WxUw6EgaVv"
       },
       {
         "type": "contact-image",
         "contentKey": "KONTAKT_FORM",
-        "label": "Bild"
+        "label": "Bild",
+        "_id": "3QVEwhyv5t"
       }
     ],
     "ueber-uns": [
       {
         "type": "page-hero",
         "contentKey": "UEBER_UNS_HERO",
-        "label": "Die Pioniere hinter RubikONE"
+        "label": "Die Pioniere hinter RubikONE",
+        "_id": "WXFy962_PD"
       },
       {
         "type": "story",
         "contentKey": "PARKOURONE_STORY",
-        "label": "ParkourONE Story"
+        "label": "ParkourONE Story",
+        "_id": "CUDEKkR94J"
       },
       {
         "type": "srf-einstein",
         "contentKey": "UEBER_UNS_SRF",
-        "label": "SRF Einstein"
+        "label": "SRF Einstein",
+        "_id": "_OVLycvlUl"
       },
       {
         "type": "cta-blue",
         "contentKey": "UEBER_UNS_CTA",
-        "label": "Lernen Sie uns kennen"
+        "label": "Lernen Sie uns kennen",
+        "_id": "4Ge7j91uLq"
       }
     ],
     "allgemein": [
       {
         "type": "siteconfig",
         "contentKey": "SITE_CONFIG",
-        "label": "Website-Einstellungen"
+        "label": "Website-Einstellungen",
+        "_id": "dPFX1llVlo"
       },
       {
         "type": "navigation",
         "contentKey": "NAVIGATION_ITEMS",
-        "label": "Navigation"
+        "label": "Navigation",
+        "_id": "FqQxAik9P0"
       },
       {
         "type": "contact",
         "contentKey": "CONTACT_INFO",
-        "label": "Kontaktdaten"
+        "label": "Kontaktdaten",
+        "_id": "i3YkbVquDS"
       },
       {
         "type": "contactperson",
         "contentKey": "CONTACT_PERSON",
-        "label": "Ansprechpartnerin"
+        "label": "Ansprechpartnerin",
+        "_id": "Ro7ki5-4o2"
       },
       {
         "type": "footer",
         "contentKey": "FOOTER_LINKS",
-        "label": "Footer-Links"
+        "label": "Footer-Links",
+        "_id": "bpjb19hNuy"
       }
     ]
   },
@@ -1388,15 +1590,18 @@
     "elements": [
       {
         "title": "Beschilderung",
-        "desc": "Klare Schilder mit Übungen und QR-Codes für Video-Anleitungen"
+        "desc": "Klare Schilder mit Übungen und QR-Codes für Video-Anleitungen",
+        "_id": "n_tBo1d2Pg"
       },
       {
         "title": "Farbmarkierungen",
-        "desc": "Farbige Markierungen zeigen, wo trainiert wird"
+        "desc": "Farbige Markierungen zeigen, wo trainiert wird",
+        "_id": "pzBFa_oYNt"
       },
       {
         "title": "Normenkonform",
-        "desc": "Entspricht allen relevanten Schweizer Sicherheitsnormen"
+        "desc": "Entspricht allen relevanten Schweizer Sicherheitsnormen",
+        "_id": "N4VOPk1v8Z"
       }
     ]
   },
@@ -1415,35 +1620,40 @@
         "title": "Motorisch",
         "shortDesc": "Körperliche Bewegung",
         "modalTitle": "Motorisches Lernen",
-        "modalContent": "Die motorische Dimension umfasst alle körperlichen Bewegungsabläufe und deren Koordination.\n\nBei RubikONE trainieren Teilnehmende:\n• Gleichgewicht und Balance\n• Koordination und Körperkontrolle\n• Kraft und Ausdauer\n• Beweglichkeit und Flexibilität\n• Räumliche Orientierung\n\nJede Übung kann in drei Schwierigkeitsstufen ausgeführt werden, sodass vom Einsteiger bis zum Fortgeschrittenen alle eine passende Herausforderung finden."
+        "modalContent": "Die motorische Dimension umfasst alle körperlichen Bewegungsabläufe und deren Koordination.\n\nBei RubikONE trainieren Teilnehmende:\n• Gleichgewicht und Balance\n• Koordination und Körperkontrolle\n• Kraft und Ausdauer\n• Beweglichkeit und Flexibilität\n• Räumliche Orientierung\n\nJede Übung kann in drei Schwierigkeitsstufen ausgeführt werden, sodass vom Einsteiger bis zum Fortgeschrittenen alle eine passende Herausforderung finden.",
+        "_id": "loKu006ZBg"
       },
       {
         "id": "kognitiv",
         "title": "Kognitiv",
         "shortDesc": "Denken & Konzentration",
         "modalTitle": "Kognitives Lernen",
-        "modalContent": "Die kognitive Dimension fördert geistige Prozesse wie Aufmerksamkeit, Konzentration und Problemlösung.\n\nBeispiel-Challenges auf den Posten:\n• \"Zähle während der Übung rückwärts von 20\"\n• \"Atme bewusst ein und aus\"\n• \"Merke dir die Reihenfolge der Posten\"\n\nDiese Aufgaben verbinden Bewegung mit Denkprozessen – ein Ansatz, der nachweislich die Gehirnleistung fördert und besonders für Kinder und ältere Menschen wertvoll ist."
+        "modalContent": "Die kognitive Dimension fördert geistige Prozesse wie Aufmerksamkeit, Konzentration und Problemlösung.\n\nBeispiel-Challenges auf den Posten:\n• \"Zähle während der Übung rückwärts von 20\"\n• \"Atme bewusst ein und aus\"\n• \"Merke dir die Reihenfolge der Posten\"\n\nDiese Aufgaben verbinden Bewegung mit Denkprozessen – ein Ansatz, der nachweislich die Gehirnleistung fördert und besonders für Kinder und ältere Menschen wertvoll ist.",
+        "_id": "d4nBKmRFNM"
       },
       {
         "id": "emotional",
         "title": "Emotional",
         "shortDesc": "Gefühle ausdrücken",
         "modalTitle": "Emotionales Lernen",
-        "modalContent": "Die emotionale Dimension hilft, Gefühle wahrzunehmen und auszudrücken.\n\nBeispiel-Challenges auf den Posten:\n• \"Lächle während jeder Übung\"\n• \"Singe dein Lieblingslied während du balancierst\"\n• \"Beschreibe mit zwei Adjektiven, wie du dich fühlst\"\n\nBewegung und Emotionen sind eng verknüpft. RubikONE nutzt diese Verbindung bewusst, um positive Gefühle zu fördern und Stress abzubauen."
+        "modalContent": "Die emotionale Dimension hilft, Gefühle wahrzunehmen und auszudrücken.\n\nBeispiel-Challenges auf den Posten:\n• \"Lächle während jeder Übung\"\n• \"Singe dein Lieblingslied während du balancierst\"\n• \"Beschreibe mit zwei Adjektiven, wie du dich fühlst\"\n\nBewegung und Emotionen sind eng verknüpft. RubikONE nutzt diese Verbindung bewusst, um positive Gefühle zu fördern und Stress abzubauen.",
+        "_id": "kM_zDtQe4K"
       },
       {
         "id": "sozial",
         "title": "Sozial",
         "shortDesc": "Gemeinsam bewegen",
         "modalTitle": "Soziales Lernen",
-        "modalContent": "Die soziale Dimension fördert Interaktion und Gemeinschaft.\n\nBeispiel-Challenges auf den Posten:\n• \"Grüsse alle Personen, denen du begegnest\"\n• \"Führe die Übung zu zweit aus\"\n• \"Gib der nächsten Person ein High-Five\"\n\nRubikONE ist bewusst im öffentlichen Raum platziert. Menschen begegnen sich, kommen ins Gespräch, trainieren zusammen. So entsteht Gemeinschaft – generationenübergreifend."
+        "modalContent": "Die soziale Dimension fördert Interaktion und Gemeinschaft.\n\nBeispiel-Challenges auf den Posten:\n• \"Grüsse alle Personen, denen du begegnest\"\n• \"Führe die Übung zu zweit aus\"\n• \"Gib der nächsten Person ein High-Five\"\n\nRubikONE ist bewusst im öffentlichen Raum platziert. Menschen begegnen sich, kommen ins Gespräch, trainieren zusammen. So entsteht Gemeinschaft – generationenübergreifend.",
+        "_id": "euAAsIrvSb"
       },
       {
         "id": "sensorisch",
         "title": "Sensorisch",
         "shortDesc": "Sinne schärfen",
         "modalTitle": "Sensorisches Lernen",
-        "modalContent": "Die sensorische Dimension schärft die Sinneswahrnehmung.\n\nBeispiel-Challenges auf den Posten:\n• \"Schliesse während der Übung die Augen\"\n• \"Nimm die Geräusche in deiner Umgebung wahr\"\n• \"Laufe barfuss zum nächsten Posten\"\n\nDurch bewusstes Wahrnehmen der Umgebung wird die Achtsamkeit gefördert. Die Teilnehmenden lernen, ihren Körper und ihre Umwelt intensiver zu spüren."
+        "modalContent": "Die sensorische Dimension schärft die Sinneswahrnehmung.\n\nBeispiel-Challenges auf den Posten:\n• \"Schliesse während der Übung die Augen\"\n• \"Nimm die Geräusche in deiner Umgebung wahr\"\n• \"Laufe barfuss zum nächsten Posten\"\n\nDurch bewusstes Wahrnehmen der Umgebung wird die Achtsamkeit gefördert. Die Teilnehmenden lernen, ihren Körper und ihre Umwelt intensiver zu spüren.",
+        "_id": "HhYafyeczC"
       }
     ]
   },
@@ -1454,19 +1664,23 @@
     "normen": [
       {
         "code": "SN EN 16630:2015",
-        "name": "Fitnessgeräte"
+        "name": "Fitnessgeräte",
+        "_id": "r9jxpMPWyU"
       },
       {
         "code": "SN EN 1177:2020",
-        "name": "Spielplatzböden"
+        "name": "Spielplatzböden",
+        "_id": "Hr5gylVxN_"
       },
       {
         "code": "SIA 358",
-        "name": "Geländer"
+        "name": "Geländer",
+        "_id": "xJeuxuG1Kw"
       },
       {
         "code": "bfu-Richtlinien",
-        "name": "Unfallverhütung"
+        "name": "Unfallverhütung",
+        "_id": "KacvkXwZme"
       }
     ],
     "image": "/images/konzept/wegweiser.jpg"
@@ -1502,7 +1716,8 @@
           "Innovative Gesundheitsförderung vor der Haustür",
           "Stärkung der lokalen Gemeinschaft",
           "Minimaler Ressourceneinsatz"
-        ]
+        ],
+        "_id": "GY5l5SkDgl"
       },
       {
         "title": "Bildung & Kultur",
@@ -1511,7 +1726,8 @@
           "Kreative Bewegungspausen & Lernmöglichkeiten",
           "Förderung von Teamwork",
           "Vielfältige Bewegungspausen"
-        ]
+        ],
+        "_id": "cqyKXI_Ngx"
       },
       {
         "title": "Bevölkerung",
@@ -1520,22 +1736,26 @@
           "Für alle Altersgruppen & Fitnesslevel",
           "Leicht verständlich dank Bilder & Symbolen",
           "Fördert einen aktiven Lebensstil"
-        ]
+        ],
+        "_id": "ZWc8ahCdwY"
       }
     ]
   },
   "RAUMGESTALTUNG_USP": [
     {
       "title": "Einfache Integration",
-      "description": "Nutzt vorhandene Strukturen"
+      "description": "Nutzt vorhandene Strukturen",
+      "_id": "XQklUWdgM2"
     },
     {
       "title": "Nachhaltigkeit",
-      "description": "Langlebiges Material"
+      "description": "Langlebiges Material",
+      "_id": "kybH7Is0OV"
     },
     {
       "title": "Lebensqualität",
-      "description": "Fördert ganzheitliche Gesundheit"
+      "description": "Fördert ganzheitliche Gesundheit",
+      "_id": "0YLkptbZ8k"
     }
   ],
   "RAUMGESTALTUNG_TESTIMONIAL": {
@@ -1553,25 +1773,29 @@
         "nummer": "1",
         "titel": "Analyse",
         "beschreibung": "Impulsworkshop und Ausgangslage klären",
-        "image": "/images/gemeinden/prozess-1.jpg"
+        "image": "/images/gemeinden/prozess-1.jpg",
+        "_id": "T_2l1ybgPs"
       },
       {
         "nummer": "2",
         "titel": "Planung",
         "beschreibung": "RubikONE auf Ihre Gemeinde anpassen",
-        "image": "/images/gemeinden/prozess-2.jpg"
+        "image": "/images/gemeinden/prozess-2.jpg",
+        "_id": "bjV1WJFBou"
       },
       {
         "nummer": "3",
         "titel": "Umsetzung",
         "beschreibung": "Produktion und Installation von RubikONE",
-        "image": "/images/gemeinden/prozess-3.jpg"
+        "image": "/images/gemeinden/prozess-3.jpg",
+        "_id": "pF1myt7HBx"
       },
       {
         "nummer": "4",
         "titel": "Nutzung",
         "beschreibung": "Eröffnung und Workshops",
-        "image": "/images/gemeinden/prozess-4.jpg"
+        "image": "/images/gemeinden/prozess-4.jpg",
+        "_id": "atGhxW87kJ"
       }
     ]
   },
@@ -1586,27 +1810,33 @@
   "RAUMGESTALTUNG_FAQ": [
     {
       "question": "Wie trägt RubikONE zur Gesundheitsförderung bei?",
-      "answer": "RubikONE lädt zu täglicher Bewegung ein und motiviert Menschen, sich physisch und mental aus der Komfortzone zu locken. Sportmotorische wie auch sensorische und emotionale Challenges haben das Potenzial, die Gesundheit auf allen Ebenen zu steigern."
+      "answer": "RubikONE lädt zu täglicher Bewegung ein und motiviert Menschen, sich physisch und mental aus der Komfortzone zu locken. Sportmotorische wie auch sensorische und emotionale Challenges haben das Potenzial, die Gesundheit auf allen Ebenen zu steigern.",
+      "_id": "DeqlpnxcfN"
     },
     {
       "question": "Warum ist RubikONE eine nachhaltige Lösung?",
-      "answer": "Das verwendete Material ist langlebig und wartungsarm. Es werden keine neuen Geräte oder Anlagen gebaut – nur bestehende Elemente werden sichtbar gemacht. In 8 Monaten Testbetrieb in Köniz sind keine Wartungskosten angefallen."
+      "answer": "Das verwendete Material ist langlebig und wartungsarm. Es werden keine neuen Geräte oder Anlagen gebaut – nur bestehende Elemente werden sichtbar gemacht. In 8 Monaten Testbetrieb in Köniz sind keine Wartungskosten angefallen.",
+      "_id": "EUYuGhe2Bp"
     },
     {
       "question": "Wie schnell kann RubikONE umgesetzt werden?",
-      "answer": "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate). Die physische Installation dauert nur wenige Tage."
+      "answer": "Von der Idee bis zur Eröffnung rechnen wir mit 4–6 Monaten. Der grösste Zeitfaktor ist das Baugesuchsverfahren (3–4 Monate). Die physische Installation dauert nur wenige Tage.",
+      "_id": "kxUXMGfpSV"
     },
     {
       "question": "Braucht es ein Baugesuch?",
-      "answer": "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen."
+      "answer": "Ja, für eine Fixinstallation ist ein Baugesuch notwendig. Die gute Nachricht: Da nur Schilder und Farbmarkierungen installiert werden, ist der Prozess deutlich einfacher als bei herkömmlichen Sportanlagen.",
+      "_id": "ahEC7CaYor"
     },
     {
       "question": "Was ist mit Haftung und Sicherheit?",
-      "answer": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards. Die Haftungsfrage ist klar geregelt."
+      "answer": "Jeder RubikONE entspricht den relevanten Schweizer Sicherheitsnormen, insbesondere SN EN 16630:2015 (Fitnessgeräte im Aussenbereich) und weiteren Standards. Die Haftungsfrage ist klar geregelt.",
+      "_id": "MWFJCdFkF_"
     },
     {
       "question": "Gibt es spezielle Angebote für Schulen?",
-      "answer": "Ja! RubikONE eignet sich ideal für Schulareale. Wir bieten spezielle Pakete für Schulen an, inklusive pädagogischem Begleitmaterial und Einführungsworkshops für Lehrpersonen."
+      "answer": "Ja! RubikONE eignet sich ideal für Schulareale. Wir bieten spezielle Pakete für Schulen an, inklusive pädagogischem Begleitmaterial und Einführungsworkshops für Lehrpersonen.",
+      "_id": "PmBgryeDsK"
     }
   ],
   "RAUMGESTALTUNG_CTA": {
@@ -1657,23 +1887,28 @@
     "images": [
       {
         "src": "/images/koeniz/schulklasse.jpg",
-        "alt": "Schulklasse beim RubikONE Training"
+        "alt": "Schulklasse beim RubikONE Training",
+        "_id": "fMVPUBkzSr"
       },
       {
         "src": "/images/koeniz/kind-springt.jpg",
-        "alt": "Kind springt am Posten"
+        "alt": "Kind springt am Posten",
+        "_id": "e-ETGtWGai"
       },
       {
         "src": "/images/koeniz/kinder-springen.jpg",
-        "alt": "Kinder springen gemeinsam"
+        "alt": "Kinder springen gemeinsam",
+        "_id": "XiqwBh_94b"
       },
       {
         "src": "/images/koeniz/spass.jpg",
-        "alt": "Spass beim Bewegen"
+        "alt": "Spass beim Bewegen",
+        "_id": "T1cwhNJgkQ"
       },
       {
         "src": "/images/koeniz/schloss.jpg",
-        "alt": "Schlossareal Köniz"
+        "alt": "Schlossareal Köniz",
+        "_id": "NdmirgPJ5J"
       }
     ]
   },
@@ -1700,19 +1935,23 @@
     "keyFacts": [
       {
         "label": "Workshop-Dauer",
-        "value": "120 Minuten"
+        "value": "120 Minuten",
+        "_id": "YK_RZZMKJi"
       },
       {
         "label": "Teilnehmende",
-        "value": "Bis 12 Personen"
+        "value": "Bis 12 Personen",
+        "_id": "c7ObAcYEZT"
       },
       {
         "label": "Bei Ihnen",
-        "value": "Vor Ort"
+        "value": "Vor Ort",
+        "_id": "QW1owKxh7v"
       },
       {
         "label": "Draussen",
-        "value": "Jedes Wetter"
+        "value": "Jedes Wetter",
+        "_id": "NLQfb7qc86"
       }
     ]
   },
@@ -1720,15 +1959,18 @@
     "images": [
       {
         "src": "/images/workshop/frauen-balancieren.jpg",
-        "alt": "Frauen balancieren beim Workshop"
+        "alt": "Frauen balancieren beim Workshop",
+        "_id": "HOef4LHuR7"
       },
       {
         "src": "/images/workshop/balancieren-helfen.jpg",
-        "alt": "Gegenseitige Hilfe beim Balancieren"
+        "alt": "Gegenseitige Hilfe beim Balancieren",
+        "_id": "zWHl6RPy_F"
       },
       {
         "src": "/images/workshop/quadrupedie.jpg",
-        "alt": "Quadrupedie-Übung auf der Linie"
+        "alt": "Quadrupedie-Übung auf der Linie",
+        "_id": "fWcyllGCux"
       }
     ]
   },
@@ -1811,17 +2053,20 @@
         {
           "title": "Stark",
           "description": "Körperliche und mentale Stärke durch Bewegung entwickeln.",
-          "image": "/images/parkour/sprung-hoch.jpg"
+          "image": "/images/parkour/sprung-hoch.jpg",
+          "_id": "iozdERMkgx"
         },
         {
           "title": "Sinnvoll",
           "description": "Bewegung in den Alltag integrieren, nicht davon trennen.",
-          "image": "/images/parkour/parkourhelfen.jpg"
+          "image": "/images/parkour/parkourhelfen.jpg",
+          "_id": "VX6SNZ1VAS"
         },
         {
           "title": "Nachhaltig",
           "description": "Keine neuen Ressourcen verbrauchen, sondern Bestehendes nutzen.",
-          "image": "/images/parkour/geschichte/schueler-bewegen.jpg"
+          "image": "/images/parkour/geschichte/schueler-bewegen.jpg",
+          "_id": "9RbbooYHUL"
         }
       ]
     },

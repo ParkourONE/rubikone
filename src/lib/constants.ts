@@ -4,7 +4,10 @@
 // Nicht-editierbare Werte (Icons, Bilder, Koordinaten) bleiben hier
 // ===========================================
 
-import content from "@/content/content.json";
+import rawContent from "@/content/content.json";
+import { migrateContent } from "./content-migrations";
+
+const content = migrateContent(rawContent as unknown as Record<string, unknown>) as typeof rawContent;
 
 // Site Configuration
 export const SITE_CONFIG = {
