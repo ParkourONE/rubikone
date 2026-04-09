@@ -3,64 +3,72 @@
  */
 import type { FieldSpec } from "./types";
 
+type ScalarOpts = { required?: boolean; label?: string; default?: unknown };
+
 export const text = (
   path: string,
-  opts: { required?: boolean; label?: string } = {}
+  opts: ScalarOpts = {}
 ): FieldSpec => ({
   kind: "text",
   path,
   required: opts.required ?? true,
   label: opts.label,
+  default: opts.default ?? "",
 });
 
 export const richtext = (
   path: string,
-  opts: { required?: boolean; label?: string } = {}
+  opts: ScalarOpts = {}
 ): FieldSpec => ({
   kind: "richtext",
   path,
   required: opts.required ?? true,
   label: opts.label,
+  default: opts.default ?? "",
 });
 
 export const image = (
   path: string,
-  opts: { required?: boolean; label?: string } = {}
+  opts: ScalarOpts = {}
 ): FieldSpec => ({
   kind: "image",
   path,
   required: opts.required ?? false,
   label: opts.label,
+  default: opts.default ?? "",
 });
 
 export const button = (
   path: string,
-  opts: { required?: boolean; label?: string } = {}
+  opts: ScalarOpts = {}
 ): FieldSpec => ({
   kind: "button",
   path,
   required: opts.required ?? false,
   label: opts.label,
+  default: opts.default ?? { label: "", href: "" },
 });
 
 export const link = (
   path: string,
-  opts: { required?: boolean; label?: string } = {}
+  opts: ScalarOpts = {}
 ): FieldSpec => ({
   kind: "link",
   path,
   required: opts.required ?? false,
   label: opts.label,
+  default: opts.default ?? { label: "", href: "" },
 });
 
 export const icon = (
   path: string,
-  opts: { required?: boolean; label?: string } = {}
+  opts: ScalarOpts = {}
 ): FieldSpec => ({
   kind: "icon",
   path,
   required: opts.required ?? false,
   label: opts.label,
+  default: opts.default ?? "HelpCircle",
 });
 
 export const list = (

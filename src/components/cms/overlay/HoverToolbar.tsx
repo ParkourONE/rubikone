@@ -23,7 +23,9 @@ import {
   ChevronDown,
   Trash2,
   Plus,
+  RotateCcw,
 } from "lucide-react";
+import { toast } from "sonner";
 import { useEditMode, useSelection } from "@/components/cms/edit-mode-context";
 import { useEditorStore } from "@/lib/cms/editor-store";
 import { resolvePathToField, type ResolvedField } from "@/lib/cms/path-to-field";
@@ -205,6 +207,23 @@ export function HoverToolbar() {
     setSelectedPath(toPathString(parts));
   };
 
+  const resetDefault =
+    resolved && !resolved.insideList
+      ? resolved.field.default
+      : resolved?.field.default;
+  const canReset =
+    resolved !== null && resetDefault !== undefined && !isArrayItem;
+
+  const onReset = () => {
+    if (!canReset || !resolved) return;
+    applyOpToStore({
+      type: "set",
+      path: selectedPath,
+      value: resetDefault,
+    });
+    toast.success("Reset to default");
+  };
+
   const onDelete = () => {
     if (!canDelete) return;
     applyOpToStore({ type: "delete", path: selectedPath });
@@ -296,6 +315,16 @@ export function HoverToolbar() {
             </>
           )}
         </>
+      )}
+      {canReset && (
+        <button
+          type="button"
+          className={btnBase}
+          title="Reset to default"
+          onClick={onReset}
+        >
+          <RotateCcw size={14} />
+        </button>
       )}
       <div className="w-px h-5 bg-white/20 mx-1" />
       <button
