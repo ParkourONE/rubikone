@@ -9,6 +9,44 @@ import { cn } from "@/lib/utils";
 import { NAVIGATION_ITEMS, SITE_CONFIG } from "@/lib/constants";
 import { menuAnimation } from "@/lib/animations";
 import { ConfiguratorOverlay } from "@/components/sections/configurator-overlay";
+import { useEditPath } from "@/components/cms/primitives";
+
+function DesktopNavLink({ item, index, isActive }: { item: { href: string; label: string }; index: number; isActive: boolean }) {
+  const itemEdit = useEditPath(`NAVIGATION_ITEMS[${index}]`);
+  const labelEdit = useEditPath(`NAVIGATION_ITEMS[${index}].label`);
+  return (
+    <Link
+      href={item.href}
+      className={cn(
+        "nav-link",
+        isActive && "opacity-100 font-semibold"
+      )}
+      {...itemEdit}
+    >
+      <span {...labelEdit}>{item.label}</span>
+    </Link>
+  );
+}
+
+function MobileNavLink({ item, index, isActive }: { item: { href: string; label: string }; index: number; isActive: boolean }) {
+  const itemEdit = useEditPath(`NAVIGATION_ITEMS[${index}]`);
+  const labelEdit = useEditPath(`NAVIGATION_ITEMS[${index}].label`);
+  return (
+    <motion.div variants={menuAnimation} {...itemEdit}>
+      <Link
+        href={item.href}
+        className={cn(
+          "block py-4 text-2xl font-medium border-b border-[var(--color-apple-gray-200)]",
+          isActive
+            ? "text-[var(--color-apple-blue)]"
+            : "text-[var(--color-apple-dark)]"
+        )}
+      >
+        <span {...labelEdit}>{item.label}</span>
+      </Link>
+    </motion.div>
+  );
+}
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,17 +106,8 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {NAVIGATION_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "nav-link",
-                  pathname === item.href && "opacity-100 font-semibold"
-                )}
-              >
-                {item.label}
-              </Link>
+            {NAVIGATION_ITEMS.map((item, index) => (
+              <DesktopNavLink key={item.href} item={item} index={index} isActive={pathname === item.href} />
             ))}
           </div>
 
@@ -137,20 +166,8 @@ export function Navigation() {
               }}
               className="flex flex-col pt-20 px-6"
             >
-              {NAVIGATION_ITEMS.map((item) => (
-                <motion.div key={item.href} variants={menuAnimation}>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "block py-4 text-2xl font-medium border-b border-[var(--color-apple-gray-200)]",
-                      pathname === item.href
-                        ? "text-[var(--color-apple-blue)]"
-                        : "text-[var(--color-apple-dark)]"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
+              {NAVIGATION_ITEMS.map((item, index) => (
+                <MobileNavLink key={item.href} item={item} index={index} isActive={pathname === item.href} />
               ))}
 
               {/* Mobile CTAs */}

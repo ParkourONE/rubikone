@@ -5,6 +5,68 @@ import Image from "next/image";
 import { Settings } from "lucide-react";
 import { SITE_CONFIG, FOOTER_LINKS } from "@/lib/constants";
 import { useConsent } from "@/providers/consent-provider";
+import { useEditPath } from "@/components/cms/primitives";
+
+function HauptseitenLink({ link, index }: { link: { href: string; label: string }; index: number }) {
+  const itemEdit = useEditPath(`FOOTER_LINKS.hauptseiten[${index}]`);
+  const labelEdit = useEditPath(`FOOTER_LINKS.hauptseiten[${index}].label`);
+  return (
+    <li {...itemEdit}>
+      <Link
+        href={link.href}
+        className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors"
+      >
+        <span {...labelEdit}>{link.label}</span>
+      </Link>
+    </li>
+  );
+}
+
+function RechtlichesLink({ link, index }: { link: { href: string; label: string }; index: number }) {
+  const itemEdit = useEditPath(`FOOTER_LINKS.rechtliches[${index}]`);
+  const labelEdit = useEditPath(`FOOTER_LINKS.rechtliches[${index}].label`);
+  return (
+    <li {...itemEdit}>
+      <Link
+        href={link.href}
+        className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors"
+      >
+        <span {...labelEdit}>{link.label}</span>
+      </Link>
+    </li>
+  );
+}
+
+function PartnerLink({ link, index }: { link: { href: string; label: string; logo?: string }; index: number }) {
+  const itemEdit = useEditPath(`FOOTER_LINKS.partner[${index}]`);
+  const labelEdit = useEditPath(`FOOTER_LINKS.partner[${index}].label`);
+  const logoEdit = useEditPath(`FOOTER_LINKS.partner[${index}].logo`);
+  return (
+    <li {...itemEdit}>
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex flex-col gap-2 hover:opacity-80 transition-opacity"
+      >
+        {'logo' in link && link.logo && (
+          <div className="p-2 bg-white rounded-lg shadow-md" {...logoEdit}>
+            <Image
+              src={link.logo}
+              alt={link.label}
+              width={60}
+              height={40}
+              className="h-8 w-auto object-contain"
+            />
+          </div>
+        )}
+        <span className="text-body-sm text-[var(--color-apple-gray-700)]" {...labelEdit}>
+          {link.label}
+        </span>
+      </a>
+    </li>
+  );
+}
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -71,15 +133,8 @@ export function Footer() {
               Seiten
             </h3>
             <ul className="space-y-3">
-              {FOOTER_LINKS.hauptseiten.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+              {FOOTER_LINKS.hauptseiten.map((link, index) => (
+                <HauptseitenLink key={link.href} link={link} index={index} />
               ))}
             </ul>
           </div>
@@ -92,30 +147,8 @@ export function Footer() {
                   Partner
                 </h3>
                 <ul className="space-y-3">
-                  {FOOTER_LINKS.partner.map((link) => (
-                    <li key={link.href}>
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex flex-col gap-2 hover:opacity-80 transition-opacity"
-                      >
-                        {'logo' in link && link.logo && (
-                          <div className="p-2 bg-white rounded-lg shadow-md">
-                            <Image
-                              src={link.logo}
-                              alt={link.label}
-                              width={60}
-                              height={40}
-                              className="h-8 w-auto object-contain"
-                            />
-                          </div>
-                        )}
-                        <span className="text-body-sm text-[var(--color-apple-gray-700)]">
-                          {link.label}
-                        </span>
-                      </a>
-                    </li>
+                  {FOOTER_LINKS.partner.map((link, index) => (
+                    <PartnerLink key={link.href} link={link} index={index} />
                   ))}
                 </ul>
               </>
@@ -125,15 +158,8 @@ export function Footer() {
               Rechtliches
             </h3>
             <ul className="space-y-3">
-              {FOOTER_LINKS.rechtliches.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
+              {FOOTER_LINKS.rechtliches.map((link, index) => (
+                <RechtlichesLink key={link.href} link={link} index={index} />
               ))}
               <li>
                 <button
