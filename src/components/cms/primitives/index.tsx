@@ -33,6 +33,15 @@ function useEditAttrs(editPath?: string): Record<string, string> {
   return { "data-edit-path": editPath };
 }
 
+/**
+ * Public hook — spread onto any existing element (incl. framer-motion.*) to
+ * opt it into Phase 4's overlay scanner without changing the rendered DOM
+ * shape in public mode. Returns `{}` on public pages.
+ */
+export function useEditPath(editPath?: string): Record<string, string> {
+  return useEditAttrs(editPath);
+}
+
 // ------------------------------------------------------------------
 // CmsText — inline span/p text
 // ------------------------------------------------------------------
