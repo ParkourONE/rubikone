@@ -6,6 +6,7 @@ import { Clock, Users, MapPin, Cloud, CheckCircle, ArrowRight, HelpCircle } from
 import { PageHero } from "@/components/sections/hero-section";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import {
@@ -31,6 +32,15 @@ export default function ImpulsworkshopPage() {
   const fuerWen = useContent("WORKSHOP_FUER_WEN", WORKSHOP_FUER_WEN) as any;
   const cta = useContent("WORKSHOP_CTA", WORKSHOP_CTA) as any;
 
+  const mitnehmenTitleEdit = useEditPath("WORKSHOP_MITNEHMEN.title");
+  const mitnehmenSubtitleEdit = useEditPath("WORKSHOP_MITNEHMEN.subtitle");
+  const fuerWenNoteEdit = useEditPath("WORKSHOP_FUER_WEN.idealNote");
+  const preisWetterEdit = useEditPath("WORKSHOP_PREIS.preisWetter");
+  const ctaHeadlineEdit = useEditPath("WORKSHOP_CTA.headline");
+  const ctaDescEdit = useEditPath("WORKSHOP_CTA.description");
+  const ctaPrimaryEdit = useEditPath("WORKSHOP_CTA.ctaPrimary");
+  const ctaSecondaryEdit = useEditPath("WORKSHOP_CTA.ctaSecondary");
+
   return (
     <>
       <EditableSection contentKey="WORKSHOP_HERO" label="Hero">
@@ -40,6 +50,10 @@ export default function ImpulsworkshopPage() {
         breadcrumb={hero.breadcrumb}
         image={hero.image}
         imageAlt={hero.imageAlt}
+        titleEditPath="WORKSHOP_HERO.title"
+        descriptionEditPath="WORKSHOP_HERO.description"
+        breadcrumbEditPath="WORKSHOP_HERO.breadcrumb"
+        imageEditPath="WORKSHOP_HERO.image"
       />
       </EditableSection>
 
@@ -132,6 +146,8 @@ export default function ImpulsworkshopPage() {
             title={mitnehmen.title}
             subtitle={mitnehmen.subtitle}
             className="[&_h2]:text-white [&_p]:text-white/70"
+            titleProps={mitnehmenTitleEdit}
+            subtitleProps={mitnehmenSubtitleEdit}
           />
 
           <StaggerContainer className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -178,7 +194,7 @@ export default function ImpulsworkshopPage() {
           </StaggerContainer>
 
           <FadeUp delay={0.2}>
-            <p className="mt-8 text-center text-body text-[var(--color-apple-gray-600)]">
+            <p className="mt-8 text-center text-body text-[var(--color-apple-gray-600)]" {...fuerWenNoteEdit}>
               {fuerWen.idealNote}
             </p>
           </FadeUp>
@@ -212,7 +228,7 @@ export default function ImpulsworkshopPage() {
                   </div>
                   <div>
                     <p className="text-caption text-[var(--color-apple-gray-500)]">Wetter</p>
-                    <p className="text-body font-medium text-[var(--color-apple-dark)]">{preis.preisWetter}</p>
+                    <p className="text-body font-medium text-[var(--color-apple-dark)]" {...preisWetterEdit}>{preis.preisWetter}</p>
                   </div>
                 </div>
               </div>
@@ -287,17 +303,17 @@ export default function ImpulsworkshopPage() {
       <section className="section-spacing bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
-            <h2 className="text-title-1 text-white">
+            <h2 className="text-title-1 text-white" {...ctaHeadlineEdit}>
               {cta.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
+            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto" {...ctaDescEdit}>
               {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90" {...ctaPrimaryEdit}>
                 {cta.ctaPrimary.label}
               </Link>
-              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80" {...ctaSecondaryEdit}>
                 {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>

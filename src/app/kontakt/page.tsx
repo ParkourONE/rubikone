@@ -6,6 +6,7 @@ import { PageHero } from "@/components/sections/hero-section";
 import { ContactForm } from "@/components/sections/contact-form";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 import { FadeUp } from "@/components/shared/fade-up";
 import {
   CONTACT_INFO,
@@ -17,6 +18,9 @@ export default function KontaktPage() {
   const hero = useContent("KONTAKT_HERO", KONTAKT_HERO) as any;
   const form = useContent("KONTAKT_FORM", KONTAKT_FORM) as any;
 
+  const phoneHoursEdit = useEditPath("KONTAKT_FORM.phoneHours");
+  const footerImageEdit = useEditPath("KONTAKT_FORM.footerImage");
+
   return (
     <>
       <EditableSection contentKey="KONTAKT_HERO" label="Hero">
@@ -26,6 +30,10 @@ export default function KontaktPage() {
         breadcrumb={hero.breadcrumb}
         image={hero.image}
         imageAlt={hero.imageAlt}
+        titleEditPath="KONTAKT_HERO.title"
+        descriptionEditPath="KONTAKT_HERO.description"
+        breadcrumbEditPath="KONTAKT_HERO.breadcrumb"
+        imageEditPath="KONTAKT_HERO.image"
       />
       </EditableSection>
 
@@ -79,7 +87,7 @@ export default function KontaktPage() {
                     {CONTACT_INFO.phone}
                   </a>
                 </p>
-                <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
+                <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]" {...phoneHoursEdit}>
                   {form.phoneHours}
                 </p>
               </div>
@@ -91,10 +99,12 @@ export default function KontaktPage() {
       <ContactForm
         title={form.contactFormTitle}
         subtitle={form.contactFormSubtitle}
+        titleEditPath="KONTAKT_FORM.contactFormTitle"
+        subtitleEditPath="KONTAKT_FORM.contactFormSubtitle"
       />
 
       {/* Image Section */}
-      <section className="relative h-[40vh] min-h-[300px]">
+      <section className="relative h-[40vh] min-h-[300px]" {...footerImageEdit}>
         <Image
           src={form.footerImage}
           alt="Parkour in Aktion"

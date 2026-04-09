@@ -8,6 +8,7 @@ import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCirc
 import { PageHero } from "@/components/sections/hero-section";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
 import { appleTransition } from "@/lib/animations";
@@ -38,6 +39,25 @@ export default function KoenizPage() {
   const gallery = useContent("KOENIZ_GALLERY", KOENIZ_GALLERY) as any;
   const cta = useContent("KOENIZ_CTA", KOENIZ_CTA) as any;
 
+  const lab7x1TaglineEdit = useEditPath("KOENIZ_LAB7X1.tagline");
+  const lab7x1HeadlineEdit = useEditPath("KOENIZ_LAB7X1.headline");
+  const lab7x1Desc1Edit = useEditPath("KOENIZ_LAB7X1.description1");
+  const lab7x1Desc2Edit = useEditPath("KOENIZ_LAB7X1.description2");
+  const lab7x1DlLabelEdit = useEditPath("KOENIZ_LAB7X1.downloadLabel");
+  const lab7x1DlDescEdit = useEditPath("KOENIZ_LAB7X1.downloadDesc");
+  const denkmalLabelEdit = useEditPath("KOENIZ_DENKMALSCHUTZ.label");
+  const erkTaglineEdit = useEditPath("KOENIZ_ERKENNTNISSE.tagline");
+  const erkHeadlineEdit = useEditPath("KOENIZ_ERKENNTNISSE.headline");
+  const fbTaglineEdit = useEditPath("KOENIZ_FEEDBACK.tagline");
+  const fbHeadlineEdit = useEditPath("KOENIZ_FEEDBACK.headline");
+  const anninaQuoteEdit = useEditPath("KOENIZ_ANNINA.quote");
+  const anninaNameEdit = useEditPath("KOENIZ_ANNINA.name");
+  const anninaRoleEdit = useEditPath("KOENIZ_ANNINA.role");
+  const ctaHeadlineEdit = useEditPath("KOENIZ_CTA.headline");
+  const ctaDescEdit = useEditPath("KOENIZ_CTA.description");
+  const ctaPrimaryEdit = useEditPath("KOENIZ_CTA.ctaPrimary");
+  const ctaSecondaryEdit = useEditPath("KOENIZ_CTA.ctaSecondary");
+
   const scrollInsights = (direction: "left" | "right") => {
     if (insightScrollRef.current) {
       const scrollAmount = 360;
@@ -67,6 +87,10 @@ export default function KoenizPage() {
         breadcrumb={hero.breadcrumb}
         image={hero.image}
         imageAlt={hero.imageAlt}
+        titleEditPath="KOENIZ_HERO.title"
+        descriptionEditPath="KOENIZ_HERO.description"
+        breadcrumbEditPath="KOENIZ_HERO.breadcrumb"
+        imageEditPath="KOENIZ_HERO.image"
       />
       </EditableSection>
 
@@ -96,14 +120,14 @@ export default function KoenizPage() {
             transition={appleTransition}
             className="mb-12"
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...lab7x1TaglineEdit}>
               {lab7x1.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-3xl">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-3xl" {...lab7x1HeadlineEdit}>
               {lab7x1.headline}
             </h2>
-            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl" dangerouslySetInnerHTML={{ __html: lab7x1.description1 }} />
-            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl">
+            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl" dangerouslySetInnerHTML={{ __html: lab7x1.description1 }} {...lab7x1Desc1Edit} />
+            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-700)] max-w-3xl" {...lab7x1Desc2Edit}>
               {lab7x1.description2}
             </p>
           </motion.div>
@@ -140,8 +164,8 @@ export default function KoenizPage() {
             >
               <Download className="h-5 w-5 text-[var(--color-apple-blue)]" />
               <div>
-                <p className="text-body font-medium text-[var(--color-apple-dark)]">{lab7x1.downloadLabel}</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{lab7x1.downloadDesc}</p>
+                <p className="text-body font-medium text-[var(--color-apple-dark)]" {...lab7x1DlLabelEdit}>{lab7x1.downloadLabel}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]" {...lab7x1DlDescEdit}>{lab7x1.downloadDesc}</p>
               </div>
             </a>
           </FadeUp>
@@ -215,7 +239,7 @@ export default function KoenizPage() {
           <FadeUp>
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full mb-6">
-                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">{denkmalschutz.label}</span>
+                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]" {...denkmalLabelEdit}>{denkmalschutz.label}</span>
               </div>
               <p className="text-title-2 text-[var(--color-apple-dark)]">
                 {KOENIZ_CASE_STUDY.denkmalpflege}
@@ -236,10 +260,10 @@ export default function KoenizPage() {
             viewport={{ once: true }}
             transition={appleTransition}
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...erkTaglineEdit}>
               {erkenntnisse.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...erkHeadlineEdit}>
               {erkenntnisse.headline}
             </h2>
           </motion.div>
@@ -349,10 +373,10 @@ export default function KoenizPage() {
             viewport={{ once: true }}
             transition={appleTransition}
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...fbTaglineEdit}>
               {feedback.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...fbHeadlineEdit}>
               {feedback.headline}
             </h2>
           </motion.div>
@@ -458,13 +482,13 @@ export default function KoenizPage() {
             <div className="max-w-3xl mx-auto">
               <Quote className="h-10 w-10 text-[var(--color-apple-gray-300)] mb-6" strokeWidth={1} />
               <blockquote>
-                <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed">
+                <p className="text-title-3 text-[var(--color-apple-dark)] leading-relaxed" {...anninaQuoteEdit}>
                   &laquo;{annina.quote}&raquo;
                 </p>
               </blockquote>
               <div className="mt-6">
-                <p className="text-body font-semibold text-[var(--color-apple-dark)]">{annina.name}</p>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">{annina.role}</p>
+                <p className="text-body font-semibold text-[var(--color-apple-dark)]" {...anninaNameEdit}>{annina.name}</p>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)]" {...anninaRoleEdit}>{annina.role}</p>
               </div>
             </div>
           </FadeUp>
@@ -588,17 +612,17 @@ export default function KoenizPage() {
       <section className="py-16 lg:py-24 bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
           <FadeUp>
-            <h2 className="text-title-1 text-white">
+            <h2 className="text-title-1 text-white" {...ctaHeadlineEdit}>
               {cta.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
+            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto" {...ctaDescEdit}>
               {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90" {...ctaPrimaryEdit}>
                 {cta.ctaPrimary.label}
               </Link>
-              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80" {...ctaSecondaryEdit}>
                 {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
