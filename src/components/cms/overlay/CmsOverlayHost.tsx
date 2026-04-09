@@ -14,6 +14,7 @@ import { AddBlockGaps } from "./AddBlockGaps";
 import { TextCommitBridge } from "./TextCommitBridge";
 import { SaveBar } from "./SaveBar";
 import { KeyboardShortcuts } from "./KeyboardShortcuts";
+import { ValidationBadges } from "./ValidationBadges";
 
 export function CmsOverlayHost() {
   return (
@@ -23,6 +24,7 @@ export function CmsOverlayHost() {
       <InlineEditors />
       <AddBlockGaps />
       <TextCommitBridge />
+      <ValidationBadges />
       <SaveBar />
       <KeyboardShortcuts />
     </>
