@@ -292,6 +292,9 @@ m({
     text("challenge.title"),
     text("solution.title"),
     text("denkmalpflege"),
+    list("insights", [text("title"), text("shortDesc"), text("fullDesc")]),
+    list("timeline", [text("date"), text("event")]),
+    list("workshopFeedback", [text("")]),
   ],
 });
 
@@ -1220,6 +1223,102 @@ m({
     text("compactIntro.description"),
     text("compactIntro.ctaText"),
     text("compactIntro.ctaHref"),
+  ],
+});
+
+/* --------------------- HOMEPAGE EXTRA BLOCKS (v3) ------------------------- */
+
+m({
+  id: "USP_ITEMS",
+  label: "USP Slider",
+  schema: z.array(
+    withId({
+      title: z.string(),
+      description: z.string(),
+      image: z.string(),
+    })
+  ),
+  fields: [list("", [text("title"), text("description"), image("image")])],
+});
+
+m({
+  id: "SOLUTION_CARDS_CONTENT",
+  label: "Lösung Karten",
+  schema: z.array(
+    withId({
+      id: z.string(),
+      title: z.string(),
+      subtitle: z.string(),
+      image: z.string(),
+      modalTitle: z.string(),
+      modalContent: z.string(),
+    })
+  ),
+  fields: [
+    list("", [
+      text("title"),
+      text("subtitle"),
+      image("image"),
+      text("modalTitle"),
+      text("modalContent"),
+    ]),
+  ],
+});
+
+m({
+  id: "MOVEMENTS_GRID",
+  label: "9 Bewegungen Grid",
+  schema: z.array(withId({ title: z.string() })),
+  fields: [list("", [text("title")])],
+});
+
+m({
+  id: "LERNDIMENSIONEN_CONTENT",
+  label: "Lerndimensionen Grid",
+  schema: z.array(
+    withId({
+      id: z.string(),
+      title: z.string(),
+      icon: z.string(),
+      description: z.string(),
+      example: z.string(),
+      color: z.string(),
+    })
+  ),
+  fields: [
+    list("", [
+      text("title"),
+      image("icon"),
+      text("description"),
+      text("example"),
+    ]),
+  ],
+});
+
+m({
+  id: "PROCESS_STEPS_CONTENT",
+  label: "Prozess-Schritte (Homepage)",
+  schema: z.array(
+    withId({
+      number: z.string(),
+      title: z.string(),
+      subtitle: z.string(),
+      description: z.string(),
+      modalContent: z.string(),
+      duration: z.string(),
+      image: z.string(),
+    })
+  ),
+  fields: [
+    list("", [
+      text("number"),
+      text("title"),
+      text("subtitle"),
+      text("description"),
+      text("modalContent"),
+      text("duration"),
+      image("image"),
+    ]),
   ],
 });
 

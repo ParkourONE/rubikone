@@ -136,9 +136,17 @@ export default function KoenizPage() {
           <StaggerContainer className="mt-16 max-w-3xl">
             {KOENIZ_CASE_STUDY.timeline.map((item: any, index: number) => (
               <StaggerItem key={index}>
-                <div className="flex gap-6 items-start pb-8 relative">
+                <div
+                  className="flex gap-6 items-start pb-8 relative"
+                  data-edit-path={`KOENIZ_CASE_STUDY.timeline.${index}`}
+                >
                   <div className="flex-shrink-0 w-32 text-right">
-                    <span className="text-body font-semibold text-[var(--color-apple-blue)]">{item.date}</span>
+                    <span
+                      className="text-body font-semibold text-[var(--color-apple-blue)]"
+                      data-edit-path={`KOENIZ_CASE_STUDY.timeline.${index}.date`}
+                    >
+                      {item.date}
+                    </span>
                   </div>
                   <div className="relative">
                     <div className="w-4 h-4 rounded-full bg-[var(--color-apple-blue)] relative z-10" />
@@ -147,7 +155,12 @@ export default function KoenizPage() {
                     )}
                   </div>
                   <div className="flex-grow pb-4">
-                    <p className="text-body text-[var(--color-apple-dark)]">{item.event}</p>
+                    <p
+                      className="text-body text-[var(--color-apple-dark)]"
+                      data-edit-path={`KOENIZ_CASE_STUDY.timeline.${index}.event`}
+                    >
+                      {item.event}
+                    </p>
                   </div>
                 </div>
               </StaggerItem>
@@ -285,15 +298,22 @@ export default function KoenizPage() {
               viewport={{ once: true }}
               transition={{ ...appleTransition, delay: index * 0.05 }}
               className="flex-shrink-0 w-[320px]"
+              data-edit-path={`KOENIZ_CASE_STUDY.insights.${index}`}
             >
               <div
                 onClick={() => setActiveInsight(index)}
                 className="bg-white rounded-2xl p-8 shadow-apple h-full cursor-pointer hover:shadow-apple-lg transition-shadow"
               >
-                <h3 className="text-headline font-semibold text-[var(--color-apple-dark)] mb-3">
+                <h3
+                  className="text-headline font-semibold text-[var(--color-apple-dark)] mb-3"
+                  data-edit-path={`KOENIZ_CASE_STUDY.insights.${index}.title`}
+                >
                   {insight.title}
                 </h3>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
+                <p
+                  className="text-body-sm text-[var(--color-apple-gray-600)] mb-4"
+                  data-edit-path={`KOENIZ_CASE_STUDY.insights.${index}.shortDesc`}
+                >
                   {insight.shortDesc}
                 </p>
                 <span className="inline-flex items-center gap-1 text-body-sm text-[var(--color-apple-blue)] font-medium">
@@ -355,7 +375,10 @@ export default function KoenizPage() {
               <h3 className="text-title-2 text-[var(--color-apple-dark)] mb-4">
                 {KOENIZ_CASE_STUDY.insights[activeInsight].title}
               </h3>
-              <p className="text-body text-[var(--color-apple-gray-700)] leading-relaxed">
+              <p
+                className="text-body text-[var(--color-apple-gray-700)] leading-relaxed"
+                data-edit-path={`KOENIZ_CASE_STUDY.insights.${activeInsight}.fullDesc`}
+              >
                 {KOENIZ_CASE_STUDY.insights[activeInsight].fullDesc}
               </p>
             </motion.div>
@@ -398,6 +421,7 @@ export default function KoenizPage() {
               viewport={{ once: true }}
               transition={{ ...appleTransition, delay: index * 0.05 }}
               className="flex-shrink-0 w-[320px]"
+              data-edit-path={`KOENIZ_CASE_STUDY.workshopFeedback.${index}`}
             >
               <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6 h-full">
                 <Quote className="h-8 w-8 text-[var(--color-apple-gray-300)] mb-4" strokeWidth={1} />

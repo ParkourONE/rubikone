@@ -226,3 +226,50 @@ export const WORKSHOP_DETAILS = {
 
 // Konfigurator
 export const CONFIGURATOR = content.CONFIGURATOR;
+
+// Homepage extras migrated in v3
+type UspItem = { _id: string; title: string; description: string; image: string };
+type SolutionCard = {
+  _id: string;
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  modalTitle: string;
+  modalContent: string;
+};
+type MovementTag = { _id: string; title: string };
+type Lerndimension = {
+  _id: string;
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  example: string;
+  color: string;
+};
+type ProcessStep = {
+  _id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  modalContent: string;
+  duration: string;
+  image: string;
+};
+
+export const USP_ITEMS: UspItem[] =
+  ((content as unknown as { USP_ITEMS?: UspItem[] }).USP_ITEMS) ?? [];
+export const SOLUTION_CARDS_CONTENT: SolutionCard[] =
+  ((content as unknown as { SOLUTION_CARDS_CONTENT?: SolutionCard[] })
+    .SOLUTION_CARDS_CONTENT) ?? [];
+export const MOVEMENTS_GRID: MovementTag[] =
+  ((content as unknown as { MOVEMENTS_GRID?: MovementTag[] }).MOVEMENTS_GRID) ??
+  [];
+export const LERNDIMENSIONEN_CONTENT: Lerndimension[] =
+  ((content as unknown as { LERNDIMENSIONEN_CONTENT?: Lerndimension[] })
+    .LERNDIMENSIONEN_CONTENT) ?? [];
+export const PROCESS_STEPS_CONTENT: ProcessStep[] =
+  ((content as unknown as { PROCESS_STEPS_CONTENT?: ProcessStep[] })
+    .PROCESS_STEPS_CONTENT) ?? [];

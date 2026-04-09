@@ -5,21 +5,30 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
+import { MOVEMENTS_GRID } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
-// The 9 natural movements humans have done for millennia
-const MOVEMENTS = [
-  "Greifen",
-  "Hangeln",
-  "Balancieren",
-  "Springen",
-  "Klettern",
-  "Ausdehnen",
-  "Kraft",
-  "Quadrupedie",
-  "Laufen",
-];
+type MovementTag = { _id?: string; title: string };
+
+function MovementPill({ item, index }: { item: MovementTag; index: number }) {
+  const edit = useEditPath(`MOVEMENTS_GRID.${index}.title`);
+  return (
+    <motion.span
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.05 }}
+      className="px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-body font-medium text-[var(--color-apple-dark)] hover:bg-[var(--color-apple-blue)] hover:text-white transition-colors cursor-default"
+      {...edit}
+    >
+      {item.title}
+    </motion.span>
+  );
+}
 
 export function MovementsGrid() {
+  const MOVEMENTS = useContent<MovementTag[]>("MOVEMENTS_GRID", MOVEMENTS_GRID);
   return (
     <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
       <div className="container-content">
@@ -74,16 +83,11 @@ export function MovementsGrid() {
                 {/* Movement Tags */}
                 <div className="flex flex-wrap gap-3 mb-8">
                   {MOVEMENTS.map((movement, index) => (
-                    <motion.span
-                      key={movement}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ ...appleTransition, delay: index * 0.05 }}
-                      className="px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-body font-medium text-[var(--color-apple-dark)] hover:bg-[var(--color-apple-blue)] hover:text-white transition-colors cursor-default"
-                    >
-                      {movement}
-                    </motion.span>
+                    <MovementPill
+                      key={movement._id ?? movement.title}
+                      item={movement}
+                      index={index}
+                    />
                   ))}
                 </div>
 

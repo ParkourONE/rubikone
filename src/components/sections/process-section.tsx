@@ -6,88 +6,85 @@ import { ArrowLeft, ArrowRight, Plus, X } from "lucide-react";
 import { useRef, useState } from "react";
 import { appleTransition } from "@/lib/animations";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { PROCESS_STEPS_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
-// Process steps with images
-const PROCESS_STEPS = [
-  {
-    number: "1",
-    title: "Kennenlernen",
-    subtitle: "Impulsworkshop",
-    description: "Wir zeigen Ihnen vor Ort, was möglich ist.",
-    modalContent: `In einem 120-minütigen Workshop vor Ort zeigen wir Ihnen die Möglichkeiten von RubikONE.
+type ProcessStepItem = {
+  _id?: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  modalContent: string;
+  duration: string;
+  image: string;
+};
 
-Gemeinsam gehen wir durch Ihre Gemeinde und entdecken vorhandene Infrastruktur mit neuen Augen. Sie werden überrascht sein, wie viele Bewegungsmöglichkeiten bereits existieren.
-
-Was Sie erwartet:
-• Begehung potenzieller Standorte
-• Analyse der vorhandenen Infrastruktur
-• Erste Ideen und Vorschläge
-• Beantwortung aller Fragen
-
-Nach dem Workshop wissen Sie, ob RubikONE zu Ihrer Gemeinde passt.`,
-    duration: "1 Tag",
-    image: "/images/workshop/frauen-balancieren.jpg",
-  },
-  {
-    number: "2",
-    title: "Planung",
-    subtitle: "Konzept & Sicherheit",
-    description: "Wir entwickeln Ihre individuelle Route.",
-    modalContent: `Die Planung ist das Herzstück jedes RubikONE-Projekts. Wir entwickeln ein massgeschneidertes Konzept für Ihre Gemeinde.
-
-Normenkonform:
-Alle Posten entsprechen den relevanten Schweizer Sicherheitsnormen. Sicherheit hat höchste Priorität.
-
-Was wir tun:
-• Detaillierte Routenplanung
-• Auswahl der optimalen Standorte
-• Gestaltungskonzept entwickeln
-• Sicherheitsprüfung aller Posten
-• Abstimmung mit Ihren Behörden
-
-Das Ergebnis: Ein vollständiges Konzept, das auf Ihre Gemeinde zugeschnitten ist.`,
-    duration: "4-6 Wochen",
-    image: "/images/process/gestaltung.jpg",
-  },
-  {
-    number: "3",
-    title: "Umsetzung",
-    subtitle: "Handwerk & Installation",
-    description: "Lokale Handwerker setzen alles um.",
-    modalContent: `Die Umsetzung erfolgt durch lokale Handwerker unter unserer Anleitung. So bleibt die Wertschöpfung in Ihrer Region.
-
-Was umgesetzt wird:
-• Farbmarkierungen auf Böden und Wänden
-• Produktion der Beschilderung
-• Montage aller Elemente
-• Qualitätskontrolle
-
-Alles aus einer Hand:
-Wir koordinieren alle Gewerke und sorgen für eine reibungslose Umsetzung. Sie haben einen Ansprechpartner für alles.`,
-    duration: "2-3 Wochen",
-    image: "/images/process/bemalung.jpg",
-  },
-  {
-    number: "4",
-    title: "Eröffnung",
-    subtitle: "Start & Begleitung",
-    description: "Gemeinsamer Start mit Ihrer Bevölkerung.",
-    modalContent: `Die Eröffnung ist der Startschuss für Bewegung in Ihrer Gemeinde. Wir sorgen dafür, dass alle davon erfahren.
-
-Das Eröffnungsevent:
-• Offizielle Einweihung mit Behörden
-• Trainings für die Bevölkerung
-• Schulklassen-Workshops
-• Medienarbeit
-
-Nach der Eröffnung:
-Wir lassen Sie nicht allein. Auf Wunsch bieten wir regelmässige Trainings und Events an, um RubikONE lebendig zu halten.`,
-    duration: "1 Tag",
-    image: "/images/koeniz/schulklasse.jpg",
-  },
-];
+function ProcessStepCard({
+  step,
+  index,
+  onOpen,
+}: {
+  step: ProcessStepItem;
+  index: number;
+  onOpen: () => void;
+}) {
+  const cardEdit = useEditPath(`PROCESS_STEPS_CONTENT.${index}`);
+  const titleEdit = useEditPath(`PROCESS_STEPS_CONTENT.${index}.title`);
+  const subtitleEdit = useEditPath(`PROCESS_STEPS_CONTENT.${index}.subtitle`);
+  const imageEdit = useEditPath(`PROCESS_STEPS_CONTENT.${index}.image`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.1 }}
+      className="flex-shrink-0 w-[280px]"
+      {...cardEdit}
+    >
+      <div
+        className="relative rounded-2xl overflow-hidden shadow-apple cursor-pointer group aspect-[3/4]"
+        onClick={onOpen}
+      >
+        <Image
+          src={step.image}
+          alt={step.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          {...imageEdit}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4 right-14">
+          <p className="text-body-sm text-white/70" {...subtitleEdit}>
+            {step.subtitle}
+          </p>
+          <h3
+            className="text-headline text-white font-semibold"
+            {...titleEdit}
+          >
+            {step.title}
+          </h3>
+        </div>
+        <button
+          className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen();
+          }}
+        >
+          <Plus className="h-5 w-5 text-white" />
+        </button>
+      </div>
+    </motion.div>
+  );
+}
 
 export function ProcessSection() {
+  const PROCESS_STEPS = useContent<ProcessStepItem[]>(
+    "PROCESS_STEPS_CONTENT",
+    PROCESS_STEPS_CONTENT
+  );
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeModal, setActiveModal] = useState<number | null>(null);
 
@@ -139,47 +136,12 @@ export function ProcessSection() {
           <div className="slider-spacer" />
 
           {PROCESS_STEPS.map((step, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: index * 0.1 }}
-              className="flex-shrink-0 w-[280px]"
-            >
-              <div
-                className="relative rounded-2xl overflow-hidden shadow-apple cursor-pointer group aspect-[3/4]"
-                onClick={() => setActiveModal(index)}
-              >
-                {/* Full Image - Portrait */}
-                <Image
-                  src={step.image}
-                  alt={step.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-
-                {/* Gradient for title */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-
-                {/* Title at bottom */}
-                <div className="absolute bottom-4 left-4 right-14">
-                  <p className="text-body-sm text-white/70">{step.subtitle}</p>
-                  <h3 className="text-headline text-white font-semibold">{step.title}</h3>
-                </div>
-
-                {/* Plus Icon - Bottom right */}
-                <button
-                  className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveModal(index);
-                  }}
-                >
-                  <Plus className="h-5 w-5 text-white" />
-                </button>
-              </div>
-            </motion.div>
+            <ProcessStepCard
+              key={step._id ?? index}
+              step={step}
+              index={index}
+              onOpen={() => setActiveModal(index)}
+            />
           ))}
 
           {/* Right spacer */}

@@ -7,64 +7,84 @@ import { ArrowRight, ArrowLeft, Plus, X } from "lucide-react";
 import { useState, useRef } from "react";
 import { appleTransition } from "@/lib/animations";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { SOLUTION_CARDS_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
-// Solution Cards Data
-const SOLUTION_CARDS = [
-  {
-    id: "erlaubnis",
-    title: "Erlaubnis",
-    subtitle: "Die unsichtbare Barriere",
-    image: "/images/hero/oma-enkelin.jpg",
-    modalTitle: "Menschen brauchen Erlaubnis, sich zu bewegen.",
-    modalContent: `40% der Schweizer Bevölkerung bewegt sich zu wenig. Nicht weil sie nicht wollen – sondern weil niemand sie einlädt.
+type SolutionCardItem = {
+  _id?: string;
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  modalTitle: string;
+  modalContent: string;
+};
 
-RubikONE gibt diese Erlaubnis. Durch sichtbare Markierungen und klare Beschilderung sagen wir: "Hier darfst du dich bewegen. Hier ist es erwünscht."
-
-Das ist der erste Schritt zur Veränderung. Menschen brauchen die Bestätigung, dass Bewegung im öffentlichen Raum nicht nur erlaubt, sondern gewollt ist.`,
-  },
-  {
-    id: "sichtbarkeit",
-    title: "Sichtbarkeit",
-    subtitle: "Den Blick verändern",
-    image: "/images/konzept/bemalung.jpg",
-    modalTitle: "Wir machen sichtbar, was schon da ist.",
-    modalContent: `Treppen werden zu Trainingsgeräten. Mauern zu Balancierbalken. Geländer zu Kletterstangen.
-
-RubikONE nutzt bestehende urbane Elemente und macht sie durch Farbmarkierungen und Beschilderung als Bewegungsräume sichtbar.
-
-Keine neuen Geräte. Kein Tiefbau. Keine grossen Investitionen. Nur ein neuer Blick auf das, was bereits vorhanden ist.`,
-  },
-  {
-    id: "posten",
-    title: "Posten",
-    subtitle: "9 natürliche Bewegungen",
-    image: "/images/posten/balance-nahaufnahme.jpg",
-    modalTitle: "Neun Bewegungen – für alle Generationen.",
-    modalContent: `Jede RubikONE-Route besteht aus Bewegungsposten mit natürlichen Bewegungsmustern: Greifen, Hangeln, Balancieren, Springen, Klettern, Ausdehnen, Krafttraining, Quadrupedie und Laufen.
-
-Jede Übung gibt es in drei Schwierigkeitsgraden – Grün, Blau, Rot. So findet jede:r den passenden Einstieg, vom Kind bis zur Grossmutter.
-
-Die Anzahl der Posten passen wir individuell an: Von 6 bis 16 Posten ist alles möglich, je nach Bedarf Ihrer Gemeinde.`,
-  },
-  {
-    id: "wirkung",
-    title: "Wirkung",
-    subtitle: "Wissenschaftlich bewiesen",
-    image: "/images/hero/generationen-kraft.jpg",
-    modalTitle: "Wirkung, die messbar ist.",
-    modalContent: `Das Bundesamt für Sport BASPO hat RubikONE im Rahmen des lab7x1 Programms evaluiert. Die Ergebnisse aus Köniz:
-
-• 531 aktive Teilnehmende in 8 Monaten
-• 94% verstehen das Konzept sofort
-• 84% schätzen den kostenlosen Zugang
-• 0 CHF Wartungskosten
-• 0 Fälle von Vandalismus
-
-RubikONE funktioniert – und die Zahlen beweisen es.`,
-  },
-];
+function SolutionCardView({
+  card,
+  index,
+  onOpen,
+}: {
+  card: SolutionCardItem;
+  index: number;
+  onOpen: () => void;
+}) {
+  const cardEdit = useEditPath(`SOLUTION_CARDS_CONTENT.${index}`);
+  const titleEdit = useEditPath(`SOLUTION_CARDS_CONTENT.${index}.title`);
+  const subtitleEdit = useEditPath(`SOLUTION_CARDS_CONTENT.${index}.subtitle`);
+  const imageEdit = useEditPath(`SOLUTION_CARDS_CONTENT.${index}.image`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.1 }}
+      className="flex-shrink-0 w-[360px]"
+      {...cardEdit}
+    >
+      <div
+        className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group"
+        onClick={onOpen}
+      >
+        <Image
+          src={card.image}
+          alt={card.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          {...imageEdit}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 p-6">
+          <p className="text-body-sm text-white/70 mb-1" {...subtitleEdit}>
+            {card.subtitle}
+          </p>
+          <h3
+            className="text-title-2 text-white font-semibold"
+            {...titleEdit}
+          >
+            {card.title}
+          </h3>
+        </div>
+        <button
+          className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpen();
+          }}
+        >
+          <Plus className="h-5 w-5 text-white" />
+        </button>
+      </div>
+    </motion.div>
+  );
+}
 
 export function SolutionSection() {
+  const SOLUTION_CARDS = useContent<SolutionCardItem[]>(
+    "SOLUTION_CARDS_CONTENT",
+    SOLUTION_CARDS_CONTENT
+  );
   const [activeModal, setActiveModal] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -113,51 +133,12 @@ export function SolutionSection() {
           <div className="slider-spacer" />
 
           {SOLUTION_CARDS.map((card, index) => (
-            <motion.div
-              key={card.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: index * 0.1 }}
-              className="flex-shrink-0 w-[360px]"
-            >
-              <div
-                className="relative aspect-[3/4] rounded-2xl overflow-hidden cursor-pointer group"
-                onClick={() => setActiveModal(card.id)}
-              >
-                {/* Image */}
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-body-sm text-white/70 mb-1">
-                    {card.subtitle}
-                  </p>
-                  <h3 className="text-title-2 text-white font-semibold">
-                    {card.title}
-                  </h3>
-                </div>
-
-                {/* Plus Icon - Bottom right */}
-                <button
-                  className="absolute bottom-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setActiveModal(card.id);
-                  }}
-                >
-                  <Plus className="h-5 w-5 text-white" />
-                </button>
-              </div>
-            </motion.div>
+            <SolutionCardView
+              key={card._id ?? card.id}
+              card={card}
+              index={index}
+              onOpen={() => setActiveModal(card.id)}
+            />
           ))}
 
           {/* Konzept entdecken Card */}

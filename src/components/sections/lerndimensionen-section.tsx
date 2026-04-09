@@ -3,52 +3,99 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { appleTransition } from "@/lib/animations";
+import { LERNDIMENSIONEN_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
-// The 5 TRUST Education learning dimensions
-const LERNDIMENSIONEN = [
-  {
-    id: "motorisch",
-    title: "Motorisch",
-    icon: "/images/lerndimensionen/motorisch.jpg",
-    description: "Körperliche Bewegung und Koordination",
-    example: "Balanciere auf einem Bein während der Übung",
-    color: "bg-emerald-500",
-  },
-  {
-    id: "kognitiv",
-    title: "Kognitiv",
-    icon: "/images/lerndimensionen/kognitiv.jpg",
-    description: "Denken, Problemlösung und Konzentration",
-    example: "Zähle rückwärts von 20 während du balancierst",
-    color: "bg-blue-500",
-  },
-  {
-    id: "emotional",
-    title: "Emotional",
-    icon: "/images/lerndimensionen/emotional.jpg",
-    description: "Gefühle wahrnehmen und ausdrücken",
-    example: "Lächle während jeder Übung",
-    color: "bg-amber-500",
-  },
-  {
-    id: "sozial",
-    title: "Sozial",
-    icon: "/images/lerndimensionen/sozial.jpg",
-    description: "Gemeinsam bewegen und interagieren",
-    example: "Grüsse alle Personen, denen du begegnest",
-    color: "bg-rose-500",
-  },
-  {
-    id: "sensorisch",
-    title: "Sensorisch",
-    icon: "/images/lerndimensionen/sensorisch.jpg",
-    description: "Sinne schärfen und bewusst wahrnehmen",
-    example: "Schliesse die Augen während der Übung",
-    color: "bg-violet-500",
-  },
-];
+type Lerndimension = {
+  _id?: string;
+  id: string;
+  title: string;
+  icon: string;
+  description: string;
+  example: string;
+  color: string;
+};
+
+function LerndimensionCard({
+  dimension,
+  index,
+}: {
+  dimension: Lerndimension;
+  index: number;
+}) {
+  const cardEdit = useEditPath(`LERNDIMENSIONEN_CONTENT.${index}`);
+  const titleEdit = useEditPath(`LERNDIMENSIONEN_CONTENT.${index}.title`);
+  const descEdit = useEditPath(`LERNDIMENSIONEN_CONTENT.${index}.description`);
+  const iconEdit = useEditPath(`LERNDIMENSIONEN_CONTENT.${index}.icon`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.1 }}
+      className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6 text-center hover:shadow-apple transition-shadow"
+      {...cardEdit}
+    >
+      <div className="w-16 h-16 mx-auto mb-4 relative" {...iconEdit}>
+        <Image
+          src={dimension.icon}
+          alt={dimension.title}
+          fill
+          className="object-contain"
+        />
+      </div>
+      <h3
+        className="text-headline font-semibold text-[var(--color-apple-dark)] mb-2"
+        {...titleEdit}
+      >
+        {dimension.title}
+      </h3>
+      <p
+        className="text-body-sm text-[var(--color-apple-gray-600)]"
+        {...descEdit}
+      >
+        {dimension.description}
+      </p>
+    </motion.div>
+  );
+}
+
+function LerndimensionChallenge({
+  dim,
+  index,
+}: {
+  dim: Lerndimension;
+  index: number;
+}) {
+  const exampleEdit = useEditPath(
+    `LERNDIMENSIONEN_CONTENT.${index}.example`
+  );
+  return (
+    <div className="flex items-center gap-3 bg-white rounded-xl px-4 py-3">
+      <div className="w-8 h-8 relative flex-shrink-0">
+        <Image
+          src={dim.icon}
+          alt={dim.title}
+          fill
+          className="object-contain"
+        />
+      </div>
+      <p
+        className="text-body-sm text-[var(--color-apple-gray-700)]"
+        {...exampleEdit}
+      >
+        <span className="font-medium">{dim.title}:</span> {dim.example}
+      </p>
+    </div>
+  );
+}
 
 export function LerndimensionenSection() {
+  const LERNDIMENSIONEN = useContent<Lerndimension[]>(
+    "LERNDIMENSIONEN_CONTENT",
+    LERNDIMENSIONEN_CONTENT
+  );
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="container-content">
@@ -74,34 +121,11 @@ export function LerndimensionenSection() {
         {/* 5 Dimensions Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6 mb-12">
           {LERNDIMENSIONEN.map((dimension, index) => (
-            <motion.div
-              key={dimension.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: index * 0.1 }}
-              className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6 text-center hover:shadow-apple transition-shadow"
-            >
-              {/* Icon */}
-              <div className="w-16 h-16 mx-auto mb-4 relative">
-                <Image
-                  src={dimension.icon}
-                  alt={dimension.title}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              {/* Title */}
-              <h3 className="text-headline font-semibold text-[var(--color-apple-dark)] mb-2">
-                {dimension.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-body-sm text-[var(--color-apple-gray-600)]">
-                {dimension.description}
-              </p>
-            </motion.div>
+            <LerndimensionCard
+              key={dimension._id ?? dimension.id}
+              dimension={dimension}
+              index={index}
+            />
           ))}
         </div>
 
@@ -138,23 +162,12 @@ export function LerndimensionenSection() {
                 <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
                   Beispiel-Challenges:
                 </p>
-                {LERNDIMENSIONEN.slice(0, 3).map((dim) => (
-                  <div
-                    key={dim.id}
-                    className="flex items-center gap-3 bg-white rounded-xl px-4 py-3"
-                  >
-                    <div className="w-8 h-8 relative flex-shrink-0">
-                      <Image
-                        src={dim.icon}
-                        alt={dim.title}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                    <p className="text-body-sm text-[var(--color-apple-gray-700)]">
-                      <span className="font-medium">{dim.title}:</span> {dim.example}
-                    </p>
-                  </div>
+                {LERNDIMENSIONEN.slice(0, 3).map((dim, index) => (
+                  <LerndimensionChallenge
+                    key={dim._id ?? dim.id}
+                    dim={dim}
+                    index={index}
+                  />
                 ))}
               </div>
             </div>

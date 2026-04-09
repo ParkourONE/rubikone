@@ -4,7 +4,7 @@
  * Add new migrations by pushing to `migrations` — never mutate existing ones.
  */
 
-export const CURRENT_SCHEMA_VERSION = 2;
+export const CURRENT_SCHEMA_VERSION = 3;
 
 type Migration = (tree: Record<string, unknown>) => Record<string, unknown>;
 
@@ -56,6 +56,70 @@ const migrations: Record<number, Migration> = {
     });
     return { ...tree, NINE_MOVEMENTS: next };
   },
+  // v2 -> v3: inject default content for newly migrated homepage blocks and
+  // Koeniz list items if they are missing. Existing values are preserved.
+  2: (tree) => {
+    const next: Record<string, unknown> = { ...tree };
+    for (const [key, value] of Object.entries(V3_DEFAULTS)) {
+      if (next[key] === undefined) next[key] = value;
+    }
+    // KOENIZ_CASE_STUDY: ensure list sub-keys exist (they already did in v2,
+    // but be defensive in case a newer seed drops them).
+    const k = next.KOENIZ_CASE_STUDY as Record<string, unknown> | undefined;
+    if (k && typeof k === "object") {
+      if (!Array.isArray(k.insights)) k.insights = [];
+      if (!Array.isArray(k.timeline)) k.timeline = [];
+      if (!Array.isArray(k.workshopFeedback)) k.workshopFeedback = [];
+    }
+    return next;
+  },
+};
+
+// Default seeds written on v2->v3 upgrade when a key is absent. These mirror
+// the values already committed into content.json; the migration only kicks in
+// for trees that predate the v3 rollout.
+const V3_DEFAULTS: Record<string, unknown> = {
+  USP_ITEMS: [
+    {
+      _id: "usp-1",
+      title: "Einfache Integration",
+      description:
+        "RubikONE nutzt, was schon da ist: Wegweiser und Postenschilder werden wo immer möglich an vorhandene Strukturen montiert.",
+      image: "/images/gemeinden/integration.jpg",
+    },
+    {
+      _id: "usp-2",
+      title: "Nachhaltigkeit",
+      description:
+        "Das verwendete Material ist langlebig und bei Bedarf leicht zu ersetzen.",
+      image: "/images/gemeinden/nachhaltigkeit.jpg",
+    },
+    {
+      _id: "usp-3",
+      title: "Lebensqualität",
+      description:
+        "Bewegung ist Leben – mit RubikONE fördern Sie physische, psychische und soziale Gesundheit.",
+      image: "/images/gemeinden/lebensqualitaet.jpg",
+    },
+  ],
+  MOVEMENTS_GRID: [
+    { _id: "mv-1", title: "Greifen" },
+    { _id: "mv-2", title: "Hangeln" },
+    { _id: "mv-3", title: "Balancieren" },
+    { _id: "mv-4", title: "Springen" },
+    { _id: "mv-5", title: "Klettern" },
+    { _id: "mv-6", title: "Ausdehnen" },
+    { _id: "mv-7", title: "Kraft" },
+    { _id: "mv-8", title: "Quadrupedie" },
+    { _id: "mv-9", title: "Laufen" },
+  ],
+  // SOLUTION_CARDS_CONTENT, LERNDIMENSIONEN_CONTENT and PROCESS_STEPS_CONTENT
+  // are seeded directly into content.json — no defaults needed here for the
+  // migration path, but we still fall through without clobbering. Empty
+  // arrays would pass schema validation if nothing was written.
+  SOLUTION_CARDS_CONTENT: [],
+  LERNDIMENSIONEN_CONTENT: [],
+  PROCESS_STEPS_CONTENT: [],
 };
 
 export function migrateContent<T extends Record<string, unknown>>(raw: T): T {

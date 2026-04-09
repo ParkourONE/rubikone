@@ -5,26 +5,56 @@ import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { appleTransition } from "@/lib/animations";
+import { USP_ITEMS } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
-const uspItems = [
-  {
-    title: "Einfache Integration",
-    description: "RubikONE nutzt, was schon da ist: Wegweiser und Postenschilder werden wo immer möglich an vorhandene Strukturen montiert.",
-    image: "/images/gemeinden/integration.jpg",
-  },
-  {
-    title: "Nachhaltigkeit",
-    description: "Das verwendete Material ist langlebig und bei Bedarf leicht zu ersetzen.",
-    image: "/images/gemeinden/nachhaltigkeit.jpg",
-  },
-  {
-    title: "Lebensqualität",
-    description: "Bewegung ist Leben – mit RubikONE fördern Sie physische, psychische und soziale Gesundheit.",
-    image: "/images/gemeinden/lebensqualitaet.jpg",
-  },
-];
+type UspItem = {
+  _id?: string;
+  title: string;
+  description: string;
+  image: string;
+};
+
+function UspCard({ item, index }: { item: UspItem; index: number }) {
+  const cardEdit = useEditPath(`USP_ITEMS.${index}`);
+  const titleEdit = useEditPath(`USP_ITEMS.${index}.title`);
+  const descEdit = useEditPath(`USP_ITEMS.${index}.description`);
+  const imageEdit = useEditPath(`USP_ITEMS.${index}.image`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.1 }}
+      className="flex-shrink-0 w-[320px]"
+      {...cardEdit}
+    >
+      <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
+        <div className="relative aspect-[4/3]" {...imageEdit}>
+          <Image src={item.image} alt={item.title} fill className="object-cover" />
+        </div>
+        <div className="p-6">
+          <h3
+            className="text-headline text-[var(--color-apple-dark)] mb-3"
+            {...titleEdit}
+          >
+            {item.title}
+          </h3>
+          <p
+            className="text-body-sm text-[var(--color-apple-gray-600)]"
+            {...descEdit}
+          >
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export function USPSection() {
+  const uspItems = useContent<UspItem[]>("USP_ITEMS", USP_ITEMS);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -66,33 +96,7 @@ export function USPSection() {
         <div className="slider-spacer" />
 
         {uspItems.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...appleTransition, delay: index * 0.1 }}
-            className="flex-shrink-0 w-[320px]"
-          >
-            <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-headline text-[var(--color-apple-dark)] mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)]">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          <UspCard key={item._id ?? index} item={item} index={index} />
         ))}
 
         {/* Right spacer */}
