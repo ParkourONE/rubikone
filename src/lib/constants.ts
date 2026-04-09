@@ -313,6 +313,97 @@ export const CONFIGURATOR_UI: ConfiguratorUI =
     triggerButtonLabel: "Leistungspaket konfigurieren",
   };
 
+// Contact form labels (v8)
+export type ContactFormLabels = {
+  successTitle: string;
+  successMessage: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  gemeindeLabel: string;
+  gemeindePlaceholder: string;
+  nachrichtLabel: string;
+  nachrichtPlaceholder: string;
+  privacyPrefix: string;
+  privacyLinkText: string;
+  privacySuffix: string;
+  submitLabel: string;
+  submitBusyLabel: string;
+  privacyHint: string;
+  errorDefault: string;
+  errorSendFailed: string;
+};
+const CONTACT_FORM_LABELS_DEFAULTS: ContactFormLabels = {
+  successTitle: "Vielen Dank für Ihre Nachricht",
+  successMessage: "Wir melden uns innerhalb von 2 Werktagen bei Ihnen.",
+  nameLabel: "Name *",
+  namePlaceholder: "Ihr Name",
+  emailLabel: "E-Mail *",
+  emailPlaceholder: "ihre.email@gemeinde.ch",
+  gemeindeLabel: "Gemeinde / Organisation *",
+  gemeindePlaceholder: "Name Ihrer Gemeinde",
+  nachrichtLabel: "Nachricht",
+  nachrichtPlaceholder: "Wie können wir Ihnen helfen?",
+  privacyPrefix: "Ich habe die",
+  privacyLinkText: "Datenschutzerklärung",
+  privacySuffix:
+    "gelesen und bin mit der Verarbeitung meiner Daten einverstanden. *",
+  submitLabel: "Nachricht senden",
+  submitBusyLabel: "Wird gesendet...",
+  privacyHint:
+    "Ihre Daten sind sicher. Wir verwenden sie nur zur Bearbeitung Ihrer Anfrage.",
+  errorDefault: "Ein Fehler ist aufgetreten.",
+  errorSendFailed: "Fehler beim Senden",
+};
+export const CONTACT_FORM_LABELS: ContactFormLabels =
+  ((content as unknown as { CONTACT_FORM_LABELS?: ContactFormLabels })
+    .CONTACT_FORM_LABELS) ?? CONTACT_FORM_LABELS_DEFAULTS;
+
+// Cookie banner content (v8)
+export type CookieBannerContent = {
+  headline: string;
+  subheadline: string;
+  body: string;
+  detailsToggleLabel: string;
+  necessaryTitle: string;
+  necessaryBadge: string;
+  necessaryDescription: string;
+  analyticsTitle: string;
+  analyticsDescription: string;
+  marketingTitle: string;
+  marketingDescription: string;
+  saveButton: string;
+  rejectButton: string;
+  acceptButton: string;
+  morePrefix: string;
+  moreLinkText: string;
+};
+const COOKIE_BANNER_CONTENT_DEFAULTS: CookieBannerContent = {
+  headline: "Cookie-Einstellungen",
+  subheadline: "Wir respektieren Ihre Privatsphäre",
+  body: "Wir verwenden Cookies und ähnliche Technologien, um unsere Website zu analysieren und zu verbessern. Sie können selbst entscheiden, welche Cookies Sie zulassen möchten.",
+  detailsToggleLabel: "Einstellungen anpassen",
+  necessaryTitle: "Notwendig",
+  necessaryBadge: "Immer aktiv",
+  necessaryDescription:
+    "Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.",
+  analyticsTitle: "Analyse",
+  analyticsDescription:
+    "Hilft uns zu verstehen, wie Besucher mit unserer Website interagieren. Wir verwenden Vercel Analytics für anonymisierte Nutzungsstatistiken.",
+  marketingTitle: "Marketing",
+  marketingDescription:
+    "Werden verwendet, um Werbung relevanter zu gestalten. Derzeit verwenden wir keine Marketing-Cookies.",
+  saveButton: "Auswahl speichern",
+  rejectButton: "Nur Notwendige",
+  acceptButton: "Alle akzeptieren",
+  morePrefix: "Mehr Informationen in unserer",
+  moreLinkText: "Datenschutzerklärung",
+};
+export const COOKIE_BANNER_CONTENT: CookieBannerContent =
+  ((content as unknown as { COOKIE_BANNER_CONTENT?: CookieBannerContent })
+    .COOKIE_BANNER_CONTENT) ?? COOKIE_BANNER_CONTENT_DEFAULTS;
+
 // Homepage extras migrated in v3
 type UspItem = { _id: string; title: string; description: string; image: string };
 type SolutionCard = {

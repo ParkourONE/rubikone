@@ -8,6 +8,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { FadeUp } from "@/components/shared/fade-up";
 import { SectionHeader } from "@/components/shared/section-header";
+import { CONTACT_FORM_LABELS } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 interface ContactFormProps {
   title?: string;
@@ -22,6 +25,18 @@ export function ContactForm({
   titleEditPath,
   subtitleEditPath,
 }: ContactFormProps) {
+  const labels = useContent("CONTACT_FORM_LABELS", CONTACT_FORM_LABELS);
+  const editSuccessTitle = useEditPath("CONTACT_FORM_LABELS.successTitle");
+  const editSuccessMessage = useEditPath("CONTACT_FORM_LABELS.successMessage");
+  const editNameLabel = useEditPath("CONTACT_FORM_LABELS.nameLabel");
+  const editEmailLabel = useEditPath("CONTACT_FORM_LABELS.emailLabel");
+  const editGemeindeLabel = useEditPath("CONTACT_FORM_LABELS.gemeindeLabel");
+  const editNachrichtLabel = useEditPath("CONTACT_FORM_LABELS.nachrichtLabel");
+  const editPrivacyPrefix = useEditPath("CONTACT_FORM_LABELS.privacyPrefix");
+  const editPrivacyLinkText = useEditPath("CONTACT_FORM_LABELS.privacyLinkText");
+  const editPrivacySuffix = useEditPath("CONTACT_FORM_LABELS.privacySuffix");
+  const editSubmitLabel = useEditPath("CONTACT_FORM_LABELS.submitLabel");
+  const editPrivacyHint = useEditPath("CONTACT_FORM_LABELS.privacyHint");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,12 +63,12 @@ export function ContactForm({
 
       if (!response.ok) {
         const result = await response.json();
-        throw new Error(result.error || 'Fehler beim Senden');
+        throw new Error(result.error || labels.errorSendFailed);
       }
 
       setIsSubmitted(true);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten.');
+      setError(err instanceof Error ? err.message : labels.errorDefault);
     } finally {
       setIsSubmitting(false);
     }
@@ -66,9 +81,9 @@ export function ContactForm({
           <FadeUp>
             <div className="max-w-xl mx-auto text-center py-12">
               <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
-              <h2 className="text-title-2">Vielen Dank für Ihre Nachricht</h2>
-              <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]">
-                Wir melden uns innerhalb von 2 Werktagen bei Ihnen.
+              <h2 className="text-title-2" {...editSuccessTitle}>{labels.successTitle}</h2>
+              <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)]" {...editSuccessMessage}>
+                {labels.successMessage}
               </p>
             </div>
           </FadeUp>
@@ -98,47 +113,47 @@ export function ContactForm({
             )}
 
             <div className="space-y-2">
-              <Label htmlFor="name">Name *</Label>
+              <Label htmlFor="name" {...editNameLabel}>{labels.nameLabel}</Label>
               <Input
                 id="name"
                 name="name"
                 type="text"
                 required
-                placeholder="Ihr Name"
+                placeholder={labels.namePlaceholder}
                 className="h-12"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">E-Mail *</Label>
+              <Label htmlFor="email" {...editEmailLabel}>{labels.emailLabel}</Label>
               <Input
                 id="email"
                 name="email"
                 type="email"
                 required
-                placeholder="ihre.email@gemeinde.ch"
+                placeholder={labels.emailPlaceholder}
                 className="h-12"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="gemeinde">Gemeinde / Organisation *</Label>
+              <Label htmlFor="gemeinde" {...editGemeindeLabel}>{labels.gemeindeLabel}</Label>
               <Input
                 id="gemeinde"
                 name="gemeinde"
                 type="text"
                 required
-                placeholder="Name Ihrer Gemeinde"
+                placeholder={labels.gemeindePlaceholder}
                 className="h-12"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="nachricht">Nachricht</Label>
+              <Label htmlFor="nachricht" {...editNachrichtLabel}>{labels.nachrichtLabel}</Label>
               <Textarea
                 id="nachricht"
                 name="nachricht"
-                placeholder="Wie können wir Ihnen helfen?"
+                placeholder={labels.nachrichtPlaceholder}
                 rows={4}
                 className="resize-none"
               />
@@ -153,11 +168,11 @@ export function ContactForm({
                 className="mt-1 h-4 w-4 rounded border-[var(--color-apple-gray-300)] text-[var(--color-apple-blue)] focus:ring-[var(--color-apple-blue)]"
               />
               <Label htmlFor="datenschutz" className="text-body-sm text-[var(--color-apple-gray-600)] font-normal cursor-pointer">
-                Ich habe die{" "}
-                <Link href="/datenschutz" className="text-[var(--color-apple-blue)] hover:underline" target="_blank">
-                  Datenschutzerklärung
+                <span {...editPrivacyPrefix}>{labels.privacyPrefix}</span>{" "}
+                <Link href="/datenschutz" className="text-[var(--color-apple-blue)] hover:underline" target="_blank" {...editPrivacyLinkText}>
+                  {labels.privacyLinkText}
                 </Link>{" "}
-                gelesen und bin mit der Verarbeitung meiner Daten einverstanden. *
+                <span {...editPrivacySuffix}>{labels.privacySuffix}</span>
               </Label>
             </div>
 
@@ -167,10 +182,10 @@ export function ContactForm({
               className="btn-primary w-full disabled:opacity-50"
             >
               {isSubmitting ? (
-                "Wird gesendet..."
+                labels.submitBusyLabel
               ) : (
                 <>
-                  Nachricht senden
+                  <span {...editSubmitLabel}>{labels.submitLabel}</span>
                   <Send className="h-4 w-4" />
                 </>
               )}
@@ -178,8 +193,8 @@ export function ContactForm({
 
             <div className="flex items-start gap-2 text-body-sm text-[var(--color-apple-gray-600)]">
               <Lock className="h-4 w-4 mt-0.5 flex-shrink-0" />
-              <p>
-                Ihre Daten sind sicher. Wir verwenden sie nur zur Bearbeitung Ihrer Anfrage.
+              <p {...editPrivacyHint}>
+                {labels.privacyHint}
               </p>
             </div>
           </form>

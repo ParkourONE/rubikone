@@ -4,7 +4,7 @@
  * Add new migrations by pushing to `migrations` — never mutate existing ones.
  */
 
-export const CURRENT_SCHEMA_VERSION = 7;
+export const CURRENT_SCHEMA_VERSION = 8;
 
 type Migration = (tree: Record<string, unknown>) => Record<string, unknown>;
 
@@ -104,6 +104,60 @@ const migrations: Record<number, Migration> = {
       if (next[key] === undefined) next[key] = value;
     }
     return next;
+  },
+  // v7 -> v8: seed CONTACT_FORM_LABELS + COOKIE_BANNER_CONTENT if absent.
+  7: (tree) => {
+    const next: Record<string, unknown> = { ...tree };
+    for (const [key, value] of Object.entries(V8_DEFAULTS)) {
+      if (next[key] === undefined) next[key] = value;
+    }
+    return next;
+  },
+};
+
+const V8_DEFAULTS: Record<string, unknown> = {
+  CONTACT_FORM_LABELS: {
+    successTitle: "Vielen Dank für Ihre Nachricht",
+    successMessage: "Wir melden uns innerhalb von 2 Werktagen bei Ihnen.",
+    nameLabel: "Name *",
+    namePlaceholder: "Ihr Name",
+    emailLabel: "E-Mail *",
+    emailPlaceholder: "ihre.email@gemeinde.ch",
+    gemeindeLabel: "Gemeinde / Organisation *",
+    gemeindePlaceholder: "Name Ihrer Gemeinde",
+    nachrichtLabel: "Nachricht",
+    nachrichtPlaceholder: "Wie können wir Ihnen helfen?",
+    privacyPrefix: "Ich habe die",
+    privacyLinkText: "Datenschutzerklärung",
+    privacySuffix:
+      "gelesen und bin mit der Verarbeitung meiner Daten einverstanden. *",
+    submitLabel: "Nachricht senden",
+    submitBusyLabel: "Wird gesendet...",
+    privacyHint:
+      "Ihre Daten sind sicher. Wir verwenden sie nur zur Bearbeitung Ihrer Anfrage.",
+    errorDefault: "Ein Fehler ist aufgetreten.",
+    errorSendFailed: "Fehler beim Senden",
+  },
+  COOKIE_BANNER_CONTENT: {
+    headline: "Cookie-Einstellungen",
+    subheadline: "Wir respektieren Ihre Privatsphäre",
+    body: "Wir verwenden Cookies und ähnliche Technologien, um unsere Website zu analysieren und zu verbessern. Sie können selbst entscheiden, welche Cookies Sie zulassen möchten.",
+    detailsToggleLabel: "Einstellungen anpassen",
+    necessaryTitle: "Notwendig",
+    necessaryBadge: "Immer aktiv",
+    necessaryDescription:
+      "Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.",
+    analyticsTitle: "Analyse",
+    analyticsDescription:
+      "Hilft uns zu verstehen, wie Besucher mit unserer Website interagieren. Wir verwenden Vercel Analytics für anonymisierte Nutzungsstatistiken.",
+    marketingTitle: "Marketing",
+    marketingDescription:
+      "Werden verwendet, um Werbung relevanter zu gestalten. Derzeit verwenden wir keine Marketing-Cookies.",
+    saveButton: "Auswahl speichern",
+    rejectButton: "Nur Notwendige",
+    acceptButton: "Alle akzeptieren",
+    morePrefix: "Mehr Informationen in unserer",
+    moreLinkText: "Datenschutzerklärung",
   },
 };
 

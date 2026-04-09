@@ -6,9 +6,29 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Settings, Cookie, ChevronDown, ChevronUp, Check } from "lucide-react";
 import { useConsent, ConsentPreferences } from "@/providers/consent-provider";
 import { appleTransition } from "@/lib/animations";
+import { COOKIE_BANNER_CONTENT } from "@/lib/constants";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function CookieBanner() {
   const { showBanner, acceptAll, rejectAll, updateConsent, closeBanner, consent } = useConsent();
+  const content = useContent("COOKIE_BANNER_CONTENT", COOKIE_BANNER_CONTENT);
+  const editHeadline = useEditPath("COOKIE_BANNER_CONTENT.headline");
+  const editSubheadline = useEditPath("COOKIE_BANNER_CONTENT.subheadline");
+  const editBody = useEditPath("COOKIE_BANNER_CONTENT.body");
+  const editDetailsToggleLabel = useEditPath("COOKIE_BANNER_CONTENT.detailsToggleLabel");
+  const editNecessaryTitle = useEditPath("COOKIE_BANNER_CONTENT.necessaryTitle");
+  const editNecessaryBadge = useEditPath("COOKIE_BANNER_CONTENT.necessaryBadge");
+  const editNecessaryDescription = useEditPath("COOKIE_BANNER_CONTENT.necessaryDescription");
+  const editAnalyticsTitle = useEditPath("COOKIE_BANNER_CONTENT.analyticsTitle");
+  const editAnalyticsDescription = useEditPath("COOKIE_BANNER_CONTENT.analyticsDescription");
+  const editMarketingTitle = useEditPath("COOKIE_BANNER_CONTENT.marketingTitle");
+  const editMarketingDescription = useEditPath("COOKIE_BANNER_CONTENT.marketingDescription");
+  const editSaveButton = useEditPath("COOKIE_BANNER_CONTENT.saveButton");
+  const editRejectButton = useEditPath("COOKIE_BANNER_CONTENT.rejectButton");
+  const editAcceptButton = useEditPath("COOKIE_BANNER_CONTENT.acceptButton");
+  const editMorePrefix = useEditPath("COOKIE_BANNER_CONTENT.morePrefix");
+  const editMoreLinkText = useEditPath("COOKIE_BANNER_CONTENT.moreLinkText");
   const [showDetails, setShowDetails] = useState(false);
   const [preferences, setPreferences] = useState<ConsentPreferences>({
     necessary: true,
@@ -39,11 +59,11 @@ export function CookieBanner() {
                     <Cookie className="h-5 w-5 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-headline font-semibold text-[var(--color-apple-dark)]">
-                      Cookie-Einstellungen
+                    <h3 className="text-headline font-semibold text-[var(--color-apple-dark)]" {...editHeadline}>
+                      {content.headline}
                     </h3>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)]">
-                      Wir respektieren Ihre Privatsphäre
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)]" {...editSubheadline}>
+                      {content.subheadline}
                     </p>
                   </div>
                 </div>
@@ -56,9 +76,8 @@ export function CookieBanner() {
                 </button>
               </div>
 
-              <p className="mt-4 text-body text-[var(--color-apple-gray-700)]">
-                Wir verwenden Cookies und ähnliche Technologien, um unsere Website zu analysieren
-                und zu verbessern. Sie können selbst entscheiden, welche Cookies Sie zulassen möchten.
+              <p className="mt-4 text-body text-[var(--color-apple-gray-700)]" {...editBody}>
+                {content.body}
               </p>
 
               {/* Details Toggle */}
@@ -67,7 +86,7 @@ export function CookieBanner() {
                 className="mt-4 flex items-center gap-2 text-body-sm text-[var(--color-apple-blue)] hover:underline"
               >
                 <Settings className="h-4 w-4" />
-                Einstellungen anpassen
+                <span {...editDetailsToggleLabel}>{content.detailsToggleLabel}</span>
                 {showDetails ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
               </button>
             </div>
@@ -87,15 +106,15 @@ export function CookieBanner() {
                     <div className="flex items-start justify-between gap-4 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <h4 className="text-body font-semibold text-[var(--color-apple-dark)]">
-                            Notwendig
+                          <h4 className="text-body font-semibold text-[var(--color-apple-dark)]" {...editNecessaryTitle}>
+                            {content.necessaryTitle}
                           </h4>
-                          <span className="px-2 py-0.5 bg-[var(--color-apple-gray-200)] rounded text-caption text-[var(--color-apple-gray-600)]">
-                            Immer aktiv
+                          <span className="px-2 py-0.5 bg-[var(--color-apple-gray-200)] rounded text-caption text-[var(--color-apple-gray-600)]" {...editNecessaryBadge}>
+                            {content.necessaryBadge}
                           </span>
                         </div>
-                        <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                          Diese Cookies sind für die Grundfunktionen der Website erforderlich und können nicht deaktiviert werden.
+                        <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]" {...editNecessaryDescription}>
+                          {content.necessaryDescription}
                         </p>
                       </div>
                       <div className="flex items-center justify-center w-12 h-6 bg-[var(--color-apple-blue)] rounded-full">
@@ -106,12 +125,11 @@ export function CookieBanner() {
                     {/* Analytics Cookies */}
                     <div className="flex items-start justify-between gap-4 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
                       <div className="flex-1">
-                        <h4 className="text-body font-semibold text-[var(--color-apple-dark)]">
-                          Analyse
+                        <h4 className="text-body font-semibold text-[var(--color-apple-dark)]" {...editAnalyticsTitle}>
+                          {content.analyticsTitle}
                         </h4>
-                        <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                          Hilft uns zu verstehen, wie Besucher mit unserer Website interagieren.
-                          Wir verwenden Vercel Analytics für anonymisierte Nutzungsstatistiken.
+                        <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]" {...editAnalyticsDescription}>
+                          {content.analyticsDescription}
                         </p>
                       </div>
                       <button
@@ -134,12 +152,11 @@ export function CookieBanner() {
                     {/* Marketing Cookies */}
                     <div className="flex items-start justify-between gap-4 p-4 bg-[var(--color-apple-gray-100)] rounded-xl">
                       <div className="flex-1">
-                        <h4 className="text-body font-semibold text-[var(--color-apple-dark)]">
-                          Marketing
+                        <h4 className="text-body font-semibold text-[var(--color-apple-dark)]" {...editMarketingTitle}>
+                          {content.marketingTitle}
                         </h4>
-                        <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                          Werden verwendet, um Werbung relevanter zu gestalten.
-                          Derzeit verwenden wir keine Marketing-Cookies.
+                        <p className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]" {...editMarketingDescription}>
+                          {content.marketingDescription}
                         </p>
                       </div>
                       <button
@@ -170,30 +187,33 @@ export function CookieBanner() {
                   <button
                     onClick={handleSavePreferences}
                     className="btn-primary flex-1"
+                    {...editSaveButton}
                   >
-                    Auswahl speichern
+                    {content.saveButton}
                   </button>
                 ) : (
                   <>
                     <button
                       onClick={rejectAll}
                       className="btn-secondary flex-1"
+                      {...editRejectButton}
                     >
-                      Nur Notwendige
+                      {content.rejectButton}
                     </button>
                     <button
                       onClick={acceptAll}
                       className="btn-primary flex-1"
+                      {...editAcceptButton}
                     >
-                      Alle akzeptieren
+                      {content.acceptButton}
                     </button>
                   </>
                 )}
               </div>
               <p className="mt-4 text-center text-caption text-[var(--color-apple-gray-500)]">
-                Mehr Informationen in unserer{" "}
-                <Link href="/datenschutz" className="text-[var(--color-apple-blue)] hover:underline">
-                  Datenschutzerklärung
+                <span {...editMorePrefix}>{content.morePrefix}</span>{" "}
+                <Link href="/datenschutz" className="text-[var(--color-apple-blue)] hover:underline" {...editMoreLinkText}>
+                  {content.moreLinkText}
                 </Link>
               </p>
             </div>
