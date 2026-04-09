@@ -1,20 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cookies } from "next/headers";
 import crypto from "crypto";
+import path from "path";
+import { isAuthenticated } from "@/lib/admin-auth";
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const GITHUB_REPO = process.env.GITHUB_REPO;
 
-// Verify admin session
-async function isAuthenticated(): Promise<boolean> {
-  const cookieStore = await cookies();
-  const session = cookieStore.get("admin_session");
-  const tokenHash = cookieStore.get("admin_token_hash");
-  return !!(session && tokenHash);
+const PUBLIC_DIR = "public";
+
+/**
+ * Validate a user-supplied image path so it cannot escape `public/`.
+ * Returns the normalized path (relative to repo root, e.g. "public/images/foo.jpg")
+ * or null if invalid.
+ */
+function safePublicPath(currentPath: string): string | null {
+  if (typeof currentPath !== "string" || currentPath.length === 0) return null;
+  if (currentPath.includes("\0")) return null;
+  // Must start with a leading slash path under /images/
+  if (!currentPath.startsWith("/images/")) return null;
+
+  // Normalize and resolve against a virtual public root.
+  // We use posix semantics since GitHub paths are POSIX.
+  const rootAbs = "/__public__";
+  const joined = path.posix.normalize(rootAbs + currentPath);
+  if (joined.includes("..")) return null;
+  if (!joined.startsWith(rootAbs + "/")) return null;
+  const rel = joined.slice(rootAbs.length); // e.g. "/images/foo.jpg"
+  return `${PUBLIC_DIR}${rel}`;
 }
 
 export async function POST(request: NextRequest) {
-  if (!(await isAuthenticated())) {
+  if (!(await isAuthenticated(request))) {
     return NextResponse.json({ error: "Nicht autorisiert" }, { status: 401 });
   }
 
@@ -34,11 +50,20 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Keine Datei" }, { status: 400 });
     }
 
-    // Validate file type
-    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/svg+xml", "image/webp", "image/avif"];
+    // SEC-04: reject SVG by default (XSS vector).
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+      "image/webp",
+      "image/avif",
+    ];
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json(
-        { error: "Ungültiger Dateityp. Erlaubt: JPG, PNG, GIF, SVG, WebP, AVIF" },
+        {
+          error:
+            "Ungültiger Dateityp. Erlaubt: JPG, PNG, GIF, WebP, AVIF. SVG ist aus Sicherheitsgründen nicht erlaubt.",
+        },
         { status: 400 }
       );
     }
@@ -51,21 +76,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Determine target path
+    // SEC-03: Determine target path, rejecting path-traversal attempts.
     let targetPath: string;
-    if (currentPath && currentPath.startsWith("/images/")) {
-      // Replace existing file at same path
-      targetPath = `public${currentPath}`;
+    if (currentPath) {
+      const safe = safePublicPath(currentPath);
+      if (!safe) {
+        return NextResponse.json(
+          { error: "Ungültiger Zielpfad." },
+          { status: 400 }
+        );
+      }
+      targetPath = safe;
     } else {
-      // Generate new path with hash to avoid conflicts
       const ext = file.name.split(".").pop()?.toLowerCase() || "jpg";
+      const safeExt = /^[a-z0-9]+$/.test(ext) ? ext : "jpg";
       const hash = crypto.randomBytes(4).toString("hex");
       const safeName = file.name
         .replace(/\.[^.]+$/, "")
         .replace(/[^a-z0-9-]/gi, "-")
         .toLowerCase()
         .slice(0, 40);
-      targetPath = `public/images/uploads/${safeName}-${hash}.${ext}`;
+      targetPath = `${PUBLIC_DIR}/images/uploads/${safeName}-${hash}.${safeExt}`;
     }
 
     // Read file as base64
@@ -92,7 +123,6 @@ export async function POST(request: NextRequest) {
       // File doesn't exist yet, that's fine
     }
 
-    // Upload to GitHub
     const uploadBody: Record<string, string> = {
       message: `media: Upload ${file.name} via Admin-Panel`,
       content: base64Content,
@@ -119,7 +149,6 @@ export async function POST(request: NextRequest) {
       throw new Error(err.message || "GitHub upload failed");
     }
 
-    // Return the public path (without "public/" prefix)
     const publicPath = targetPath.replace(/^public/, "");
 
     return NextResponse.json({
