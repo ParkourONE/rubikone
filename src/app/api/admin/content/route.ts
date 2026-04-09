@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { isAuthenticated } from "@/lib/admin-auth";
 
 const GITHUB_API = "https://api.github.com";
 
@@ -21,6 +22,9 @@ function githubHeaders(token: string) {
 
 // GET: Read content.json from GitHub
 export async function GET() {
+  if (!(await isAuthenticated())) {
+    return NextResponse.json({ error: "Nicht autorisiert" }, { status: 401 });
+  }
   try {
     const { token, repo } = getGithubConfig();
 
@@ -61,6 +65,9 @@ export async function GET() {
 
 // PUT: Write content.json back to GitHub
 export async function PUT(request: Request) {
+  if (!(await isAuthenticated())) {
+    return NextResponse.json({ error: "Nicht autorisiert" }, { status: 401 });
+  }
   try {
     const { token, repo } = getGithubConfig();
     const { content, sha, message } = await request.json();

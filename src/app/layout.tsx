@@ -16,6 +16,7 @@ import { CookieBanner } from "@/components/cookie-banner";
 import { ConditionalAnalytics } from "@/components/analytics";
 import { SITE_CONFIG } from "@/lib/constants";
 import { StructuredData } from "@/components/structured-data";
+import { verifySession, SESSION_COOKIE } from "@/lib/admin-auth";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -90,9 +91,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const cookieStore = await cookies();
-  const isAdmin = !!(
-    cookieStore.get("admin_session") && cookieStore.get("admin_token_hash")
-  );
+  const isAdmin = verifySession(cookieStore.get(SESSION_COOKIE)?.value);
 
   return (
     <html lang="de-CH">
