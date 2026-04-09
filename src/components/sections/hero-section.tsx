@@ -53,14 +53,16 @@ export function HeroSection() {
             </motion.p>
 
             {/* CTA */}
-            <motion.div
-              variants={staggerItem}
-              className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
-            >
-              <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
-                {heroContent.ctaPrimary.label}
-              </Link>
-            </motion.div>
+            {heroContent.ctaPrimary && (
+              <motion.div
+                variants={staggerItem}
+                className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
+              >
+                <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
+                  {heroContent.ctaPrimary.label}
+                </Link>
+              </motion.div>
+            )}
           </motion.div>
 
           {/* Video */}
@@ -119,14 +121,16 @@ export function HeroSection() {
               </motion.p>
 
               {/* CTA */}
-              <motion.div
-                variants={staggerItem}
-                className="mt-10 flex flex-row gap-4"
-              >
-                <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
-                  {heroContent.ctaPrimary.label}
-                </Link>
-              </motion.div>
+              {heroContent.ctaPrimary && (
+                <motion.div
+                  variants={staggerItem}
+                  className="mt-10 flex flex-row gap-4"
+                >
+                  <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
+                    {heroContent.ctaPrimary.label}
+                  </Link>
+                </motion.div>
+              )}
 
               {/* Scroll Indicator */}
               <motion.div

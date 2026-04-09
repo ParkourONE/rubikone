@@ -164,24 +164,9 @@ export function HoverToolbar() {
 
   const onEdit = () => {
     if (!resolved) return;
-    const kind = resolved.field.kind;
-    if (kind === "text" || kind === "richtext") {
-      // Focus the underlying contenteditable / text node.
-      const el = queryVisibleEditPath(selectedPath);
-      if (el) {
-        el.setAttribute("contenteditable", "plaintext-only");
-        el.focus();
-        // select-all
-        const range = document.createRange();
-        range.selectNodeContents(el);
-        const sel = window.getSelection();
-        sel?.removeAllRanges();
-        sel?.addRange(range);
-      }
-      return;
-    }
-    // Dispatch to kind-specific popover editor.
-    getInlineEditorDispatcher()?.(kind, selectedPath, rect);
+    // All kinds (including text/richtext) open a popover editor. Inline
+    // contenteditable on React-owned text nodes clashes with re-renders.
+    getInlineEditorDispatcher()?.(resolved.field.kind, selectedPath, rect);
   };
 
   const onDuplicate = () => {

@@ -24,6 +24,7 @@ import { ImageEditor } from "./ImageEditor";
 import { ButtonEditor } from "./ButtonEditor";
 import { LinkEditor } from "./LinkEditor";
 import { IconEditor } from "./IconEditor";
+import { TextEditor } from "./TextEditor";
 
 interface OpenState {
   kind: FieldKind;
@@ -62,7 +63,18 @@ export function InlineEditors() {
   const current = getValueAtPath(path);
 
   let body: React.ReactNode = null;
-  if (kind === "image") {
+  if (kind === "text" || kind === "richtext") {
+    body = (
+      <TextEditor
+        initial={typeof current === "string" ? current : ""}
+        onSave={(value) => {
+          applyOpToStore({ type: "set", path, value });
+          close();
+        }}
+        onCancel={close}
+      />
+    );
+  } else if (kind === "image") {
     body = (
       <ImageEditor
         value={typeof current === "string" ? current : ""}
