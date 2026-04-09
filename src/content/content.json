@@ -1,5 +1,13 @@
 {
-  "__schemaVersion": 4,
+  "__schemaVersion": 5,
+  "BENTO_GRID_DEFAULTS": [
+    { "_id": "bento-1", "title": "TÜV-zertifiziert", "description": "Alle Anlagen erfüllen die Sicherheitsnorm DIN EN 16630 und werden regelmässig geprüft.", "icon": "Shield", "size": "md" },
+    { "_id": "bento-2", "title": "25 Jahre Lebensdauer", "description": "Hochwertige Materialien und Verarbeitung für jahrzehntelange Nutzung.", "icon": "Clock" },
+    { "_id": "bento-3", "title": "Für alle Generationen", "description": "Übungen für Einsteiger bis Fortgeschrittene, von Jung bis Alt.", "icon": "Users" },
+    { "_id": "bento-4", "title": "Minimale Wartung", "description": "Wartungsarme Konstruktion mit jährlichen Kosten von nur CHF 500-800.", "icon": "Wrench" },
+    { "_id": "bento-5", "title": "Modularer Aufbau", "description": "Flexible Konfiguration passend zu Ihrem Platzbedarf und Budget.", "icon": "Puzzle" },
+    { "_id": "bento-6", "title": "Swiss Made", "description": "Entwickelt und produziert in der Schweiz für Schweizer Ansprüche.", "icon": "Award" }
+  ],
   "SITE_CONFIG": {
     "name": "RubikONE",
     "tagline": "Die Stadt wird zum Bewegungsraum",

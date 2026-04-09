@@ -4,7 +4,7 @@
  * Add new migrations by pushing to `migrations` — never mutate existing ones.
  */
 
-export const CURRENT_SCHEMA_VERSION = 4;
+export const CURRENT_SCHEMA_VERSION = 5;
 
 type Migration = (tree: Record<string, unknown>) => Record<string, unknown>;
 
@@ -81,6 +81,25 @@ const migrations: Record<number, Migration> = {
     }
     return next;
   },
+  // v4 -> v5: seed BENTO_GRID_DEFAULTS (string-name Lucide icons) if absent.
+  4: (tree) => {
+    const next: Record<string, unknown> = { ...tree };
+    for (const [key, value] of Object.entries(V5_DEFAULTS)) {
+      if (next[key] === undefined) next[key] = value;
+    }
+    return next;
+  },
+};
+
+const V5_DEFAULTS: Record<string, unknown> = {
+  BENTO_GRID_DEFAULTS: [
+    { _id: "bento-1", title: "TÜV-zertifiziert", description: "Alle Anlagen erfüllen die Sicherheitsnorm DIN EN 16630 und werden regelmässig geprüft.", icon: "Shield", size: "md" },
+    { _id: "bento-2", title: "25 Jahre Lebensdauer", description: "Hochwertige Materialien und Verarbeitung für jahrzehntelange Nutzung.", icon: "Clock" },
+    { _id: "bento-3", title: "Für alle Generationen", description: "Übungen für Einsteiger bis Fortgeschrittene, von Jung bis Alt.", icon: "Users" },
+    { _id: "bento-4", title: "Minimale Wartung", description: "Wartungsarme Konstruktion mit jährlichen Kosten von nur CHF 500-800.", icon: "Wrench" },
+    { _id: "bento-5", title: "Modularer Aufbau", description: "Flexible Konfiguration passend zu Ihrem Platzbedarf und Budget.", icon: "Puzzle" },
+    { _id: "bento-6", title: "Swiss Made", description: "Entwickelt und produziert in der Schweiz für Schweizer Ansprüche.", icon: "Award" },
+  ],
 };
 
 // Default seeds written on v2->v3 upgrade when a key is absent. These mirror

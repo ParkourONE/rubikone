@@ -1369,6 +1369,29 @@ for (const [id, label] of [
   m({ id, label, schema: postenSchema, fields: postenFields });
 }
 
+/* ------------------------------- BENTO ----------------------------------- */
+
+m({
+  id: "BENTO_GRID_DEFAULTS",
+  label: "Bento Grid Vorteile",
+  schema: z.array(
+    withId({
+      title: z.string(),
+      description: z.string(),
+      icon: z.string(),
+      size: z.string().optional(),
+    })
+  ),
+  fields: [
+    list("", [
+      text("title"),
+      text("description"),
+      text("icon", { label: "Lucide Icon-Name" }),
+      text("size", { required: false, label: "Grösse (sm|md|lg)" }),
+    ]),
+  ],
+});
+
 /** Sentinel to keep the helper import active under strict unused checks. */
 export const __manifestsLoaded = true;
 // Silence unused imports that show up only in some branches.

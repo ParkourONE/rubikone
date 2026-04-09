@@ -274,6 +274,18 @@ export const PROCESS_STEPS_CONTENT: ProcessStep[] =
   ((content as unknown as { PROCESS_STEPS_CONTENT?: ProcessStep[] })
     .PROCESS_STEPS_CONTENT) ?? [];
 
+// Bento grid defaults (v5) — icons stored as Lucide string names.
+type BentoDefault = {
+  _id: string;
+  title: string;
+  description: string;
+  icon: string;
+  size?: "sm" | "md" | "lg";
+};
+export const BENTO_GRID_DEFAULTS: BentoDefault[] =
+  ((content as unknown as { BENTO_GRID_DEFAULTS?: BentoDefault[] })
+    .BENTO_GRID_DEFAULTS) ?? [];
+
 // Bewegungsstationen (v4)
 export const POSTEN_CHECK_IN = (content as any).POSTEN_CHECK_IN;
 export const POSTEN_ABC = (content as any).POSTEN_ABC;
