@@ -7,7 +7,8 @@
  *
  * Admin-only module.
  */
-import { validateContent } from "@/lib/blocks/registry";
+// Import via @/lib/blocks entry so the manifests.ts side-effect runs.
+import { validateContent } from "@/lib/blocks";
 
 export interface BlockIssue {
   path: string;

@@ -15,7 +15,11 @@
  *
  * Admin-only module. Do not import from public code.
  */
-import { getManifest } from "@/lib/blocks/registry";
+// Import the block registry entry point (not registry.ts directly) so the
+// side-effect import of manifests.ts runs and every section is registered
+// on the client. Importing only `@/lib/blocks/registry` gave us an empty
+// registry and resolvePathToField always returned null.
+import { getManifest } from "@/lib/blocks";
 import type { FieldSpec } from "@/lib/blocks/types";
 import { parsePath, type Path } from "@/lib/content-path";
 
