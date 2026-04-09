@@ -4,7 +4,7 @@
  * Add new migrations by pushing to `migrations` — never mutate existing ones.
  */
 
-export const CURRENT_SCHEMA_VERSION = 6;
+export const CURRENT_SCHEMA_VERSION = 7;
 
 type Migration = (tree: Record<string, unknown>) => Record<string, unknown>;
 
@@ -96,6 +96,59 @@ const migrations: Record<number, Migration> = {
       if (next[key] === undefined) next[key] = value;
     }
     return next;
+  },
+  // v6 -> v7: seed CONFIGURATOR_UI label bundle if absent.
+  6: (tree) => {
+    const next: Record<string, unknown> = { ...tree };
+    for (const [key, value] of Object.entries(V7_DEFAULTS)) {
+      if (next[key] === undefined) next[key] = value;
+    }
+    return next;
+  },
+};
+
+const V7_DEFAULTS: Record<string, unknown> = {
+  CONFIGURATOR_UI: {
+    step1Title: "Umfang wählen",
+    step1Hint: "Wie viele Posten soll Ihr RubikONE umfassen?",
+    packagePostsLabel: "Posten",
+    packageRecommendedBadge: "Empfohlen",
+    coreServicesLabel: "Immer inklusive:",
+    step2Title: "Leistungen wählen",
+    step2Hint: "Welche Leistungen sollen im Umfang enthalten sein?",
+    step3Title: "Übersicht Leistungsumfang",
+    summaryPostsLabel: "Posten",
+    summaryIncludesLabel: "Ihr RubikONE umfasst:",
+    step4Title: "Zusammenfassung erhalten",
+    step4Hint: "Wir senden Ihnen die persönliche Übersicht",
+    formNameLabel: "Vor- / Nachname *",
+    formNamePlaceholder: "Ihr Vor- und Nachname",
+    formEmailLabel: "E-Mail-Adresse *",
+    formEmailPlaceholder: "mail@beispiel.ch",
+    formOrgTypeLabel: "Organisationseinheit *",
+    formOrgNameLabel: "Bezeichnung *",
+    formOrgNamePlaceholder: "Name der Ortschaft oder Organisation",
+    formOrgSizeLabel: "Grösse *",
+    formConsultationLabel: "Ich wünsche ein Beratungsgespräch",
+    formMessageLabel: "Ich habe ein Anliegen und/oder konkrete Fragen",
+    successTitle: "Vielen Dank!",
+    successMessage:
+      "Wir haben Ihnen eine E-Mail mit der Zusammenfassung Ihrer Konfiguration gesendet.",
+    successNextStepLabel: "Nächster Schritt",
+    successNextStepHint: "Impulsworkshop buchen",
+    successContactLabel: "Kontakt",
+    buttonClose: "Schliessen",
+    buttonBack: "Zurück",
+    buttonNext: "Weiter",
+    buttonGoToSummary: "Zusammenfassung erhalten",
+    buttonSubmit: "Absenden",
+    buttonSubmitting: "Wird gesendet...",
+    errorDefault: "Ein Fehler ist aufgetreten.",
+    errorSendFailed: "Fehler beim Senden",
+    triggerCardTitle: "Leistungspaket konfigurieren",
+    triggerCardHint: "In 3 Schritten zu Ihrem individuellen Angebot.",
+    triggerCardCta: "Konfigurator starten",
+    triggerButtonLabel: "Leistungspaket konfigurieren",
   },
 };
 

@@ -227,6 +227,92 @@ export const WORKSHOP_DETAILS = {
 // Konfigurator
 export const CONFIGURATOR = content.CONFIGURATOR;
 
+// Konfigurator UI labels (v7)
+export type ConfiguratorUI = {
+  step1Title: string;
+  step1Hint: string;
+  packagePostsLabel: string;
+  packageRecommendedBadge: string;
+  coreServicesLabel: string;
+  step2Title: string;
+  step2Hint: string;
+  step3Title: string;
+  summaryPostsLabel: string;
+  summaryIncludesLabel: string;
+  step4Title: string;
+  step4Hint: string;
+  formNameLabel: string;
+  formNamePlaceholder: string;
+  formEmailLabel: string;
+  formEmailPlaceholder: string;
+  formOrgTypeLabel: string;
+  formOrgNameLabel: string;
+  formOrgNamePlaceholder: string;
+  formOrgSizeLabel: string;
+  formConsultationLabel: string;
+  formMessageLabel: string;
+  successTitle: string;
+  successMessage: string;
+  successNextStepLabel: string;
+  successNextStepHint: string;
+  successContactLabel: string;
+  buttonClose: string;
+  buttonBack: string;
+  buttonNext: string;
+  buttonGoToSummary: string;
+  buttonSubmit: string;
+  buttonSubmitting: string;
+  errorDefault: string;
+  errorSendFailed: string;
+  triggerCardTitle: string;
+  triggerCardHint: string;
+  triggerCardCta: string;
+  triggerButtonLabel: string;
+};
+export const CONFIGURATOR_UI: ConfiguratorUI =
+  ((content as unknown as { CONFIGURATOR_UI?: ConfiguratorUI }).CONFIGURATOR_UI) ?? {
+    step1Title: "Umfang wählen",
+    step1Hint: "Wie viele Posten soll Ihr RubikONE umfassen?",
+    packagePostsLabel: "Posten",
+    packageRecommendedBadge: "Empfohlen",
+    coreServicesLabel: "Immer inklusive:",
+    step2Title: "Leistungen wählen",
+    step2Hint: "Welche Leistungen sollen im Umfang enthalten sein?",
+    step3Title: "Übersicht Leistungsumfang",
+    summaryPostsLabel: "Posten",
+    summaryIncludesLabel: "Ihr RubikONE umfasst:",
+    step4Title: "Zusammenfassung erhalten",
+    step4Hint: "Wir senden Ihnen die persönliche Übersicht",
+    formNameLabel: "Vor- / Nachname *",
+    formNamePlaceholder: "Ihr Vor- und Nachname",
+    formEmailLabel: "E-Mail-Adresse *",
+    formEmailPlaceholder: "mail@beispiel.ch",
+    formOrgTypeLabel: "Organisationseinheit *",
+    formOrgNameLabel: "Bezeichnung *",
+    formOrgNamePlaceholder: "Name der Ortschaft oder Organisation",
+    formOrgSizeLabel: "Grösse *",
+    formConsultationLabel: "Ich wünsche ein Beratungsgespräch",
+    formMessageLabel: "Ich habe ein Anliegen und/oder konkrete Fragen",
+    successTitle: "Vielen Dank!",
+    successMessage:
+      "Wir haben Ihnen eine E-Mail mit der Zusammenfassung Ihrer Konfiguration gesendet.",
+    successNextStepLabel: "Nächster Schritt",
+    successNextStepHint: "Impulsworkshop buchen",
+    successContactLabel: "Kontakt",
+    buttonClose: "Schliessen",
+    buttonBack: "Zurück",
+    buttonNext: "Weiter",
+    buttonGoToSummary: "Zusammenfassung erhalten",
+    buttonSubmit: "Absenden",
+    buttonSubmitting: "Wird gesendet...",
+    errorDefault: "Ein Fehler ist aufgetreten.",
+    errorSendFailed: "Fehler beim Senden",
+    triggerCardTitle: "Leistungspaket konfigurieren",
+    triggerCardHint: "In 3 Schritten zu Ihrem individuellen Angebot.",
+    triggerCardCta: "Konfigurator starten",
+    triggerButtonLabel: "Leistungspaket konfigurieren",
+  };
+
 // Homepage extras migrated in v3
 type UspItem = { _id: string; title: string; description: string; image: string };
 type SolutionCard = {

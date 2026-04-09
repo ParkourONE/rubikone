@@ -1,5 +1,5 @@
 {
-  "__schemaVersion": 6,
+  "__schemaVersion": 7,
   "BENTO_GRID_DEFAULTS": [
     { "_id": "bento-1", "title": "TÜV-zertifiziert", "description": "Alle Anlagen erfüllen die Sicherheitsnorm DIN EN 16630 und werden regelmässig geprüft.", "icon": "Shield", "size": "md" },
     { "_id": "bento-2", "title": "25 Jahre Lebensdauer", "description": "Hochwertige Materialien und Verarbeitung für jahrzehntelange Nutzung.", "icon": "Clock" },
@@ -2573,5 +2573,46 @@
       }
     ],
     "stand": "Stand: Januar 2025"
+  },
+  "CONFIGURATOR_UI": {
+    "step1Title": "Umfang wählen",
+    "step1Hint": "Wie viele Posten soll Ihr RubikONE umfassen?",
+    "packagePostsLabel": "Posten",
+    "packageRecommendedBadge": "Empfohlen",
+    "coreServicesLabel": "Immer inklusive:",
+    "step2Title": "Leistungen wählen",
+    "step2Hint": "Welche Leistungen sollen im Umfang enthalten sein?",
+    "step3Title": "Übersicht Leistungsumfang",
+    "summaryPostsLabel": "Posten",
+    "summaryIncludesLabel": "Ihr RubikONE umfasst:",
+    "step4Title": "Zusammenfassung erhalten",
+    "step4Hint": "Wir senden Ihnen die persönliche Übersicht",
+    "formNameLabel": "Vor- / Nachname *",
+    "formNamePlaceholder": "Ihr Vor- und Nachname",
+    "formEmailLabel": "E-Mail-Adresse *",
+    "formEmailPlaceholder": "mail@beispiel.ch",
+    "formOrgTypeLabel": "Organisationseinheit *",
+    "formOrgNameLabel": "Bezeichnung *",
+    "formOrgNamePlaceholder": "Name der Ortschaft oder Organisation",
+    "formOrgSizeLabel": "Grösse *",
+    "formConsultationLabel": "Ich wünsche ein Beratungsgespräch",
+    "formMessageLabel": "Ich habe ein Anliegen und/oder konkrete Fragen",
+    "successTitle": "Vielen Dank!",
+    "successMessage": "Wir haben Ihnen eine E-Mail mit der Zusammenfassung Ihrer Konfiguration gesendet.",
+    "successNextStepLabel": "Nächster Schritt",
+    "successNextStepHint": "Impulsworkshop buchen",
+    "successContactLabel": "Kontakt",
+    "buttonClose": "Schliessen",
+    "buttonBack": "Zurück",
+    "buttonNext": "Weiter",
+    "buttonGoToSummary": "Zusammenfassung erhalten",
+    "buttonSubmit": "Absenden",
+    "buttonSubmitting": "Wird gesendet...",
+    "errorDefault": "Ein Fehler ist aufgetreten.",
+    "errorSendFailed": "Fehler beim Senden",
+    "triggerCardTitle": "Leistungspaket konfigurieren",
+    "triggerCardHint": "In 3 Schritten zu Ihrem individuellen Angebot.",
+    "triggerCardCta": "Konfigurator starten",
+    "triggerButtonLabel": "Leistungspaket konfigurieren"
   }
 }

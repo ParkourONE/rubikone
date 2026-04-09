@@ -23,9 +23,11 @@ import {
   Phone,
   CheckCircle
 } from "lucide-react";
-import { CONFIGURATOR } from "@/lib/constants";
+import { CONFIGURATOR, CONFIGURATOR_UI } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { useScrollLock } from "@/hooks/useScrollLock";
+import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 type PackageId = "kompakt" | "standard" | "premium";
 type ServiceId = "impulsworkshop" | "vorprojekt" | "baugesuch" | "eroeffnungsevent";
@@ -65,6 +67,35 @@ interface ConfiguratorOverlayProps {
 }
 
 export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProps) {
+  const ui = useContent("CONFIGURATOR_UI", CONFIGURATOR_UI);
+  const edit = {
+    step1Title: useEditPath("CONFIGURATOR_UI.step1Title"),
+    step1Hint: useEditPath("CONFIGURATOR_UI.step1Hint"),
+    coreServicesLabel: useEditPath("CONFIGURATOR_UI.coreServicesLabel"),
+    step2Title: useEditPath("CONFIGURATOR_UI.step2Title"),
+    step2Hint: useEditPath("CONFIGURATOR_UI.step2Hint"),
+    step3Title: useEditPath("CONFIGURATOR_UI.step3Title"),
+    summaryIncludesLabel: useEditPath("CONFIGURATOR_UI.summaryIncludesLabel"),
+    step4Title: useEditPath("CONFIGURATOR_UI.step4Title"),
+    step4Hint: useEditPath("CONFIGURATOR_UI.step4Hint"),
+    formNameLabel: useEditPath("CONFIGURATOR_UI.formNameLabel"),
+    formEmailLabel: useEditPath("CONFIGURATOR_UI.formEmailLabel"),
+    formOrgTypeLabel: useEditPath("CONFIGURATOR_UI.formOrgTypeLabel"),
+    formOrgNameLabel: useEditPath("CONFIGURATOR_UI.formOrgNameLabel"),
+    formOrgSizeLabel: useEditPath("CONFIGURATOR_UI.formOrgSizeLabel"),
+    formConsultationLabel: useEditPath("CONFIGURATOR_UI.formConsultationLabel"),
+    formMessageLabel: useEditPath("CONFIGURATOR_UI.formMessageLabel"),
+    successTitle: useEditPath("CONFIGURATOR_UI.successTitle"),
+    successMessage: useEditPath("CONFIGURATOR_UI.successMessage"),
+    successNextStepLabel: useEditPath("CONFIGURATOR_UI.successNextStepLabel"),
+    successNextStepHint: useEditPath("CONFIGURATOR_UI.successNextStepHint"),
+    successContactLabel: useEditPath("CONFIGURATOR_UI.successContactLabel"),
+    buttonClose: useEditPath("CONFIGURATOR_UI.buttonClose"),
+    buttonBack: useEditPath("CONFIGURATOR_UI.buttonBack"),
+    buttonNext: useEditPath("CONFIGURATOR_UI.buttonNext"),
+    buttonGoToSummary: useEditPath("CONFIGURATOR_UI.buttonGoToSummary"),
+    buttonSubmit: useEditPath("CONFIGURATOR_UI.buttonSubmit"),
+  };
   const [step, setStep] = useState(1);
   const [selectedPackage, setSelectedPackage] = useState<PackageId>("standard");
   const [selectedServices, setSelectedServices] = useState<Set<ServiceId>>(
@@ -172,12 +203,12 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
       if (!response.ok) {
         const result = await response.json();
-        throw new Error(result.error || 'Fehler beim Senden');
+        throw new Error(result.error || ui.errorSendFailed);
       }
 
       setIsSubmitted(true);
     } catch (err) {
-      setSubmitError(err instanceof Error ? err.message : 'Ein Fehler ist aufgetreten.');
+      setSubmitError(err instanceof Error ? err.message : ui.errorDefault);
     } finally {
       setIsSubmitting(false);
     }
@@ -255,11 +286,11 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
-                      Umfang wählen
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1" {...edit.step1Title}>
+                      {ui.step1Title}
                     </h2>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4">
-                      Wie viele Posten soll Ihr RubikONE umfassen?
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4" {...edit.step1Hint}>
+                      {ui.step1Hint}
                     </p>
 
                     <div className="grid grid-cols-3 gap-3">
@@ -276,7 +307,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                         >
                           {"recommended" in pkg && pkg.recommended && selectedPackage !== pkg.id && (
                             <span className="absolute -top-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[var(--color-apple-dark)] text-white text-[10px] font-medium rounded-full">
-                              Empfohlen
+                              {ui.packageRecommendedBadge}
                             </span>
                           )}
                           <div className={cn(
@@ -289,15 +320,15 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             "text-caption",
                             selectedPackage === pkg.id ? "text-white/70" : "text-[var(--color-apple-gray-600)]"
                           )}>
-                            Posten
+                            {ui.packagePostsLabel}
                           </p>
                         </button>
                       ))}
                     </div>
 
                     <div className="mt-4 p-3 bg-[var(--color-apple-gray-100)] rounded-xl">
-                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
-                        Immer inklusive:
+                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2" {...edit.coreServicesLabel}>
+                        {ui.coreServicesLabel}
                       </p>
                       <div className="space-y-1.5">
                         {CONFIGURATOR.coreServices.map((service, index) => (
@@ -324,11 +355,11 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
-                      Leistungen wählen
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1" {...edit.step2Title}>
+                      {ui.step2Title}
                     </h2>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4">
-                      Welche Leistungen sollen im Umfang enthalten sein?
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-4" {...edit.step2Hint}>
+                      {ui.step2Hint}
                     </p>
 
                     <div className="space-y-2">
@@ -394,8 +425,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-4">
-                      Übersicht Leistungsumfang
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-4" {...edit.step3Title}>
+                      {ui.step3Title}
                     </h2>
 
                     <div className="flex items-center justify-between p-3 bg-[var(--color-apple-gray-100)] rounded-xl mb-3">
@@ -408,15 +439,15 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             {currentPackage.name}
                           </p>
                           <p className="text-caption text-[var(--color-apple-gray-600)]">
-                            {currentPackage.posts} Posten
+                            {currentPackage.posts} {ui.summaryPostsLabel}
                           </p>
                         </div>
                       </div>
                     </div>
 
                     <div className="mb-3">
-                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">
-                        Ihr RubikONE umfasst:
+                      <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2" {...edit.summaryIncludesLabel}>
+                        {ui.summaryIncludesLabel}
                       </p>
                       <div className="space-y-1.5">
                         {CONFIGURATOR.coreServices.map((service, index) => (
@@ -448,11 +479,11 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     exit={{ opacity: 0, x: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1">
-                      Zusammenfassung erhalten
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] text-center mb-1" {...edit.step4Title}>
+                      {ui.step4Title}
                     </h2>
-                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6">
-                      Wir senden Ihnen die persönliche Übersicht
+                    <p className="text-body-sm text-[var(--color-apple-gray-600)] text-center mb-6" {...edit.step4Hint}>
+                      {ui.step4Hint}
                     </p>
 
                     {submitError && (
@@ -465,14 +496,14 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     <div className="space-y-4">
                       {/* Name */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Vor- / Nachname *
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formNameLabel}>
+                          {ui.formNameLabel}
                         </label>
                         <input
                           type="text"
                           value={contactName}
                           onChange={(e) => setContactName(e.target.value)}
-                          placeholder="Ihr Vor- und Nachname"
+                          placeholder={ui.formNamePlaceholder}
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
                           required
                         />
@@ -480,14 +511,14 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                       {/* Email */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          E-Mail-Adresse *
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formEmailLabel}>
+                          {ui.formEmailLabel}
                         </label>
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="mail@beispiel.ch"
+                          placeholder={ui.formEmailPlaceholder}
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
                           required
                         />
@@ -495,8 +526,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                       {/* Organisationseinheit */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Organisationseinheit *
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formOrgTypeLabel}>
+                          {ui.formOrgTypeLabel}
                         </label>
                         <div className="grid grid-cols-2 gap-2">
                           {["Gemeinde", "Stadt", "Non-Profit Organisation", "Privates Unternehmen", "Bildungseinrichtung", "anderes"].map((option) => (
@@ -519,14 +550,14 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                       {/* Bezeichnung */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Bezeichnung *
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formOrgNameLabel}>
+                          {ui.formOrgNameLabel}
                         </label>
                         <input
                           type="text"
                           value={orgName}
                           onChange={(e) => setOrgName(e.target.value)}
-                          placeholder="Name der Ortschaft oder Organisation"
+                          placeholder={ui.formOrgNamePlaceholder}
                           className="w-full px-4 py-3 bg-[var(--color-apple-gray-100)] rounded-xl text-body text-[var(--color-apple-dark)] placeholder:text-[var(--color-apple-gray-500)] focus:outline-none focus:ring-2 focus:ring-[var(--color-apple-dark)]"
                           required
                         />
@@ -534,8 +565,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                       {/* Grösse */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Grösse *
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formOrgSizeLabel}>
+                          {ui.formOrgSizeLabel}
                         </label>
                         <div className="grid grid-cols-3 gap-2">
                           {["klein", "mittel", "gross"].map((option) => (
@@ -558,8 +589,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                       {/* Beratungsgespräch */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Ich wünsche ein Beratungsgespräch
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formConsultationLabel}>
+                          {ui.formConsultationLabel}
                         </label>
                         <div className="grid grid-cols-3 gap-2">
                           {["ja", "nein", "weiss noch nicht"].map((option) => (
@@ -582,8 +613,8 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
 
                       {/* Anliegen / Fragen */}
                       <div>
-                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2">
-                          Ich habe ein Anliegen und/oder konkrete Fragen
+                        <label className="block text-body-sm font-medium text-[var(--color-apple-dark)] mb-2" {...edit.formMessageLabel}>
+                          {ui.formMessageLabel}
                         </label>
                         <textarea
                           value={message}
@@ -608,11 +639,11 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <CheckCircle className="h-8 w-8 text-green-600" />
                     </div>
-                    <h2 className="text-title-3 text-[var(--color-apple-dark)] mb-2">
-                      Vielen Dank!
+                    <h2 className="text-title-3 text-[var(--color-apple-dark)] mb-2" {...edit.successTitle}>
+                      {ui.successTitle}
                     </h2>
-                    <p className="text-body text-[var(--color-apple-gray-600)] mb-6">
-                      Wir haben Ihnen eine E-Mail mit der Zusammenfassung Ihrer Konfiguration gesendet.
+                    <p className="text-body text-[var(--color-apple-gray-600)] mb-6" {...edit.successMessage}>
+                      {ui.successMessage}
                     </p>
 
                     <div className="space-y-3">
@@ -623,13 +654,13 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                       >
                         <ArrowRight className="h-5 w-5" />
                         <div className="text-left">
-                          <p className="text-body-sm font-medium">Nächster Schritt</p>
-                          <p className="text-caption opacity-70">Impulsworkshop buchen</p>
+                          <p className="text-body-sm font-medium" {...edit.successNextStepLabel}>{ui.successNextStepLabel}</p>
+                          <p className="text-caption opacity-70" {...edit.successNextStepHint}>{ui.successNextStepHint}</p>
                         </div>
                       </Link>
 
                       <div className="p-4 bg-[var(--color-apple-gray-100)] rounded-xl text-left">
-                        <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2">Kontakt</p>
+                        <p className="text-caption font-medium text-[var(--color-apple-gray-600)] mb-2" {...edit.successContactLabel}>{ui.successContactLabel}</p>
                         <div className="space-y-1">
                           <p className="text-body-sm text-[var(--color-apple-dark)] flex items-center gap-2">
                             <Mail className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
@@ -653,13 +684,14 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                   <button
                     onClick={onClose}
                     className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                    {...edit.buttonClose}
                   >
-                    Schliessen
+                    {ui.buttonClose}
                   </button>
                 ) : (
                   <div className="flex items-center justify-between gap-4">
                     <div>
-                      <p className="text-caption text-[var(--color-apple-gray-600)]">{currentPackage.name} ({currentPackage.posts} Posten)</p>
+                      <p className="text-caption text-[var(--color-apple-gray-600)]">{currentPackage.name} ({currentPackage.posts} {ui.packagePostsLabel})</p>
                     </div>
 
                     <div className="flex items-center gap-3">
@@ -673,9 +705,10 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                             setStep(step - 1);
                           }}
                           className="flex items-center gap-1 text-body-sm font-medium text-[var(--color-apple-gray-600)] hover:text-[var(--color-apple-dark)] transition-colors"
+                          {...edit.buttonBack}
                         >
                           <ArrowLeft className="h-4 w-4" />
-                          Zurück
+                          {ui.buttonBack}
                         </button>
                       )}
 
@@ -683,16 +716,18 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                         <button
                           onClick={() => setStep(step + 1)}
                           className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                          {...edit.buttonNext}
                         >
-                          Weiter
+                          {ui.buttonNext}
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       ) : step === 3 ? (
                         <button
                           onClick={() => setStep(4)}
                           className="inline-flex items-center gap-2 px-5 py-2.5 bg-[var(--color-apple-dark)] text-white rounded-full font-medium hover:bg-black transition-colors"
+                          {...edit.buttonGoToSummary}
                         >
-                          Zusammenfassung erhalten
+                          {ui.buttonGoToSummary}
                           <ArrowRight className="h-4 w-4" />
                         </button>
                       ) : (
@@ -706,7 +741,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                               : "bg-[var(--color-apple-gray-200)] text-[var(--color-apple-gray-500)] cursor-not-allowed"
                           )}
                         >
-                          {isSubmitting ? "Wird gesendet..." : "Absenden"}
+                          {isSubmitting ? ui.buttonSubmitting : ui.buttonSubmit}
                           {!isSubmitting && <ArrowRight className="h-4 w-4" />}
                         </button>
                       )}
@@ -735,6 +770,11 @@ export function ConfiguratorTrigger({
   className?: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const ui = useContent("CONFIGURATOR_UI", CONFIGURATOR_UI);
+  const editCardTitle = useEditPath("CONFIGURATOR_UI.triggerCardTitle");
+  const editCardHint = useEditPath("CONFIGURATOR_UI.triggerCardHint");
+  const editCardCta = useEditPath("CONFIGURATOR_UI.triggerCardCta");
+  const editTriggerBtn = useEditPath("CONFIGURATOR_UI.triggerButtonLabel");
 
   if (variant === "card") {
     return (
@@ -747,12 +787,12 @@ export function ConfiguratorTrigger({
           )}
         >
           <Sparkles className="h-8 w-8 mb-4 opacity-80" />
-          <h3 className="text-headline font-semibold mb-1">Leistungspaket konfigurieren</h3>
-          <p className="text-body-sm opacity-80 mb-4">
-            In 3 Schritten zu Ihrem individuellen Angebot.
+          <h3 className="text-headline font-semibold mb-1" {...editCardTitle}>{ui.triggerCardTitle}</h3>
+          <p className="text-body-sm opacity-80 mb-4" {...editCardHint}>
+            {ui.triggerCardHint}
           </p>
-          <span className="inline-flex items-center gap-2 text-body-sm font-semibold">
-            Konfigurator starten
+          <span className="inline-flex items-center gap-2 text-body-sm font-semibold" {...editCardCta}>
+            {ui.triggerCardCta}
             <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </span>
         </button>
@@ -772,7 +812,7 @@ export function ConfiguratorTrigger({
           )}
         >
           <Sparkles className="h-4 w-4" />
-          Leistungspaket konfigurieren
+          {ui.triggerButtonLabel}
           <ArrowRight className="h-4 w-4" />
         </button>
         <ConfiguratorOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
