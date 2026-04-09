@@ -18,6 +18,8 @@ import { useEditMode } from "@/components/cms/edit-mode-context";
 import { useEditorStore, clearHistory } from "@/lib/cms/editor-store";
 import { useSave } from "@/lib/cms/use-save";
 import { useAutosave } from "@/lib/cms/use-autosave";
+import { useValidationErrorCount } from "./ValidationBadges";
+import { toast } from "sonner";
 
 export function SaveBar() {
   const { editMode } = useEditMode();
@@ -52,9 +54,11 @@ export function SaveBar() {
   // Autosave scaffold — no-op unless cms:autosave flag is set.
   useAutosave(saveApi);
 
+  const validationErrors = useValidationErrorCount();
+
   if (!editMode || typeof document === "undefined") return null;
 
-  const canSave = pendingCount > 0 && !saving;
+  const canSave = pendingCount > 0 && !saving && validationErrors === 0;
 
   const onDiscard = () => {
     if (pendingCount === 0) return;
@@ -86,6 +90,15 @@ export function SaveBar() {
       }}
       className="flex items-center gap-2 rounded-full bg-[#1D1D1F]/95 backdrop-blur-xl text-white shadow-2xl px-3 py-2 text-xs"
     >
+      {validationErrors > 0 && (
+        <span
+          className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-red-500/20 text-red-200 font-medium"
+          title="Blocks mit Schema-Verletzungen"
+        >
+          <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
+          {validationErrors} validation error{validationErrors === 1 ? "" : "s"}
+        </span>
+      )}
       {dirty ? (
         <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-200 font-medium">
           <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
@@ -110,7 +123,15 @@ export function SaveBar() {
       </button>
       <button
         type="button"
-        onClick={() => void save()}
+        onClick={() => {
+          if (validationErrors > 0) {
+            toast.error(
+              `Speichern blockiert: ${validationErrors} Schema-Verletzung${validationErrors === 1 ? "" : "en"}.`
+            );
+            return;
+          }
+          void save();
+        }}
         disabled={!canSave}
         className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#00a8ab] hover:bg-[#00c0c4] disabled:opacity-40 disabled:cursor-not-allowed font-semibold"
         title="Speichern (Cmd+S)"

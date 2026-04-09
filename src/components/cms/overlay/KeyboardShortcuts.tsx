@@ -19,6 +19,8 @@ import { useEditorStore, undo, redo } from "@/lib/cms/editor-store";
 import { useSave } from "@/lib/cms/use-save";
 import { resolvePathToField } from "@/lib/cms/path-to-field";
 import { parsePath } from "@/lib/content-path";
+import { validateTree } from "@/lib/cms/validate-tree";
+import { toast } from "sonner";
 
 function isEditableTarget(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) return false;
@@ -74,6 +76,16 @@ export function KeyboardShortcuts() {
 
       if (mod && (e.key === "s" || e.key === "S")) {
         e.preventDefault();
+        const tree = useEditorStore.getState().content;
+        const map = validateTree(tree);
+        let errorCount = 0;
+        for (const k in map) errorCount += map[k].length;
+        if (errorCount > 0) {
+          toast.error(
+            `Speichern blockiert: ${errorCount} Schema-Verletzung${errorCount === 1 ? "" : "en"}.`
+          );
+          return;
+        }
         void save();
         return;
       }
