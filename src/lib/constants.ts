@@ -295,3 +295,17 @@ export const POSTEN_STABILITAET = (content as any).POSTEN_STABILITAET;
 export const POSTEN_PASSEMENT = (content as any).POSTEN_PASSEMENT;
 export const POSTEN_QUADRUPEDIE = (content as any).POSTEN_QUADRUPEDIE;
 export const POSTEN_CHECK_OUT = (content as any).POSTEN_CHECK_OUT;
+export const FOKUS_CONTENT = (content as any).FOKUS_CONTENT;
+
+// Legal / minor pages (v6)
+type LegalSection = { _id: string; heading: string; body: string };
+type LegalContent = {
+  title: string;
+  breadcrumb?: string;
+  sections: LegalSection[];
+  stand?: string;
+};
+export const IMPRESSUM_CONTENT: LegalContent =
+  (content as unknown as { IMPRESSUM_CONTENT: LegalContent }).IMPRESSUM_CONTENT;
+export const DATENSCHUTZ_CONTENT: LegalContent =
+  (content as unknown as { DATENSCHUTZ_CONTENT: LegalContent }).DATENSCHUTZ_CONTENT;

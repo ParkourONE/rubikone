@@ -11,6 +11,7 @@ import {
   POSTEN_PASSEMENT,
   POSTEN_QUADRUPEDIE,
   POSTEN_CHECK_OUT,
+  FOKUS_CONTENT,
 } from "@/lib/constants";
 
 type PostenKey =
@@ -21,7 +22,8 @@ type PostenKey =
   | "POSTEN_STABILITAET"
   | "POSTEN_PASSEMENT"
   | "POSTEN_QUADRUPEDIE"
-  | "POSTEN_CHECK_OUT";
+  | "POSTEN_CHECK_OUT"
+  | "FOKUS_CONTENT";
 
 const DEFAULTS: Record<PostenKey, unknown> = {
   POSTEN_CHECK_IN,
@@ -32,6 +34,7 @@ const DEFAULTS: Record<PostenKey, unknown> = {
   POSTEN_PASSEMENT,
   POSTEN_QUADRUPEDIE,
   POSTEN_CHECK_OUT,
+  FOKUS_CONTENT,
 };
 
 interface Props {

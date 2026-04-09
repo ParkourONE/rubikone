@@ -33,6 +33,7 @@ import {
 } from "./schemas";
 import {
   text,
+  richtext,
   image,
   button,
   list,
@@ -1365,9 +1366,29 @@ for (const [id, label] of [
   ["POSTEN_PASSEMENT", "Posten Passement"],
   ["POSTEN_QUADRUPEDIE", "Posten Quadrupedie"],
   ["POSTEN_CHECK_OUT", "Posten Check-Out"],
+  ["FOKUS_CONTENT", "Posten Fokus"],
 ] as const) {
   m({ id, label, schema: postenSchema, fields: postenFields });
 }
+
+/* ------------------------------- LEGAL ----------------------------------- */
+
+const legalSchema = blockObject({
+  title: z.string(),
+  breadcrumb: z.string().optional(),
+  sections: z.array(withId({ heading: z.string(), body: z.string() })),
+  stand: z.string().optional(),
+});
+
+const legalFields = [
+  text("title"),
+  text("breadcrumb", { required: false }),
+  list("sections", [text("heading"), richtext("body")]),
+  text("stand", { required: false }),
+];
+
+m({ id: "IMPRESSUM_CONTENT", label: "Impressum", schema: legalSchema, fields: legalFields });
+m({ id: "DATENSCHUTZ_CONTENT", label: "Datenschutzerklärung", schema: legalSchema, fields: legalFields });
 
 /* ------------------------------- BENTO ----------------------------------- */
 

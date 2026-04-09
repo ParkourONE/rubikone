@@ -4,7 +4,7 @@
  * Add new migrations by pushing to `migrations` — never mutate existing ones.
  */
 
-export const CURRENT_SCHEMA_VERSION = 5;
+export const CURRENT_SCHEMA_VERSION = 6;
 
 type Migration = (tree: Record<string, unknown>) => Record<string, unknown>;
 
@@ -88,6 +88,38 @@ const migrations: Record<number, Migration> = {
       if (next[key] === undefined) next[key] = value;
     }
     return next;
+  },
+  // v5 -> v6: seed FOKUS_CONTENT + legal pages (IMPRESSUM/DATENSCHUTZ) if absent.
+  5: (tree) => {
+    const next: Record<string, unknown> = { ...tree };
+    for (const [key, value] of Object.entries(V6_DEFAULTS)) {
+      if (next[key] === undefined) next[key] = value;
+    }
+    return next;
+  },
+};
+
+const V6_DEFAULTS: Record<string, unknown> = {
+  FOKUS_CONTENT: {
+    number: "02",
+    title: "FOKUS",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  IMPRESSUM_CONTENT: {
+    title: "Impressum",
+    breadcrumb: "Rechtliches",
+    sections: [],
+    stand: "",
+  },
+  DATENSCHUTZ_CONTENT: {
+    title: "Datenschutzerklärung",
+    breadcrumb: "Rechtliches",
+    sections: [],
+    stand: "",
   },
 };
 
