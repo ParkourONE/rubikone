@@ -23,6 +23,27 @@ interface FAQSectionProps {
   className?: string;
 }
 
+function FAQItemRow({ item, index }: { item: FAQItem; index: number }) {
+  const path = `FAQ_ITEMS[${index}]`;
+  const itemEdit = useEditPath(path);
+  const qEdit = useEditPath(`${path}.question`);
+  const aEdit = useEditPath(`${path}.answer`);
+  return (
+    <AccordionItem
+      value={`item-${index}`}
+      className="border-b border-[var(--color-apple-gray-200)]"
+      {...itemEdit}
+    >
+      <AccordionTrigger className="text-left text-body font-semibold py-5 hover:no-underline hover:text-[var(--color-apple-blue)] transition-colors">
+        <span {...qEdit}>{item.question}</span>
+      </AccordionTrigger>
+      <AccordionContent className="text-body text-[var(--color-apple-gray-600)] pb-5" {...aEdit}>
+        {item.answer}
+      </AccordionContent>
+    </AccordionItem>
+  );
+}
+
 export function FAQSection({
   title = "Häufig gestellte Fragen",
   subtitle = "FAQ",
@@ -38,18 +59,7 @@ export function FAQSection({
           <div className="max-w-3xl mx-auto" {...useEditPath("FAQ_ITEMS")}>
             <Accordion type="single" collapsible className="w-full">
               {items.map((item, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="border-b border-[var(--color-apple-gray-200)]"
-                >
-                  <AccordionTrigger className="text-left text-body font-semibold py-5 hover:no-underline hover:text-[var(--color-apple-blue)] transition-colors">
-                    {item.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-body text-[var(--color-apple-gray-600)] pb-5">
-                    {item.answer}
-                  </AccordionContent>
-                </AccordionItem>
+                <FAQItemRow key={index} item={item} index={index} />
               ))}
             </Accordion>
           </div>

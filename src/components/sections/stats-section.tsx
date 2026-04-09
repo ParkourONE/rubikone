@@ -9,6 +9,66 @@ import { STATS_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { useEditPath } from "@/components/cms/primitives";
 
+interface StatsSlide {
+  value?: string;
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+function StatsSlideCard({ slide, index }: { slide: StatsSlide; index: number }) {
+  const path = `STATS_CONTENT.slides[${index}]`;
+  const itemEdit = useEditPath(path);
+  const valueEdit = useEditPath(`${path}.value`);
+  const titleEdit = useEditPath(`${path}.title`);
+  const descEdit = useEditPath(`${path}.description`);
+  const imgEdit = useEditPath(`${path}.image`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.1 }}
+      className="flex-shrink-0 w-[320px]"
+      {...itemEdit}
+    >
+      <div className="bg-[var(--color-apple-gray-100)] rounded-2xl overflow-hidden h-full">
+        {slide.image && (
+          <div className="relative aspect-[4/3]">
+            <Image
+              src={slide.image}
+              alt={slide.title ?? ""}
+              fill
+              className="object-cover"
+              {...imgEdit}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            {slide.value && (
+              <div className="absolute bottom-4 left-4">
+                <span className="text-display text-white font-bold" {...valueEdit}>
+                  {slide.value}
+                </span>
+              </div>
+            )}
+          </div>
+        )}
+        <div className="p-6">
+          {slide.title && (
+            <h3 className="text-headline text-[var(--color-apple-dark)] mb-2" {...titleEdit}>
+              {slide.title}
+            </h3>
+          )}
+          {slide.description && (
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] leading-relaxed" {...descEdit}>
+              {slide.description}
+            </p>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function StatsSection() {
   const statsContent = useContent("STATS_CONTENT", STATS_CONTENT);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -59,41 +119,7 @@ export function StatsSection() {
         <div className="slider-spacer" />
 
         {statsContent.slides.map((slide: any, index: number) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...appleTransition, delay: index * 0.1 }}
-            className="flex-shrink-0 w-[320px]"
-          >
-            <div className="bg-[var(--color-apple-gray-100)] rounded-2xl overflow-hidden h-full">
-              {/* Image */}
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={slide.image}
-                  alt={slide.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="text-display text-white font-bold">
-                    {slide.value}
-                  </span>
-                </div>
-              </div>
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="text-headline text-[var(--color-apple-dark)] mb-2">
-                  {slide.title}
-                </h3>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] leading-relaxed">
-                  {slide.description}
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          <StatsSlideCard key={index} slide={slide} index={index} />
         ))}
 
         {/* Right spacer */}

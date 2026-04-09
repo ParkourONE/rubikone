@@ -9,6 +9,54 @@ import { GALLERY_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { useEditPath } from "@/components/cms/primitives";
 
+interface GalleryImageItem {
+  src?: string;
+  title?: string;
+  comment?: string;
+}
+
+function GalleryCard({ item, index }: { item: GalleryImageItem; index: number }) {
+  const path = `GALLERY_CONTENT.images[${index}]`;
+  const itemEdit = useEditPath(path);
+  const srcEdit = useEditPath(`${path}.src`);
+  const titleEdit = useEditPath(`${path}.title`);
+  const commentEdit = useEditPath(`${path}.comment`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.05 }}
+      className="flex-shrink-0 w-[340px] lg:w-[400px]"
+      {...itemEdit}
+    >
+      <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
+        {item.src && (
+          <div className="relative aspect-[4/3]">
+            <Image
+              src={item.src}
+              alt={item.title ?? ""}
+              fill
+              className="object-cover"
+              {...srcEdit}
+            />
+          </div>
+        )}
+        <div className="p-5">
+          <p className="text-body text-[var(--color-apple-gray-700)] leading-relaxed">
+            {item.title && (
+              <span className="font-semibold text-[var(--color-apple-dark)]" {...titleEdit}>
+                {item.title}.
+              </span>
+            )}{" "}
+            {item.comment && <span {...commentEdit}>{item.comment}</span>}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function ImageGallery() {
   const galleryContent = useContent("GALLERY_CONTENT", GALLERY_CONTENT);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -58,33 +106,7 @@ export function ImageGallery() {
         <div className="slider-spacer" />
 
         {galleryContent.images.map((item: any, index: number) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...appleTransition, delay: index * 0.05 }}
-            className="flex-shrink-0 w-[340px] lg:w-[400px]"
-          >
-              <div className="bg-white rounded-2xl overflow-hidden shadow-apple h-full">
-                {/* Large Image - No overlay text */}
-                <div className="relative aspect-[4/3]">
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                {/* Content below image - Title bold before text */}
-                <div className="p-5">
-                  <p className="text-body text-[var(--color-apple-gray-700)] leading-relaxed">
-                    <span className="font-semibold text-[var(--color-apple-dark)]">{item.title}.</span>{" "}
-                    {item.comment}
-                  </p>
-              </div>
-            </div>
-          </motion.div>
+          <GalleryCard key={index} item={item} index={index} />
         ))}
 
         {/* Right spacer */}

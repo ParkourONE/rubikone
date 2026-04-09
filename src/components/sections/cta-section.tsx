@@ -7,6 +7,34 @@ import { useContent } from "@/hooks/useContent";
 import { FadeUp } from "@/components/shared/fade-up";
 import { useEditPath } from "@/components/cms/primitives";
 
+function DownloadLink({
+  download,
+  index,
+  isDark,
+}: {
+  download: { label?: string; href?: string };
+  index: number;
+  isDark: boolean;
+}) {
+  const path = `CTA_CONTENT.downloads[${index}]`;
+  const itemEdit = useEditPath(path);
+  return (
+    <a
+      href={download.href ?? "#"}
+      className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-colors ${
+        isDark
+          ? "border-white/20 text-white hover:bg-white/10"
+          : "border-[var(--color-apple-gray-300)] text-[var(--color-apple-gray-600)] hover:bg-white"
+      }`}
+      download
+      {...itemEdit}
+    >
+      <Download className="h-4 w-4" />
+      <span className="text-body-sm">{download.label}</span>
+    </a>
+  );
+}
+
 interface CTASectionProps {
   variant?: "default" | "dark";
 }
@@ -34,25 +62,31 @@ export function CTASection({ variant = "default" }: CTASectionProps) {
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href={ctaContent.ctaPrimary.href}
-                className={isDark ? "bg-white text-[var(--color-apple-dark)] hover:bg-white/90 btn-primary" : "btn-primary"}
-              >
-                {ctaContent.ctaPrimary.label}
-              </Link>
-              <Link
-                href={ctaContent.ctaSecondary.href}
-                className={`btn-secondary ${isDark ? "text-white hover:text-white/80" : ""}`}
-              >
-                {ctaContent.ctaSecondary.label}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              {ctaContent.ctaPrimary && (
+                <Link
+                  href={ctaContent.ctaPrimary.href}
+                  className={isDark ? "bg-white text-[var(--color-apple-dark)] hover:bg-white/90 btn-primary" : "btn-primary"}
+                  {...useEditPath("CTA_CONTENT.ctaPrimary")}
+                >
+                  {ctaContent.ctaPrimary.label}
+                </Link>
+              )}
+              {ctaContent.ctaSecondary && (
+                <Link
+                  href={ctaContent.ctaSecondary.href}
+                  className={`btn-secondary ${isDark ? "text-white hover:text-white/80" : ""}`}
+                  {...useEditPath("CTA_CONTENT.ctaSecondary")}
+                >
+                  {ctaContent.ctaSecondary.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              )}
             </div>
           </div>
         </FadeUp>
 
         {/* Downloads */}
-        {ctaContent.downloads.length > 0 && (
+        {ctaContent.downloads && ctaContent.downloads.length > 0 && (
           <FadeUp delay={0.2}>
             <div className="mt-12 text-center">
               <p className={`text-body-sm mb-4 ${isDark ? "text-white/60" : "text-[var(--color-apple-gray-500)]"}`}>
@@ -60,19 +94,7 @@ export function CTASection({ variant = "default" }: CTASectionProps) {
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 {ctaContent.downloads.map((download, index) => (
-                  <a
-                    key={index}
-                    href={download.href}
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-colors ${
-                      isDark
-                        ? "border-white/20 text-white hover:bg-white/10"
-                        : "border-[var(--color-apple-gray-300)] text-[var(--color-apple-gray-600)] hover:bg-white"
-                    }`}
-                    download
-                  >
-                    <Download className="h-4 w-4" />
-                    <span className="text-body-sm">{download.label}</span>
-                  </a>
+                  <DownloadLink key={index} download={download} index={index} isDark={isDark} />
                 ))}
               </div>
             </div>

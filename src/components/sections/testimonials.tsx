@@ -8,6 +8,66 @@ import { useContent } from "@/hooks/useContent";
 import { appleTransition } from "@/lib/animations";
 import { useEditPath } from "@/components/cms/primitives";
 
+interface TestimonialItem {
+  quote?: string;
+  author?: string;
+  role?: string;
+  logo?: string;
+}
+
+function TestimonialCard({ testimonial, index }: { testimonial: TestimonialItem; index: number }) {
+  const path = `TESTIMONIALS[${index}]`;
+  const itemEdit = useEditPath(path);
+  const quoteEdit = useEditPath(`${path}.quote`);
+  const authorEdit = useEditPath(`${path}.author`);
+  const roleEdit = useEditPath(`${path}.role`);
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ ...appleTransition, delay: index * 0.1 }}
+      {...itemEdit}
+    >
+      <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6 h-full">
+        {testimonial.quote && (
+          <div className="flex gap-3 mb-4">
+            <Quote className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" strokeWidth={1.5} />
+            <p className="text-body text-[var(--color-apple-dark)] leading-relaxed" {...quoteEdit}>
+              &ldquo;{testimonial.quote}&rdquo;
+            </p>
+          </div>
+        )}
+        <div className="flex items-center gap-3 pt-4 border-t border-[var(--color-apple-gray-200)]">
+          {testimonial.logo && (
+            <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1.5">
+              <Image
+                src={testimonial.logo}
+                alt={testimonial.author ?? ""}
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+            </div>
+          )}
+          <div>
+            {testimonial.author && (
+              <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]" {...authorEdit}>
+                {testimonial.author}
+              </p>
+            )}
+            {testimonial.role && (
+              <p className="text-caption text-[var(--color-apple-gray-600)]" {...roleEdit}>
+                {testimonial.role}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 export function TestimonialsSection() {
   const testimonials = useContent("TESTIMONIALS", TESTIMONIALS);
   return (
@@ -35,44 +95,7 @@ export function TestimonialsSection() {
           {...useEditPath("TESTIMONIALS")}
         >
           {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: index * 0.1 }}
-            >
-              <div className="bg-[var(--color-apple-gray-100)] rounded-2xl p-6 h-full">
-                {/* Quote */}
-                <div className="flex gap-3 mb-4">
-                  <Quote className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" strokeWidth={1.5} />
-                  <p className="text-body text-[var(--color-apple-dark)] leading-relaxed">
-                    &ldquo;{testimonial.quote}&rdquo;
-                  </p>
-                </div>
-
-                {/* Attribution */}
-                <div className="flex items-center gap-3 pt-4 border-t border-[var(--color-apple-gray-200)]">
-                  <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1.5">
-                    <Image
-                      src={testimonial.logo}
-                      alt={testimonial.author}
-                      width={32}
-                      height={32}
-                      className="object-contain"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-body-sm font-semibold text-[var(--color-apple-dark)]">
-                      {testimonial.author}
-                    </p>
-                    <p className="text-caption text-[var(--color-apple-gray-600)]">
-                      {testimonial.role}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <TestimonialCard key={index} testimonial={testimonial} index={index} />
           ))}
         </div>
       </div>

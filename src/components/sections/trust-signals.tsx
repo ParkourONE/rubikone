@@ -5,6 +5,42 @@ import { TRUST_STATS, PARTNERS } from "@/lib/constants";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 import { useEditPath } from "@/components/cms/primitives";
 
+interface TrustStatItem {
+  value?: string;
+  label?: string;
+  sublabel?: string;
+}
+
+function TrustStatCard({ stat, path }: { stat: TrustStatItem; path: string }) {
+  const itemEdit = useEditPath(path);
+  const valueEdit = useEditPath(`${path}.value`);
+  const labelEdit = useEditPath(`${path}.label`);
+  const sublabelEdit = useEditPath(`${path}.sublabel`);
+  return (
+    <motion.div
+      variants={staggerItem}
+      className="text-center"
+      {...itemEdit}
+    >
+      {stat.value && (
+        <div className="text-display text-[var(--color-apple-blue)]" {...valueEdit}>
+          {stat.value}
+        </div>
+      )}
+      {stat.label && (
+        <div className="mt-1 text-headline text-[var(--color-apple-dark)]" {...labelEdit}>
+          {stat.label}
+        </div>
+      )}
+      {stat.sublabel && (
+        <div className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]" {...sublabelEdit}>
+          {stat.sublabel}
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 // Stats Section
 export function TrustStats() {
   return (
@@ -19,21 +55,7 @@ export function TrustStats() {
           {...useEditPath("TRUST_STATS")}
         >
           {TRUST_STATS.map((stat, index) => (
-            <motion.div
-              key={index}
-              variants={staggerItem}
-              className="text-center"
-            >
-              <div className="text-display text-[var(--color-apple-blue)]">
-                {stat.value}
-              </div>
-              <div className="mt-1 text-headline text-[var(--color-apple-dark)]">
-                {stat.label}
-              </div>
-              <div className="mt-1 text-body-sm text-[var(--color-apple-gray-600)]">
-                {stat.sublabel}
-              </div>
-            </motion.div>
+            <TrustStatCard key={index} stat={stat} path={`TRUST_STATS[${index}]`} />
           ))}
         </motion.div>
       </div>

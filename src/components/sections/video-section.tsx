@@ -7,10 +7,15 @@ import { Play } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { VIDEO_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function VideoSection() {
   const videoContent = useContent("VIDEO_CONTENT", VIDEO_CONTENT);
   const [showVideo, setShowVideo] = useState(false);
+  const taglineEdit = useEditPath("VIDEO_CONTENT.tagline");
+  const headlineEdit = useEditPath("VIDEO_CONTENT.headline");
+  const descEdit = useEditPath("VIDEO_CONTENT.description");
+  const fallbackEdit = useEditPath("VIDEO_CONTENT.fallbackImage");
 
   // Extract YouTube video ID from URL
   const videoId = videoContent.videoUrl.includes("v=")
@@ -27,13 +32,19 @@ export function VideoSection() {
           transition={appleTransition}
           className="text-center mb-12"
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{videoContent.tagline}</p>
-          <h2 className="text-title-1 text-[var(--color-apple-dark)]">
-            {videoContent.headline}
-          </h2>
-          <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl mx-auto">
-            {videoContent.description}
-          </p>
+          {videoContent.tagline && (
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...taglineEdit}>{videoContent.tagline}</p>
+          )}
+          {videoContent.headline && (
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...headlineEdit}>
+              {videoContent.headline}
+            </h2>
+          )}
+          {videoContent.description && (
+            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl mx-auto" {...descEdit}>
+              {videoContent.description}
+            </p>
+          )}
         </motion.div>
 
         <motion.div
@@ -63,6 +74,7 @@ export function VideoSection() {
                   alt="RubikONE Video"
                   fill
                   className="object-cover"
+                  {...fallbackEdit}
                 />
                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
                 <div className="absolute inset-0 flex items-center justify-center">

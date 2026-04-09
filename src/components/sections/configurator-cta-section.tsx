@@ -6,9 +6,13 @@ import { appleTransition } from "@/lib/animations";
 import { ConfiguratorTrigger } from "./configurator-overlay";
 import { CONFIGURATOR_CTA_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function ConfiguratorCTASection() {
   const configCta = useContent("CONFIGURATOR_CTA_CONTENT", CONFIGURATOR_CTA_CONTENT);
+  const headlineEdit = useEditPath("CONFIGURATOR_CTA_CONTENT.headline");
+  const subEdit = useEditPath("CONFIGURATOR_CTA_CONTENT.subheadline");
+  const noteEdit = useEditPath("CONFIGURATOR_CTA_CONTENT.note");
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-br from-[var(--color-apple-blue)] via-[var(--color-apple-blue)] to-[var(--color-apple-blue)]/80">
       <div className="container-content">
@@ -23,11 +27,11 @@ export function ConfiguratorCTASection() {
             <Calculator className="h-8 w-8 text-white" />
           </div>
 
-          <h2 className="text-title-1 text-white max-w-2xl mx-auto">
+          <h2 className="text-title-1 text-white max-w-2xl mx-auto" {...headlineEdit}>
             {configCta.headline}
           </h2>
 
-          <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
+          <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto" {...subEdit}>
             {configCta.subheadline}
           </p>
 
@@ -38,7 +42,7 @@ export function ConfiguratorCTASection() {
             />
           </div>
 
-          <p className="mt-6 text-body-sm text-white/60">
+          <p className="mt-6 text-body-sm text-white/60" {...noteEdit}>
             {configCta.note}
           </p>
         </motion.div>
