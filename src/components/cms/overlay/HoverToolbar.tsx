@@ -115,22 +115,39 @@ export function HoverToolbar() {
     function measure() {
       const el = queryVisibleEditPath(selectedPath!);
       if (!el) {
-        setRect(null);
+        setRect((prev) => (prev === null ? prev : null));
         return;
       }
-      setRect(rectOf(el));
+      const next = rectOf(el);
+      setRect((prev) => {
+        if (
+          prev &&
+          Math.abs(prev.top - next.top) < 0.5 &&
+          Math.abs(prev.left - next.left) < 0.5 &&
+          Math.abs(prev.width - next.width) < 0.5 &&
+          Math.abs(prev.height - next.height) < 0.5
+        ) {
+          return prev;
+        }
+        return next;
+      });
     }
     measure();
     window.addEventListener("scroll", measure, true);
     window.addEventListener("resize", measure);
+    // Observe only structural/attribute changes in the rendered page, NOT the
+    // toolbar portal itself — otherwise setRect triggers a re-render which
+    // mutates the portal which fires the observer which loops.
     const mo = new MutationObserver(measure);
-    mo.observe(document.body, { subtree: true, childList: true, attributes: true });
+    const observeTarget =
+      document.querySelector("main") ?? document.body;
+    mo.observe(observeTarget, { subtree: true, childList: true, attributes: false });
     return () => {
       window.removeEventListener("scroll", measure, true);
       window.removeEventListener("resize", measure);
       mo.disconnect();
     };
-  }, [editMode, selectedPath, content]);
+  }, [editMode, selectedPath]);
 
   const resolved = useMemo<ResolvedField | null>(() => {
     if (!selectedPath) return null;
@@ -163,10 +180,18 @@ export function HoverToolbar() {
   );
 
   const onEdit = () => {
-    if (!resolved) return;
+    if (!resolved) {
+      toast.error(`Kein Feld gefunden für ${selectedPath}`);
+      return;
+    }
     // All kinds (including text/richtext) open a popover editor. Inline
     // contenteditable on React-owned text nodes clashes with re-renders.
-    getInlineEditorDispatcher()?.(resolved.field.kind, selectedPath, rect);
+    const dispatcher = getInlineEditorDispatcher();
+    if (!dispatcher) {
+      toast.error(`Editor-Dispatcher nicht registriert (kind=${resolved.field.kind})`);
+      return;
+    }
+    dispatcher(resolved.field.kind, selectedPath, rect);
   };
 
   const onDuplicate = () => {

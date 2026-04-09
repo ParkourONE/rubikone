@@ -135,18 +135,20 @@ export function HoverOverlay() {
     function measure() {
       const el = queryVisibleEditPath(selectedPath!);
       if (!el) {
-        setSelectedRect(null);
+        setSelectedRect((prev) => (prev === null ? prev : null));
         return;
       }
-      setSelectedRect(rectOf(el));
+      const next = rectOf(el);
+      setSelectedRect((prev) => (prev && rectsEqual(prev, next) ? prev : next));
     }
     measure();
     window.addEventListener("scroll", measure, true);
     window.addEventListener("resize", measure);
+    const observeTarget = document.querySelector("main") ?? document.body;
     const ro = new ResizeObserver(measure);
-    ro.observe(document.body);
+    ro.observe(observeTarget);
     const mo = new MutationObserver(measure);
-    mo.observe(document.body, { subtree: true, childList: true, attributes: true });
+    mo.observe(observeTarget, { subtree: true, childList: true, attributes: false });
     return () => {
       window.removeEventListener("scroll", measure, true);
       window.removeEventListener("resize", measure);
