@@ -37,7 +37,7 @@
     "headline": "Hier darfst du.",
     "headlineAccent": "",
     "brandTag": "RubikONE – Der Fitnessparkour",
-    "subheadline": "RubikONE Idee macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. Dauerhaft & wetterfest.",
+    "subheadline": "RubikONE macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. Dauerhaft & wetterfest.",
     "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
     "heroVideoSrc": "/videos/hero.mp4",
     "ctaPrimary": {
@@ -1242,15 +1242,42 @@
     }
   ],
   "MOVEMENTS_GRID": [
-    { "_id": "mv-1", "title": "Greifen" },
-    { "_id": "mv-2", "title": "Hangeln" },
-    { "_id": "mv-3", "title": "Balancieren" },
-    { "_id": "mv-4", "title": "Springen" },
-    { "_id": "mv-5", "title": "Klettern" },
-    { "_id": "mv-6", "title": "Ausdehnen" },
-    { "_id": "mv-7", "title": "Kraft" },
-    { "_id": "mv-8", "title": "Quadrupedie" },
-    { "_id": "mv-9", "title": "Laufen" }
+    {
+      "_id": "mv-1",
+      "title": "Greifen"
+    },
+    {
+      "_id": "mv-2",
+      "title": "Hangeln"
+    },
+    {
+      "_id": "mv-3",
+      "title": "Balancieren"
+    },
+    {
+      "_id": "mv-4",
+      "title": "Springen"
+    },
+    {
+      "_id": "mv-5",
+      "title": "Klettern"
+    },
+    {
+      "_id": "mv-6",
+      "title": "Ausdehnen"
+    },
+    {
+      "_id": "mv-7",
+      "title": "Kraft"
+    },
+    {
+      "_id": "mv-8",
+      "title": "Quadrupedie"
+    },
+    {
+      "_id": "mv-9",
+      "title": "Laufen"
+    }
   ],
   "LERNDIMENSIONEN_CONTENT": [
     {
