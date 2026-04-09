@@ -45,6 +45,25 @@ function findEditPathElement(
   return null;
 }
 
+/**
+ * Pick the first *visible* element matching a data-edit-path value. Sections
+ * often render the same logical field twice (mobile + desktop variants) with
+ * one hidden via `display: none`. A hidden node's getBoundingClientRect()
+ * collapses to all-zero, which would otherwise pin selections/toolbars to the
+ * top-left corner.
+ */
+export function queryVisibleEditPath(path: string): HTMLElement | null {
+  const all = document.querySelectorAll<HTMLElement>(
+    `[data-edit-path="${CSS.escape(path)}"]`
+  );
+  for (const el of all) {
+    if (el.offsetParent !== null) return el; // not display:none
+    const r = el.getBoundingClientRect();
+    if (r.width > 0 || r.height > 0) return el; // fallback (fixed/absolute cases)
+  }
+  return all[0] ?? null;
+}
+
 export function HoverOverlay() {
   const { editMode } = useEditMode();
   const { selectedPath, setSelectedPath } = useSelection();
@@ -114,9 +133,7 @@ export function HoverOverlay() {
       return;
     }
     function measure() {
-      const el = document.querySelector(
-        `[data-edit-path="${CSS.escape(selectedPath!)}"]`
-      );
+      const el = queryVisibleEditPath(selectedPath!);
       if (!el) {
         setSelectedRect(null);
         return;

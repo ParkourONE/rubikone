@@ -31,6 +31,7 @@ import { useEditorStore } from "@/lib/cms/editor-store";
 import { resolvePathToField, type ResolvedField } from "@/lib/cms/path-to-field";
 import { parsePath } from "@/lib/content-path";
 import { getInlineEditorDispatcher } from "@/components/cms/inline-editors/editor-dispatch";
+import { queryVisibleEditPath } from "@/components/cms/overlay/HoverOverlay";
 
 interface Rect {
   top: number;
@@ -112,9 +113,7 @@ export function HoverToolbar() {
       return;
     }
     function measure() {
-      const el = document.querySelector(
-        `[data-edit-path="${CSS.escape(selectedPath!)}"]`
-      );
+      const el = queryVisibleEditPath(selectedPath!);
       if (!el) {
         setRect(null);
         return;
@@ -168,9 +167,7 @@ export function HoverToolbar() {
     const kind = resolved.field.kind;
     if (kind === "text" || kind === "richtext") {
       // Focus the underlying contenteditable / text node.
-      const el = document.querySelector(
-        `[data-edit-path="${CSS.escape(selectedPath)}"]`
-      ) as HTMLElement | null;
+      const el = queryVisibleEditPath(selectedPath);
       if (el) {
         el.setAttribute("contenteditable", "plaintext-only");
         el.focus();
