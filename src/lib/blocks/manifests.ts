@@ -1322,6 +1322,53 @@ m({
   ],
 });
 
+/* ------------------------- BEWEGUNGSSTATIONEN ----------------------------- */
+
+const postenSchema = blockObject({
+  number: z.string(),
+  title: z.string(),
+  intro: z.string(),
+  heroImage: z.string().optional(),
+  exercises: z.array(
+    withId({
+      title: z.string(),
+      reps: z.string(),
+      description: z.string(),
+      image: z.string().optional(),
+    })
+  ),
+  furtherExercises: z
+    .array(withId({ title: z.string(), description: z.string() }))
+    .optional(),
+  tagescheck: z.string(),
+  potenzial: z.object({ title: z.string(), content: z.string() }),
+});
+
+const postenFields = [
+  text("number", { label: "Nummer" }),
+  text("title"),
+  text("intro"),
+  image("heroImage", { required: false }),
+  list("exercises", [text("title"), text("reps"), text("description"), image("image", { required: false })]),
+  list("furtherExercises", [text("title"), text("description")]),
+  text("tagescheck"),
+  text("potenzial.title"),
+  text("potenzial.content"),
+];
+
+for (const [id, label] of [
+  ["POSTEN_CHECK_IN", "Posten Check-In"],
+  ["POSTEN_ABC", "Posten ABC"],
+  ["POSTEN_BALANCE", "Posten Balance"],
+  ["POSTEN_SPRUNGKRAFT", "Posten Sprungkraft"],
+  ["POSTEN_STABILITAET", "Posten Stabilität"],
+  ["POSTEN_PASSEMENT", "Posten Passement"],
+  ["POSTEN_QUADRUPEDIE", "Posten Quadrupedie"],
+  ["POSTEN_CHECK_OUT", "Posten Check-Out"],
+] as const) {
+  m({ id, label, schema: postenSchema, fields: postenFields });
+}
+
 /** Sentinel to keep the helper import active under strict unused checks. */
 export const __manifestsLoaded = true;
 // Silence unused imports that show up only in some branches.

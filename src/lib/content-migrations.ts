@@ -4,7 +4,7 @@
  * Add new migrations by pushing to `migrations` — never mutate existing ones.
  */
 
-export const CURRENT_SCHEMA_VERSION = 3;
+export const CURRENT_SCHEMA_VERSION = 4;
 
 type Migration = (tree: Record<string, unknown>) => Record<string, unknown>;
 
@@ -73,6 +73,14 @@ const migrations: Record<number, Migration> = {
     }
     return next;
   },
+  // v3 -> v4: seed 8 Bewegungsstationen posten blocks if absent.
+  3: (tree) => {
+    const next: Record<string, unknown> = { ...tree };
+    for (const [key, value] of Object.entries(V4_POSTEN_DEFAULTS)) {
+      if (next[key] === undefined) next[key] = value;
+    }
+    return next;
+  },
 };
 
 // Default seeds written on v2->v3 upgrade when a key is absent. These mirror
@@ -120,6 +128,89 @@ const V3_DEFAULTS: Record<string, unknown> = {
   SOLUTION_CARDS_CONTENT: [],
   LERNDIMENSIONEN_CONTENT: [],
   PROCESS_STEPS_CONTENT: [],
+};
+
+// v4 posten defaults — seed only if a given key is missing. These mirror the
+// values written into content.json so fresh trees load correctly.
+const V4_POSTEN_DEFAULTS: Record<string, unknown> = {
+  POSTEN_CHECK_IN: {
+    number: "01",
+    title: "CHECK-IN",
+    intro:
+      "Um optimal vom Training zu profitieren empfehlen wir: Bringe dich zu Beginn physisch und mental in Schwung. Starte deinen Motor und sei bereit auf das was kommt. Als Trainingsstart wählen wir deshalb Übungen die den Herz-Kreislauf anregen und das neuromuskuläre System aktivieren. Ziel: Alle Gelenke durchbewegen (mobilisieren) und mental im Training ankommen.",
+    heroImage: "/images/posten/check-in/G1A1984-1-scaled-1.jpg",
+    exercises: [
+      { _id: "check-in-ex-1", title: "Hüpfen", reps: "1x", description: "In jedes Feld hüpfen.", image: "/images/posten/check-in/springen.png" },
+      { _id: "check-in-ex-2", title: "Rotieren", reps: "5x pro Seite", description: "Auf jede Seite drehen und abklatschen. Als Einzelperson auf der Seite in die Hände klatschen.", image: "/images/posten/check-in/drehen.png" },
+      { _id: "check-in-ex-3", title: "Armkreisen", reps: "3x", description: "Um das Muster herum joggen. Dabei Arme vorwärts & rückwärts kreisen." },
+    ],
+    furtherExercises: [],
+    tagescheck: "Worauf freust du dich heute?",
+    potenzial: { title: "Effizient vs. Effektiv", content: "" },
+  },
+  POSTEN_ABC: {
+    number: "03",
+    title: "ABC",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  POSTEN_BALANCE: {
+    number: "04",
+    title: "BALANCE",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  POSTEN_SPRUNGKRAFT: {
+    number: "05",
+    title: "SPRUNGKRAFT",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  POSTEN_STABILITAET: {
+    number: "06",
+    title: "STABILITÄT",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  POSTEN_PASSEMENT: {
+    number: "07",
+    title: "PASSEMENT",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  POSTEN_QUADRUPEDIE: {
+    number: "08",
+    title: "QUADRUPEDIE",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
+  POSTEN_CHECK_OUT: {
+    number: "09",
+    title: "CHECK-OUT",
+    intro: "",
+    exercises: [],
+    furtherExercises: [],
+    tagescheck: "",
+    potenzial: { title: "", content: "" },
+  },
 };
 
 export function migrateContent<T extends Record<string, unknown>>(raw: T): T {

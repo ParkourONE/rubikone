@@ -273,3 +273,13 @@ export const LERNDIMENSIONEN_CONTENT: Lerndimension[] =
 export const PROCESS_STEPS_CONTENT: ProcessStep[] =
   ((content as unknown as { PROCESS_STEPS_CONTENT?: ProcessStep[] })
     .PROCESS_STEPS_CONTENT) ?? [];
+
+// Bewegungsstationen (v4)
+export const POSTEN_CHECK_IN = (content as any).POSTEN_CHECK_IN;
+export const POSTEN_ABC = (content as any).POSTEN_ABC;
+export const POSTEN_BALANCE = (content as any).POSTEN_BALANCE;
+export const POSTEN_SPRUNGKRAFT = (content as any).POSTEN_SPRUNGKRAFT;
+export const POSTEN_STABILITAET = (content as any).POSTEN_STABILITAET;
+export const POSTEN_PASSEMENT = (content as any).POSTEN_PASSEMENT;
+export const POSTEN_QUADRUPEDIE = (content as any).POSTEN_QUADRUPEDIE;
+export const POSTEN_CHECK_OUT = (content as any).POSTEN_CHECK_OUT;
