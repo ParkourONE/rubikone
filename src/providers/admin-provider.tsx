@@ -8,7 +8,7 @@ import {
   useCallback,
   useRef,
 } from "react";
-import { Toaster } from "sonner";
+import { Toaster, toast } from "sonner";
 import {
   EditModeProvider,
   SelectionProvider,
@@ -124,9 +124,13 @@ function AdminProviderInner({
         const { useEditorStore } = await import("@/lib/cms/editor-store");
         if (cancelled) return;
         useEditorStore.getState().setContent(data.content, data.sha);
-        // Mirror every subsequent editor-store content change back into
-        // AdminProvider so useContent-consumers re-render.
+        // Mirror every subsequent editor-store content/sha change back into
+        // AdminProvider so useContent-consumers re-render and so the legacy
+        // saveContent path uses a fresh SHA.
         unsubscribe = useEditorStore.subscribe((state, prevState) => {
+          if (state.sha !== prevState.sha && state.sha) {
+            setSha(state.sha);
+          }
           if (state.content === prevState.content) return;
           if (!state.content) return;
           setContent(state.content as Record<string, any>);
@@ -179,35 +183,57 @@ function AdminProviderInner({
   }, []);
 
   const saveContent = useCallback(async () => {
-    if (!content || !sha) return;
+    if (!content) return;
     setSaving(true);
-    try {
-      // Determine which section was edited for the commit message
-      const sectionName = editingSectionLabel || editingSection || "Inhalt";
-      const res = await fetch("/api/admin/content", {
+    const sectionName = editingSectionLabel || editingSection || "Inhalt";
+    const commitMessage = `content: Update ${sectionName} via Admin-Panel`;
+
+    async function attempt(currentSha: string | null) {
+      return fetch("/api/admin/content", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           content,
-          sha,
-          message: `content: Update ${sectionName} via Admin-Panel`,
+          sha: currentSha,
+          message: commitMessage,
         }),
       });
+    }
 
+    try {
+      let res = await attempt(sha);
+      // Auto-recover on stale SHA: refetch latest SHA once and retry.
+      if (res.status === 409) {
+        try {
+          const freshRes = await fetch("/api/admin/content");
+          if (freshRes.ok) {
+            const fresh = await freshRes.json();
+            setSha(fresh.sha);
+            res = await attempt(fresh.sha);
+          }
+        } catch {
+          /* fall through to error handling */
+        }
+      }
       if (!res.ok) {
         const data = await res.json();
         throw new Error(data.error || "Speichern fehlgeschlagen");
       }
-
       const data = await res.json();
       setSha(data.sha);
+      try {
+        const { useEditorStore } = await import("@/lib/cms/editor-store");
+        const s = useEditorStore.getState();
+        s.setContent(content, data.sha);
+      } catch {
+        /* ignore */
+      }
       originalContentRef.current = JSON.stringify(content);
       setHasChanges(false);
-      alert("Gespeichert! Deployment wird automatisch gestartet.");
+      toast.success("Gespeichert! Deployment wird automatisch gestartet.");
     } catch (err) {
-      alert(
-        "Fehler: " +
-          (err instanceof Error ? err.message : "Unbekannter Fehler")
+      toast.error(
+        err instanceof Error ? err.message : "Unbekannter Fehler"
       );
     } finally {
       setSaving(false);
