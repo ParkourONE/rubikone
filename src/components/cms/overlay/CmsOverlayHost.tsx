@@ -12,6 +12,8 @@ import { HoverToolbar } from "./HoverToolbar";
 import { InlineEditors } from "@/components/cms/inline-editors/InlineEditors";
 import { AddBlockGaps } from "./AddBlockGaps";
 import { TextCommitBridge } from "./TextCommitBridge";
+import { SaveBar } from "./SaveBar";
+import { KeyboardShortcuts } from "./KeyboardShortcuts";
 
 export function CmsOverlayHost() {
   return (
@@ -21,6 +23,8 @@ export function CmsOverlayHost() {
       <InlineEditors />
       <AddBlockGaps />
       <TextCommitBridge />
+      <SaveBar />
+      <KeyboardShortcuts />
     </>
   );
 }
