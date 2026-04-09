@@ -9,6 +9,10 @@ import {
   useRef,
 } from "react";
 import { Toaster } from "sonner";
+import {
+  EditModeProvider,
+  SelectionProvider,
+} from "@/components/cms/edit-mode-context";
 
 interface RegisteredSection {
   key: string;
@@ -109,6 +113,11 @@ function AdminProviderInner({
         setContent(data.content);
         setSha(data.sha);
         originalContentRef.current = JSON.stringify(data.content);
+        // Phase 3: mirror into the editor store as a compat layer. Phase 4
+        // will flip ownership so the store becomes the authoritative writer.
+        // Dynamic import keeps zustand + immer out of the public bundle.
+        const { useEditorStore } = await import("@/lib/cms/editor-store");
+        useEditorStore.getState().setContent(data.content, data.sha);
       } catch (err) {
         console.error("Failed to load content:", err);
       }
@@ -214,7 +223,9 @@ function AdminProviderInner({
         setSidebarOpen,
       }}
     >
-      {children}
+      <EditModeProvider initial={true}>
+        <SelectionProvider>{children}</SelectionProvider>
+      </EditModeProvider>
       <Toaster position="bottom-right" richColors closeButton />
     </AdminContext.Provider>
   );
