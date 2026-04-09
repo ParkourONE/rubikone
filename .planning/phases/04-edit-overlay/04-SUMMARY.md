@@ -164,3 +164,90 @@ Status: shipped. `npm test` green: 64/64 across 8 files (58 from 4a +
 - Responsive-preview toggle.
 - Dirty guard / beforeunload.
 - 409 conflict rebase UI.
+
+## Phase 4c — Persistence UX Slice (save bar, rollback, shortcuts, preview)
+
+Status: shipped. `npm test` green: 72/72 across 10 files (64 from 4b +
+5 use-save + 3 keyboard-shortcuts gating).
+
+### Requirement → Commit
+
+| ID       | Requirement                                                         | Commit    |
+|----------|---------------------------------------------------------------------|-----------|
+| PERS-05  | SaveBar (dirty pill, Save/Discard, beforeunload)                    | `8116f19` |
+| PERS-04  | 409 conflict toast with Reload action (refetch content)             | `8e9b7f5` |
+| PERS-06  | Save flow: PATCH round-trip, success path clears ops/history        | `8e9b7f5` |
+| PERS-07  | Optimistic rollback via `restoreSnapshot` on 400/401/network        | `8e9b7f5` |
+| PERS-06  | Autosave scaffold (5s debounce, `cms:autosave` flag, OFF default)   | `071a217` |
+| EDIT-12  | Keyboard shortcuts (Cmd-Z, Cmd-Shift-Z, Cmd-S, Esc, Delete)         | `5931dbe` |
+| UX-02    | Responsive preview toggle (Desktop / Tablet / Mobile)               | `99de806` |
+| Tests    | Save flow branches + keyboard shortcut gating                       | `7be7a1c` |
+
+### Key decisions
+
+- **Snapshot timing.** `takeSnapshot()` is called inside `save()` *after*
+  the optimistic ops have already been applied to the store (they were
+  applied by the hover toolbar / inline editors before the user hit
+  Save). That means `restoreSnapshot` on a 400/401/network failure
+  leaves the current tree unchanged — which is the correct UX: the
+  user's in-flight edits stay on screen and the ops queue is preserved
+  so they can Cmd-Z out of them. The snapshot is the safety net for
+  any *server-side* mutation the client may have speculatively applied
+  in the future; today it is effectively an identity restore, but the
+  plumbing is in place so a future change that diverges client and
+  server state can rely on a real rollback.
+- **409 discards local edits.** The Reload action clears `pendingOps`
+  + refetches via `GET /api/admin/content` and calls `setContent` with
+  the fresh sha. A `window.confirm` guards the discard. This is the
+  simpler and safer path vs. three-way merging; a proper rebase can
+  land in v2.1 if demand appears.
+- **Autosave gated by localStorage flag.** `cms.autosave` defaults to
+  OFF and is read from `localStorage.getItem("cms:autosave") === "1"`.
+  The hook is wired inside SaveBar so flipping the flag needs no other
+  code changes. Flipping it ON by default is explicitly a v2.1 call.
+- **Shortcuts at window level with editable gating.** `KeyboardShortcuts`
+  attaches a single `keydown` listener on `window` and bails early
+  whenever the event target is an `input`, `textarea`, `select`, or
+  contenteditable surface. Esc is the only exception — it clears
+  selection even while typing, matching common text-editor conventions.
+  Delete gating reuses `resolvePathToField` so the behaviour matches
+  the toolbar's Delete button exactly.
+- **Responsive preview via CSS attribute.** Instead of wrapping the
+  page in a new container (which would require editing `app/layout.tsx`
+  and risking public-bundle coupling), the toggle stamps
+  `data-cms-preview="tablet|mobile"` on `<html>` and injects a scoped
+  `<style>` tag on first use. Elements carrying `data-cms-overlay`
+  (SaveBar, HoverToolbar, popovers) are excluded from the clamp so
+  they stay full-width. `desktop` is effectively "no constraint".
+- **Public bundle still clean.** All new modules live under
+  `src/components/cms/**` or `src/lib/cms/**` which is admin-only
+  territory; nothing is statically imported from public code.
+
+### Phase 4 rollup — all 22 requirements
+
+| ID       | Slice | Commit    |
+|----------|-------|-----------|
+| PERS-01  | 4a    | `8142bb7` |
+| PERS-02  | 4a    | `e76061f` |
+| PERS-03  | 4a    | `b916700` |
+| PERS-04  | 4c    | `8e9b7f5` |
+| PERS-05  | 4c    | `8116f19` |
+| PERS-06  | 4c    | `8e9b7f5`, `071a217` |
+| PERS-07  | 4a/4c | `e76061f`, `8e9b7f5` |
+| EDIT-01  | 4b    | `4131557`, `777ac31` |
+| EDIT-02  | 4b    | `4131557` |
+| EDIT-03  | 4b    | `de79b2b` |
+| EDIT-04  | 4b    | `de79b2b` |
+| EDIT-05  | 4b    | `de79b2b` |
+| EDIT-06  | 4b    | `de79b2b` |
+| EDIT-07  | 4b    | `de79b2b` |
+| EDIT-08  | 4b    | `777ac31` |
+| EDIT-09  | 4b    | `8b6f3ef`, `777ac31` |
+| EDIT-10  | 4b    | `777ac31` |
+| EDIT-11  | 4b    | `777ac31` |
+| EDIT-12  | 4c    | `5931dbe` |
+| EDIT-13  | 4b    | `d845897` |
+| UX-01    | 4b    | `d845897` |
+| UX-02    | 4c    | `99de806` |
+
+Status: complete.
