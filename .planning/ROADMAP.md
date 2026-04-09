@@ -7,11 +7,11 @@
 
 ## Phases
 
-- [ ] **Phase 1: Security + Foundations** — Admin-API haerten und Utility-Infra (path helpers, tests, ids, schema version) anlegen
-- [ ] **Phase 2: Block Manifest + Schema** — Discriminated schemas pro Section inkl. Build-Validator und NINE_MOVEMENTS-Fix
-- [ ] **Phase 3: Editor Primitives Refactor** — InlineText sanieren, 30 Sections in Primitive zerlegen, Editor-Store und Contexts
-- [ ] **Phase 4: Edit Overlay + Inline Editors (Core Value)** — Hover-Toolbar, Inline-Editoren, Operation Reducer, Undo/Redo, PATCH-Persistenz
-- [ ] **Phase 5: Polish — Validation + Reset + Responsive Preview** — UX-03/UX-04 Badges und Reset, finaler Bundle-Check
+- [x] **Phase 1: Security + Foundations** — Admin-API haerten und Utility-Infra (path helpers, tests, ids, schema version) anlegen
+- [x] **Phase 2: Block Manifest + Schema** — Discriminated schemas pro Section inkl. Build-Validator und NINE_MOVEMENTS-Fix
+- [x] **Phase 3: Editor Primitives Refactor** — InlineText sanieren, 30 Sections in Primitive zerlegen, Editor-Store und Contexts
+- [x] **Phase 4: Edit Overlay + Inline Editors (Core Value)** — Hover-Toolbar, Inline-Editoren, Operation Reducer, Undo/Redo, PATCH-Persistenz
+- [x] **Phase 5: Polish — Validation + Reset + Responsive Preview** — UX-03/UX-04 Badges und Reset, finaler Bundle-Check
 
 ## Phase Details
 
@@ -81,11 +81,11 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Security + Foundations | 0/0 | Not started | - |
-| 2. Block Manifest + Schema | 0/0 | Not started | - |
-| 3. Editor Primitives Refactor | 0/0 | Not started | - |
-| 4. Edit Overlay + Inline Editors | 0/0 | Not started | - |
-| 5. Polish — Validation + Reset | 0/0 | Not started | - |
+| 1. Security + Foundations | 1/1 | Complete | 2026-04-09 |
+| 2. Block Manifest + Schema | 1/1 | Complete | 2026-04-09 |
+| 3. Editor Primitives Refactor | 1/1 | Complete | 2026-04-09 |
+| 4. Edit Overlay + Inline Editors | 3/3 | Complete | 2026-04-09 |
+| 5. Polish — Validation + Reset | 1/1 | Complete | 2026-04-09 |
 
 ## Coverage
 
