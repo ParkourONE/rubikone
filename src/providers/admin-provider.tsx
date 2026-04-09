@@ -13,6 +13,7 @@ import {
   EditModeProvider,
   SelectionProvider,
 } from "@/components/cms/edit-mode-context";
+import { CmsOverlayHost } from "@/components/cms/overlay/CmsOverlayHost";
 
 interface RegisteredSection {
   key: string;
@@ -224,7 +225,10 @@ function AdminProviderInner({
       }}
     >
       <EditModeProvider initial={true}>
-        <SelectionProvider>{children}</SelectionProvider>
+        <SelectionProvider>
+          {children}
+          <CmsOverlayHost />
+        </SelectionProvider>
       </EditModeProvider>
       <Toaster position="bottom-right" richColors closeButton />
     </AdminContext.Provider>
