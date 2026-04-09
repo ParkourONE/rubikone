@@ -104,26 +104,45 @@ function AdminProviderInner({
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const originalContentRef = useRef<string>("");
 
-  // Load content from API
+  // Load content from API and bridge the editor store (new inline editor) →
+  // AdminProvider state (consumed by useContent). Without this bridge the
+  // inline editor writes into the zustand store and the DOM never re-renders
+  // because the rendered content is still the AdminProvider snapshot.
   useEffect(() => {
+    let unsubscribe: (() => void) | null = null;
+    let cancelled = false;
+
     async function loadContent() {
       try {
         const res = await fetch("/api/admin/content");
         if (!res.ok) return;
         const data = await res.json();
+        if (cancelled) return;
         setContent(data.content);
         setSha(data.sha);
         originalContentRef.current = JSON.stringify(data.content);
-        // Phase 3: mirror into the editor store as a compat layer. Phase 4
-        // will flip ownership so the store becomes the authoritative writer.
-        // Dynamic import keeps zustand + immer out of the public bundle.
         const { useEditorStore } = await import("@/lib/cms/editor-store");
+        if (cancelled) return;
         useEditorStore.getState().setContent(data.content, data.sha);
+        // Mirror every subsequent editor-store content change back into
+        // AdminProvider so useContent-consumers re-render.
+        unsubscribe = useEditorStore.subscribe((state, prevState) => {
+          if (state.content === prevState.content) return;
+          if (!state.content) return;
+          setContent(state.content as Record<string, any>);
+          setHasChanges(
+            JSON.stringify(state.content) !== originalContentRef.current
+          );
+        });
       } catch (err) {
         console.error("Failed to load content:", err);
       }
     }
     loadContent();
+    return () => {
+      cancelled = true;
+      unsubscribe?.();
+    };
   }, []);
 
   const setEditingSection = useCallback(
