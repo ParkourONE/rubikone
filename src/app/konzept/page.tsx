@@ -11,6 +11,7 @@ import { ComparisonSection } from "@/components/sections/comparison-table";
 import { StatsSection } from "@/components/sections/stats-section";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 import {
   KONZEPT_HERO,
   KONZEPT_PRINZIP,
@@ -46,6 +47,29 @@ export default function KonzeptPage() {
   const lerndimensionen = useContent("KONZEPT_LERNDIMENSIONEN", KONZEPT_LERNDIMENSIONEN) as any;
   const sicherheit = useContent("KONZEPT_SICHERHEIT", KONZEPT_SICHERHEIT) as any;
   const cta = useContent("KONZEPT_CTA", KONZEPT_CTA) as any;
+
+  const heroTaglineEdit = useEditPath("KONZEPT_HERO.tagline");
+  const heroHeadlineEdit = useEditPath("KONZEPT_HERO.headline");
+  const heroQuestionsEdit = useEditPath("KONZEPT_HERO.questions");
+  const heroDescEdit = useEditPath("KONZEPT_HERO.description");
+  const heroImageEdit = useEditPath("KONZEPT_HERO.heroImage");
+  const prinzipTaglineEdit = useEditPath("KONZEPT_PRINZIP.tagline");
+  const prinzipHeadlineEdit = useEditPath("KONZEPT_PRINZIP.headline");
+  const prinzipDescEdit = useEditPath("KONZEPT_PRINZIP.description");
+  const psTaglineEdit = useEditPath("KONZEPT_POSTEN_SLIDER.tagline");
+  const psHeadlineEdit = useEditPath("KONZEPT_POSTEN_SLIDER.headline");
+  const psDescEdit = useEditPath("KONZEPT_POSTEN_SLIDER.description");
+  const ldTaglineEdit = useEditPath("KONZEPT_LERNDIMENSIONEN.tagline");
+  const ldHeadlineEdit = useEditPath("KONZEPT_LERNDIMENSIONEN.headline");
+  const ldDescEdit = useEditPath("KONZEPT_LERNDIMENSIONEN.description");
+  const sicherheitTaglineEdit = useEditPath("KONZEPT_SICHERHEIT.tagline");
+  const sicherheitHeadlineEdit = useEditPath("KONZEPT_SICHERHEIT.headline");
+  const sicherheitDescEdit = useEditPath("KONZEPT_SICHERHEIT.description");
+  const sicherheitImageEdit = useEditPath("KONZEPT_SICHERHEIT.image");
+  const ctaHeadlineEdit = useEditPath("KONZEPT_CTA.headline");
+  const ctaDescEdit = useEditPath("KONZEPT_CTA.description");
+  const ctaPrimaryEdit = useEditPath("KONZEPT_CTA.ctaPrimary");
+  const ctaSecondaryEdit = useEditPath("KONZEPT_CTA.ctaSecondary");
 
   // Lerndimensionen from content with icon paths
   const LERNDIMENSIONEN = (lerndimensionen.dimensions as any[]).map((d: any) => ({
@@ -100,18 +124,18 @@ export default function KonzeptPage() {
             transition={appleTransition}
             className="max-w-xl"
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4" {...heroTaglineEdit}>
               {hero.tagline}
             </p>
-            <h1 className="text-hero text-[var(--color-apple-dark)] leading-tight">
+            <h1 className="text-hero text-[var(--color-apple-dark)] leading-tight" {...heroHeadlineEdit}>
               {hero.headline}
             </h1>
-            <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
+            <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed" {...heroQuestionsEdit}>
               {hero.questions.split("\n").map((line: string, i: number) => (
                 <span key={i}>{line}{i < hero.questions.split("\n").length - 1 && <br />}</span>
               ))}
             </p>
-            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
+            <p className="mt-6 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl" {...heroDescEdit}>
               {hero.description}
             </p>
           </motion.div>
@@ -148,7 +172,7 @@ export default function KonzeptPage() {
               <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
                 {hero.tagline}
               </p>
-              <h1 className="text-display text-[var(--color-apple-dark)] leading-tight">
+              <h1 className="text-display text-[var(--color-apple-dark)] leading-tight" {...heroHeadlineEdit}>
                 {hero.headline}
               </h1>
               <p className="mt-6 text-title-3 text-[var(--color-apple-dark)] font-normal leading-relaxed">
@@ -156,7 +180,7 @@ export default function KonzeptPage() {
                   <span key={i}>{line}{i < hero.questions.split("\n").length - 1 && <br />}</span>
                 ))}
               </p>
-              <p className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl">
+              <p className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] max-w-xl" {...heroDescEdit}>
                 {hero.description}
               </p>
 
@@ -210,13 +234,13 @@ export default function KonzeptPage() {
             transition={appleTransition}
             className="mb-12"
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...prinzipTaglineEdit}>
               {prinzip.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...prinzipHeadlineEdit}>
               {prinzip.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
+            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl" {...prinzipDescEdit}>
               {prinzip.description}
             </p>
           </motion.div>
@@ -326,13 +350,13 @@ export default function KonzeptPage() {
             viewport={{ once: true }}
             transition={appleTransition}
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...psTaglineEdit}>
               {postenSlider.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...psHeadlineEdit}>
               {postenSlider.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
+            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl" {...psDescEdit}>
               {postenSlider.description}
             </p>
           </motion.div>
@@ -401,13 +425,13 @@ export default function KonzeptPage() {
             transition={appleTransition}
             className="mb-12"
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...ldTaglineEdit}>
               {lerndimensionen.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-2xl">
+            <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-2xl" {...ldHeadlineEdit}>
               {lerndimensionen.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl">
+            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl" {...ldDescEdit}>
               {lerndimensionen.description}
             </p>
           </motion.div>
@@ -466,13 +490,13 @@ export default function KonzeptPage() {
               viewport={{ once: true }}
               transition={appleTransition}
             >
-              <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+              <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...sicherheitTaglineEdit}>
                 {sicherheit.tagline}
               </p>
-              <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+              <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...sicherheitHeadlineEdit}>
                 {sicherheit.headline}
               </h2>
-              <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]">
+              <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]" {...sicherheitDescEdit}>
                 {sicherheit.description}
               </p>
 
@@ -518,17 +542,17 @@ export default function KonzeptPage() {
             viewport={{ once: true }}
             transition={appleTransition}
           >
-            <h2 className="text-title-1 text-white">
+            <h2 className="text-title-1 text-white" {...ctaHeadlineEdit}>
               {cta.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto">
+            <p className="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto" {...ctaDescEdit}>
               {cta.description}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90">
+              <Link href={cta.ctaPrimary.href} className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90" {...ctaPrimaryEdit}>
                 {cta.ctaPrimary.label}
               </Link>
-              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80">
+              <Link href={cta.ctaSecondary.href} className="btn-secondary text-white hover:text-white/80" {...ctaSecondaryEdit}>
                 {cta.ctaSecondary.label}
                 <ArrowRight className="h-4 w-4" />
               </Link>
