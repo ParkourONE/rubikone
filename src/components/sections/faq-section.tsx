@@ -9,6 +9,7 @@ import {
 import { FAQ_ITEMS } from "@/lib/constants";
 import { SectionHeader } from "@/components/shared/section-header";
 import { FadeUp } from "@/components/shared/fade-up";
+import { useEditPath } from "@/components/cms/primitives";
 
 interface FAQItem {
   question: string;
@@ -34,7 +35,7 @@ export function FAQSection({
         <SectionHeader title={title} subtitle={subtitle} className="mb-12 lg:mb-16" />
 
         <FadeUp>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto" {...useEditPath("FAQ_ITEMS")}>
             <Accordion type="single" collapsible className="w-full">
               {items.map((item, index) => (
                 <AccordionItem

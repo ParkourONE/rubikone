@@ -5,33 +5,39 @@ import { motion } from "framer-motion";
 import { PROBLEM_CONTENT } from "@/lib/constants";
 import { FadeUp } from "@/components/shared/fade-up";
 import { appleTransition } from "@/lib/animations";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function ProblemSection() {
+  const statEditAttrs = useEditPath("PROBLEM_CONTENT.statistic");
+  const statLabelEditAttrs = useEditPath("PROBLEM_CONTENT.statisticLabel");
+  const headlineEditAttrs = useEditPath("PROBLEM_CONTENT.headline");
+  const subheadlineEditAttrs = useEditPath("PROBLEM_CONTENT.subheadline");
+  const sourceEditAttrs = useEditPath("PROBLEM_CONTENT.source");
   return (
     <section className="section-spacing bg-white">
       <div className="container-narrow text-center">
         <FadeUp>
-          <p className="text-hero text-[var(--color-apple-dark)]">
+          <p className="text-hero text-[var(--color-apple-dark)]" {...statEditAttrs}>
             {PROBLEM_CONTENT.statistic}
           </p>
-          <p className="text-title-3 text-[var(--color-apple-gray-600)] mt-2">
+          <p className="text-title-3 text-[var(--color-apple-gray-600)] mt-2" {...statLabelEditAttrs}>
             {PROBLEM_CONTENT.statisticLabel}
           </p>
         </FadeUp>
 
         <FadeUp delay={0.2}>
           <div className="mt-12 lg:mt-16">
-            <p className="text-title-1 text-[var(--color-apple-dark)]">
+            <p className="text-title-1 text-[var(--color-apple-dark)]" {...headlineEditAttrs}>
               {PROBLEM_CONTENT.headline}
             </p>
-            <p className="text-title-1 text-[var(--color-apple-gray-500)]">
+            <p className="text-title-1 text-[var(--color-apple-gray-500)]" {...subheadlineEditAttrs}>
               {PROBLEM_CONTENT.subheadline}
             </p>
           </div>
         </FadeUp>
 
         <FadeUp delay={0.3}>
-          <p className="mt-8 text-caption text-[var(--color-apple-gray-500)]">
+          <p className="mt-8 text-caption text-[var(--color-apple-gray-500)]" {...sourceEditAttrs}>
             Quelle: {PROBLEM_CONTENT.source}
           </p>
         </FadeUp>

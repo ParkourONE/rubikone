@@ -5,6 +5,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { CTA_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { FadeUp } from "@/components/shared/fade-up";
+import { useEditPath } from "@/components/cms/primitives";
 
 interface CTASectionProps {
   variant?: "default" | "dark";
@@ -19,10 +20,16 @@ export function CTASection({ variant = "default" }: CTASectionProps) {
       <div className="container-content">
         <FadeUp>
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className={`text-title-1 ${isDark ? "text-white" : "text-[var(--color-apple-dark)]"}`}>
+            <h2
+              className={`text-title-1 ${isDark ? "text-white" : "text-[var(--color-apple-dark)]"}`}
+              {...useEditPath("CTA_CONTENT.headline")}
+            >
               {ctaContent.headline}
             </h2>
-            <p className={`mt-4 text-body-lg ${isDark ? "text-white/70" : "text-[var(--color-apple-gray-600)]"}`}>
+            <p
+              className={`mt-4 text-body-lg ${isDark ? "text-white/70" : "text-[var(--color-apple-gray-600)]"}`}
+              {...useEditPath("CTA_CONTENT.subheadline")}
+            >
               {ctaContent.subheadline}
             </p>
 

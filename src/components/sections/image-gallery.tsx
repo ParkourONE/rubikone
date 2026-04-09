@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { appleTransition } from "@/lib/animations";
 import { GALLERY_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function ImageGallery() {
   const galleryContent = useContent("GALLERY_CONTENT", GALLERY_CONTENT);
@@ -32,10 +33,16 @@ export function ImageGallery() {
           viewport={{ once: true }}
           transition={appleTransition}
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">
+          <p
+            className="text-body-sm text-[var(--color-apple-gray-600)] mb-2"
+            {...useEditPath("GALLERY_CONTENT.tagline")}
+          >
             {galleryContent.tagline}
           </p>
-          <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+          <h2
+            className="text-title-1 text-[var(--color-apple-dark)]"
+            {...useEditPath("GALLERY_CONTENT.headline")}
+          >
             {galleryContent.headline}
           </h2>
         </motion.div>

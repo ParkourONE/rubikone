@@ -7,6 +7,7 @@ import { useRef } from "react";
 import { appleTransition } from "@/lib/animations";
 import { STATS_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function StatsSection() {
   const statsContent = useContent("STATS_CONTENT", STATS_CONTENT);
@@ -33,8 +34,16 @@ export function StatsSection() {
           viewport={{ once: true }}
           transition={appleTransition}
         >
-          <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2">{statsContent.tagline}</p>
-          <h2 className="text-title-1 text-[var(--color-apple-dark)]">
+          <p
+            className="text-body-sm text-[var(--color-apple-gray-600)] mb-2"
+            {...useEditPath("STATS_CONTENT.tagline")}
+          >
+            {statsContent.tagline}
+          </p>
+          <h2
+            className="text-title-1 text-[var(--color-apple-dark)]"
+            {...useEditPath("STATS_CONTENT.headline")}
+          >
             {statsContent.headline}
           </h2>
         </motion.div>

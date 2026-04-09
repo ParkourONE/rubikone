@@ -6,6 +6,7 @@ import { Quote } from "lucide-react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { appleTransition } from "@/lib/animations";
+import { useEditPath } from "@/components/cms/primitives";
 
 export function TestimonialsSection() {
   const testimonials = useContent("TESTIMONIALS", TESTIMONIALS);
@@ -29,7 +30,10 @@ export function TestimonialsSection() {
         </motion.div>
 
         {/* Testimonials Grid - Compact Cards */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div
+          className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+          {...useEditPath("TESTIMONIALS")}
+        >
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}

@@ -7,10 +7,14 @@ import { ChevronDown } from "lucide-react";
 import { HERO_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { staggerContainer, staggerItem, appleTransition } from "@/lib/animations";
+import { useEditPath } from "@/components/cms/primitives";
 
 // Main Hero Section - Split Layout
 export function HeroSection() {
   const heroContent = useContent("HERO_CONTENT", HERO_CONTENT);
+  const headlineEdit = useEditPath("HERO_CONTENT.headline");
+  const subheadlineEdit = useEditPath("HERO_CONTENT.subheadline");
+  const ctaPrimaryEdit = useEditPath("HERO_CONTENT.ctaPrimary");
 
   return (
     <>
@@ -51,7 +55,7 @@ export function HeroSection() {
               variants={staggerItem}
               className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
             >
-              <Link href={heroContent.ctaPrimary.href} className="btn-primary">
+              <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
                 {heroContent.ctaPrimary.label}
               </Link>
             </motion.div>

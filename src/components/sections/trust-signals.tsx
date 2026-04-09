@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { TRUST_STATS, PARTNERS } from "@/lib/constants";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import { useEditPath } from "@/components/cms/primitives";
 
 // Stats Section
 export function TrustStats() {
@@ -15,6 +16,7 @@ export function TrustStats() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12"
+          {...useEditPath("TRUST_STATS")}
         >
           {TRUST_STATS.map((stat, index) => (
             <motion.div
