@@ -12,9 +12,12 @@ import { useEditPath } from "@/components/cms/primitives";
 // Main Hero Section - Split Layout
 export function HeroSection() {
   const heroContent = useContent("HERO_CONTENT", HERO_CONTENT);
+  const brandTagEdit = useEditPath("HERO_CONTENT.brandTag");
   const headlineEdit = useEditPath("HERO_CONTENT.headline");
   const subheadlineEdit = useEditPath("HERO_CONTENT.subheadline");
   const ctaPrimaryEdit = useEditPath("HERO_CONTENT.ctaPrimary");
+  const heroVideoSrc = (heroContent as { heroVideoSrc?: string }).heroVideoSrc ?? "/videos/hero.mp4";
+  const brandTag = (heroContent as { brandTag?: string }).brandTag;
 
   return (
     <>
@@ -28,11 +31,16 @@ export function HeroSection() {
             className="max-w-xl"
           >
             {/* Brand Tag */}
-            <motion.div variants={staggerItem}>
-              <span className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6">
-                RubikONE – Der Fitnessparkour
-              </span>
-            </motion.div>
+            {brandTag && (
+              <motion.div variants={staggerItem}>
+                <span
+                  className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6"
+                  {...brandTagEdit}
+                >
+                  {brandTag}
+                </span>
+              </motion.div>
+            )}
 
             {/* Headline */}
             <motion.h1
@@ -73,7 +81,8 @@ export function HeroSection() {
             className="mt-10 relative h-[40vh] rounded-2xl overflow-hidden shadow-apple-xl"
           >
             <video
-              src="/videos/hero.mp4"
+              key={heroVideoSrc}
+              src={heroVideoSrc}
               autoPlay
               muted
               loop
@@ -157,7 +166,8 @@ export function HeroSection() {
             className="flex items-center pt-24 px-8 pb-8"
           >
             <video
-              src="/videos/hero.mp4"
+              key={heroVideoSrc}
+              src={heroVideoSrc}
               autoPlay
               muted
               loop
