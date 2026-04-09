@@ -3,6 +3,7 @@
 import { useAdmin } from "@/providers/admin-provider";
 import { usePathname } from "next/navigation";
 import { EditModeToggle } from "@/components/cms/overlay/EditModeToggle";
+import { ResponsivePreviewToggle } from "@/components/cms/overlay/ResponsivePreviewToggle";
 
 const PAGE_NAMES: Record<string, string> = {
   "/": "Startseite",
@@ -32,6 +33,8 @@ export function AdminToolbar() {
       <span className="text-white/60 font-medium">{pageName}</span>
       <div className="w-px h-4 bg-white/20 mx-1" />
       <EditModeToggle />
+      <div className="w-px h-4 bg-white/20 mx-1" />
+      <ResponsivePreviewToggle />
       <div className="w-px h-4 bg-white/20 mx-1" />
       {hasChanges && (
         <button
