@@ -1,7 +1,14 @@
+import { Toaster } from "sonner";
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <Toaster position="bottom-right" richColors closeButton />
+    </>
+  );
 }

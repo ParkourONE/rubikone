@@ -8,6 +8,7 @@ import {
   useCallback,
   useRef,
 } from "react";
+import { Toaster } from "sonner";
 
 interface RegisteredSection {
   key: string;
@@ -214,6 +215,7 @@ function AdminProviderInner({
       }}
     >
       {children}
+      <Toaster position="bottom-right" richColors closeButton />
     </AdminContext.Provider>
   );
 }
