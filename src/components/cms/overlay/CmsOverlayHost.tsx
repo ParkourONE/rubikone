@@ -15,8 +15,14 @@ import { TextCommitBridge } from "./TextCommitBridge";
 import { SaveBar } from "./SaveBar";
 import { KeyboardShortcuts } from "./KeyboardShortcuts";
 import { ValidationBadges } from "./ValidationBadges";
+import { useMounted } from "./use-mounted";
 
 export function CmsOverlayHost() {
+  // Gate the entire overlay stack behind a client-only mounted flag so SSR
+  // and first-client render both produce null (prevents React #418 hydration
+  // mismatch caused by portals + typeof document checks inside children).
+  const mounted = useMounted();
+  if (!mounted) return null;
   return (
     <>
       <HoverOverlay />
