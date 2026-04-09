@@ -34,7 +34,7 @@ export interface InlineTextProps {
   onCommit?: (next: string) => void;
   editable?: boolean;
   multiline?: boolean;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   className?: string;
   placeholder?: string;
   ariaLabel?: string;
