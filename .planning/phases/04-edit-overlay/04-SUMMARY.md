@@ -100,3 +100,67 @@ undo(); redo(); canUndo(); canRedo(); clearHistory();
 - 4c: save bar (consumes `pendingOps` + PATCH), optimistic rollback
   (consumes snapshot helpers), keyboard shortcuts for undo/redo,
   responsive preview toggle.
+
+## Phase 4b — UX Slice (hover overlay + toolbar + inline editors)
+
+Status: shipped. `npm test` green: 64/64 across 8 files (58 from 4a +
+6 path-to-field).
+
+### Requirement → Commit
+
+| ID       | Requirement                                                         | Commit    |
+|----------|---------------------------------------------------------------------|-----------|
+| EDIT-01  | Per-element hover outline + floating toolbar                        | `4131557`, `777ac31` |
+| EDIT-02  | Innermost-wins hover detection (`elementFromPoint` + walk-up)       | `4131557` |
+| EDIT-03  | Inline text editor (contenteditable + TextCommitBridge)             | `de79b2b` |
+| EDIT-04  | Inline image editor (drag-drop + /api/admin/upload)                 | `de79b2b` |
+| EDIT-05  | Inline button editor (label + href popover)                         | `de79b2b` |
+| EDIT-06  | Inline link editor (label + href + target popover)                  | `de79b2b` |
+| EDIT-07  | Inline icon editor (Lucide catalog picker)                          | `de79b2b` |
+| EDIT-08  | List item ops (insert above, delete, move)                          | `777ac31` |
+| EDIT-09  | Delete gated by manifest `required` (via `path-to-field`)           | `8b6f3ef`, `777ac31` |
+| EDIT-10  | Duplicate (array items only)                                        | `777ac31` |
+| EDIT-11  | Move Up / Move Down                                                 | `777ac31` |
+| EDIT-13  | Add-block reskin as floating "+" between sections                   | `d845897` |
+| UX-01    | Edit-mode toggle in admin shell (localStorage-persisted)            | `d845897` |
+| Tests    | `path-to-field` resolution (6 cases)                                | `8b6f3ef` |
+
+### Key decisions
+
+- **Single overlay host mounted inside `AdminProviderInner`.** The whole
+  stack (HoverOverlay, HoverToolbar, InlineEditors, AddBlockGaps,
+  TextCommitBridge) lives under `src/components/cms/overlay/**` and is
+  only mounted when `AdminProvider` is active. On public pages the
+  default EditMode context value (`editMode: false`) keeps every
+  component rendering `null` — zero public-bundle impact.
+- **Text edit via global blur bridge** instead of swapping the primitive
+  for `InlineText`. Swapping would have dropped the `data-edit-path`
+  attribute and broken the hover scanner. The toolbar promotes the
+  hovered element to `contenteditable="plaintext-only"`; a
+  document-level capture listener in `TextCommitBridge` reads the new
+  text on blur/Enter/Escape and dispatches `set` via `applyOpToStore`.
+- **Popovers are vanilla React.** No new deps (`@floating-ui/react`,
+  `react-dropzone`, shadcn Popover/Command) — plain
+  `getBoundingClientRect` + native file input drag-drop. Keeps the admin
+  bundle lean and avoids committing to APIs 4c may still iterate on.
+- **`path-to-field` resolver** walks the manifest for the root-level
+  block id and does longest-match resolution with list-aware
+  normalisation (`FAQ_ITEMS[0].question` → itemField.path `"question"`).
+  This is the single source of truth for delete gating.
+- **`editor-dispatch` registry** decouples the toolbar from the
+  `InlineEditors` host. The host registers a dispatcher on mount; the
+  toolbar calls it with `(kind, path, anchor)`. Future 4c work can swap
+  the host implementation without touching the toolbar.
+- **AddBlockGaps is additive.** The existing sidebar "Block hinzufuegen"
+  button is untouched; the floating "+" simply opens the sidebar so the
+  user picks the block there. The underlying add logic stays where it
+  was — 4c can wire a proper menu here if needed.
+
+### Remaining for 4c
+
+- Wire `pendingOps` + `sha` + save bar UI (PATCH endpoint already exists).
+- Optimistic rollback via `takeSnapshot`/`restoreSnapshot`.
+- Keyboard shortcuts for undo/redo/save.
+- Responsive-preview toggle.
+- Dirty guard / beforeunload.
+- 409 conflict rebase UI.
