@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { isAuthenticated } from "@/lib/admin-auth";
+import { validateContent } from "@/lib/blocks";
+import { migrateContent } from "@/lib/content-migrations";
 
 const GITHUB_API = "https://api.github.com";
 
@@ -75,6 +77,27 @@ export async function PUT(request: Request) {
     if (!content || !sha) {
       return NextResponse.json(
         { error: "Content und SHA sind erforderlich." },
+        { status: 400 }
+      );
+    }
+
+    // MAN-04: validate incoming content against the block manifest registry.
+    // Reject on any schema violation so malformed payloads never hit GitHub.
+    const migrated = migrateContent(
+      content as Record<string, unknown>
+    );
+    const issues = validateContent(migrated);
+    if (issues.length > 0) {
+      return NextResponse.json(
+        {
+          ok: false,
+          error: "Content entspricht nicht dem Block-Schema.",
+          errors: issues.map((i) => ({
+            blockId: i.blockId,
+            path: i.path,
+            message: i.message,
+          })),
+        },
         { status: 400 }
       );
     }
