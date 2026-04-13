@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useAdmin } from "@/providers/admin-provider";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const PAGE_NAMES: Record<string, string> = {
   "/": "Startseite",
@@ -27,7 +27,22 @@ export function AdminSidebar() {
     setSidebarOpen,
   } = useAdmin();
   const pathname = usePathname();
+  const router = useRouter();
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
+  const [pageMenuOpen, setPageMenuOpen] = useState(false);
+  const pageMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (pageMenuRef.current && !pageMenuRef.current.contains(e.target as Node)) {
+        setPageMenuOpen(false);
+      }
+    }
+    if (pageMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [pageMenuOpen]);
 
   if (!isAdmin) return null;
   if (pathname.startsWith("/admin")) return null;
@@ -66,13 +81,54 @@ export function AdminSidebar() {
           transform: sidebarOpen ? "translateX(0)" : "translateX(-260px)",
         }}
       >
-        {/* Header */}
+        {/* Header with page selector */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-[#e5e5e5]">
-          <div className="flex items-center gap-2 min-w-0">
-            <div className="w-2 h-2 rounded-full bg-[#00a8ab] flex-shrink-0" />
-            <span className="text-[13px] font-semibold text-gray-900 truncate">
-              {pageName}
-            </span>
+          <div className="relative flex-1 min-w-0" ref={pageMenuRef}>
+            <button
+              onClick={() => setPageMenuOpen(!pageMenuOpen)}
+              className="flex items-center gap-2 min-w-0 w-full group/page"
+            >
+              <div className="w-2 h-2 rounded-full bg-[#00a8ab] flex-shrink-0" />
+              <span className="text-[13px] font-semibold text-gray-900 truncate">
+                {pageName}
+              </span>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`text-gray-400 flex-shrink-0 transition-transform duration-150 ${pageMenuOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+
+            {pageMenuOpen && (
+              <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-[#e5e5e5] rounded-lg shadow-lg z-10 py-1 max-h-[320px] overflow-y-auto">
+                {Object.entries(PAGE_NAMES).map(([path, name]) => (
+                  <button
+                    key={path}
+                    onClick={() => {
+                      setPageMenuOpen(false);
+                      if (path !== pathname) {
+                        router.push(path);
+                      }
+                    }}
+                    className={`w-full text-left px-3 py-2 text-[13px] transition-colors ${
+                      path === pathname
+                        ? "bg-[#f0fafa] text-[#00a8ab] font-medium"
+                        : "text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    {name}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
