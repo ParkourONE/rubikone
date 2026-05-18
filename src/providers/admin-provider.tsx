@@ -14,10 +14,15 @@ import {
   SelectionProvider,
 } from "@/components/cms/edit-mode-context";
 import { CmsOverlayHost } from "@/components/cms/overlay/CmsOverlayHost";
+import { BlockPicker } from "@/components/admin/block-picker";
 
 interface RegisteredSection {
   key: string;
   label: string;
+  /** Present iff this section was registered by a dynamic block (DynamicBlocks
+   *  renderer). Hardcoded `<EditableSection>` registrations leave this unset
+   *  so the sidebar can disable the delete button on them. */
+  dynamic?: { pageKey: string; index: number };
 }
 
 interface AdminContextType {
@@ -32,10 +37,16 @@ interface AdminContextType {
   hasChanges: boolean;
   logout: () => Promise<void>;
   registeredSections: RegisteredSection[];
-  registerSection: (key: string, label: string) => void;
+  registerSection: (
+    key: string,
+    label: string,
+    meta?: { dynamic?: { pageKey: string; index: number } }
+  ) => void;
   unregisterSection: (key: string) => void;
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
+  pickerOpen: boolean;
+  setPickerOpen: (open: boolean) => void;
 }
 
 const AdminContext = createContext<AdminContextType>({
@@ -54,6 +65,8 @@ const AdminContext = createContext<AdminContextType>({
   unregisterSection: () => {},
   sidebarOpen: false,
   setSidebarOpen: () => {},
+  pickerOpen: false,
+  setPickerOpen: () => {},
 });
 
 function setNestedValue(obj: any, path: string, value: unknown): any {
@@ -102,6 +115,7 @@ function AdminProviderInner({
   const [hasChanges, setHasChanges] = useState(false);
   const [registeredSections, setRegisteredSections] = useState<RegisteredSection[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [pickerOpen, setPickerOpen] = useState(false);
   const originalContentRef = useRef<string>("");
 
   // Load content from API and bridge the editor store (new inline editor) →
@@ -167,16 +181,45 @@ function AdminProviderInner({
         );
         return updated;
       });
+      // Mirror legacy edits into the editor-store so the picker / other op-
+      // based features read fresh content. Fire-and-forget — the subscribe
+      // bridge in loadContent() will dedupe redundant re-renders.
+      import("@/lib/cms/editor-store").then(({ useEditorStore }) => {
+        try {
+          useEditorStore.getState().applyOpToStore({
+            type: "set",
+            path,
+            value,
+          });
+        } catch {
+          /* path may not yet exist in the store snapshot — safe to ignore;
+             admin context is the source of truth for save. */
+        }
+      });
     },
     []
   );
 
-  const registerSection = useCallback((key: string, label: string) => {
-    setRegisteredSections((prev) => {
-      if (prev.some((s) => s.key === key)) return prev;
-      return [...prev, { key, label }];
-    });
-  }, []);
+  const registerSection = useCallback(
+    (
+      key: string,
+      label: string,
+      meta?: { dynamic?: { pageKey: string; index: number } }
+    ) => {
+      setRegisteredSections((prev) => {
+        const existing = prev.findIndex((s) => s.key === key);
+        const next: RegisteredSection = { key, label, ...(meta ?? {}) };
+        if (existing >= 0) {
+          // Re-register with updated metadata (e.g. index shift after a delete).
+          const copy = prev.slice();
+          copy[existing] = next;
+          return copy;
+        }
+        return [...prev, next];
+      });
+    },
+    []
+  );
 
   const unregisterSection = useCallback((key: string) => {
     setRegisteredSections((prev) => prev.filter((s) => s.key !== key));
@@ -267,12 +310,15 @@ function AdminProviderInner({
         unregisterSection,
         sidebarOpen,
         setSidebarOpen,
+        pickerOpen,
+        setPickerOpen,
       }}
     >
       <EditModeProvider initial={true}>
         <SelectionProvider>
           {children}
           <CmsOverlayHost />
+          <BlockPicker />
         </SelectionProvider>
       </EditModeProvider>
       <Toaster position="bottom-right" richColors closeButton />
