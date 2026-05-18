@@ -28,7 +28,7 @@ interface Gap {
 
 export function AddBlockGaps() {
   const { editMode } = useEditMode();
-  const { setSidebarOpen } = useAdmin();
+  const { setPickerOpen } = useAdmin();
   const [gaps, setGaps] = useState<Gap[]>([]);
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
 
@@ -87,8 +87,8 @@ export function AddBlockGaps() {
         >
           <button
             type="button"
-            onClick={() => setSidebarOpen(true)}
-            title="Block hinzufügen"
+            onClick={() => setPickerOpen(true)}
+            title="Block hinzufügen (wird am Ende der Seite eingefügt)"
             className="h-7 w-7 rounded-full bg-[#00a8ab] text-white shadow-lg flex items-center justify-center transition-opacity"
             style={{ opacity: hoverIdx === i ? 1 : 0 }}
           >

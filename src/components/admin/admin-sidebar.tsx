@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useAdmin } from "@/providers/admin-provider";
 import { usePathname, useRouter } from "next/navigation";
+import { useEditorStore } from "@/lib/cms/editor-store";
 
 const PAGE_NAMES: Record<string, string> = {
   "/": "Startseite",
@@ -25,6 +26,7 @@ export function AdminSidebar() {
     setEditingSection,
     sidebarOpen,
     setSidebarOpen,
+    setPickerOpen,
   } = useAdmin();
   const pathname = usePathname();
   const router = useRouter();
@@ -60,8 +62,16 @@ export function AdminSidebar() {
   };
 
   const handleDelete = (key: string) => {
+    const section = registeredSections.find((s) => s.key === key);
+    if (!section?.dynamic) return; // hardcoded sections aren't deletable
     if (deleteConfirm === key) {
-      // TODO: Implement actual block deletion logic
+      const { pageKey, index } = section.dynamic;
+      // Clear the edit panel if it was pointing at this block.
+      if (editingSection === key) setEditingSection(null);
+      useEditorStore.getState().applyOpToStore({
+        type: "delete",
+        path: `PAGE_BLOCKS.${pageKey}.${index}`,
+      });
       setDeleteConfirm(null);
     } else {
       setDeleteConfirm(key);
@@ -168,6 +178,7 @@ export function AdminSidebar() {
           ) : (
             registeredSections.map((section) => {
               const isActive = editingSection === section.key;
+              const isDynamic = !!section.dynamic;
               return (
                 <div
                   key={section.key}
@@ -200,45 +211,75 @@ export function AdminSidebar() {
                     >
                       {section.label}
                     </span>
+                    {isDynamic && (
+                      <span
+                        className="text-[9px] font-semibold tracking-wider text-[#00a8ab] bg-[#00a8ab]/10 px-1.5 py-0.5 rounded uppercase flex-shrink-0"
+                        title="Dynamischer Block — loeschbar"
+                      >
+                        Neu
+                      </span>
+                    )}
                   </div>
 
-                  {/* Delete button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDelete(section.key);
-                    }}
-                    className={`flex-shrink-0 w-6 h-6 rounded flex items-center justify-center transition-all ${
-                      deleteConfirm === section.key
-                        ? "bg-red-100 text-red-500 opacity-100"
-                        : "opacity-0 group-hover/row:opacity-100 text-gray-400 hover:text-red-500 hover:bg-red-50"
-                    }`}
-                    aria-label={
-                      deleteConfirm === section.key
-                        ? "Loeschen bestaetigen"
-                        : "Block loeschen"
-                    }
-                    title={
-                      deleteConfirm === section.key
-                        ? "Nochmal klicken zum Bestaetigen"
-                        : "Block loeschen"
-                    }
-                  >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  {/* Delete button — only active for dynamic blocks */}
+                  {isDynamic ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(section.key);
+                      }}
+                      className={`flex-shrink-0 w-6 h-6 rounded flex items-center justify-center transition-all ${
+                        deleteConfirm === section.key
+                          ? "bg-red-100 text-red-500 opacity-100"
+                          : "opacity-0 group-hover/row:opacity-100 text-gray-400 hover:text-red-500 hover:bg-red-50"
+                      }`}
+                      aria-label={
+                        deleteConfirm === section.key
+                          ? "Loeschen bestaetigen"
+                          : "Block loeschen"
+                      }
+                      title={
+                        deleteConfirm === section.key
+                          ? "Nochmal klicken zum Bestaetigen"
+                          : "Block loeschen"
+                      }
                     >
-                      <path d="M3 6h18" />
-                      <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" />
-                      <path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" />
-                    </svg>
-                  </button>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M3 6h18" />
+                        <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6" />
+                        <path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+                      </svg>
+                    </button>
+                  ) : (
+                    <span
+                      className="flex-shrink-0 w-6 h-6 rounded flex items-center justify-center opacity-0 group-hover/row:opacity-50 text-gray-300"
+                      title="Fixe Sektion — nicht loeschbar"
+                      aria-label="Fixe Sektion"
+                    >
+                      <svg
+                        width="11"
+                        height="11"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <rect x="3" y="11" width="18" height="11" rx="2" />
+                        <path d="M7 11V7a5 5 0 0110 0v4" />
+                      </svg>
+                    </span>
+                  )}
                 </div>
               );
             })
@@ -247,7 +288,10 @@ export function AdminSidebar() {
 
         {/* Add block button */}
         <div className="p-3 border-t border-[#e5e5e5]">
-          <button className="w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-gray-100 hover:bg-gray-150 text-gray-600 rounded-lg text-[13px] font-medium transition-colors hover:bg-gray-200">
+          <button
+            onClick={() => setPickerOpen(true)}
+            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 bg-gray-100 text-gray-600 rounded-lg text-[13px] font-medium transition-colors hover:bg-gray-200"
+          >
             <svg
               width="14"
               height="14"
