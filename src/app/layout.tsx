@@ -12,7 +12,6 @@ import { AdminToolbar } from "@/components/admin/admin-toolbar";
 import { AdminSidebar } from "@/components/admin/admin-sidebar";
 import { AdminContentWrapper } from "@/components/admin/admin-content-wrapper";
 import { EditPanel } from "@/components/admin/edit-panel";
-import { DynamicBlocksHost } from "@/components/cms/DynamicBlocksHost";
 import { CookieBanner } from "@/components/cookie-banner";
 import { ConditionalAnalytics } from "@/components/analytics";
 import { SITE_CONFIG } from "@/lib/constants";
@@ -106,10 +105,7 @@ export default async function RootLayout({
             <AdminContentWrapper isAdmin={isAdmin}>
               <LenisProvider>
                 <Navigation />
-                <main>
-                  {children}
-                  <DynamicBlocksHost />
-                </main>
+                <main>{children}</main>
                 <Footer />
                 <CookieBanner />
                 <FloatingConfigurator />

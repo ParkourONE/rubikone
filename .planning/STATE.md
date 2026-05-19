@@ -1,7 +1,6 @@
 # Project State: RubikONE CMS — Visual Editor v2
 
-**Last Updated:** 2026-05-18
-Last activity: 2026-05-18 - Completed quick task 20260518-cms-add-block: R1-CMS Block-Picker + functional delete
+**Last Updated:** 2026-04-09
 
 ## Project Reference
 
@@ -40,12 +39,6 @@ Last activity: 2026-05-18 - Completed quick task 20260518-cms-add-block: R1-CMS 
 ### Blockers
 
 - None.
-
-### Quick Tasks Completed
-
-| # | Description | Date | Commit | Directory |
-|---|-------------|------|--------|-----------|
-| 20260518-cms-add-block | R1-CMS Block-Picker + functional delete | 2026-05-18 | c51de06 | [20260518-cms-add-block](./quick/20260518-cms-add-block/) |
 
 ## Session Continuity
 

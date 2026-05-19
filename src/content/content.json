@@ -1,43 +1,12 @@
 {
   "__schemaVersion": 8,
   "BENTO_GRID_DEFAULTS": [
-    {
-      "_id": "bento-1",
-      "title": "TÜV-zertifiziert",
-      "description": "Alle Anlagen erfüllen die Sicherheitsnorm DIN EN 16630 und werden regelmässig geprüft.",
-      "icon": "Shield",
-      "size": "md"
-    },
-    {
-      "_id": "bento-2",
-      "title": "25 Jahre Lebensdauer",
-      "description": "Hochwertige Materialien und Verarbeitung für jahrzehntelange Nutzung.",
-      "icon": "Clock"
-    },
-    {
-      "_id": "bento-3",
-      "title": "Für alle Generationen",
-      "description": "Übungen für Einsteiger bis Fortgeschrittene, von Jung bis Alt.",
-      "icon": "Users"
-    },
-    {
-      "_id": "bento-4",
-      "title": "Minimale Wartung",
-      "description": "Wartungsarme Konstruktion mit jährlichen Kosten von nur CHF 500-800.",
-      "icon": "Wrench"
-    },
-    {
-      "_id": "bento-5",
-      "title": "Modularer Aufbau",
-      "description": "Flexible Konfiguration passend zu Ihrem Platzbedarf und Budget.",
-      "icon": "Puzzle"
-    },
-    {
-      "_id": "bento-6",
-      "title": "Swiss Made",
-      "description": "Entwickelt und produziert in der Schweiz für Schweizer Ansprüche.",
-      "icon": "Award"
-    }
+    { "_id": "bento-1", "title": "TÜV-zertifiziert", "description": "Alle Anlagen erfüllen die Sicherheitsnorm DIN EN 16630 und werden regelmässig geprüft.", "icon": "Shield", "size": "md" },
+    { "_id": "bento-2", "title": "25 Jahre Lebensdauer", "description": "Hochwertige Materialien und Verarbeitung für jahrzehntelange Nutzung.", "icon": "Clock" },
+    { "_id": "bento-3", "title": "Für alle Generationen", "description": "Übungen für Einsteiger bis Fortgeschrittene, von Jung bis Alt.", "icon": "Users" },
+    { "_id": "bento-4", "title": "Minimale Wartung", "description": "Wartungsarme Konstruktion mit jährlichen Kosten von nur CHF 500-800.", "icon": "Wrench" },
+    { "_id": "bento-5", "title": "Modularer Aufbau", "description": "Flexible Konfiguration passend zu Ihrem Platzbedarf und Budget.", "icon": "Puzzle" },
+    { "_id": "bento-6", "title": "Swiss Made", "description": "Entwickelt und produziert in der Schweiz für Schweizer Ansprüche.", "icon": "Award" }
   ],
   "SITE_CONFIG": {
     "name": "RubikONE",
@@ -52,12 +21,12 @@
       "_id": "_98T-mTq4r"
     },
     {
-      "label": "Das Angebot",
+      "label": "Raumgestaltung",
       "href": "/raumgestaltung",
       "_id": "4MHBn3GiWk"
     },
     {
-      "label": "Entdecke Rubikone",
+      "label": "Referenz Köniz",
       "href": "/koeniz",
       "_id": "0N2vD0g_7l"
     },
@@ -75,7 +44,7 @@
   "HERO_CONTENT": {
     "headline": "Hier darfst du.",
     "headlineAccent": "",
-    "brandTag": "Menschen bewegen - Perspektive wechseln",
+    "brandTag": "RubikONE – Der Fitnessparkour",
     "subheadline": "RubikONE macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. und Fitnesslevel. Dauerhaft & wetterfest.",
     "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
     "heroVideoSrc": "/videos/hero.mp4",
@@ -1814,7 +1783,7 @@
   "KONZEPT_HERO": {
     "tagline": "Das Konzept",
     "headline": "Was wäre wenn...",
-    "questions": "...eine Treppe zum Fitnessplatz wird?\n...die Mauer zur Balancechallenge?\n...Hindernisse zu Möglichkeiten werden?",
+    "questions": "...eine Treppe zum Fitnessplatz wird?\n...die Mauer zur Balancechallenge?\n...Möglichkeiten zu Hindernissen werden?",
     "description": "RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.",
     "heroImage": "/images/hero/generationen-kraft.jpg"
   },
@@ -2329,43 +2298,14 @@
     "intro": "Um optimal vom Training zu profitieren empfehlen wir: Bringe dich zu Beginn physisch und mental in Schwung. Starte deinen Motor und sei bereit auf das was kommt. Als Trainingsstart wählen wir deshalb Übungen die den Herz-Kreislauf anregen und das neuromuskuläre System aktivieren. Ziel: Alle Gelenke durchbewegen (mobilisieren) und mental im Training ankommen.",
     "heroImage": "/images/posten/check-in/G1A1984-1-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "check-in-ex-1",
-        "title": "Hüpfen",
-        "reps": "1x",
-        "description": "In jedes Feld hüpfen.",
-        "image": "/images/posten/check-in/springen.png"
-      },
-      {
-        "_id": "check-in-ex-2",
-        "title": "Rotieren",
-        "reps": "5x pro Seite",
-        "description": "Auf jede Seite drehen und abklatschen. Als Einzelperson auf der Seite in die Hände klatschen.",
-        "image": "/images/posten/check-in/drehen.png"
-      },
-      {
-        "_id": "check-in-ex-3",
-        "title": "Armkreisen",
-        "reps": "3x",
-        "description": "Um das Muster herum joggen. Dabei Arme vorwärts & rückwärts kreisen."
-      }
+      { "_id": "check-in-ex-1", "title": "Hüpfen", "reps": "1x", "description": "In jedes Feld hüpfen.", "image": "/images/posten/check-in/springen.png" },
+      { "_id": "check-in-ex-2", "title": "Rotieren", "reps": "5x pro Seite", "description": "Auf jede Seite drehen und abklatschen. Als Einzelperson auf der Seite in die Hände klatschen.", "image": "/images/posten/check-in/drehen.png" },
+      { "_id": "check-in-ex-3", "title": "Armkreisen", "reps": "3x", "description": "Um das Muster herum joggen. Dabei Arme vorwärts & rückwärts kreisen." }
     ],
     "furtherExercises": [
-      {
-        "_id": "check-in-fe-1",
-        "title": "Linien berühren",
-        "description": "1x | Mit der Hand möglichst schnell alle Linien berühren. Achtung: Merke dir den Laufweg. Absolviere den Laufweg in umgekehrter Reihenfolge und berühre wieder alle Linien."
-      },
-      {
-        "_id": "check-in-fe-2",
-        "title": "Rucksack packen",
-        "description": "Alle Mitspieler stehen innerhalb des Feldes. Die erste Person rennt an einen Ort auf dem Platz, berührt ein Material und stellt sich zurück an den Ausgangsort. Jetzt rennen alle anderen und wiederholen, was die erste Person gerade gemacht hat. Die nächste Person rennt alleine los und berührt das erste und zusätzlich ein neu gewähltes Material. Sobald sie zurück ist, rennen die anderen los und wiederholen den Ablauf. ...solange bis jede Person mind. 3x gerannt ist."
-      },
-      {
-        "_id": "check-in-fe-3",
-        "title": "Ein-Mal-alles",
-        "description": "Mind. 2x pro Seite die ganze Abfolge wiederholen: 1. Auf dem linken Bein stehen und das rechte Knie umarmen. 2. Rechter Fuss weit vorne auf den Boden absetzen und die linke Hand neben dem Fuss abstützen. 3. Den Oberkörper rotieren und den rechten Arm senkrecht in Richtung Himmel strecken. 4. Position halten. Tief ein und aus atmen. 5. Zurückdrehen und die rechte Hand neben dem rechten Fuss abstützen. 6. Rechtes Bein strecken (so weit es geht) und den Fussballen weit Richtung Schienbein ziehen. 7. Fuss wieder flach hinstellen und Hände vom Boden lösen. 8. Im Ausfallschritt bleiben und Oberkörper stolz aufrichten. 9. In einem Schwung mit dem rechten Fuss abstossen und zurück in den Einbeinstand kommen. 10. Den linken Fuss erst abstellen, wenn die Balance stabil erreicht ist. Tipp: Die Übung ist auch unter «World's greatest stretch» bekannt."
-      }
+      { "_id": "check-in-fe-1", "title": "Linien berühren", "description": "1x | Mit der Hand möglichst schnell alle Linien berühren. Achtung: Merke dir den Laufweg. Absolviere den Laufweg in umgekehrter Reihenfolge und berühre wieder alle Linien." },
+      { "_id": "check-in-fe-2", "title": "Rucksack packen", "description": "Alle Mitspieler stehen innerhalb des Feldes. Die erste Person rennt an einen Ort auf dem Platz, berührt ein Material und stellt sich zurück an den Ausgangsort. Jetzt rennen alle anderen und wiederholen, was die erste Person gerade gemacht hat. Die nächste Person rennt alleine los und berührt das erste und zusätzlich ein neu gewähltes Material. Sobald sie zurück ist, rennen die anderen los und wiederholen den Ablauf. ...solange bis jede Person mind. 3x gerannt ist." },
+      { "_id": "check-in-fe-3", "title": "Ein-Mal-alles", "description": "Mind. 2x pro Seite die ganze Abfolge wiederholen: 1. Auf dem linken Bein stehen und das rechte Knie umarmen. 2. Rechter Fuss weit vorne auf den Boden absetzen und die linke Hand neben dem Fuss abstützen. 3. Den Oberkörper rotieren und den rechten Arm senkrecht in Richtung Himmel strecken. 4. Position halten. Tief ein und aus atmen. 5. Zurückdrehen und die rechte Hand neben dem rechten Fuss abstützen. 6. Rechtes Bein strecken (so weit es geht) und den Fussballen weit Richtung Schienbein ziehen. 7. Fuss wieder flach hinstellen und Hände vom Boden lösen. 8. Im Ausfallschritt bleiben und Oberkörper stolz aufrichten. 9. In einem Schwung mit dem rechten Fuss abstossen und zurück in den Einbeinstand kommen. 10. Den linken Fuss erst abstellen, wenn die Balance stabil erreicht ist. Tipp: Die Übung ist auch unter «World's greatest stretch» bekannt." }
     ],
     "tagescheck": "Worauf freust du dich heute?",
     "potenzial": {
@@ -2379,37 +2319,13 @@
     "intro": "Parkour bedeutet so effizient wie möglich von Punkt A zum Punkt B zu gelangen. Was du im Training übst, kannst du dann auf Alltagssituationen übertragen. Lerne nach Lösungen zu suchen, indem du Neues ausprobierst. Beeinflusse, was du verändern kannst und handle zielstrebig und mutig. Reminder: Die Stichworte Stark – Sinnvoll – Nachhaltig können dir als Orientierung bzw. Entscheidungshilfe dienen.",
     "heroImage": "/images/posten/abc/G1A1984-1-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "abc-ex-1",
-        "title": "Schreiben",
-        "reps": "4x",
-        "description": "Ein Wort schreiben. Auf allen Vieren herumgehen und mit der Hand die richtigen Buchstaben berühren.",
-        "image": "/images/posten/abc/abc.png"
-      },
-      {
-        "_id": "abc-ex-2",
-        "title": "Team",
-        "reps": "1x",
-        "description": "Einen Satz ausdenken mit mindestens einem Wort pro Person. Alle schreiben gleichzeitig ihr Wort ohne einander zu berühren.",
-        "image": "/images/posten/abc/IMG_2252-scaled-1.jpg"
-      }
+      { "_id": "abc-ex-1", "title": "Schreiben", "reps": "4x", "description": "Ein Wort schreiben. Auf allen Vieren herumgehen und mit der Hand die richtigen Buchstaben berühren.", "image": "/images/posten/abc/abc.png" },
+      { "_id": "abc-ex-2", "title": "Team", "reps": "1x", "description": "Einen Satz ausdenken mit mindestens einem Wort pro Person. Alle schreiben gleichzeitig ihr Wort ohne einander zu berühren.", "image": "/images/posten/abc/IMG_2252-scaled-1.jpg" }
     ],
     "furtherExercises": [
-      {
-        "_id": "abc-fe-1",
-        "title": "Buchstabendschungel",
-        "description": "Mindestens 2 Personen: Eine Person springt auf einen Buchstaben und bleibt stehen. Die zweite Person springt auf den gleichen Buchstaben. Danach springt die erste Person woanders hin. Die zweite Person folgt usw. Vereinfachung: Fühlt sich der Abstand zwischen den Personen zu nah an? Dann nur einen Fuss auf den Buchstabe stellen."
-      },
-      {
-        "_id": "abc-fe-2",
-        "title": "SMS",
-        "description": "1x Text | Schreibe einen Text an eine Person, die du kennst. Bedanke dich im Text bei dieser Person für etwas. Bewege dich dabei mit den Händen und Füssen am Boden von Buchstabe zu Buchstabe."
-      },
-      {
-        "_id": "abc-fe-3",
-        "title": "Challenge",
-        "description": "Für 1 Person: Versuche mit so wenig Bewegungen wie möglich, jeden Buchstaben ein Mal zu berühren. Du darfst Hände, Füsse und den ganzen Körper einsetzen. Für 2 oder mehr Personen: Ergänzt euch gegenseitig."
-      }
+      { "_id": "abc-fe-1", "title": "Buchstabendschungel", "description": "Mindestens 2 Personen: Eine Person springt auf einen Buchstaben und bleibt stehen. Die zweite Person springt auf den gleichen Buchstaben. Danach springt die erste Person woanders hin. Die zweite Person folgt usw. Vereinfachung: Fühlt sich der Abstand zwischen den Personen zu nah an? Dann nur einen Fuss auf den Buchstabe stellen." },
+      { "_id": "abc-fe-2", "title": "SMS", "description": "1x Text | Schreibe einen Text an eine Person, die du kennst. Bedanke dich im Text bei dieser Person für etwas. Bewege dich dabei mit den Händen und Füssen am Boden von Buchstabe zu Buchstabe." },
+      { "_id": "abc-fe-3", "title": "Challenge", "description": "Für 1 Person: Versuche mit so wenig Bewegungen wie möglich, jeden Buchstaben ein Mal zu berühren. Du darfst Hände, Füsse und den ganzen Körper einsetzen. Für 2 oder mehr Personen: Ergänzt euch gegenseitig." }
     ],
     "tagescheck": "Nenne zwei Stärken von dir. Wo im Alltag zeigst du sie?",
     "potenzial": {
@@ -2423,44 +2339,14 @@
     "intro": "Mit RubikONE verfolgen wir zielgerichtete Glaubenssätze. Denn die eigenen Entscheidungen hängen stark von den persönlichen Überzeugungen ab. Es gibt kein 0815 Rezept für ein gesundes und glückliches Leben. Entscheide selbst, was du als richtig erachtest und fokussiere auf deine Stärken. Denn: Hindernisse sind Möglichkeiten. Das heisst, es gibt immer einen Weg.",
     "heroImage": "/images/posten/balance/IMG_4237-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "balance-ex-1",
-        "title": "Balancieren",
-        "reps": "1x",
-        "description": "Auf der Linie vorwärts und rückwärts balancieren.",
-        "image": "/images/posten/balance/Vektor-Smartobjekt-1.jpg"
-      },
-      {
-        "_id": "balance-ex-2",
-        "title": "Hüpfen",
-        "reps": "5x",
-        "description": "Auf der Linie seitwärts nach rechts, dann nach links hüpfen.",
-        "image": "/images/posten/balance/Vektor-Smartobjekt-1-2.png"
-      },
-      {
-        "_id": "balance-ex-3",
-        "title": "Kreuzen",
-        "reps": "2x",
-        "description": "Einander auf der Linie kreuzen.",
-        "image": "/images/posten/balance/Vektor-Smartobjekt-2-1.png"
-      }
+      { "_id": "balance-ex-1", "title": "Balancieren", "reps": "1x", "description": "Auf der Linie vorwärts und rückwärts balancieren.", "image": "/images/posten/balance/Vektor-Smartobjekt-1.jpg" },
+      { "_id": "balance-ex-2", "title": "Hüpfen", "reps": "5x", "description": "Auf der Linie seitwärts nach rechts, dann nach links hüpfen.", "image": "/images/posten/balance/Vektor-Smartobjekt-1-2.png" },
+      { "_id": "balance-ex-3", "title": "Kreuzen", "reps": "2x", "description": "Einander auf der Linie kreuzen.", "image": "/images/posten/balance/Vektor-Smartobjekt-2-1.png" }
     ],
     "furtherExercises": [
-      {
-        "_id": "balance-fe-1",
-        "title": "Transport",
-        "description": "1x entlang der ganzen Farbmarkierung | Nimm einen Gegenstand den du dabei hast. Lege ihn auf den Kopf und transportiere ihn während dem Balancieren. Schaffst du es ohne den Gegenstand festzuhalten?"
-      },
-      {
-        "_id": "balance-fe-2",
-        "title": "Pirouette",
-        "description": "3x pro Seite | Stelle dich auf eine Linie und balanciere während der ganzen Übung auf einem Bein. Führe eine 360° Drehung aus, sodass ein Fuss immer in der Luft bleibt."
-      },
-      {
-        "_id": "balance-fe-3",
-        "title": "Team-Challenge",
-        "description": "Für 2 oder mehr Personen: Alle stehen während der ganzen Übung auf einer Linie und berühren den Boden nebenan nicht. Die erste Person gibt ein akustisches Signal, woraufhin alle eine Drehung ausführen. Danach gibt die zweite, dritte, vierte, …usw. Person das Signal. Wer bleibt am längsten in Balance?"
-      }
+      { "_id": "balance-fe-1", "title": "Transport", "description": "1x entlang der ganzen Farbmarkierung | Nimm einen Gegenstand den du dabei hast. Lege ihn auf den Kopf und transportiere ihn während dem Balancieren. Schaffst du es ohne den Gegenstand festzuhalten?" },
+      { "_id": "balance-fe-2", "title": "Pirouette", "description": "3x pro Seite | Stelle dich auf eine Linie und balanciere während der ganzen Übung auf einem Bein. Führe eine 360° Drehung aus, sodass ein Fuss immer in der Luft bleibt." },
+      { "_id": "balance-fe-3", "title": "Team-Challenge", "description": "Für 2 oder mehr Personen: Alle stehen während der ganzen Übung auf einer Linie und berühren den Boden nebenan nicht. Die erste Person gibt ein akustisches Signal, woraufhin alle eine Drehung ausführen. Danach gibt die zweite, dritte, vierte, …usw. Person das Signal. Wer bleibt am längsten in Balance?" }
     ],
     "tagescheck": "Nenne zwei Stärken von dir und begründe sie.",
     "potenzial": {
@@ -2474,37 +2360,13 @@
     "intro": "Reaktion ist eine koordinative Fähigkeit. Im Outdoor Training kann eine gute Reaktion auch Sicherheit bedeuten. Zum Beispiel wenn es darum geht, sich flexibel auf die Bedingungen anzupassen. Wie verändert sich die Anforderung an deine Balance auf einem rutschigen Untergrund? Was musst du beachten, wenn die Treppe im Winter vereist ist? Je mehr verschiedene Situationen du durchlebst, desto mehr wächst dein Erfahrungsschatz. Teste dich und finde die passende zielführende Reaktion auf das nächste Hindernis.",
     "heroImage": "/images/posten/sprungkraft/20180523_ParkourOne_Velodrom_047-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "sprungkraft-ex-1",
-        "title": "Springen",
-        "reps": "3x",
-        "description": "Mit möglichst wenigen Sprüngen bis zum Wendepfeil.",
-        "image": "/images/posten/sprungkraft/springen.png"
-      },
-      {
-        "_id": "sprungkraft-ex-2",
-        "title": "Team",
-        "reps": "2x",
-        "description": "Gebt euch die Hand. Die vorderste Person gibt die Route vor. Die hinteren Personen folgen exakt.",
-        "image": "/images/posten/sprungkraft/springen-2.png"
-      }
+      { "_id": "sprungkraft-ex-1", "title": "Springen", "reps": "3x", "description": "Mit möglichst wenigen Sprüngen bis zum Wendepfeil.", "image": "/images/posten/sprungkraft/springen.png" },
+      { "_id": "sprungkraft-ex-2", "title": "Team", "reps": "2x", "description": "Gebt euch die Hand. Die vorderste Person gibt die Route vor. Die hinteren Personen folgen exakt.", "image": "/images/posten/sprungkraft/springen-2.png" }
     ],
     "furtherExercises": [
-      {
-        "_id": "sprungkraft-fe-1",
-        "title": "Vierfüsser",
-        "description": "1x bis zum Wendepfeil | Vierfüsser (= Quadrupedie) rückwärts: Absolviere die Strecke rückwärts auf allen Vieren. Variante: Betritt nur die Farbmarkierungen. ACHTUNG: Benutze nur die Treppe. Verhalte dich rücksichtsvoll den Passanten und der Landwirtschaft gegenüber."
-      },
-      {
-        "_id": "sprungkraft-fe-2",
-        "title": "Team-Challenge: Springen",
-        "description": "2x bis zum Wendepfeil | Springt und landet gleichzeitig, sodass nur ein Geräusch hörbar ist. Organisiert euch so, dass ihr vom Anfang der Strecke bis zum Wendepfeil den gleichen Rhythmus durchzieht. Tipp: Stellt euch nahe und doch mit genug Bewegungsradius auf. So nehmt ihr einander besser wahr und könnt einfacher aufeinander reagieren."
-      },
-      {
-        "_id": "sprungkraft-fe-3",
-        "title": "Kompakt",
-        "description": "2x bis zum Wendepfeil | Stellt euch vor, ihr als Gruppe seid ein einziger Körper. Das heisst, jede Person ist ein Körperteil. Alle Teile stehen in beliebiger Verbindung miteinander. Entwickelt gemeinsam eine Strategie, wie ihr als ein Körper die Strecke absolviert. Erster Durchgang: Versucht so viele Körperteile weg vom Boden zu halten wie möglich. Zweiter Durchgang: Wiederholt die Aufgabe und reduziert die Körperteile, die den Boden berühren."
-      }
+      { "_id": "sprungkraft-fe-1", "title": "Vierfüsser", "description": "1x bis zum Wendepfeil | Vierfüsser (= Quadrupedie) rückwärts: Absolviere die Strecke rückwärts auf allen Vieren. Variante: Betritt nur die Farbmarkierungen. ACHTUNG: Benutze nur die Treppe. Verhalte dich rücksichtsvoll den Passanten und der Landwirtschaft gegenüber." },
+      { "_id": "sprungkraft-fe-2", "title": "Team-Challenge: Springen", "description": "2x bis zum Wendepfeil | Springt und landet gleichzeitig, sodass nur ein Geräusch hörbar ist. Organisiert euch so, dass ihr vom Anfang der Strecke bis zum Wendepfeil den gleichen Rhythmus durchzieht. Tipp: Stellt euch nahe und doch mit genug Bewegungsradius auf. So nehmt ihr einander besser wahr und könnt einfacher aufeinander reagieren." },
+      { "_id": "sprungkraft-fe-3", "title": "Kompakt", "description": "2x bis zum Wendepfeil | Stellt euch vor, ihr als Gruppe seid ein einziger Körper. Das heisst, jede Person ist ein Körperteil. Alle Teile stehen in beliebiger Verbindung miteinander. Entwickelt gemeinsam eine Strategie, wie ihr als ein Körper die Strecke absolviert. Erster Durchgang: Versucht so viele Körperteile weg vom Boden zu halten wie möglich. Zweiter Durchgang: Wiederholt die Aufgabe und reduziert die Körperteile, die den Boden berühren." }
     ],
     "tagescheck": "Wie geht es dir jetzt gerade?",
     "potenzial": {
@@ -2518,44 +2380,14 @@
     "intro": "Schon gewusst? Das Six Pack gehört zum menschlichen Bauplan und ist nur ein Übername. Denn dieser Teil der oberflächlichen Rumpfmuskulatur, auch bekannt als die gerade Bauchmuskulatur (lat. M. rectus abdominis), hat eigentlich acht «Pakete». Der Körper ist ein Meisterwerk der Natur. Wir haben einen einzigen davon und nur wenn wir sorgfältig und clever mit ihm umgehen, kann er stärker werden und uns gesund durch das Leben begleiten.",
     "heroImage": "/images/posten/stabilitaet/466A1081-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "stabilitaet-ex-1",
-        "title": "Bergsteiger",
-        "reps": "12x pro Seite",
-        "description": "Ein Knie abwechslungsweise schnell zum Ellenbogen ziehen.",
-        "image": "/images/posten/stabilitaet/Vektor-Smartobjekt (1).png"
-      },
-      {
-        "_id": "stabilitaet-ex-2",
-        "title": "Superkraft",
-        "reps": "5x pro Seite",
-        "description": "Gleichzeitig einen Arm und einen Fuss heben & senken. Dann die andere Seite.",
-        "image": "/images/posten/stabilitaet/Vektor-Smartobjekt-1 (1).png"
-      },
-      {
-        "_id": "stabilitaet-ex-3",
-        "title": "Fangen",
-        "reps": "5x",
-        "description": "Innerhalb der Markierung einander die Hände berühren, ohne selber gefangen zu werden.",
-        "image": "/images/posten/stabilitaet/Vektor-Smartobjekt-2 (1).png"
-      }
+      { "_id": "stabilitaet-ex-1", "title": "Bergsteiger", "reps": "12x pro Seite", "description": "Ein Knie abwechslungsweise schnell zum Ellenbogen ziehen.", "image": "/images/posten/stabilitaet/Vektor-Smartobjekt (1).png" },
+      { "_id": "stabilitaet-ex-2", "title": "Superkraft", "reps": "5x pro Seite", "description": "Gleichzeitig einen Arm und einen Fuss heben & senken. Dann die andere Seite.", "image": "/images/posten/stabilitaet/Vektor-Smartobjekt-1 (1).png" },
+      { "_id": "stabilitaet-ex-3", "title": "Fangen", "reps": "5x", "description": "Innerhalb der Markierung einander die Hände berühren, ohne selber gefangen zu werden.", "image": "/images/posten/stabilitaet/Vektor-Smartobjekt-2 (1).png" }
     ],
     "furtherExercises": [
-      {
-        "_id": "stabilitaet-fe-1",
-        "title": "Rumpfrotation",
-        "description": "2x mind. 10x pro Seite | Setze dich hin und hebe die Füsse vom Boden ab. Spanne den Bauch an und rotiere jetzt den Oberkörper so weit es geht nach links und nach rechts. Halte dabei die Hände hinter dem Kopf oder vor der Brust verschränkt. Lust auf Rekordjagd? Rotiere so oft du kannst und merke dir die Anzahl. Schaffst du im nächsten Training mehr? Vereinfachung: Stelle die Fersen auf dem Boden ab."
-      },
-      {
-        "_id": "stabilitaet-fe-2",
-        "title": "Von A nach B",
-        "description": "Laufe zum anderen Ende der grossen Wiese und zurück. Überwinde unterwegs so viele Hindernisse wie möglich (max. 1m Höhe). HINWEIS: Du bist für dein Handeln selbst verantwortlich. Sei dir bewusst, dass die Natur kein Sportgerät und entsprechend nicht auf Sicherheit geprüft ist. Oberflächen können rutschig, wackelig oder instabil sein. Schätze deine Fähigkeiten richtig ein."
-      },
-      {
-        "_id": "stabilitaet-fe-3",
-        "title": "Team-Challenge: Wadenbeisser",
-        "description": "Ab 2 Personen: Sitzt einander gegenüber und hebt die Füsse vom Boden ab. Ihr dürft euch mit den Händen auf dem Boden abstützen. Versucht mit den Füssen die Wade der anderen Person zu berühren. Wer erzielt am meisten Treffer? Wer hält am längsten durch? Wer gewinnt 3x?"
-      }
+      { "_id": "stabilitaet-fe-1", "title": "Rumpfrotation", "description": "2x mind. 10x pro Seite | Setze dich hin und hebe die Füsse vom Boden ab. Spanne den Bauch an und rotiere jetzt den Oberkörper so weit es geht nach links und nach rechts. Halte dabei die Hände hinter dem Kopf oder vor der Brust verschränkt. Lust auf Rekordjagd? Rotiere so oft du kannst und merke dir die Anzahl. Schaffst du im nächsten Training mehr? Vereinfachung: Stelle die Fersen auf dem Boden ab." },
+      { "_id": "stabilitaet-fe-2", "title": "Von A nach B", "description": "Laufe zum anderen Ende der grossen Wiese und zurück. Überwinde unterwegs so viele Hindernisse wie möglich (max. 1m Höhe). HINWEIS: Du bist für dein Handeln selbst verantwortlich. Sei dir bewusst, dass die Natur kein Sportgerät und entsprechend nicht auf Sicherheit geprüft ist. Oberflächen können rutschig, wackelig oder instabil sein. Schätze deine Fähigkeiten richtig ein." },
+      { "_id": "stabilitaet-fe-3", "title": "Team-Challenge: Wadenbeisser", "description": "Ab 2 Personen: Sitzt einander gegenüber und hebt die Füsse vom Boden ab. Ihr dürft euch mit den Händen auf dem Boden abstützen. Versucht mit den Füssen die Wade der anderen Person zu berühren. Wer erzielt am meisten Treffer? Wer hält am längsten durch? Wer gewinnt 3x?" }
     ],
     "tagescheck": "Was isst du heute Gesundes?",
     "potenzial": {
@@ -2569,36 +2401,13 @@
     "intro": "Körperliche Aktivität wirkt positiv auf Körper und Geist. Jede Bewegung zählt! Denn Bewegung kann neben vielen anderen positiven Effekten auch die Stimmung aufhellen und Stress abbauen. Tue dir Gutes und beobachte, ob du dir und deinem Körper die Chance gibst, gesund und widerstandsfähig zu werden oder zu sein. Denke mal darüber nach.",
     "heroImage": "/images/posten/passement/20190831_Last10_Berlin_Saturday_0625_1920px.jpg",
     "exercises": [
-      {
-        "_id": "passement-ex-1",
-        "title": "Passement",
-        "reps": "5x",
-        "description": "Eine Parkbank überwinden.",
-        "image": "/images/posten/passement/posten-7.png"
-      },
-      {
-        "_id": "passement-ex-2",
-        "title": "Trizeps Dip",
-        "reps": "12x",
-        "description": "Die Arme strecken und beugen."
-      }
+      { "_id": "passement-ex-1", "title": "Passement", "reps": "5x", "description": "Eine Parkbank überwinden.", "image": "/images/posten/passement/posten-7.png" },
+      { "_id": "passement-ex-2", "title": "Trizeps Dip", "reps": "12x", "description": "Die Arme strecken und beugen." }
     ],
     "furtherExercises": [
-      {
-        "_id": "passement-fe-1",
-        "title": "Oberkörper",
-        "description": "3x 15 Wiederholungen | Wie kannst du deine Arme und Brustmuskulatur kräftigen? Finde eine passende Übung und falls nötig ein geeignetes Hilfsmittel (z.B. Parkbank) dazu."
-      },
-      {
-        "_id": "passement-fe-2",
-        "title": "Challenge: Rolle vorwärts",
-        "description": "5x | Rolle aus dem Stand vorwärts ab, sodass du ohne Hände aufstehen und direkt weiterlaufen kannst. Wiederhole das mehrmals."
-      },
-      {
-        "_id": "passement-fe-3",
-        "title": "Team: Der Boden ist Lava",
-        "description": "Wie schafft ihr es gemeinsam von Parkbank zu Parkbank, sodass möglichst wenig Körperteile den Boden berühren?"
-      }
+      { "_id": "passement-fe-1", "title": "Oberkörper", "description": "3x 15 Wiederholungen | Wie kannst du deine Arme und Brustmuskulatur kräftigen? Finde eine passende Übung und falls nötig ein geeignetes Hilfsmittel (z.B. Parkbank) dazu." },
+      { "_id": "passement-fe-2", "title": "Challenge: Rolle vorwärts", "description": "5x | Rolle aus dem Stand vorwärts ab, sodass du ohne Hände aufstehen und direkt weiterlaufen kannst. Wiederhole das mehrmals." },
+      { "_id": "passement-fe-3", "title": "Team: Der Boden ist Lava", "description": "Wie schafft ihr es gemeinsam von Parkbank zu Parkbank, sodass möglichst wenig Körperteile den Boden berühren?" }
     ],
     "tagescheck": "Schliesse deine Augen. Was hörst du alles?",
     "potenzial": {
@@ -2612,37 +2421,13 @@
     "intro": "Keine Lust oder Langeweile beim Training? Kein Problem – probiere mal was Neues aus! Tipps für Abwechslung: Gegensatzerfahrung – Führe die Übung ein paar Mal extra langsam und dann schnell, oder laut und leise aus. Wetter – Bei verschiedenen Wetterbedingungen raus zu gehen macht Spass, weil es Abwechslung bringt. Adjektiv – Wähle ein Adjektiv und führe Übungen so aus. Z.B. kräftig, elegant, schwungvoll, künstlerisch. Alleine vs. gemeinsam – Geteilte Freude ist doppelte Freude. Hinweis: Sicherheit geht vor! Du bist für dich verantwortlich. Schätze deine Fähigkeiten dabei realistisch ein.",
     "heroImage": "/images/posten/quadrupedie/G1A1984-1-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "quadrupedie-ex-1",
-        "title": "Quadrupedie",
-        "reps": "1x",
-        "description": "Rückwärts auf allen Vieren entlang der Markierung bewegen.",
-        "image": "/images/posten/quadrupedie/Vektor-Smartobjekt-1-1.png"
-      },
-      {
-        "_id": "quadrupedie-ex-2",
-        "title": "Schubkarre",
-        "reps": "5x pro Person",
-        "description": "Entlang der Markierung auf den Händen gehen. Als Einzelperson: Beide Hände und ein Fuss berühren den Boden.",
-        "image": "/images/posten/quadrupedie/Vektor-Smartobjekt-3 (1).png"
-      }
+      { "_id": "quadrupedie-ex-1", "title": "Quadrupedie", "reps": "1x", "description": "Rückwärts auf allen Vieren entlang der Markierung bewegen.", "image": "/images/posten/quadrupedie/Vektor-Smartobjekt-1-1.png" },
+      { "_id": "quadrupedie-ex-2", "title": "Schubkarre", "reps": "5x pro Person", "description": "Entlang der Markierung auf den Händen gehen. Als Einzelperson: Beide Hände und ein Fuss berühren den Boden.", "image": "/images/posten/quadrupedie/Vektor-Smartobjekt-3 (1).png" }
     ],
     "furtherExercises": [
-      {
-        "_id": "quadrupedie-fe-1",
-        "title": "Schrittprognose",
-        "description": "2x | Nenne eine Anzahl Schritte, die du vom Anfang bis zum Ende der Farbmarkierung machen willst. Bewege dich so, dass du genau diese Anzahl erreichst. ACHTUNG: Teile die Distanz clever ein. Schritte an Ort und Stelle zählen nicht! Challenge: Was ist heute die kleinste Anzahl die du schaffst? Absolviere die Strecke mit maximal vielen Schritten."
-      },
-      {
-        "_id": "quadrupedie-fe-2",
-        "title": "Zick Zack",
-        "description": "1x | Kreativität ist gefragt. Interpretiere die folgende Übung ganz wie du willst. Absolviere die Strecke bis zum nächsten Posten im Zick Zack und bleibe dabei auf dem Asphaltweg."
-      },
-      {
-        "_id": "quadrupedie-fe-3",
-        "title": "Freie Wahl",
-        "description": "1x pro Person | Team: Jede Person gibt einer anderen Person eine Übung vor, die sie vom Anfang bis zum Ende der Farbmarkierung ausführt. Einzelperson: Worauf hast du Lust? Gib dir selbst eine Aufgabe die dir Spass macht. Los geht's!"
-      }
+      { "_id": "quadrupedie-fe-1", "title": "Schrittprognose", "description": "2x | Nenne eine Anzahl Schritte, die du vom Anfang bis zum Ende der Farbmarkierung machen willst. Bewege dich so, dass du genau diese Anzahl erreichst. ACHTUNG: Teile die Distanz clever ein. Schritte an Ort und Stelle zählen nicht! Challenge: Was ist heute die kleinste Anzahl die du schaffst? Absolviere die Strecke mit maximal vielen Schritten." },
+      { "_id": "quadrupedie-fe-2", "title": "Zick Zack", "description": "1x | Kreativität ist gefragt. Interpretiere die folgende Übung ganz wie du willst. Absolviere die Strecke bis zum nächsten Posten im Zick Zack und bleibe dabei auf dem Asphaltweg." },
+      { "_id": "quadrupedie-fe-3", "title": "Freie Wahl", "description": "1x pro Person | Team: Jede Person gibt einer anderen Person eine Übung vor, die sie vom Anfang bis zum Ende der Farbmarkierung ausführt. Einzelperson: Worauf hast du Lust? Gib dir selbst eine Aufgabe die dir Spass macht. Los geht's!" }
     ],
     "tagescheck": "Wo fühlst du Erschöpfung in deinem Körper? Wo hast du Energiereserven?",
     "potenzial": {
@@ -2656,39 +2441,13 @@
     "intro": "Wiederholung ist der Schlüssel. Um eine Gewohnheit aufzubauen, muss das Zielverhalten (z.B. jede Woche den RubikONE absolvieren) am besten regelmässig wiederholt werden. Nimm physische und mentale Anstrengung in Kauf – es fällt dir mit der Zeit einfacher, dein aktives Verhalten aufrecht zu halten. Zuerst ist es eine Absicht, dann wirst du aktiv bis das Training über regelmässiges Wiederholen zu einer Gewohnheit und schlussendlich einem Teil von dir wird. Los geht's! Routine aufbauen: Setze dir regelmässige Termine um Sport zu treiben oder dich extra zu bewegen. Fehlt dir die Zeit? Kein Problem. Auch ein Training alle zwei Wochen wirkt positiv und kann zum festen Bestandteil deines Alltages werden.",
     "heroImage": "/images/posten/check-out/466A7482-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "check-out-ex-1",
-        "title": "Nacken",
-        "reps": "30 Sek. pro Seite",
-        "description": "Neige deinen Kopf nach rechts/links und ziehe die Hand zum Boden.",
-        "image": "/images/posten/check-out/Vektor-Smartobjekt-1-2.png"
-      },
-      {
-        "_id": "check-out-ex-2",
-        "title": "Rotation",
-        "reps": "30 Sek. pro Seite",
-        "description": "In der «Grätsche» mit einer Hand am Boden abstützen. Den anderen Arm weit nach oben strecken.",
-        "image": "/images/posten/check-out/Vektor-Smartobjekt-2-1.png"
-      },
-      {
-        "_id": "check-out-ex-3",
-        "title": "Hüfte",
-        "reps": "30 Sek. pro Seite",
-        "description": "Mit stolzer Haltung die Hüfte zum vorderen Knie schieben.",
-        "image": "/images/posten/check-out/Vektor-Smartobjekt-4.png"
-      }
+      { "_id": "check-out-ex-1", "title": "Nacken", "reps": "30 Sek. pro Seite", "description": "Neige deinen Kopf nach rechts/links und ziehe die Hand zum Boden.", "image": "/images/posten/check-out/Vektor-Smartobjekt-1-2.png" },
+      { "_id": "check-out-ex-2", "title": "Rotation", "reps": "30 Sek. pro Seite", "description": "In der «Grätsche» mit einer Hand am Boden abstützen. Den anderen Arm weit nach oben strecken.", "image": "/images/posten/check-out/Vektor-Smartobjekt-2-1.png" },
+      { "_id": "check-out-ex-3", "title": "Hüfte", "reps": "30 Sek. pro Seite", "description": "Mit stolzer Haltung die Hüfte zum vorderen Knie schieben.", "image": "/images/posten/check-out/Vektor-Smartobjekt-4.png" }
     ],
     "furtherExercises": [
-      {
-        "_id": "check-out-fe-1",
-        "title": "Die letzten 10",
-        "description": "1x mind. 10 Wiederholungen | Absolviere nochmals die Übung, die dich auf dem RubikONE heute am meisten herausgefordert hat."
-      },
-      {
-        "_id": "check-out-fe-2",
-        "title": "Feedback",
-        "description": "Scanne den QR-Code und gib uns ein kurzes Feedback zu deinem Training heute. Was hat dir gefallen? Was können wir verbessern?"
-      }
+      { "_id": "check-out-fe-1", "title": "Die letzten 10", "description": "1x mind. 10 Wiederholungen | Absolviere nochmals die Übung, die dich auf dem RubikONE heute am meisten herausgefordert hat." },
+      { "_id": "check-out-fe-2", "title": "Feedback", "description": "Scanne den QR-Code und gib uns ein kurzes Feedback zu deinem Training heute. Was hat dir gefallen? Was können wir verbessern?" }
     ],
     "tagescheck": "Wie gönnst du dir heute Erholung?",
     "potenzial": {
@@ -2702,37 +2461,13 @@
     "intro": "Koordinationsaufgaben sind nach der Mobilisation der optimale Anfang eines Trainings. So kannst du den Fokus auf dich selbst richten. Ausserdem eignen sich teambildende Übungen und Aufgaben, welche lösungsorientiertes Denken fordern. Zur Abwechslung kannst du deine Sinne gezielt einsetzen. Schliesse mal die Augen, teste einen anderen Boden und trainiere bei Sonne und Regen.",
     "heroImage": "/images/posten/fokus/20190831_Last10_Berlin_Saturday_0810-scaled-1.jpg",
     "exercises": [
-      {
-        "_id": "fokus-ex-1",
-        "title": "Balancieren",
-        "reps": "60 Sekunden",
-        "description": "Eine Person versucht die andere Person aus dem Gleichgewicht zu bringen. Als Einzelperson sich selbst herausfordern.",
-        "image": "/images/posten/fokus/Vektor-Smartobjekt-1-1.png"
-      },
-      {
-        "_id": "fokus-ex-2",
-        "title": "Umrundung",
-        "reps": "1x pro Seite",
-        "description": "Mit den Händen um die Kugel wandern. Alternative: Hände auf der Kugel.",
-        "image": "/images/posten/fokus/Vektor-Smartobjekt.jpg"
-      }
+      { "_id": "fokus-ex-1", "title": "Balancieren", "reps": "60 Sekunden", "description": "Eine Person versucht die andere Person aus dem Gleichgewicht zu bringen. Als Einzelperson sich selbst herausfordern.", "image": "/images/posten/fokus/Vektor-Smartobjekt-1-1.png" },
+      { "_id": "fokus-ex-2", "title": "Umrundung", "reps": "1x pro Seite", "description": "Mit den Händen um die Kugel wandern. Alternative: Hände auf der Kugel.", "image": "/images/posten/fokus/Vektor-Smartobjekt.jpg" }
     ],
     "furtherExercises": [
-      {
-        "_id": "fokus-fe-1",
-        "title": "Slalom",
-        "description": "Als 2er Team: 2x pro Person | Eine Person kurvt mit geschlossenen Augen um die Kugeln. Die andere Person sorgt für die Sicherheit und hält die Augen offen. Für 1 Person: 2x | Mit offenen Augen vorsichtig rückwärts um die Kugeln gehen."
-      },
-      {
-        "_id": "fokus-fe-2",
-        "title": "Punkt",
-        "description": "Als 2er Team (1 Minute pro Person): Person A steht auf einer Kugel und schaut immer dorthin, wo die andere Person klatscht. Person B steht davor oder geht rundherum. Von Zeit zu Zeit klatscht sie in die Hände. Für 1 Person: Stehe auf eine Kugel und balanciere auf einem Bein. 30 Sekunden | Schaue abwechselnd hoch hinauf und runter. Beinwechsel. 30 Sekunden | Drehe den Kopf kontinuierlich hin und her."
-      },
-      {
-        "_id": "fokus-fe-3",
-        "title": "Challenge",
-        "description": "Setze dich auf eine Kugel und hebe beide Füsse vom Boden ab. Vereinfachung: Füsse am Boden lassen. 5x pro Seite | Berühre aus dieser Position heraus die Kugel abwechslungsweise mit der rechten, dann mit der linken Hand möglichst nahe am Boden."
-      }
+      { "_id": "fokus-fe-1", "title": "Slalom", "description": "Als 2er Team: 2x pro Person | Eine Person kurvt mit geschlossenen Augen um die Kugeln. Die andere Person sorgt für die Sicherheit und hält die Augen offen. Für 1 Person: 2x | Mit offenen Augen vorsichtig rückwärts um die Kugeln gehen." },
+      { "_id": "fokus-fe-2", "title": "Punkt", "description": "Als 2er Team (1 Minute pro Person): Person A steht auf einer Kugel und schaut immer dorthin, wo die andere Person klatscht. Person B steht davor oder geht rundherum. Von Zeit zu Zeit klatscht sie in die Hände. Für 1 Person: Stehe auf eine Kugel und balanciere auf einem Bein. 30 Sekunden | Schaue abwechselnd hoch hinauf und runter. Beinwechsel. 30 Sekunden | Drehe den Kopf kontinuierlich hin und her." },
+      { "_id": "fokus-fe-3", "title": "Challenge", "description": "Setze dich auf eine Kugel und hebe beide Füsse vom Boden ab. Vereinfachung: Füsse am Boden lassen. 5x pro Seite | Berühre aus dieser Position heraus die Kugel abwechslungsweise mit der rechten, dann mit der linken Hand möglichst nahe am Boden." }
     ],
     "tagescheck": "Wofür bist du heute dankbar?",
     "potenzial": {

@@ -2,7 +2,6 @@
 
 import { useAdmin } from "@/providers/admin-provider";
 import { FieldEditor } from "./field-editor";
-import { getAt } from "@/lib/content-path";
 
 export function EditPanel() {
   const {
@@ -19,11 +18,7 @@ export function EditPanel() {
 
   if (!isAdmin || !editingSection || !content) return null;
 
-  // editingSection may be either a top-level key (legacy hardcoded sections
-  // like "HERO_CONTENT") or a dotted nested path (dynamic blocks like
-  // "PAGE_BLOCKS.home.0.content"). getAt handles both — top-level keys parse
-  // to a single segment.
-  const sectionContent = getAt(content, editingSection);
+  const sectionContent = content[editingSection];
 
   return (
     <>
