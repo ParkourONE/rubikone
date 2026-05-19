@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Clock, Route, Calendar, Quote, ArrowRight, ArrowLeft, CheckCircle, X, Download } from "lucide-react";
 import { PageHero } from "@/components/sections/hero-section";
+import { VideoSection } from "@/components/sections/video-section";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
 import { useEditPath } from "@/components/cms/primitives";
@@ -92,6 +93,11 @@ export default function KoenizPage() {
         breadcrumbEditPath="KOENIZ_HERO.breadcrumb"
         imageEditPath="KOENIZ_HERO.image"
       />
+      </EditableSection>
+
+      {/* Video: RubikONE in Aktion */}
+      <EditableSection contentKey="VIDEO_CONTENT" label="Video">
+        <VideoSection />
       </EditableSection>
 
       {/* CTA: Selbst entdecken */}

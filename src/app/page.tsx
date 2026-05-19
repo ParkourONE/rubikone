@@ -1,6 +1,5 @@
 import { HeroSection } from "@/components/sections/hero-section";
 import { WasWaereWennHook } from "@/components/sections/was-waere-wenn-hook";
-import { VideoSection } from "@/components/sections/video-section";
 import { VorherNachherTeaser } from "@/components/sections/vorher-nachher-teaser";
 import { TestimonialsSection } from "@/components/sections/testimonials";
 import { ImageGallery } from "@/components/sections/image-gallery";
@@ -20,11 +19,6 @@ export default function HomePage() {
       {/* Emotionaler Hook */}
       <EditableSection contentKey="TEXTHOOK_CONTENT" label="Text-Hook">
         <WasWaereWennHook />
-      </EditableSection>
-
-      {/* Video: RubikONE in Aktion */}
-      <EditableSection contentKey="VIDEO_CONTENT" label="Video">
-        <VideoSection />
       </EditableSection>
 
       {/* Vorher/Nachher: Das Prinzip visualisiert */}
