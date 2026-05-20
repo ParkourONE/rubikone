@@ -1868,6 +1868,39 @@
     "description": "RubikONE macht sichtbar, was schon da ist. Keine neuen Geräte – nur ein neuer Blick auf den öffentlichen Raum.",
     "heroImage": "/images/hero/generationen-kraft.jpg"
   },
+  "KONZEPT_PERSPEKTIVE": {
+    "tagline": "Perspektive",
+    "headline": "RubikONE – die Parkour-Brille",
+    "description": "Der urbane Raum wird zu einem Erlebnisraum. Setz dir die Parkour-Brille auf und sehe deine Umgebung mit neuen Augen!",
+    "imageDefault": "/images/konzept/perspektive-default.jpg",
+    "imageHover": "/images/konzept/perspektive-brille.jpg",
+    "imageAlt": "Urbaner Raum als Erlebnisraum"
+  },
+  "KONZEPT_MEHRWERT": {
+    "tagline": "Wirkung",
+    "headline": "Der Mehrwert von RubikONE",
+    "description": "Wirkung auf zwei Ebenen. Das Angebot von RubikONE und der daraus entstehende Effekt.",
+    "slides": [
+      {
+        "image": "/images/konzept/mehrwert-1.jpg",
+        "imageAlt": "Ausgangssituation: Ein urbaner Raum",
+        "body": "Ausgangssituation: Ein urbaner Raum",
+        "_id": "mehrwert-slide-1"
+      },
+      {
+        "image": "/images/konzept/mehrwert-2.jpg",
+        "imageAlt": "RubikONE Posten",
+        "body": "<p><strong>RubikONE Posten:</strong></p><ul class=\"list-disc pl-6 mt-2 space-y-1\"><li>Bewegungskonzept</li><li>Farbmarkierungen</li><li>Schilder mit Übungen</li></ul><p class=\"mt-4\">Menschen die sich bewegen. In ihrem Quartier – an der frischen Luft.</p>",
+        "_id": "mehrwert-slide-2"
+      },
+      {
+        "image": "/images/konzept/mehrwert-3.jpg",
+        "imageAlt": "Wirkung von RubikONE",
+        "body": "<strong>Wirkung:</strong><br />Ein Enkelkind das seiner Oma zeigt wie man balanciert.<br />Ein Vater der das erste Mal seit Jahren den Boden berührt.<br />Lachende Teenager die sich gegenseitig herausfordern.<br />Eine Gemeinde die ein Zeichen für Nachhaltigkeit setzt.<br /><br />Am Ende sind es die <strong>vielen kleinen Momente</strong> die etwas bewegen!",
+        "_id": "mehrwert-slide-3"
+      }
+    ]
+  },
   "KONZEPT_PRINZIP": {
     "tagline": "Das Prinzip",
     "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
@@ -1899,6 +1932,29 @@
     "tagline": "TRUST Education",
     "headline": "Mehr als Bewegung. Ganzheitliches Lernen.",
     "description": "Jeder Posten fördert fünf Lerndimensionen gleichzeitig – durch zusätzliche Challenges auf jedem Schild.",
+    "examples": [
+      {
+        "src": "/images/konzept/lerndimensionen-1.jpg",
+        "alt": "Lerndimension Beispiel 1",
+        "_id": "lerndim-img-1"
+      },
+      {
+        "src": "/images/konzept/lerndimensionen-2.jpg",
+        "alt": "Lerndimension Beispiel 2",
+        "_id": "lerndim-img-2"
+      },
+      {
+        "src": "/images/konzept/lerndimensionen-3.jpg",
+        "alt": "Lerndimension Beispiel 3",
+        "_id": "lerndim-img-3"
+      },
+      {
+        "src": "/images/konzept/lerndimensionen-4.jpg",
+        "alt": "Lerndimension Beispiel 4",
+        "_id": "lerndim-img-4"
+      }
+    ],
+    "examplesCaption": "Eine Linie auf dem Boden bietet zahlreiche Möglichkeiten. Welche Lerndimensionen kannst du hier erkennen?",
     "dimensions": [
       {
         "id": "motorisch",
@@ -1974,7 +2030,7 @@
     "headline": "Überzeugt? Erleben Sie es selbst.",
     "description": "In Köniz können Sie RubikONE live erleben. Oder buchen Sie einen Impulsworkshop für Ihre Gemeinde.",
     "ctaPrimary": {
-      "label": "Referenz Köniz",
+      "label": "Entdecke RubikONE",
       "href": "/koeniz"
     },
     "ctaSecondary": {

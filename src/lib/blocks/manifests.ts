@@ -969,6 +969,54 @@ m({
 });
 
 m({
+  id: "KONZEPT_PERSPEKTIVE",
+  label: "Konzept Perspektive (Parkour-Brille)",
+  schema: blockObject({
+    tagline: z.string(),
+    headline: z.string(),
+    description: z.string(),
+    imageDefault: z.string(),
+    imageHover: z.string(),
+    imageAlt: z.string().optional(),
+  }),
+  fields: [
+    text("tagline"),
+    text("headline"),
+    text("description"),
+    image("imageDefault", { label: "Default-Bild" }),
+    image("imageHover", { label: "Hover-Bild (Parkour-Brille)" }),
+    text("imageAlt", { required: false }),
+  ],
+});
+
+m({
+  id: "KONZEPT_MEHRWERT",
+  label: "Konzept Mehrwert (Slider)",
+  schema: blockObject({
+    tagline: z.string(),
+    headline: z.string(),
+    description: z.string(),
+    slides: z.array(
+      withId({
+        image: z.string(),
+        imageAlt: z.string().optional(),
+        body: z.string(),
+      })
+    ),
+  }),
+  fields: [
+    text("tagline"),
+    text("headline"),
+    text("description"),
+    list("slides", [
+      image("image"),
+      text("imageAlt", { required: false }),
+      richtext("body"),
+    ]),
+  ],
+});
+
+m({
   id: "KONZEPT_PRINZIP",
   label: "Konzept Prinzip",
   schema: blockObject({
@@ -1003,6 +1051,15 @@ m({
     tagline: z.string(),
     headline: z.string(),
     description: z.string(),
+    examples: z
+      .array(
+        withId({
+          src: z.string(),
+          alt: z.string().optional(),
+        })
+      )
+      .optional(),
+    examplesCaption: z.string().optional(),
     dimensions: z.array(
       withId({
         id: z.string(),
@@ -1017,6 +1074,10 @@ m({
     text("tagline"),
     text("headline"),
     text("description"),
+    list("examples", [image("src"), text("alt", { required: false })], {
+      required: false,
+    }),
+    text("examplesCaption", { required: false }),
     list("dimensions", [
       text("title"),
       text("shortDesc"),

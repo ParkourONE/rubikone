@@ -155,7 +155,9 @@ export const STATS_CONTENT = content.STATS_CONTENT;
 
 // Konzept page sections
 export const KONZEPT_HERO = content.KONZEPT_HERO;
+export const KONZEPT_PERSPEKTIVE = content.KONZEPT_PERSPEKTIVE;
 export const KONZEPT_PRINZIP = content.KONZEPT_PRINZIP;
+export const KONZEPT_MEHRWERT = content.KONZEPT_MEHRWERT;
 export const KONZEPT_POSTEN_SLIDER = content.KONZEPT_POSTEN_SLIDER;
 export const KONZEPT_LERNDIMENSIONEN = content.KONZEPT_LERNDIMENSIONEN;
 export const KONZEPT_SICHERHEIT = content.KONZEPT_SICHERHEIT;

@@ -3,21 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ArrowLeft, Check, X, ChevronDown } from "lucide-react";
+import { ArrowRight, ArrowLeft, X, ChevronDown } from "lucide-react";
 import { useRef, useState } from "react";
 import { appleTransition } from "@/lib/animations";
 import { useScrollLock } from "@/hooks/useScrollLock";
 import { ComparisonSection } from "@/components/sections/comparison-table";
-import { StatsSection } from "@/components/sections/stats-section";
+import { PerspektiveSection } from "@/components/sections/perspektive-section";
+import { MehrwertSection } from "@/components/sections/mehrwert-section";
 import { EditableSection } from "@/components/admin/editable-section";
 import { useContent } from "@/hooks/useContent";
 import { useEditPath } from "@/components/cms/primitives";
 import {
   KONZEPT_HERO,
-  KONZEPT_PRINZIP,
   KONZEPT_POSTEN_SLIDER,
   KONZEPT_LERNDIMENSIONEN,
-  KONZEPT_SICHERHEIT,
   KONZEPT_CTA,
 } from "@/lib/constants";
 
@@ -36,36 +35,23 @@ const POSTEN_SCHILDER = [
 
 export default function KonzeptPage() {
   const postenScrollRef = useRef<HTMLDivElement>(null);
-  const [sliderPosition, setSliderPosition] = useState(50);
-  const [isDragging, setIsDragging] = useState(false);
   const [activeModal, setActiveModal] = useState<string | null>(null);
-  const sliderRef = useRef<HTMLDivElement>(null);
 
   const hero = useContent("KONZEPT_HERO", KONZEPT_HERO) as any;
-  const prinzip = useContent("KONZEPT_PRINZIP", KONZEPT_PRINZIP) as any;
   const postenSlider = useContent("KONZEPT_POSTEN_SLIDER", KONZEPT_POSTEN_SLIDER) as any;
   const lerndimensionen = useContent("KONZEPT_LERNDIMENSIONEN", KONZEPT_LERNDIMENSIONEN) as any;
-  const sicherheit = useContent("KONZEPT_SICHERHEIT", KONZEPT_SICHERHEIT) as any;
   const cta = useContent("KONZEPT_CTA", KONZEPT_CTA) as any;
 
   const heroTaglineEdit = useEditPath("KONZEPT_HERO.tagline");
   const heroHeadlineEdit = useEditPath("KONZEPT_HERO.headline");
   const heroQuestionsEdit = useEditPath("KONZEPT_HERO.questions");
   const heroDescEdit = useEditPath("KONZEPT_HERO.description");
-  const heroImageEdit = useEditPath("KONZEPT_HERO.heroImage");
-  const prinzipTaglineEdit = useEditPath("KONZEPT_PRINZIP.tagline");
-  const prinzipHeadlineEdit = useEditPath("KONZEPT_PRINZIP.headline");
-  const prinzipDescEdit = useEditPath("KONZEPT_PRINZIP.description");
   const psTaglineEdit = useEditPath("KONZEPT_POSTEN_SLIDER.tagline");
   const psHeadlineEdit = useEditPath("KONZEPT_POSTEN_SLIDER.headline");
   const psDescEdit = useEditPath("KONZEPT_POSTEN_SLIDER.description");
   const ldTaglineEdit = useEditPath("KONZEPT_LERNDIMENSIONEN.tagline");
   const ldHeadlineEdit = useEditPath("KONZEPT_LERNDIMENSIONEN.headline");
   const ldDescEdit = useEditPath("KONZEPT_LERNDIMENSIONEN.description");
-  const sicherheitTaglineEdit = useEditPath("KONZEPT_SICHERHEIT.tagline");
-  const sicherheitHeadlineEdit = useEditPath("KONZEPT_SICHERHEIT.headline");
-  const sicherheitDescEdit = useEditPath("KONZEPT_SICHERHEIT.description");
-  const sicherheitImageEdit = useEditPath("KONZEPT_SICHERHEIT.image");
   const ctaHeadlineEdit = useEditPath("KONZEPT_CTA.headline");
   const ctaDescEdit = useEditPath("KONZEPT_CTA.description");
   const ctaPrimaryEdit = useEditPath("KONZEPT_CTA.ctaPrimary");
@@ -85,25 +71,6 @@ export default function KonzeptPage() {
         behavior: "smooth",
       });
     }
-  };
-
-  // Vorher/Nachher Slider Handler
-  const handleSliderMove = (clientX: number) => {
-    if (!sliderRef.current) return;
-    const rect = sliderRef.current.getBoundingClientRect();
-    const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percentage);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging) return;
-    handleSliderMove(e.clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    handleSliderMove(e.touches[0].clientX);
   };
 
   const activeDimension = LERNDIMENSIONEN.find((d: any) => d.id === activeModal);
@@ -223,8 +190,13 @@ export default function KonzeptPage() {
       </section>
       </EditableSection>
 
-      {/* Das Prinzip mit Vorher/Nachher Slider */}
-      <EditableSection contentKey="KONZEPT_PRINZIP" label="Das Prinzip">
+      {/* 2. Perspektive (Parkour-Brille) */}
+      <EditableSection contentKey="KONZEPT_PERSPEKTIVE" label="Perspektive">
+        <PerspektiveSection />
+      </EditableSection>
+
+      {/* 3. Die 5 Lerndimensionen mit Modals */}
+      <EditableSection contentKey="KONZEPT_LERNDIMENSIONEN" label="Lerndimensionen">
       <section className="py-16 lg:py-24 bg-white">
         <div className="container-content">
           <motion.div
@@ -234,112 +206,91 @@ export default function KonzeptPage() {
             transition={appleTransition}
             className="mb-12"
           >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...prinzipTaglineEdit}>
-              {prinzip.tagline}
+            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...ldTaglineEdit}>
+              {lerndimensionen.tagline}
             </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...prinzipHeadlineEdit}>
-              {prinzip.headline}
+            <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-2xl" {...ldHeadlineEdit}>
+              {lerndimensionen.headline}
             </h2>
-            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl" {...prinzipDescEdit}>
-              {prinzip.description}
+            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl" {...ldDescEdit}>
+              {lerndimensionen.description}
             </p>
           </motion.div>
 
-          {/* Vorher/Nachher Slider */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...appleTransition, delay: 0.1 }}
-          >
-            <div
-              ref={sliderRef}
-              className="relative aspect-[16/9] rounded-2xl overflow-hidden cursor-ew-resize select-none"
-              onMouseMove={handleMouseMove}
-              onMouseUp={() => setIsDragging(false)}
-              onMouseLeave={() => setIsDragging(false)}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={() => setIsDragging(false)}
-            >
-              {/* Nachher Bild (Hintergrund) */}
-              <Image
-                src="/images/konzept/nachher.jpg"
-                alt="Nachher: Aktivierter Bewegungsraum"
-                fill
-                className="object-cover"
-                draggable={false}
-              />
-
-              {/* Vorher Bild (Overlay mit Clip) */}
-              <div
-                className="absolute inset-0 overflow-hidden"
-                style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
+          {/* 5 Dimensionen - Clickable Cards (Höhe ~10% reduziert) */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {LERNDIMENSIONEN.map((dim: any, index: number) => (
+              <motion.div
+                key={dim.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...appleTransition, delay: index * 0.1 }}
+                onClick={() => setActiveModal(dim.id)}
+                className="bg-white rounded-2xl px-7 py-6 text-center cursor-pointer shadow-apple hover:shadow-apple-lg transition-all group"
               >
-                <Image
-                  src="/images/konzept/vorher.jpg"
-                  alt="Vorher: Ungenutzte Infrastruktur"
-                  fill
-                  className="object-cover"
-                  draggable={false}
-                />
-              </div>
-
-              {/* Slider Handle */}
-              <div
-                className="absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-ew-resize"
-                style={{ left: `${sliderPosition}%`, transform: "translateX(-50%)" }}
-                onMouseDown={() => setIsDragging(true)}
-                onTouchStart={() => setIsDragging(true)}
-              >
-                {/* Handle Button */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center">
-                  <div className="flex items-center gap-1">
-                    <ArrowLeft className="h-4 w-4 text-[var(--color-apple-gray-600)]" />
-                    <ArrowRight className="h-4 w-4 text-[var(--color-apple-gray-600)]" />
-                  </div>
+                <div className="w-14 h-14 mx-auto mb-4 relative group-hover:scale-110 transition-transform">
+                  <Image
+                    src={dim.icon}
+                    alt={dim.title}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-              </div>
-
-              {/* Labels */}
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-full">
-                <span className="text-body-sm font-medium text-[var(--color-apple-gray-600)]">Vorher</span>
-              </div>
-              <div className="absolute bottom-4 right-4 bg-[var(--color-apple-blue)] px-4 py-2 rounded-full">
-                <span className="text-body-sm font-medium text-white">Nachher</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 3 Elemente */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...appleTransition, delay: 0.2 }}
-            className="mt-12 grid md:grid-cols-3 gap-6"
-          >
-            {(prinzip.elements as any[]).map((item: any, index: number) => (
-              <div key={index} className="flex items-start gap-4 bg-[var(--color-apple-gray-100)] rounded-2xl p-6">
-                <div className="w-8 h-8 rounded-full bg-[var(--color-apple-blue)] flex items-center justify-center flex-shrink-0">
-                  <Check className="h-4 w-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-body font-semibold text-[var(--color-apple-dark)]">{item.title}</p>
-                  <p className="text-body-sm text-[var(--color-apple-gray-600)] mt-1">{item.desc}</p>
-                </div>
-              </div>
+                <h3 className="text-headline font-semibold text-[var(--color-apple-dark)] mb-2">
+                  {dim.title}
+                </h3>
+                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-3">
+                  {dim.shortDesc}
+                </p>
+                <span className="inline-flex items-center gap-1 text-body-sm text-[var(--color-apple-blue)] font-medium">
+                  Mehr
+                  <ArrowRight className="h-4 w-4" />
+                </span>
+              </motion.div>
             ))}
-          </motion.div>
+          </div>
+
+          {/* 4 Beispielbilder unter den Dimensionen */}
+          {lerndimensionen.examples && lerndimensionen.examples.length > 0 && (
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-6">
+              {(lerndimensionen.examples as Array<{ src: string; alt?: string; _id?: string }>).map(
+                (ex, i: number) => (
+                  <motion.div
+                    key={ex._id ?? i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ ...appleTransition, delay: 0.1 + i * 0.05 }}
+                    className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-apple"
+                    data-edit-path={`KONZEPT_LERNDIMENSIONEN.examples.${i}`}
+                  >
+                    <Image
+                      src={ex.src}
+                      alt={ex.alt || `Lerndimension Beispiel ${i + 1}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  </motion.div>
+                )
+              )}
+            </div>
+          )}
+
+          {lerndimensionen.examplesCaption && (
+            <p
+              className="mt-6 text-body-lg text-[var(--color-apple-gray-600)] max-w-3xl"
+              data-edit-path="KONZEPT_LERNDIMENSIONEN.examplesCaption"
+            >
+              {lerndimensionen.examplesCaption}
+            </p>
+          )}
         </div>
       </section>
       </EditableSection>
 
-      {/* Was RubikONE auszeichnet */}
-      <EditableSection contentKey="COMPARISON_TABLE" label="Vergleichstabelle">
-        <ComparisonSection />
-      </EditableSection>
-
-      {/* Beispiel-Posten - Slider */}
+      {/* 4. Beispiel-Posten - Slider */}
       <EditableSection contentKey="KONZEPT_POSTEN_SLIDER" label="Posten-Slider">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)] overflow-hidden">
         {/* Header */}
@@ -414,125 +365,17 @@ export default function KonzeptPage() {
       </section>
       </EditableSection>
 
-      {/* Die 5 Lerndimensionen mit Modals */}
-      <EditableSection contentKey="KONZEPT_LERNDIMENSIONEN" label="Lerndimensionen">
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container-content">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={appleTransition}
-            className="mb-12"
-          >
-            <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...ldTaglineEdit}>
-              {lerndimensionen.tagline}
-            </p>
-            <h2 className="text-title-1 text-[var(--color-apple-dark)] max-w-2xl" {...ldHeadlineEdit}>
-              {lerndimensionen.headline}
-            </h2>
-            <p className="mt-4 text-body-lg text-[var(--color-apple-gray-600)] max-w-2xl" {...ldDescEdit}>
-              {lerndimensionen.description}
-            </p>
-          </motion.div>
-
-          {/* 5 Dimensionen - Clickable Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {LERNDIMENSIONEN.map((dim: any, index: number) => (
-              <motion.div
-                key={dim.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ ...appleTransition, delay: index * 0.1 }}
-                onClick={() => setActiveModal(dim.id)}
-                className="bg-white rounded-2xl p-8 text-center cursor-pointer shadow-apple hover:shadow-apple-lg transition-all group"
-              >
-                <div className="w-16 h-16 mx-auto mb-5 relative group-hover:scale-110 transition-transform">
-                  <Image
-                    src={dim.icon}
-                    alt={dim.title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <h3 className="text-headline font-semibold text-[var(--color-apple-dark)] mb-2">
-                  {dim.title}
-                </h3>
-                <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-4">
-                  {dim.shortDesc}
-                </p>
-                <span className="inline-flex items-center gap-1 text-body-sm text-[var(--color-apple-blue)] font-medium">
-                  Mehr
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 5. Mehrwert (NEW) */}
+      <EditableSection contentKey="KONZEPT_MEHRWERT" label="Mehrwert">
+        <MehrwertSection />
       </EditableSection>
 
-      {/* RubikONE funktioniert - Zahlen */}
-      <EditableSection contentKey="STATS_CONTENT" label="Statistiken">
-        <StatsSection />
+      {/* 6. Vergleichstabelle */}
+      <EditableSection contentKey="COMPARISON_TABLE" label="Vergleichstabelle">
+        <ComparisonSection />
       </EditableSection>
 
-      {/* Sicherheit */}
-      <EditableSection contentKey="KONZEPT_SICHERHEIT" label="Sicherheit">
-      <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
-        <div className="container-content">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            {/* Content */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={appleTransition}
-            >
-              <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...sicherheitTaglineEdit}>
-                {sicherheit.tagline}
-              </p>
-              <h2 className="text-title-1 text-[var(--color-apple-dark)]" {...sicherheitHeadlineEdit}>
-                {sicherheit.headline}
-              </h2>
-              <p className="mt-6 text-body-lg text-[var(--color-apple-gray-700)]" {...sicherheitDescEdit}>
-                {sicherheit.description}
-              </p>
-
-              {/* Normen */}
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                {(sicherheit.normen as any[]).map((norm: any, index: number) => (
-                  <div key={index} className="bg-white rounded-xl p-4 shadow-apple">
-                    <p className="text-body-sm font-mono font-semibold text-[var(--color-apple-blue)]">{norm.code}</p>
-                    <p className="text-caption text-[var(--color-apple-gray-600)] mt-1">{norm.name}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: 0.1 }}
-            >
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <Image
-                  src={sicherheit.image}
-                  alt="RubikONE Beschilderung"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-      </EditableSection>
-
-      {/* CTA */}
+      {/* 7. CTA */}
       <EditableSection contentKey="KONZEPT_CTA" label="Call-to-Action">
       <section className="py-16 lg:py-24 bg-[var(--color-apple-blue)]">
         <div className="container-content text-center">
