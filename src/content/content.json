@@ -2039,9 +2039,9 @@
     }
   },
   "RAUMGESTALTUNG_HERO": {
-    "title": "Gewohntes neu entdecken",
-    "description": "RubikONE oder Ihre individuelle Lösung transformiert die bekannte Umgebung in einen Parkour- & Bewegungsraum.",
-    "breadcrumb": "Die Multiperspektive",
+    "title": "Entdecke das Potential deiner Umgebung",
+    "description": "RubikONE bietet eine individuelle Lösung und transformiert die bekannte Umgebung in einen Parkour- & Bewegungsraum.",
+    "breadcrumb": "Menschen bewegen – Perspektive wechseln",
     "image": "/images/koeniz/kind-springt.jpg",
     "imageAlt": "Kind springt bei RubikONE"
   },
@@ -2193,9 +2193,9 @@
     }
   },
   "KOENIZ_HERO": {
-    "title": "Köniz macht es vor...",
-    "description": "Die erste RubikONE-Installation der Schweiz. Ein BASPO lab7x1 Pilotprojekt mit wissenschaftlicher Evaluation.",
-    "breadcrumb": "Referenz Köniz",
+    "title": "Entdecke RubikONE",
+    "description": "Probiere es aus und erlebe die Bewegungskultur von RubikONE. Köniz hat in Kooperation mit dem BASPO lab7x1 als erste Gemeinde einen RubikONE installiert.",
+    "breadcrumb": "Interesse geweckt?",
     "image": "/images/koeniz/luftbild.jpg",
     "imageAlt": "Luftaufnahme RubikONE Köniz im Schlossareal"
   },

@@ -237,7 +237,30 @@ export default function RaumgestaltungPage() {
       </section>
       </EditableSection>
 
-      {/* Testimonial Bernadette */}
+      {/* 4. Prozess (vorher 5) */}
+      <EditableSection contentKey="RAUMGESTALTUNG_PROZESS" label="Prozess">
+      <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
+        <div className="container-content">
+          <SectionHeader
+            title={prozess.title}
+            subtitle={prozess.subtitle}
+            description={prozess.description}
+            className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
+            titleProps={prozessTitleEdit}
+            subtitleProps={prozessSubtitleEdit}
+            descriptionProps={prozessDescEdit}
+          />
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {(prozess.schritte as any[]).map((schritt: any, index: number) => (
+              <ProzessSchrittCard key={index} schritt={schritt} index={index} />
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+      </EditableSection>
+
+      {/* 5. Testimonial Bernadette (vorher 4) */}
       <EditableSection contentKey="RAUMGESTALTUNG_TESTIMONIAL" label="Testimonial Bernadette">
       <section className="section-spacing">
         <div className="container-content">
@@ -267,29 +290,6 @@ export default function RaumgestaltungPage() {
               </div>
             </FadeUp>
           </div>
-        </div>
-      </section>
-      </EditableSection>
-
-      {/* Prozess */}
-      <EditableSection contentKey="RAUMGESTALTUNG_PROZESS" label="Prozess">
-      <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
-        <div className="container-content">
-          <SectionHeader
-            title={prozess.title}
-            subtitle={prozess.subtitle}
-            description={prozess.description}
-            className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
-            titleProps={prozessTitleEdit}
-            subtitleProps={prozessSubtitleEdit}
-            descriptionProps={prozessDescEdit}
-          />
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {(prozess.schritte as any[]).map((schritt: any, index: number) => (
-              <ProzessSchrittCard key={index} schritt={schritt} index={index} />
-            ))}
-          </StaggerContainer>
         </div>
       </section>
       </EditableSection>
