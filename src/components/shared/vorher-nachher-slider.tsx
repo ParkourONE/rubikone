@@ -10,7 +10,10 @@ interface VorherNachherSliderProps {
   nachherSrc: string;
   vorherAlt?: string;
   nachherAlt?: string;
+  vorherLabel?: string;
+  nachherLabel?: string;
   className?: string;
+  aspectClass?: string;
 }
 
 export function VorherNachherSlider({
@@ -18,7 +21,10 @@ export function VorherNachherSlider({
   nachherSrc,
   vorherAlt = "Vorher: Ungenutzte Infrastruktur",
   nachherAlt = "Nachher: Aktivierter Bewegungsraum",
+  vorherLabel = "Vorher",
+  nachherLabel = "Nachher",
   className = "",
+  aspectClass = "aspect-[16/9]",
 }: VorherNachherSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -52,7 +58,7 @@ export function VorherNachherSlider({
     >
       <div
         ref={sliderRef}
-        className="relative aspect-[16/9] rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-apple-lg"
+        className={`relative ${aspectClass} rounded-2xl overflow-hidden cursor-ew-resize select-none shadow-apple-lg`}
         onMouseMove={handleMouseMove}
         onMouseUp={() => setIsDragging(false)}
         onMouseLeave={() => setIsDragging(false)}
@@ -104,10 +110,10 @@ export function VorherNachherSlider({
 
         {/* Labels */}
         <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full">
-          <span className="text-body-sm font-medium text-white">Vorher</span>
+          <span className="text-body-sm font-medium text-white">{vorherLabel}</span>
         </div>
         <div className="absolute bottom-4 right-4 bg-[var(--color-apple-blue)] px-3 py-1.5 rounded-full">
-          <span className="text-body-sm font-medium text-white">Nachher</span>
+          <span className="text-body-sm font-medium text-white">{nachherLabel}</span>
         </div>
       </div>
     </motion.div>

@@ -1,11 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { Eye } from "lucide-react";
 import { appleTransition } from "@/lib/animations";
 import { KONZEPT_PERSPEKTIVE } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { useEditPath } from "@/components/cms/primitives";
+import { VorherNachherSlider } from "@/components/shared/vorher-nachher-slider";
 
 export function PerspektiveSection() {
   const content = useContent("KONZEPT_PERSPEKTIVE", KONZEPT_PERSPEKTIVE) as {
@@ -19,8 +20,6 @@ export function PerspektiveSection() {
   const taglineEdit = useEditPath("KONZEPT_PERSPEKTIVE.tagline");
   const headlineEdit = useEditPath("KONZEPT_PERSPEKTIVE.headline");
   const descEdit = useEditPath("KONZEPT_PERSPEKTIVE.description");
-  const imageDefaultEdit = useEditPath("KONZEPT_PERSPEKTIVE.imageDefault");
-  const imageHoverEdit = useEditPath("KONZEPT_PERSPEKTIVE.imageHover");
 
   return (
     <section className="py-16 lg:py-24 bg-white">
@@ -31,7 +30,7 @@ export function PerspektiveSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={appleTransition}
-          className="max-w-3xl mb-12"
+          className="max-w-3xl mb-8"
         >
           {content.tagline && (
             <p
@@ -59,31 +58,30 @@ export function PerspektiveSection() {
           )}
         </motion.div>
 
-        {/* Hover image-swap */}
+        {/* Discovery hint */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ ...appleTransition, delay: 0.1 }}
-          className="relative aspect-[16/9] lg:aspect-[21/9] rounded-2xl overflow-hidden shadow-apple group"
+          className="mb-4 flex items-center gap-2 text-body-sm text-[var(--color-apple-gray-600)]"
         >
-          <Image
-            src={content.imageDefault}
-            alt={content.imageAlt || content.headline}
-            fill
-            className="object-cover transition-opacity duration-500 group-hover:opacity-0"
-            sizes="(max-width: 1024px) 100vw, 980px"
-            {...imageDefaultEdit}
-          />
-          <Image
-            src={content.imageHover}
-            alt={content.imageAlt || content.headline}
-            fill
-            className="object-cover absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            sizes="(max-width: 1024px) 100vw, 980px"
-            {...imageHoverEdit}
-          />
+          <Eye className="h-4 w-4 text-[var(--color-apple-blue)]" />
+          <span>
+            Ziehe den Slider, um die <strong>Parkour-Brille</strong> aufzusetzen
+          </span>
         </motion.div>
+
+        {/* Drag slider revealing parkour-brille */}
+        <VorherNachherSlider
+          vorherSrc={content.imageDefault}
+          nachherSrc={content.imageHover}
+          vorherAlt={`${content.imageAlt || content.headline} – ohne Parkour-Brille`}
+          nachherAlt={`${content.imageAlt || content.headline} – mit Parkour-Brille`}
+          vorherLabel="Normaler Blick"
+          nachherLabel="Parkour-Brille"
+          aspectClass="aspect-[16/9] lg:aspect-[21/9]"
+        />
       </div>
     </section>
   );
