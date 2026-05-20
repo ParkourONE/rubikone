@@ -763,8 +763,8 @@ m({
     description: z.string(),
     vorherImage: z.string(),
     nachherImage: z.string(),
-    ctaText: z.string(),
-    ctaHref: z.string(),
+    ctaText: z.string().optional(),
+    ctaHref: z.string().optional(),
   }),
   fields: [
     text("tagline"),
@@ -772,8 +772,8 @@ m({
     text("description"),
     image("vorherImage"),
     image("nachherImage"),
-    text("ctaText"),
-    text("ctaHref"),
+    text("ctaText", { required: false }),
+    text("ctaHref", { required: false }),
   ],
 });
 
@@ -800,22 +800,77 @@ m({
 
 m({
   id: "PROZESS_TEASER_CONTENT",
-  label: "Prozess-Teaser",
+  label: "Bereit für den nächsten Schritt",
+  schema: blockObject({
+    tagline: z.string().optional(),
+    headline: z.string().optional(),
+    description1: z.string().optional(),
+    ctaMid: ctaSchema.optional(),
+    description2: z.string().optional(),
+    ctaPrimary: ctaSchema.optional(),
+    ctaSecondary: ctaSchema.optional(),
+    downloads: z
+      .array(withId({ label: z.string(), href: z.string() }))
+      .optional(),
+  }),
+  fields: [
+    text("tagline", { required: false }),
+    text("headline", { required: false }),
+    text("description1", { required: false }),
+    button("ctaMid"),
+    text("description2", { required: false }),
+    button("ctaPrimary"),
+    button("ctaSecondary"),
+    list("downloads", [text("label"), text("href")], { required: false }),
+  ],
+});
+
+m({
+  id: "PRINZIP_CONTENT",
+  label: "Das Prinzip (Home)",
   schema: blockObject({
     tagline: z.string(),
     headline: z.string(),
     description1: z.string(),
     description2: z.string(),
-    ctaText: z.string(),
-    ctaHref: z.string(),
+    image: z.string(),
+    imageAlt: z.string().optional(),
+    ctaPrimary: ctaSchema.optional(),
+  }),
+  fields: [
+    text("tagline"),
+    text("headline"),
+    richtext("description1"),
+    text("description2"),
+    image("image"),
+    text("imageAlt", { required: false }),
+    button("ctaPrimary"),
+  ],
+});
+
+m({
+  id: "POSTEN_TEASER_CONTENT",
+  label: "Ein RubikONE Posten (Home)",
+  schema: blockObject({
+    tagline: z.string(),
+    headline: z.string(),
+    description1: z.string(),
+    description2: z.string(),
+    images: z.array(
+      withId({
+        src: z.string(),
+        alt: z.string().optional(),
+      })
+    ),
+    ctaPrimary: ctaSchema.optional(),
   }),
   fields: [
     text("tagline"),
     text("headline"),
     text("description1"),
-    text("description2"),
-    text("ctaText"),
-    text("ctaHref"),
+    richtext("description2"),
+    list("images", [image("src"), text("alt", { required: false })]),
+    button("ctaPrimary"),
   ],
 });
 
