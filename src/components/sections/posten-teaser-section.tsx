@@ -60,8 +60,8 @@ export function PostenTeaserSection() {
             </p>
           )}
           {posten.description2 && (
-            <p
-              className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed"
+            <div
+              className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed [&_p+ul]:mt-2 [&_strong]:font-semibold [&_strong]:text-[var(--color-apple-dark)]"
               dangerouslySetInnerHTML={{ __html: posten.description2 }}
               {...desc2Edit}
             />
