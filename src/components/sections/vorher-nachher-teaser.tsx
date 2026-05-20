@@ -10,7 +10,15 @@ import { useContent } from "@/hooks/useContent";
 import { useEditPath } from "@/components/cms/primitives";
 
 export function VorherNachherTeaser() {
-  const vnContent = useContent("VORHER_NACHHER_CONTENT", VORHER_NACHHER_CONTENT);
+  const vnContent = useContent("VORHER_NACHHER_CONTENT", VORHER_NACHHER_CONTENT) as {
+    tagline?: string;
+    headline?: string;
+    description?: string;
+    vorherImage: string;
+    nachherImage: string;
+    ctaText?: string;
+    ctaHref?: string;
+  };
   const taglineEdit = useEditPath("VORHER_NACHHER_CONTENT.tagline");
   const headlineEdit = useEditPath("VORHER_NACHHER_CONTENT.headline");
   const descEdit = useEditPath("VORHER_NACHHER_CONTENT.description");

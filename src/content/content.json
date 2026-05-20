@@ -75,16 +75,12 @@
   "HERO_CONTENT": {
     "headline": "Hier darfst du.",
     "headlineAccent": "",
-    "brandTag": "Menschen bewegen - Perspektive wechseln",
-    "subheadline": "RubikONE macht den öffentlichen Raum zum Bewegungsort – für alle Generationen. und Fitnesslevel. Dauerhaft & wetterfest.",
+    "brandTag": "Menschen bewegen – Perspektive wechseln",
+    "subheadline": "RubikONE lädt dazu ein neue Perspektiven zu entdecken. Der öffentliche Raum wird zum Bewegungsort. Für alle Generationen und Fitnesslevel, dauerhaft & wetterfest.",
     "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
     "heroVideoSrc": "/videos/hero.mp4",
     "ctaPrimary": {
-      "label": "Raumgestaltung entdecken",
-      "href": "/raumgestaltung"
-    },
-    "ctaSecondary": {
-      "label": "Referenz Köniz ansehen",
+      "label": "Entdecke Rubikone",
       "href": "/koeniz"
     }
   },
@@ -1124,13 +1120,11 @@
     "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
     "description": "RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar – normenkonform und reversibel.",
     "vorherImage": "/images/konzept/vorher.jpg",
-    "nachherImage": "/images/konzept/nachher.jpg",
-    "ctaText": "Das Konzept entdecken",
-    "ctaHref": "/konzept"
+    "nachherImage": "/images/konzept/nachher.jpg"
   },
   "GALLERY_CONTENT": {
     "tagline": "Eindrücke aus der Praxis",
-    "headline": "Bewegung verbindet Generationen.",
+    "headline": "Wer RubikONE nutzt macht Parkour.",
     "images": [
       {
         "src": "/images/hero/oma-enkelin.jpg",
@@ -1184,11 +1178,67 @@
   },
   "PROZESS_TEASER_CONTENT": {
     "tagline": "Individuell angepasst",
-    "headline": "Wir gestalten mit Ihnen.",
-    "description1": "Es geht darum sich draussen zu bewegen, Neues auszuprobieren, sich aus der Komfortzone zu locken und Erfolgserlebnisse zu sammeln. Mit welchen Bewegungsaufforderungen gelingt das in Ihrer Ortschaft?",
-    "description2": "Wir helfen Ihnen dabei, aus dem Raumpotenzial gesellschaftlichen Mehrwert zu schöpfen.",
-    "ctaText": "Gestalten Sie Ihren Parkour- & Bewegungsraum",
-    "ctaHref": "/raumgestaltung"
+    "headline": "Bereit für den nächsten Schritt?",
+    "description1": "Es geht darum sich draussen zu bewegen, Neues auszuprobieren, sich aus der Komfortzone zu locken und Erfolgserlebnisse zu sammeln.",
+    "ctaMid": {
+      "label": "Gestalten Sie Ihren Parkour- & Bewegungsraum",
+      "href": "/raumgestaltung"
+    },
+    "description2": "Entdecken Sie das Potenzial Ihrer Gemeinde und erleben Sie neue Perspektiven mit dem Impulsworkshop.",
+    "ctaPrimary": {
+      "label": "Impulsworkshop buchen",
+      "href": "/impulsworkshop"
+    },
+    "ctaSecondary": {
+      "label": "Kostenlose Standort-Analyse anfragen",
+      "href": "/kontakt"
+    },
+    "downloads": [
+      {
+        "label": "Verkaufsbroschüre RubikONE (PDF)",
+        "href": "/downloads/rubikone-verkaufsbroschuere.pdf",
+        "_id": "IUlQvjWBcp"
+      }
+    ]
+  },
+  "PRINZIP_CONTENT": {
+    "tagline": "Mit neuen Augen sehen",
+    "headline": "Entdecke das Potenzial von DIR und DEINER Umgebung",
+    "description1": "Mit RubikONE verändern wir nicht die <strong>Infrastruktur</strong>, sondern die <strong>Nutzung</strong><br />Wir verändern nicht den <strong>Ort</strong>, sondern die <strong>Wahrnehmung</strong><br />Wir verändern nicht die <strong>Menschen</strong>, sondern ihr <strong>Verhalten</strong> im Raum",
+    "description2": "Durch einfache Markierungen und klare Impulse laden wir Menschen ein, den Raum neu zu erleben – inspiriert von der Kunst des Parkour.",
+    "image": "/images/konzept/prinzip-gruppe-bank.jpg",
+    "imageAlt": "Menschen sitzen auf einer Bank im öffentlichen Raum",
+    "ctaPrimary": {
+      "label": "Die Bewegungskultur entdecken",
+      "href": "/konzept"
+    }
+  },
+  "POSTEN_TEASER_CONTENT": {
+    "tagline": "Das Produkt",
+    "headline": "Ein RubikONE Posten.",
+    "description1": "Ein Ort, Farbmarkierungen und ein Schild mit Bewegungsimpulsen.",
+    "description2": "Training inspiriert von Parkour bedeutet: Vielfältige Aufgaben,<br />Teamchallenges,<br />Umgebungselemente kreativ nutzen,<br />Die Sinne mit einbeziehen.<br /><strong>Keine Schwierigkeitenlevels – sondern Variationen.</strong>",
+    "images": [
+      {
+        "src": "/images/konzept/posten-treppe-vorher.jpg",
+        "alt": "Treppe vor RubikONE-Markierung",
+        "_id": "posten-img-1"
+      },
+      {
+        "src": "/images/konzept/posten-treppe-farbmarkierungen.jpg",
+        "alt": "Treppe mit RubikONE-Farbmarkierungen",
+        "_id": "posten-img-2"
+      },
+      {
+        "src": "/images/konzept/posten-treppe-menschen.jpg",
+        "alt": "Menschen nutzen RubikONE-Treppe",
+        "_id": "posten-img-3"
+      }
+    ],
+    "ctaPrimary": {
+      "label": "Ein besonderes Lernkonzept",
+      "href": "/ueber-uns"
+    }
   },
   "CONFIGURATOR_CTA_CONTENT": {
     "headline": "Ihr individuelles Leistungspaket",

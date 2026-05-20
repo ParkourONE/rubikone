@@ -105,11 +105,16 @@ export function HeroSection() {
               className="max-w-xl"
             >
               {/* Brand Tag */}
-              <motion.div variants={staggerItem}>
-                <span className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6">
-                  RubikONE – Der Fitnessparkour
-                </span>
-              </motion.div>
+              {brandTag && (
+                <motion.div variants={staggerItem}>
+                  <span
+                    className="inline-block px-4 py-2 bg-[var(--color-apple-gray-100)] rounded-full text-[var(--color-apple-gray-600)] text-body-sm font-medium mb-6"
+                    {...brandTagEdit}
+                  >
+                    {brandTag}
+                  </span>
+                </motion.div>
+              )}
 
               {/* Headline */}
               <motion.h1
