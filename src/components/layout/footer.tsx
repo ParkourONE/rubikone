@@ -81,9 +81,16 @@ export function Footer() {
           <div className="col-span-2">
             <Link
               href="/"
-              className="text-lg font-semibold text-[var(--color-apple-dark)]"
+              className="inline-block"
+              aria-label={`${SITE_CONFIG.name} — zur Startseite`}
             >
-              {SITE_CONFIG.name}
+              <Image
+                src="/images/logos/rubikone-logo.png"
+                alt={SITE_CONFIG.name}
+                width={500}
+                height={75}
+                className="h-9 w-auto"
+              />
             </Link>
             <div className="mt-3 text-body-sm text-[var(--color-apple-gray-600)] max-w-xs space-y-3">
               <p>Menschen bewegen – Perspektive wechseln.</p>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calculator } from "lucide-react";
@@ -99,9 +100,17 @@ export function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight text-[var(--color-apple-dark)]"
+            className="flex items-center"
+            aria-label={`${SITE_CONFIG.name} — zur Startseite`}
           >
-            {SITE_CONFIG.name}
+            <Image
+              src="/images/logos/rubikone-logo.png"
+              alt={SITE_CONFIG.name}
+              width={500}
+              height={75}
+              className="h-7 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
