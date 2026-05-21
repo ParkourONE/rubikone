@@ -1217,7 +1217,7 @@
     "tagline": "Das Produkt",
     "headline": "Ein RubikONE Posten.",
     "description1": "Ein Ort, Farbmarkierungen und ein Schild mit Bewegungsimpulsen.",
-    "description2": "<p>Training inspiriert von Parkour bedeutet:</p><ul class=\"list-disc text-left max-w-md mx-auto mt-3 pl-6 space-y-1\"><li>Vielfältige Aufgaben</li><li>Teamchallenges</li><li>Umgebungselemente kreativ nutzen</li><li>Die Sinne mit einbeziehen</li></ul><p class=\"mt-4\"><strong>Keine Schwierigkeitenlevels – sondern Variationen.</strong></p>",
+    "description2": "<p>Training inspiriert von Parkour bedeutet:</p><ul class=\"list-disc mt-3 pl-6 space-y-1\"><li>Vielfältige Aufgaben</li><li>Teamchallenges</li><li>Umgebungselemente kreativ nutzen</li><li>Die Sinne mit einbeziehen</li></ul><p class=\"mt-4\"><strong>Keine Schwierigkeitenlevels – sondern Variationen.</strong></p>",
     "images": [
       {
         "src": "/images/konzept/posten-treppe-vorher.jpg",
