@@ -1203,8 +1203,8 @@
   },
   "PRINZIP_CONTENT": {
     "tagline": "Mit neuen Augen sehen",
-    "headline": "Entdecke das Potenzial von DIR und DEINER Umgebung",
-    "description1": "Mit RubikONE verändern wir nicht die <strong>Infrastruktur</strong>, sondern die <strong>Nutzung</strong><br />Wir verändern nicht den <strong>Ort</strong>, sondern die <strong>Wahrnehmung</strong><br />Wir verändern nicht die <strong>Menschen</strong>, sondern ihr <strong>Verhalten</strong> im Raum",
+    "headline": "Entdecke das Potenzial von dir und deiner Umgebung",
+    "description1": "Mit RubikONE verändern wir nicht die <strong>Infrastruktur</strong>, sondern die <strong>Nutzung</strong>.<br />Wir verändern nicht den <strong>Ort</strong>, sondern die <strong>Wahrnehmung</strong>.<br />Wir verändern nicht die <strong>Menschen</strong>, sondern ihr <strong>Verhalten</strong> im Raum.",
     "description2": "Durch einfache Markierungen und klare Impulse laden wir Menschen ein, den Raum neu zu erleben – inspiriert von der Kunst des Parkour.",
     "image": "/images/konzept/prinzip-gruppe-bank.jpg",
     "imageAlt": "Menschen sitzen auf einer Bank im öffentlichen Raum",
@@ -1877,7 +1877,7 @@
     "imageAlt": "Urbaner Raum als Erlebnisraum"
   },
   "KONZEPT_MEHRWERT": {
-    "tagline": "Wirkung",
+    "tagline": "Mehr als nur Bewegung",
     "headline": "Der Mehrwert von RubikONE",
     "description": "Wirkung auf zwei Ebenen. Das Angebot von RubikONE und der daraus entstehende Effekt.",
     "slides": [
@@ -2047,7 +2047,7 @@
   },
   "RAUMGESTALTUNG_MEHRWERT": {
     "title": "Mehrwert für alle",
-    "subtitle": "Aufenthaltsqualität steigern",
+    "subtitle": "Für wen ist RubikONE?",
     "description": "Mit RubikONE wird die Gemeinde, das Quartier oder das Schulareal zum vielseitigen Bewegungsraum.",
     "stakeholders": [
       {
