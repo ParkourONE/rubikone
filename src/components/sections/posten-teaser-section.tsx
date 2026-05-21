@@ -33,13 +33,13 @@ export function PostenTeaserSection() {
   return (
     <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
       <div className="container-content">
-        {/* Centered headline + descriptions */}
+        {/* Left-aligned headline + descriptions */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={appleTransition}
-          className="max-w-3xl mx-auto text-center"
+          className="max-w-3xl"
         >
           {posten.tagline && (
             <p className="text-body-sm text-[var(--color-apple-gray-600)] mb-2" {...taglineEdit}>
@@ -100,7 +100,7 @@ export function PostenTeaserSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...appleTransition, delay: 0.3 }}
-            className="mt-12 flex justify-center"
+            className="mt-12 flex justify-start"
           >
             <Link
               href={posten.ctaPrimary.href}
