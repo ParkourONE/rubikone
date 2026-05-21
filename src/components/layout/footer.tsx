@@ -85,9 +85,10 @@ export function Footer() {
             >
               {SITE_CONFIG.name}
             </Link>
-            <p className="mt-3 text-body-sm text-[var(--color-apple-gray-600)] max-w-xs">
-              RubikONE verwandelt bestehende Orte in Bewegungsräume – clever. nachhaltig. flexibel.
-            </p>
+            <div className="mt-3 text-body-sm text-[var(--color-apple-gray-600)] max-w-xs space-y-3">
+              <p>Menschen bewegen – Perspektive wechseln.</p>
+              <p>RubikONE macht bestehende Orte als Bewegungsräume sichtbar.</p>
+            </div>
 
             {/* ParkourONE Logo */}
             <div className="mt-6">

@@ -4,7 +4,6 @@ import { cookies } from "next/headers";
 import "./globals.css";
 import { Navigation } from "@/components/layout/navigation";
 import { Footer } from "@/components/layout/footer";
-import { FloatingConfigurator } from "@/components/layout/floating-configurator";
 import { LenisProvider } from "@/providers/lenis-provider";
 import { ConsentProvider } from "@/providers/consent-provider";
 import { AdminProvider } from "@/providers/admin-provider";
@@ -26,7 +25,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_CONFIG.url),
   title: {
-    default: `${SITE_CONFIG.name} – Der Fitnessparkour für Ihre Gemeinde`,
+    default: `Konzept | ${SITE_CONFIG.name}`,
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: "RubikONE verwandelt bestehende Orte in Bewegungsräume – wissenschaftlich fundiert, von Köniz bewiesen. Ohne neue Geräte. Ohne Tiefbau.",
@@ -108,7 +107,6 @@ export default async function RootLayout({
                 <main>{children}</main>
                 <Footer />
                 <CookieBanner />
-                <FloatingConfigurator />
               </LenisProvider>
             </AdminContentWrapper>
             <ConditionalAnalytics />
