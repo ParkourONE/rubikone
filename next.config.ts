@@ -67,6 +67,22 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // Alte QR-Code-Ziele (Schilder vor Ort, z.B. Koeniz) auf aktuelle Posten-Routen umleiten
+  async redirects() {
+    return [
+      {
+        source: "/parkour",
+        destination: "/passement",
+        permanent: true,
+      },
+      {
+        source: "/zielgerade",
+        destination: "/quadrupedie",
+        permanent: true,
+      },
+    ];
+  },
+
   // Disable x-powered-by header
   poweredByHeader: false,
 
