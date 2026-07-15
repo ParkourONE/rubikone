@@ -12,6 +12,12 @@ import { useEditPath } from "@/components/cms/primitives";
 interface PostenImage {
   src: string;
   alt?: string;
+  portrait?: boolean;
+  _id?: string;
+}
+
+interface PostenFeature {
+  label: string;
   _id?: string;
 }
 
@@ -21,6 +27,7 @@ export function PostenTeaserSection() {
     headline: string;
     description1: string;
     description2: string;
+    features?: PostenFeature[];
     images: PostenImage[];
     ctaPrimary?: { label: string; href: string };
   };
@@ -29,6 +36,8 @@ export function PostenTeaserSection() {
   const desc1Edit = useEditPath("POSTEN_TEASER_CONTENT.description1");
   const desc2Edit = useEditPath("POSTEN_TEASER_CONTENT.description2");
   const ctaEdit = useEditPath("POSTEN_TEASER_CONTENT.ctaPrimary");
+
+  const ctaIsExternal = posten.ctaPrimary?.href.startsWith("http");
 
   return (
     <section className="py-16 lg:py-24 bg-[var(--color-apple-gray-100)]">
@@ -61,16 +70,37 @@ export function PostenTeaserSection() {
           )}
           {posten.description2 && (
             <div
-              className="mt-6 text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed [&_p+ul]:mt-2 [&_strong]:font-semibold [&_strong]:text-[var(--color-apple-dark)]"
+              className="mt-4 text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed [&_strong]:font-semibold [&_strong]:text-[var(--color-apple-dark)]"
               dangerouslySetInnerHTML={{ __html: posten.description2 }}
               {...desc2Edit}
             />
           )}
         </motion.div>
 
-        {/* Three-column image grid */}
+        {/* Feature cards - four in a row */}
+        {posten.features && posten.features.length > 0 && (
+          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {posten.features.map((feature, index) => (
+              <motion.div
+                key={feature._id ?? index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ ...appleTransition, delay: 0.05 + index * 0.05 }}
+                className="bg-white rounded-2xl px-5 py-4 shadow-apple flex items-center justify-center text-center"
+                data-edit-path={`POSTEN_TEASER_CONTENT.features.${index}`}
+              >
+                <p className="text-body text-[var(--color-apple-gray-700)] whitespace-pre-line">
+                  {feature.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        {/* Image row: landscape images fill, portrait image keeps full height */}
         {posten.images && posten.images.length > 0 && (
-          <div className="mt-12 grid md:grid-cols-3 gap-4 lg:gap-6">
+          <div className="mt-8 grid gap-4 lg:gap-6 lg:h-[440px] xl:h-[500px] lg:grid-cols-[1fr_1fr_auto]">
             {posten.images.map((img, index) => (
               <motion.div
                 key={img._id ?? index}
@@ -78,7 +108,11 @@ export function PostenTeaserSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ ...appleTransition, delay: 0.1 + index * 0.05 }}
-                className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-apple"
+                className={
+                  img.portrait
+                    ? "relative aspect-[553/850] w-full max-w-sm mx-auto lg:mx-0 lg:w-auto lg:h-full rounded-2xl overflow-hidden shadow-apple"
+                    : "relative aspect-[4/3] lg:aspect-auto lg:h-full rounded-2xl overflow-hidden shadow-apple"
+                }
                 data-edit-path={`POSTEN_TEASER_CONTENT.images.${index}`}
               >
                 <Image
@@ -86,7 +120,7 @@ export function PostenTeaserSection() {
                   alt={img.alt || `Posten ${index + 1}`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                 />
               </motion.div>
             ))}
@@ -105,6 +139,7 @@ export function PostenTeaserSection() {
             <Link
               href={posten.ctaPrimary.href}
               className="btn-secondary inline-flex"
+              {...(ctaIsExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               {...ctaEdit}
             >
               {posten.ctaPrimary.label}

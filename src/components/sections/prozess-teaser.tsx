@@ -13,6 +13,12 @@ interface CtaLink {
   href: string;
 }
 
+interface ProzessBlock {
+  description?: string;
+  cta?: CtaLink;
+  _id?: string;
+}
+
 interface DownloadLink {
   label: string;
   href: string;
@@ -24,27 +30,16 @@ export function ProzessTeaser() {
     "PROZESS_TEASER_CONTENT",
     PROZESS_TEASER_CONTENT
   ) as {
-    tagline?: string;
     headline?: string;
-    description1?: string;
-    ctaMid?: CtaLink;
-    description2?: string;
-    ctaPrimary?: CtaLink;
-    ctaSecondary?: CtaLink;
+    blocks?: ProzessBlock[];
     downloads?: DownloadLink[];
   };
-  const taglineEdit = useEditPath("PROZESS_TEASER_CONTENT.tagline");
   const headlineEdit = useEditPath("PROZESS_TEASER_CONTENT.headline");
-  const desc1Edit = useEditPath("PROZESS_TEASER_CONTENT.description1");
-  const desc2Edit = useEditPath("PROZESS_TEASER_CONTENT.description2");
-  const ctaMidEdit = useEditPath("PROZESS_TEASER_CONTENT.ctaMid");
-  const ctaPrimaryEdit = useEditPath("PROZESS_TEASER_CONTENT.ctaPrimary");
-  const ctaSecondaryEdit = useEditPath("PROZESS_TEASER_CONTENT.ctaSecondary");
 
   return (
-    <section className="py-16 lg:py-24 bg-[var(--color-apple-dark)]">
+    <section className="py-16 lg:py-24 bg-gradient-to-br from-[var(--color-apple-blue)] via-[var(--color-apple-blue)] to-[var(--color-apple-blue)]/80">
       <div className="container-content">
-        {/* Centered tagline + headline */}
+        {/* Centered headline */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -52,14 +47,6 @@ export function ProzessTeaser() {
           transition={appleTransition}
           className="text-center max-w-3xl mx-auto"
         >
-          {prozessTeaser.tagline && (
-            <p
-              className="text-body-sm text-white/60 mb-2"
-              {...taglineEdit}
-            >
-              {prozessTeaser.tagline}
-            </p>
-          )}
           {prozessTeaser.headline && (
             <h2 className="text-title-1 text-white" {...headlineEdit}>
               {prozessTeaser.headline}
@@ -67,84 +54,36 @@ export function ProzessTeaser() {
           )}
         </motion.div>
 
-        {/* Two stacked content blocks */}
+        {/* Stacked content blocks: description + CTA */}
         <div className="max-w-2xl mx-auto mt-12 space-y-12">
-          {/* Block 1: description1 + ctaMid */}
-          {(prozessTeaser.description1 || prozessTeaser.ctaMid) && (
+          {(prozessTeaser.blocks ?? []).map((block, index) => (
             <motion.div
+              key={block._id ?? index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: 0.1 }}
+              transition={{ ...appleTransition, delay: 0.1 + index * 0.1 }}
               className="text-center"
+              data-edit-path={`PROZESS_TEASER_CONTENT.blocks.${index}`}
             >
-              {prozessTeaser.description1 && (
-                <p
-                  className="text-body-lg text-white/80 leading-relaxed"
-                  {...desc1Edit}
-                >
-                  {prozessTeaser.description1}
+              {block.description && (
+                <p className="text-body-lg text-white/80 leading-relaxed">
+                  {block.description}
                 </p>
               )}
-              {prozessTeaser.ctaMid && (
+              {block.cta && (
                 <div className="mt-6">
                   <Link
-                    href={prozessTeaser.ctaMid.href}
-                    className="btn-primary bg-white text-[var(--color-apple-dark)] hover:bg-white/90 inline-flex"
-                    {...ctaMidEdit}
+                    href={block.cta.href}
+                    className="btn-primary bg-white text-[var(--color-apple-blue)] hover:bg-white/90 inline-flex"
                   >
-                    {prozessTeaser.ctaMid.label}
+                    {block.cta.label}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               )}
             </motion.div>
-          )}
-
-          {/* Block 2: description2 + ctaPrimary + ctaSecondary */}
-          {(prozessTeaser.description2 ||
-            prozessTeaser.ctaPrimary ||
-            prozessTeaser.ctaSecondary) && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...appleTransition, delay: 0.2 }}
-              className="text-center"
-            >
-              {prozessTeaser.description2 && (
-                <p
-                  className="text-body-lg text-white/80 leading-relaxed"
-                  {...desc2Edit}
-                >
-                  {prozessTeaser.description2}
-                </p>
-              )}
-              {(prozessTeaser.ctaPrimary || prozessTeaser.ctaSecondary) && (
-                <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                  {prozessTeaser.ctaPrimary && (
-                    <Link
-                      href={prozessTeaser.ctaPrimary.href}
-                      className="btn-primary bg-white text-[var(--color-apple-dark)] hover:bg-white/90"
-                      {...ctaPrimaryEdit}
-                    >
-                      {prozessTeaser.ctaPrimary.label}
-                    </Link>
-                  )}
-                  {prozessTeaser.ctaSecondary && (
-                    <Link
-                      href={prozessTeaser.ctaSecondary.href}
-                      className="btn-secondary text-white hover:text-white/80 inline-flex"
-                      {...ctaSecondaryEdit}
-                    >
-                      {prozessTeaser.ctaSecondary.label}
-                      <ArrowRight className="h-4 w-4" />
-                    </Link>
-                  )}
-                </div>
-              )}
-            </motion.div>
-          )}
+          ))}
 
           {/* Downloads */}
           {prozessTeaser.downloads && prozessTeaser.downloads.length > 0 && (
@@ -153,7 +92,7 @@ export function ProzessTeaser() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ ...appleTransition, delay: 0.3 }}
-              className="pt-8 border-t border-white/10"
+              className="pt-8 border-t border-white/20"
             >
               <div className="flex flex-col items-center gap-3">
                 {prozessTeaser.downloads.map((dl, index) => (

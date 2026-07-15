@@ -802,25 +802,17 @@ m({
   id: "PROZESS_TEASER_CONTENT",
   label: "Bereit für den nächsten Schritt",
   schema: blockObject({
-    tagline: z.string().optional(),
     headline: z.string().optional(),
-    description1: z.string().optional(),
-    ctaMid: ctaSchema.optional(),
-    description2: z.string().optional(),
-    ctaPrimary: ctaSchema.optional(),
-    ctaSecondary: ctaSchema.optional(),
+    blocks: z
+      .array(withId({ description: z.string(), cta: ctaSchema.optional() }))
+      .optional(),
     downloads: z
       .array(withId({ label: z.string(), href: z.string() }))
       .optional(),
   }),
   fields: [
-    text("tagline", { required: false }),
     text("headline", { required: false }),
-    text("description1", { required: false }),
-    button("ctaMid"),
-    text("description2", { required: false }),
-    button("ctaPrimary"),
-    button("ctaSecondary"),
+    list("blocks", [text("description"), button("cta")], { required: false }),
     list("downloads", [text("label"), text("href")], { required: false }),
   ],
 });
@@ -856,10 +848,12 @@ m({
     headline: z.string(),
     description1: z.string(),
     description2: z.string(),
+    features: z.array(withId({ label: z.string() })).optional(),
     images: z.array(
       withId({
         src: z.string(),
         alt: z.string().optional(),
+        portrait: z.boolean().optional(),
       })
     ),
     ctaPrimary: ctaSchema.optional(),
@@ -869,6 +863,7 @@ m({
     text("headline"),
     text("description1"),
     richtext("description2"),
+    list("features", [text("label")], { required: false }),
     list("images", [image("src"), text("alt", { required: false })]),
     button("ctaPrimary"),
   ],

@@ -49,13 +49,14 @@ export function PrinzipSection() {
           )}
         </motion.div>
 
-        {/* Two-column: text left, image right */}
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        {/* Two-column: text + CTA left, full-height image right */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-stretch">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...appleTransition, delay: 0.1 }}
+            className="flex flex-col justify-center"
           >
             <p
               className="text-body-lg text-[var(--color-apple-gray-700)] leading-relaxed"
@@ -68,6 +69,19 @@ export function PrinzipSection() {
             >
               {prinzip.description2}
             </p>
+
+            {prinzip.ctaPrimary && (
+              <div className="mt-10 flex justify-start">
+                <Link
+                  href={prinzip.ctaPrimary.href}
+                  className="btn-secondary inline-flex"
+                  {...ctaEdit}
+                >
+                  {prinzip.ctaPrimary.label}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            )}
           </motion.div>
 
           <motion.div
@@ -75,7 +89,7 @@ export function PrinzipSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...appleTransition, delay: 0.2 }}
-            className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-apple"
+            className="relative aspect-[4/3] lg:aspect-auto lg:h-full rounded-2xl overflow-hidden shadow-apple"
             {...imageEdit}
           >
             <Image
@@ -87,26 +101,6 @@ export function PrinzipSection() {
             />
           </motion.div>
         </div>
-
-        {/* CTA at the bottom */}
-        {prinzip.ctaPrimary && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ ...appleTransition, delay: 0.3 }}
-            className="mt-12 flex justify-center"
-          >
-            <Link
-              href={prinzip.ctaPrimary.href}
-              className="btn-secondary inline-flex"
-              {...ctaEdit}
-            >
-              {prinzip.ctaPrimary.label}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </motion.div>
-        )}
       </div>
     </section>
   );

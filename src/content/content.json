@@ -80,7 +80,7 @@
     "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
     "heroVideoSrc": "/videos/hero.mp4",
     "ctaPrimary": {
-      "label": "Entdecke Rubikone",
+      "label": "Entdecke RubikONE",
       "href": "/koeniz"
     }
   },
@@ -1116,83 +1116,70 @@
     "fallbackImage": "/images/hero/generationen-kraft.jpg"
   },
   "VORHER_NACHHER_CONTENT": {
-    "tagline": "Das Prinzip",
+    "tagline": "Nachhaltigkeit",
     "headline": "Keine neuen Geräte. Nur ein neuer Blick.",
     "description": "RubikONE nutzt bestehende urbane Elemente und macht sie durch Beschilderung und Farbmarkierungen als Bewegungsräume sichtbar – normenkonform und reversibel.",
     "vorherImage": "/images/konzept/vorher.jpg",
     "nachherImage": "/images/konzept/nachher.jpg"
   },
   "GALLERY_CONTENT": {
-    "tagline": "Eindrücke aus der Praxis",
+    "tagline": "Training nach ParkourONE",
     "headline": "Wer RubikONE nutzt macht Parkour.",
     "images": [
       {
-        "src": "/images/hero/oma-enkelin.jpg",
-        "title": "Generationen verbinden",
-        "comment": "Grosseltern und Enkel trainieren gemeinsam – natürlich und ungezwungen.",
-        "_id": "vs5cTNQHNx"
+        "src": "/images/koeniz/spass.jpg",
+        "title": "Körperwahrnehmung und Kraft",
+        "comment": "Training für den ganzen Körper mit Aufwärmen, Balance, Kraft und Cooldown.",
+        "_id": "98klSwa2vy"
       },
       {
         "src": "/images/hero/generationen-kraft.jpg",
-        "title": "Kraft für alle",
-        "comment": "Vom Teenager bis zur Seniorin: Jeder findet seine passende Herausforderung.",
+        "title": "Raumkompetenz",
+        "comment": "Sicherheit im Umgang mit der Umgebung gewinnen und dabei den urbanen Raum neu entdecken.",
         "_id": "hbNoKk4zjW"
       },
       {
-        "src": "/images/koeniz/schulklasse.jpg",
-        "title": "Schulen integrieren",
-        "comment": "RubikONE wird zum Outdoor-Klassenzimmer für Bewegung und Spiel.",
-        "_id": "CYOIC3vQ5h"
-      },
-      {
-        "src": "/images/koeniz/kinder-springen.jpg",
-        "title": "Spielerisch lernen",
-        "comment": "Kinder entdecken natürliche Bewegungen – ganz ohne Anleitung.",
-        "_id": "IDJu1nzZyO"
-      },
-      {
         "src": "/images/workshop/frauen-balancieren.jpg",
-        "title": "Gemeinschaft stärken",
-        "comment": "Bewegung schafft Begegnung – über alle Altersgruppen hinweg.",
+        "title": "Gemeinschaft",
+        "comment": "Bewegung schafft Begegnung für alle Altersgruppen – ergänzt durch Team-Challenges.",
         "_id": "FoptuL9XXf"
       },
       {
-        "src": "/images/posten/balance-nahaufnahme.jpg",
-        "title": "Koordination fördern",
-        "comment": "Balancieren trainiert Körper und Geist gleichzeitig.",
-        "_id": "DRf055o9T2"
-      },
-      {
-        "src": "/images/konzept/wegweiser.jpg",
-        "title": "Intuitiv verstehen",
-        "comment": "Klare Beschilderung macht den Einstieg kinderleicht.",
-        "_id": "XqhPenobJO"
-      },
-      {
-        "src": "/images/koeniz/spass.jpg",
-        "title": "Freude an Bewegung",
-        "comment": "Das wichtigste Ergebnis: Menschen, die Spass an Bewegung haben.",
-        "_id": "98klSwa2vy"
+        "src": "/images/koeniz/parkour-kreativitaet-und-spass.jpg",
+        "title": "Kreativität und Spass",
+        "comment": "Bewegung mit spielerischem Ansatz fördert Kreativität und Neugier.",
+        "_id": "kreativitaet-spass-1"
       }
     ]
   },
   "PROZESS_TEASER_CONTENT": {
-    "tagline": "Individuell angepasst",
     "headline": "Bereit für den nächsten Schritt?",
-    "description1": "Es geht darum sich draussen zu bewegen, Neues auszuprobieren, sich aus der Komfortzone zu locken und Erfolgserlebnisse zu sammeln.",
-    "ctaMid": {
-      "label": "Gestalten Sie Ihren Parkour- & Bewegungsraum",
-      "href": "/raumgestaltung"
-    },
-    "description2": "Entdecken Sie das Potenzial Ihrer Gemeinde und erleben Sie neue Perspektiven mit dem Impulsworkshop.",
-    "ctaPrimary": {
-      "label": "Impulsworkshop buchen",
-      "href": "/impulsworkshop"
-    },
-    "ctaSecondary": {
-      "label": "Kostenlose Standort-Analyse anfragen",
-      "href": "/kontakt"
-    },
+    "blocks": [
+      {
+        "description": "Du möchtest dich bewegen? Besuche einen RubikONE und siehe deine Umgebung mit neuen Augen.",
+        "cta": {
+          "label": "Erlebe RubikONE",
+          "href": "/koeniz"
+        },
+        "_id": "prozess-block-1"
+      },
+      {
+        "description": "Du möchtest etwas bewegen? Lass uns gemeinsam einen RubikONE in deiner Gemeinde umsetzen.",
+        "cta": {
+          "label": "Kontaktiere uns",
+          "href": "/kontakt"
+        },
+        "_id": "prozess-block-2"
+      },
+      {
+        "description": "Entdecke das Potenzial deiner Gemeinde und erlebe neue Perspektiven mit einem Impulsworkshop vor Ort.",
+        "cta": {
+          "label": "Impulsworkshop buchen",
+          "href": "/raumgestaltung"
+        },
+        "_id": "prozess-block-3"
+      }
+    ],
     "downloads": [
       {
         "label": "Verkaufsbroschüre RubikONE (PDF)",
@@ -1202,14 +1189,14 @@
     ]
   },
   "PRINZIP_CONTENT": {
-    "tagline": "Mit neuen Augen sehen",
+    "tagline": "Das Prinzip",
     "headline": "Entdecke das Potenzial von dir und deiner Umgebung",
     "description1": "Mit RubikONE verändern wir nicht die <strong>Infrastruktur</strong>, sondern die <strong>Nutzung</strong>.<br />Wir verändern nicht den <strong>Ort</strong>, sondern die <strong>Wahrnehmung</strong>.<br />Wir verändern nicht die <strong>Menschen</strong>, sondern ihr <strong>Verhalten</strong> im Raum.",
     "description2": "Durch einfache Markierungen und klare Impulse laden wir Menschen ein, den Raum neu zu erleben – inspiriert von der Kunst des Parkour.",
     "image": "/images/konzept/prinzip-gruppe-bank.jpg",
     "imageAlt": "Menschen sitzen auf einer Bank im öffentlichen Raum",
     "ctaPrimary": {
-      "label": "Die Bewegungskultur entdecken",
+      "label": "Die Vision",
       "href": "/konzept"
     }
   },
@@ -1217,13 +1204,26 @@
     "tagline": "Das Produkt",
     "headline": "Ein RubikONE Posten.",
     "description1": "Ein Ort, Farbmarkierungen und ein Schild mit Bewegungsimpulsen.",
-    "description2": "<p>Training inspiriert von Parkour bedeutet:</p><ul class=\"list-disc mt-3 pl-6 space-y-1\"><li>Vielfältige Aufgaben</li><li>Teamchallenges</li><li>Umgebungselemente kreativ nutzen</li><li>Die Sinne mit einbeziehen</li></ul><p class=\"mt-4\"><strong>Keine Schwierigkeitenlevels – sondern Variationen.</strong></p>",
-    "images": [
+    "description2": "<p>Training inspiriert von Parkour bedeutet: <strong>Keine Schwierigkeitenlevels – sondern Variationen.</strong></p>",
+    "features": [
       {
-        "src": "/images/konzept/posten-treppe-vorher.jpg",
-        "alt": "Treppe vor RubikONE-Markierung",
-        "_id": "posten-img-1"
+        "label": "Vielfältige Aufgaben",
+        "_id": "posten-feat-1"
       },
+      {
+        "label": "Teamchallenges",
+        "_id": "posten-feat-2"
+      },
+      {
+        "label": "Umgebungselemente\nkreativ nutzen",
+        "_id": "posten-feat-3"
+      },
+      {
+        "label": "Die Sinne\nmit einbeziehen",
+        "_id": "posten-feat-4"
+      }
+    ],
+    "images": [
       {
         "src": "/images/konzept/posten-treppe-farbmarkierungen.jpg",
         "alt": "Treppe mit RubikONE-Farbmarkierungen",
@@ -1233,11 +1233,17 @@
         "src": "/images/konzept/posten-treppe-menschen.jpg",
         "alt": "Menschen nutzen RubikONE-Treppe",
         "_id": "posten-img-3"
+      },
+      {
+        "src": "/images/konzept/treppe-postenschild-150.jpg",
+        "alt": "RubikONE Postenschild an der Treppe",
+        "portrait": true,
+        "_id": "posten-img-4"
       }
     ],
     "ctaPrimary": {
       "label": "Ein besonderes Lernkonzept",
-      "href": "/ueber-uns"
+      "href": "https://parkourone.com/about/parkour-nach-trust/"
     }
   },
   "CONFIGURATOR_CTA_CONTENT": {

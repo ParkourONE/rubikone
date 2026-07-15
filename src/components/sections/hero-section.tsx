@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { HERO_CONTENT } from "@/lib/constants";
 import { useContent } from "@/hooks/useContent";
 import { staggerContainer, staggerItem, appleTransition } from "@/lib/animations";
@@ -66,8 +66,9 @@ export function HeroSection() {
                 variants={staggerItem}
                 className="mt-10 flex flex-col items-center sm:items-start sm:flex-row gap-4"
               >
-                <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
+                <Link href={heroContent.ctaPrimary.href} className="btn-secondary inline-flex" {...ctaPrimaryEdit}>
                   {heroContent.ctaPrimary.label}
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
               </motion.div>
             )}
@@ -140,26 +141,12 @@ export function HeroSection() {
                   variants={staggerItem}
                   className="mt-10 flex flex-row gap-4"
                 >
-                  <Link href={heroContent.ctaPrimary.href} className="btn-primary" {...ctaPrimaryEdit}>
+                  <Link href={heroContent.ctaPrimary.href} className="btn-secondary inline-flex" {...ctaPrimaryEdit}>
                     {heroContent.ctaPrimary.label}
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </motion.div>
               )}
-
-              {/* Scroll Indicator */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1, duration: 0.5 }}
-                className="mt-12"
-              >
-                <motion.div
-                  animate={{ y: [0, 8, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <ChevronDown className="h-6 w-6 text-[var(--color-apple-gray-400)]" />
-                </motion.div>
-              </motion.div>
             </motion.div>
           </div>
 
