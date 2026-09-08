@@ -190,7 +190,7 @@ export async function POST(request: Request) {
               <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.8;">
                 ParkourONE<br>
                 E-Mail: <a href="mailto:info@rubikone.ch" style="color: #0066cc;">info@rubikone.ch</a><br>
-                Telefon: <a href="tel:+41319712827" style="color: #0066cc;">+41 31 971 28 27</a>
+                Telefon: <a href="tel:+41313717490" style="color: #0066cc;">+41 31 371 74 90</a>
               </p>
             </div>
           </div>

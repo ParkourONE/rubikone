@@ -605,14 +605,14 @@
     "name": "Michèle Lütolf",
     "role": "Ansprechpartnerin RubikONE",
     "email": "michele@parkourone.ch",
-    "phone": "+41 31 971 28 27"
+    "phone": "+41 31 371 74 90"
   },
   "CONTACT_INFO": {
     "company": "ParkourONE GmbH",
     "street": "Südstrasse 16, SPOT 101",
     "city": "3110 Münsingen",
     "email": "info@rubikone.ch",
-    "phone": "+41 31 971 28 27"
+    "phone": "+41 31 371 74 90"
   },
   "FOOTER_LINKS": {
     "hauptseiten": [
@@ -2875,7 +2875,7 @@
       {
         "_id": "impressum-1",
         "heading": "Kontaktadresse",
-        "body": "<p>ParkourONE GmbH<br />Südstrasse 16, SPOT 101<br />3110 Münsingen<br />Schweiz</p>\n<p>E-Mail: <a href=\"mailto:info@rubikone.ch\" class=\"text-[var(--color-apple-blue)] hover:underline\">info@rubikone.ch</a><br />Telefon: <a href=\"tel:+41319712827\" class=\"text-[var(--color-apple-blue)] hover:underline\">+41 31 971 28 27</a></p>"
+        "body": "<p>ParkourONE GmbH<br />Südstrasse 16, SPOT 101<br />3110 Münsingen<br />Schweiz</p>\n<p>E-Mail: <a href=\"mailto:info@rubikone.ch\" class=\"text-[var(--color-apple-blue)] hover:underline\">info@rubikone.ch</a><br />Telefon: <a href=\"tel:+41313717490\" class=\"text-[var(--color-apple-blue)] hover:underline\">+41 31 371 74 90</a></p>"
       },
       {
         "_id": "impressum-2",
@@ -2922,7 +2922,7 @@
       {
         "_id": "ds-2",
         "heading": "2. Verantwortlicher",
-        "body": "<p>Verantwortlich für die Datenbearbeitung ist:</p>\n<p>ParkourONE GmbH<br />Südstrasse 16, SPOT 101<br />3110 Münsingen<br />Schweiz</p>\n<p>E-Mail: <a href=\"mailto:info@rubikone.ch\" class=\"text-[var(--color-apple-blue)] hover:underline\">info@rubikone.ch</a><br />Telefon: <a href=\"tel:+41319712827\" class=\"text-[var(--color-apple-blue)] hover:underline\">+41 31 971 28 27</a></p>"
+        "body": "<p>Verantwortlich für die Datenbearbeitung ist:</p>\n<p>ParkourONE GmbH<br />Südstrasse 16, SPOT 101<br />3110 Münsingen<br />Schweiz</p>\n<p>E-Mail: <a href=\"mailto:info@rubikone.ch\" class=\"text-[var(--color-apple-blue)] hover:underline\">info@rubikone.ch</a><br />Telefon: <a href=\"tel:+41313717490\" class=\"text-[var(--color-apple-blue)] hover:underline\">+41 31 371 74 90</a></p>"
       },
       {
         "_id": "ds-3",

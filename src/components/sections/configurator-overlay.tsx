@@ -668,7 +668,7 @@ export function ConfiguratorOverlay({ isOpen, onClose }: ConfiguratorOverlayProp
                           </p>
                           <p className="text-body-sm text-[var(--color-apple-dark)] flex items-center gap-2">
                             <Phone className="h-4 w-4 text-[var(--color-apple-gray-500)]" />
-                            +41 31 971 28 27
+                            +41 31 371 74 90
                           </p>
                         </div>
                       </div>
