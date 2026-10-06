@@ -182,7 +182,6 @@ export default function RaumgestaltungPage() {
         <div className="container-content">
           <SectionHeader
             variant="plain"
-            align="left"
             title={mehrwert.title}
             subtitle={mehrwert.subtitle}
             description={mehrwert.description}
@@ -207,11 +206,10 @@ export default function RaumgestaltungPage() {
         <div className="container-content">
           <SectionHeader
             variant="plain"
-            align="left"
             title={prozess.title}
             subtitle={prozess.subtitle}
             description={prozess.description}
-            className="mb-12 max-w-3xl [&_h2]:text-white [&_p]:text-white/70"
+            className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
             titleProps={prozessTitleEdit}
             subtitleProps={prozessSubtitleEdit}
             descriptionProps={prozessDescEdit}
@@ -299,7 +297,6 @@ export default function RaumgestaltungPage() {
         <div className="container-content">
           <SectionHeader
             variant="plain"
-            align="left"
             title="Häufig gestellte Fragen"
             subtitle="FAQ"
             className="mb-12"
