@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Settings } from "lucide-react";
 import { SITE_CONFIG, FOOTER_LINKS } from "@/lib/constants";
 import { useConsent } from "@/providers/consent-provider";
 import { useEditPath } from "@/components/cms/primitives";
@@ -169,15 +168,6 @@ export function Footer() {
               {FOOTER_LINKS.rechtliches.map((link, index) => (
                 <RechtlichesLink key={link.href} link={link} index={index} />
               ))}
-              <li>
-                <button
-                  onClick={openSettings}
-                  className="text-body-sm text-[var(--color-apple-gray-700)] hover:text-[var(--color-apple-dark)] transition-colors inline-flex items-center gap-1.5"
-                >
-                  <Settings className="h-3.5 w-3.5" />
-                  Cookie-Einstellungen
-                </button>
-              </li>
             </ul>
           </div>
         </div>

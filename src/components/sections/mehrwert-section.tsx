@@ -83,7 +83,7 @@ export function MehrwertSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.35 }}
-                  className="relative aspect-[3/4] max-w-[460px] mx-auto lg:mx-0 w-full rounded-2xl overflow-hidden shadow-apple bg-white"
+                  className="relative aspect-[800/1345] max-w-[380px] mx-auto lg:mx-0 w-full rounded-2xl overflow-hidden shadow-apple bg-white"
                   data-edit-path={`KONZEPT_MEHRWERT.slides.${activeIndex}.image`}
                 >
                   <Image
@@ -91,7 +91,7 @@ export function MehrwertSection() {
                     alt={active.imageAlt || `Slide ${activeIndex + 1}`}
                     fill
                     className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 460px"
+                    sizes="(max-width: 1024px) 100vw, 380px"
                   />
                 </motion.div>
               </AnimatePresence>

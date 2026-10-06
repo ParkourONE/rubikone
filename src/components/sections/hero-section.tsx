@@ -54,7 +54,7 @@ export function HeroSection() {
             {/* Subheadline */}
             <motion.p
               variants={staggerItem}
-              className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
+              className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] whitespace-pre-line"
               {...subheadlineEdit}
             >
               {heroContent.subheadline}
@@ -129,7 +129,7 @@ export function HeroSection() {
               {/* Subheadline */}
               <motion.p
                 variants={staggerItem}
-                className="mt-8 text-body-lg text-[var(--color-apple-gray-600)]"
+                className="mt-8 text-body-lg text-[var(--color-apple-gray-600)] whitespace-pre-line"
                 {...subheadlineEdit}
               >
                 {heroContent.subheadline}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Building2, GraduationCap, Users, CheckCircle, ArrowRight, Quote, ChevronDown, ChevronUp } from "lucide-react";
+import { Building2, Users, CheckCircle, ArrowRight, Quote, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PageHero } from "@/components/sections/hero-section";
 import { FadeUp, StaggerContainer, StaggerItem } from "@/components/shared/fade-up";
@@ -15,7 +15,6 @@ import { useEditPath } from "@/components/cms/primitives";
 import {
   RAUMGESTALTUNG_HERO,
   RAUMGESTALTUNG_MEHRWERT,
-  RAUMGESTALTUNG_USP,
   RAUMGESTALTUNG_TESTIMONIAL,
   RAUMGESTALTUNG_PROZESS,
   RAUMGESTALTUNG_REFERENZ,
@@ -26,8 +25,7 @@ import {
 
 const iconMap: Record<number, any> = {
   0: Building2,
-  1: GraduationCap,
-  2: Users,
+  1: Users,
 };
 
 function StakeholderCard({ stakeholder, index }: { stakeholder: any; index: number }) {
@@ -56,26 +54,6 @@ function StakeholderCard({ stakeholder, index }: { stakeholder: any; index: numb
         </ul>
       </div>
     </StaggerItem>
-  );
-}
-
-function UspItem({ item, index }: { item: any; index: number }) {
-  const path = `RAUMGESTALTUNG_USP[${index}]`;
-  const itemEdit = useEditPath(path);
-  const titleEdit = useEditPath(`${path}.title`);
-  const descEdit = useEditPath(`${path}.description`);
-  return (
-    <div className="flex items-center gap-3" {...itemEdit}>
-      <CheckCircle className="h-6 w-6 text-[var(--color-apple-blue)] flex-shrink-0" />
-      <div>
-        <p className="text-body font-semibold text-[var(--color-apple-dark)]" {...titleEdit}>
-          {item.title}
-        </p>
-        <p className="text-body-sm text-[var(--color-apple-gray-600)]" {...descEdit}>
-          {item.description}
-        </p>
-      </div>
-    </div>
   );
 }
 
@@ -155,7 +133,6 @@ export default function RaumgestaltungPage() {
 
   const hero = useContent("RAUMGESTALTUNG_HERO", RAUMGESTALTUNG_HERO) as any;
   const mehrwert = useContent("RAUMGESTALTUNG_MEHRWERT", RAUMGESTALTUNG_MEHRWERT) as any;
-  const uspKompakt = useContent("RAUMGESTALTUNG_USP", RAUMGESTALTUNG_USP) as any;
   const testimonial = useContent("RAUMGESTALTUNG_TESTIMONIAL", RAUMGESTALTUNG_TESTIMONIAL) as any;
   const prozess = useContent("RAUMGESTALTUNG_PROZESS", RAUMGESTALTUNG_PROZESS) as any;
   const referenz = useContent("RAUMGESTALTUNG_REFERENZ", RAUMGESTALTUNG_REFERENZ) as any;
@@ -199,11 +176,13 @@ export default function RaumgestaltungPage() {
       />
       </EditableSection>
 
-      {/* Mehrwert für alle - 3 Columns */}
+      {/* Mehrwert für alle - 2 Columns */}
       <EditableSection contentKey="RAUMGESTALTUNG_MEHRWERT" label="Mehrwert für alle">
       <section className="section-spacing">
         <div className="container-content">
           <SectionHeader
+            variant="plain"
+            align="left"
             title={mehrwert.title}
             subtitle={mehrwert.subtitle}
             description={mehrwert.description}
@@ -213,26 +192,11 @@ export default function RaumgestaltungPage() {
             descriptionProps={mehrwertDescEdit}
           />
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-8">
+          <StaggerContainer className="grid md:grid-cols-2 gap-8 max-w-4xl">
             {(mehrwert.stakeholders as any[]).map((stakeholder: any, index: number) => (
               <StakeholderCard key={index} stakeholder={stakeholder} index={index} />
             ))}
           </StaggerContainer>
-        </div>
-      </section>
-      </EditableSection>
-
-      {/* Das macht RubikONE einzigartig - Kompakt */}
-      <EditableSection contentKey="RAUMGESTALTUNG_USP" label="USP kompakt">
-      <section className="py-12 bg-[var(--color-apple-gray-100)]">
-        <div className="container-content">
-          <FadeUp>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12">
-              {(uspKompakt as any[]).map((item: any, index: number) => (
-                <UspItem key={index} item={item} index={index} />
-              ))}
-            </div>
-          </FadeUp>
         </div>
       </section>
       </EditableSection>
@@ -242,10 +206,12 @@ export default function RaumgestaltungPage() {
       <section className="section-spacing bg-[var(--color-apple-dark)] text-white">
         <div className="container-content">
           <SectionHeader
+            variant="plain"
+            align="left"
             title={prozess.title}
             subtitle={prozess.subtitle}
             description={prozess.description}
-            className="mb-12 [&_h2]:text-white [&_p]:text-white/70"
+            className="mb-12 max-w-3xl [&_h2]:text-white [&_p]:text-white/70"
             titleProps={prozessTitleEdit}
             subtitleProps={prozessSubtitleEdit}
             descriptionProps={prozessDescEdit}
@@ -332,6 +298,8 @@ export default function RaumgestaltungPage() {
       <section className="section-spacing bg-[var(--color-apple-gray-100)]">
         <div className="container-content">
           <SectionHeader
+            variant="plain"
+            align="left"
             title="Häufig gestellte Fragen"
             subtitle="FAQ"
             className="mb-12"

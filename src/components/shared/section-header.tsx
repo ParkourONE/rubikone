@@ -6,6 +6,8 @@ interface SectionHeaderProps {
   subtitle?: string;
   description?: string;
   align?: "left" | "center";
+  /** "plain": graue Tagline + dunkle Headline wie auf Startseite/Bewegungskultur */
+  variant?: "default" | "plain";
   className?: string;
   titleClassName?: string;
   animated?: boolean;
@@ -19,6 +21,7 @@ export function SectionHeader({
   subtitle,
   description,
   align = "center",
+  variant = "default",
   className,
   titleClassName,
   animated = true,
@@ -35,13 +38,17 @@ export function SectionHeader({
     >
       {subtitle && (
         <p
-          className="text-body-sm font-medium uppercase tracking-wider text-[var(--color-apple-blue)] mb-3"
+          className={
+            variant === "plain"
+              ? "text-body-sm text-[var(--color-apple-gray-600)] mb-2"
+              : "text-body-sm font-medium uppercase tracking-wider text-[var(--color-apple-blue)] mb-3"
+          }
           {...subtitleProps}
         >
           {subtitle}
         </p>
       )}
-      <h2 className={cn("text-title-1", titleClassName)} {...titleProps}>
+      <h2 className={cn("text-title-1", variant === "plain" && "text-[var(--color-apple-dark)]", titleClassName)} {...titleProps}>
         {title}
       </h2>
       {description && (

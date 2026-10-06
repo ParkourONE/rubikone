@@ -304,7 +304,7 @@ export default function KonzeptPage() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}
                     transition={{ duration: 0.35 }}
-                    className="relative aspect-[3/4] max-w-[460px] mx-auto lg:mx-0 w-full rounded-2xl overflow-hidden shadow-apple bg-white"
+                    className="relative aspect-[516/800] max-w-[400px] mx-auto lg:mx-0 w-full rounded-2xl overflow-hidden shadow-apple bg-white"
                     data-edit-path={`KONZEPT_POSTEN_SLIDER.slides.${postenActiveIndex}.image`}
                   >
                     <Image
@@ -312,7 +312,7 @@ export default function KonzeptPage() {
                       alt={postenSlide.imageAlt || `Perspektive ${postenActiveIndex + 1}`}
                       fill
                       className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 460px"
+                      sizes="(max-width: 1024px) 100vw, 400px"
                     />
                   </motion.div>
                 </AnimatePresence>

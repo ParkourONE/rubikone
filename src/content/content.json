@@ -76,7 +76,7 @@
     "headline": "Hier darfst du.",
     "headlineAccent": "",
     "brandTag": "Menschen bewegen – Perspektive wechseln",
-    "subheadline": "RubikONE lädt dazu ein neue Perspektiven zu entdecken. Der öffentliche Raum wird zum Bewegungsort. Für alle Generationen und Fitnesslevel, dauerhaft & wetterfest.",
+    "subheadline": "RubikONE lädt dazu ein neue Perspektiven zu entdecken.\nDer öffentliche Raum wird zum Bewegungsort. Für alle Generationen und Fitnesslevel, dauerhaft & wetterfest.",
     "videoUrl": "https://www.youtube.com/watch?v=wGEUzjLv0Ac",
     "heroVideoSrc": "/videos/hero.mp4",
     "ctaPrimary": {
@@ -617,29 +617,29 @@
   "FOOTER_LINKS": {
     "hauptseiten": [
       {
-        "label": "Konzept",
+        "label": "Bewegungskultur",
         "href": "/konzept",
         "_id": "dWDKfxhGZk"
       },
       {
-        "label": "Raumgestaltung",
+        "label": "Angebot",
         "href": "/raumgestaltung",
         "_id": "mWeSiogv17"
       },
       {
-        "label": "Referenz Köniz",
+        "label": "Entdecke RubikONE",
         "href": "/koeniz",
         "_id": "gTrWY1JR9K"
-      },
-      {
-        "label": "Über uns",
-        "href": "/ueber-uns",
-        "_id": "aP2p2MJsSx"
       },
       {
         "label": "Impulsworkshop",
         "href": "/impulsworkshop",
         "_id": "xnvxaJTVKM"
+      },
+      {
+        "label": "Über uns",
+        "href": "/ueber-uns",
+        "_id": "aP2p2MJsSx"
       }
     ],
     "rechtliches": [
@@ -1164,23 +1164,9 @@
           "href": "/kontakt"
         },
         "_id": "prozess-block-2"
-      },
-      {
-        "description": "Entdecke das Potenzial deiner Gemeinde und erlebe neue Perspektiven mit einem Impulsworkshop vor Ort.",
-        "cta": {
-          "label": "Impulsworkshop buchen",
-          "href": "/raumgestaltung"
-        },
-        "_id": "prozess-block-3"
       }
     ],
-    "downloads": [
-      {
-        "label": "Verkaufsbroschüre RubikONE (PDF)",
-        "href": "/downloads/rubikone-verkaufsbroschuere.pdf",
-        "_id": "IUlQvjWBcp"
-      }
-    ]
+    "downloads": []
   },
   "PRINZIP_CONTENT": {
     "tagline": "Das Prinzip",
@@ -2081,16 +2067,6 @@
           "Minimaler Ressourceneinsatz"
         ],
         "_id": "GY5l5SkDgl"
-      },
-      {
-        "title": "Bildung & Kultur",
-        "benefits": [
-          "Erweitertes Klassenzimmer & Alternative zur Sporthalle",
-          "Kreative Bewegungspausen & Lernmöglichkeiten",
-          "Förderung von Teamwork",
-          "Vielfältige Bewegungspausen"
-        ],
-        "_id": "cqyKXI_Ngx"
       },
       {
         "title": "Bevölkerung",

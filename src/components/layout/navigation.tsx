@@ -100,7 +100,7 @@ export function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center"
+            className="flex items-center shrink-0"
             aria-label={`${SITE_CONFIG.name} — zur Startseite`}
           >
             <Image
@@ -114,14 +114,14 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-8">
             {NAVIGATION_ITEMS.map((item, index) => (
               <DesktopNavLink key={item.href} item={item} index={index} isActive={pathname === item.href} />
             ))}
           </div>
 
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <button
               onClick={openConfigurator}
               className="flex items-center gap-2 text-sm font-medium text-[var(--color-apple-blue)] hover:opacity-70 transition-opacity"
@@ -137,7 +137,7 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 -mr-2"
+            className="xl:hidden p-2 -mr-2"
             aria-label={isMobileMenuOpen ? "Menü schliessen" : "Menü öffnen"}
           >
             {isMobileMenuOpen ? (
@@ -157,7 +157,7 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white md:hidden"
+            className="fixed inset-0 z-40 bg-white xl:hidden"
           >
             <motion.nav
               initial="initial"
